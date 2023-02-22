@@ -11,7 +11,7 @@ theme:
   features:
     - navigation.tabs # 顶部导航
     # - navigation.sections # 全部展开(非折叠状态)
-    - navigation.expand # 子目录展开
+    # - navigation.expand # 子目录展开
     - navigation.top  # 返回顶部按钮
 
 # 插件
@@ -50,7 +50,45 @@ markdown_extensions:
 # 页面导航
 nav:
   - 首页: index.md
-  - 技术: technology.md
+  - 技术: 
+    - Python:
+      - 安装: technology/python/index.md
+      - pip: technology/python/package/pip.md
+      - logging: technology/python/package/logging.md
+      - importlib: technology/python/package/importlib.md
+      - crypto: technology/python/package/pycrypto.md
+      - 文档处理:
+        - Docx: technology/python/report/docx.md
+        - Excel: technology/python/report/excel.md
+    - WEB:
+      - flask: technology/web/flask.md
+    - Linux:
+      - 常用资源: technology/linux/usage_source.md
+      - 端口占用查找: technology/linux/port.md
+      - linux磁盘挂载: technology/linux/disk-mount.md
+    - 服务组件:
+      - zookeeper: technology/components/zookeeper.md
+      - nginx: technology/components/nginx.md
+      - supervisor: technology/components/supervisor.md
+      - rabbitmq: technology/components/rabbitmq.md
+      - 无头浏览器: 
+        - openchrome: technology/unheadchrome/openchrome.md
+        - 环境搭建: technology/unheadchrome/build_env.md
+    - 数据库:
+      - ClickHouse: technology/database/clickhouse.md
+      - MySQL: 
+        - mysql8: technology/database/mysql8_install.md
+        - 常用操作: technology/database/mysql.md
+      - ElasticSearch:
+        - elasticsearch-py: technology/database/elasticsearch_py.md
+        - elasticsearch-dsl: technology/database/es_dsl.md
+        - elasticsearch-aggs: technology/database/es_aggs.md
+    - 安全渗透:
+      - hydra: technology/security/thc-hydra.md
+      - sqlmap: technology/security/sqlmap.md
+    - 其他:
+      - Python函数: technology/other/functions.md
+      - 收益函数: technology/other/stock.md
   - 阅读: read.md
   - 投资: invest.md
   - 工具: 
