@@ -1,0 +1,1725 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../nginx/">
+      
+      
+        <link rel="next" href="../rabbitmq/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>supervisor - 我的编程技术笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#supervisor" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="我的编程技术笔记" class="md-header__button md-logo" aria-label="我的编程技术笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的编程技术笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              supervisor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../python/" class="md-tabs__link md-tabs__link--active">
+        技术
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../read/" class="md-tabs__link">
+      阅读
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../invest/" class="md-tabs__link">
+      投资
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tools/repos/" class="md-tabs__link">
+        工具
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../documents/docs/" class="md-tabs__link">
+        文档
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../e-book/" class="md-tabs__link">
+      电子书
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="我的编程技术笔记" class="md-nav__button md-logo" aria-label="我的编程技术笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    我的编程技术笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/pip/" class="md-nav__link">
+        pip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/logging/" class="md-nav__link">
+        logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/importlib/" class="md-nav__link">
+        importlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/pycrypto/" class="md-nav__link">
+        crypto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+          文档处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          文档处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/report/docx/" class="md-nav__link">
+        Docx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/report/excel/" class="md-nav__link">
+        Excel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          WEB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          WEB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web/flask/" class="md-nav__link">
+        flask
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/usage_source/" class="md-nav__link">
+        常用资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/port/" class="md-nav__link">
+        端口占用查找
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/disk-mount/" class="md-nav__link">
+        linux磁盘挂载
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          服务组件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          服务组件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          supervisor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        supervisor
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+    <nav class="md-nav" aria-label="简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervisor_1" class="md-nav__link">
+    Supervisor 是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisor_2" class="md-nav__link">
+    Supervisor 的组成部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最低要求
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    添加程序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supervisor-webserver" class="md-nav__link">
+    配置supervisor Webserver 客户端
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
+          无头浏览器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          无头浏览器
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
+        openchrome
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/build_env/" class="md-nav__link">
+        环境搭建
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/clickhouse/" class="md-nav__link">
+        ClickHouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+          MySQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql8_install/" class="md-nav__link">
+        mysql8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql/" class="md-nav__link">
+        常用操作
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+          ElasticSearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          ElasticSearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/elasticsearch_py/" class="md-nav__link">
+        elasticsearch-py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_dsl/" class="md-nav__link">
+        elasticsearch-dsl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_aggs/" class="md-nav__link">
+        elasticsearch-aggs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          安全渗透
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          安全渗透
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/thc-hydra/" class="md-nav__link">
+        hydra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/sqlmap/" class="md-nav__link">
+        sqlmap
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/functions/" class="md-nav__link">
+        Python函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/stock/" class="md-nav__link">
+        收益函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/" class="md-nav__link">
+        阅读
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../invest/" class="md-nav__link">
+        投资
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/repos/" class="md-nav__link">
+        仓库合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documents/docs/" class="md-nav__link">
+        文档合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../e-book/" class="md-nav__link">
+        电子书
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+    <nav class="md-nav" aria-label="简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervisor_1" class="md-nav__link">
+    Supervisor 是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisor_2" class="md-nav__link">
+    Supervisor 的组成部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最低要求
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    添加程序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supervisor-webserver" class="md-nav__link">
+    配置supervisor Webserver 客户端
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="supervisor">Supervisor</h1>
+<ul>
+<li>收录时间: 2022年09月20日15:30:48</li>
+<li>官方文档: <a href="http://supervisord.org/">Supervisor: A Process Control System</a></li>
+<li>原文参考: <a href="https://fitdevops.in/install-and-configure-supervisor-on-centos-7/">Install And Configure Supervisor On Centos 7</a></li>
+</ul>
+<h2 id="_1">简介</h2>
+<h3 id="supervisor_1">Supervisor 是什么</h3>
+<ul>
+<li>Supervisor 是一个客户端/服务器系统，它允许其用户监视和控制类 UNIX 操作系统上的许多进程。</li>
+<li>它与 launchd、daemontools 和 runit 等程序有一些相同的目标。 与其中一些程序不同，它并不意味着作为“进程 id 1”的 init 的替代品运行。</li>
+<li>相反，它旨在用于控制与项目或客户相关的流程，并且旨在在启动时像任何其他程序一样启动。</li>
+</ul>
+<h3 id="supervisor_2">Supervisor 的组成部分</h3>
+<p>Supervisor 的组成部分如下：</p>
+<p><strong>Supervisord:</strong></p>
+<ul>
+<li>supervisor 的服务部分被命名为 <code>supervisord</code>。</li>
+<li>它负责在自己的调用中启动子程序，响应来自客户端的命令，重新启动崩溃或退出的子进程，记录其子进程的 <code>stdout</code> 和 <code>stderr</code> 输出，以及生成和处理与子进程生命周期中的点相对应的“事件”。</li>
+</ul>
+<p><strong>Supervisorctl:</strong></p>
+<ul>
+<li>supervisor 的命令行客户端名为 <code>supervisorctl</code>。</li>
+<li>它通过 <code>supervisord</code> 提供的类似于shell的接口提供功能。</li>
+<li>通过 <code>supervisorctl</code>，用户可以连接到不同的 <code>supervisord</code> 进程（一次一个），获取受控子进程的状态，停止和启动一个 <code>supervisord</code> 的子进程，并获取一个 <code>supervisord</code> 的运行进程列表。</li>
+</ul>
+<p><strong>Web Server:</strong></p>
+<ul>
+<li>如果您针对 Internet 套接字启动 <code>supervisord</code>，则可以通过浏览器访问具有与 <code>supervisorctl</code> 相当的功能的 Web 用户界面。</li>
+<li>激活配置文件的 [inet_http_server] 部分后，访问服务器 URL（例如 <a href="http://localhost:9001/">http://localhost:9001/</a>），通过 Web 界面查看和控制进程状态。</li>
+</ul>
+<p><strong>XML-RPC Interface:</strong></p>
+<ul>
+<li>服务于 Web UI 的同一 HTTP 服务器提供一个 <code>XML-RPC</code> 接口，可用于询问和控制主管及其运行的程序。</li>
+</ul>
+<h3 id="_2">最低要求</h3>
+<ul>
+<li>Supervisor 已经过测试并且已知可以在 Linux (Ubuntu 9.10)、Mac OS X (10.4/10.5/10.6)、Solaris (10 for Intel) 和 FreeBSD 6.1 上运行。 它可能在大多数 UNIX 系统上都能正常工作。</li>
+<li>Supervisor 旨在在 Python 3 版本 3.4 或更高版本以及 Python 2 版本 2.7 上工作。</li>
+<li>Supervisor 将不会在任何版本的 Windows 下运行。</li>
+</ul>
+<h2 id="_3">安装</h2>
+<p>确保您具有执行以下命令的 sudo 或 root 权限。</p>
+<p>要在 Centos 上安装supervisor，我们需要将 <code>EPEL</code> 存储库添加到系统中，使用以下命令。</p>
+<div class="highlight"><pre><span></span><code>yum<span class="w"> </span>install<span class="w"> </span>epel-release<span class="w"> </span>-y
+</code></pre></div>
+<p>使用以下命令安装supervisor</p>
+<div class="highlight"><pre><span></span><code>yum<span class="w"> </span>install<span class="w"> </span>supervisor<span class="w"> </span>-y
+</code></pre></div>
+<p>一旦安装了supervisor包，我们需要为主管设置一个目录。</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>/etc/supervisor
+</code></pre></div>
+<p>我们将示例supervisor配置添加到 <code>supervisord.conf</code> 文件。</p>
+<div class="highlight"><pre><span></span><code>echo_supervisord_conf<span class="w"> </span>&gt;<span class="w"> </span>/etc/supervisor/supervisord.conf
+</code></pre></div>
+<p>打开 <code>/etc/supervisor/supervisord.conf</code> 文件并在 [include] 部分添加以下行</p>
+<p><code>conf.d</code>目录 是我们将托管所有程序的文件夹。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">files</span><span class="o">=</span>conf.d/*.conf
+</code></pre></div>
+<p>保存并关闭文件。</p>
+<p>要在 <code>supervisor</code> 下设置程序，我们需要创建 <code>conf.d</code> 目录。</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/etc/supervisor/conf.d
+</code></pre></div>
+<p>让我们启动supervisor服务。</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>start<span class="w"> </span>supervisord
+
+<span class="c1"># 检查服务的状态并使其在系统启动时启动，</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>supervisord
+
+systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>supervisord
+</code></pre></div>
+<h2 id="_4">添加程序</h2>
+<ul>
+<li>官方文档说明参考: <a href="http://supervisord.org/running.html#adding-a-program">http://supervisord.org/running.html#adding-a-program</a></li>
+<li>官方配置说明参考: <a href="http://supervisord.org/configuration.html">http://supervisord.org/configuration.html</a></li>
+</ul>
+<p>对于本教程，我们将创建 shell 脚本，我们将其配置为一个程序，因为我们希望它继续运行。</p>
+<p>以下设置是如何将程序添加到主管并由主管管理的示例。您可以添加自己的程序。</p>
+<p>我们要添加的脚本是监控 Linux 进程的 CPU 和内存使用情况。</p>
+<p>我们将在 <code>/opt</code> 目录下创建 4 个文件。</p>
+<p>创建一个名为 <code>cpu-top</code> 的文件并添加以下内容。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#！usr/bin/env bash</span>
+<span class="nv">z</span><span class="o">=</span><span class="k">$(</span>ps<span class="w"> </span>aux<span class="k">)</span>
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>z
+<span class="k">do</span>
+<span class="nv">var</span><span class="o">=</span><span class="nv">$var</span><span class="k">$(</span>awk<span class="w"> </span><span class="s1">&#39;{print &quot;cpu_usage{process=\&quot;&quot;$11&quot;\&quot;, pid=\&quot;&quot;$2&quot;\&quot;}&quot;, $3z}&#39;</span><span class="k">)</span><span class="p">;</span>
+<span class="k">done</span><span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$z</span><span class="s2">&quot;</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: text/plain&quot;</span><span class="w"> </span>--data<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$var</span><span class="s2">&quot;</span><span class="w"> </span>http://localhost:9091/metrics/job/top/instance/machine
+</code></pre></div>
+<p>创建一个名为 <code>memory-top</code> 的文件并添加以下内容。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#！usr/bin/env bash</span>
+<span class="nv">z</span><span class="o">=</span><span class="k">$(</span>ps<span class="w"> </span>aux<span class="k">)</span>
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>z
+<span class="k">do</span>
+<span class="nv">var</span><span class="o">=</span><span class="nv">$var</span><span class="k">$(</span>awk<span class="w"> </span><span class="s1">&#39;{print &quot;memory_usage{process=\&quot;&quot;$11&quot;\&quot;, pid=\&quot;&quot;$2&quot;\&quot;}&quot;, $4z}&#39;</span><span class="k">)</span><span class="p">;</span>
+<span class="k">done</span><span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$z</span><span class="s2">&quot;</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: text/plain&quot;</span><span class="w"> </span>--data<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$var</span><span class="s2">&quot;</span><span class="w"> </span>http://localhost:9091/metrics/job/top/instance/machine
+</code></pre></div>
+<p>我们现在创建了 2 个名为 <code>memory-top</code> 和 <code>cpu-top</code> 的文件。</p>
+<p>我们将创建 2 个 .sh 文件（bash 脚本）以保持脚本运行。</p>
+<p>创建一个文件 <code>memory.sh</code> 并添加以下内容</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/opt
+<span class="k">while</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>./memory-top<span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="p">;</span>
+</code></pre></div>
+<p>创建一个名为 <code>cpu.sh</code> 的文件并添加以下内容</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/opt
+<span class="k">while</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>./cpu-top<span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="p">;</span>
+</code></pre></div>
+<p>通过运行确保 bash 脚本是可执行的，</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>cpu.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>memory.sh
+chmod<span class="w"> </span>+x<span class="w"> </span>cpu-top<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>memory-top
+</code></pre></div>
+<p>此时，我们将在 <code>/opt</code> 目录下有四个文件</p>
+<p>现在我们需要在 <code>supervisor</code> 下设置一个程序来管理这些 bash 脚本。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/etc/supervisord.d/
+</code></pre></div>
+<p>创建一个名为 <code>cpu.ini</code> 的文件并添加以下配置。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[program:cpu]</span>
+<span class="na">command</span><span class="o">=</span><span class="s">sh /opt/cpu.sh</span>
+<span class="na">autostart</span><span class="o">=</span><span class="s">true</span>
+<span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
+<span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/var/log/long.err.log</span>
+<span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/var/log/long.out.log</span>
+</code></pre></div>
+<p>创建一个名为 <code>memory.ini</code> 的文件并添加以下配置。</p>
+<div class="highlight"><pre><span></span><code>[program:memory]
+command=sh /opt/memory.sh
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/long.err.log
+stdout_logfile=/var/log/long.out.log
+</code></pre></div>
+<p>保存并关闭文件。</p>
+<p>我们需要运行以下命令让主管重新读取配置文件并应用最新的更改。</p>
+<div class="highlight"><pre><span></span><code>supervisorctl<span class="w"> </span>reread
+
+supervisorctl<span class="w"> </span>update
+</code></pre></div>
+<p>要运行supervisor客户端，请运行</p>
+<div class="highlight"><pre><span></span><code>supervisorctl
+</code></pre></div>
+<p>要检查进程的状态，运行</p>
+<div class="highlight"><pre><span></span><code>status
+</code></pre></div>
+<p>您应该得到以下响应。</p>
+<div class="highlight"><pre><span></span><code>supervisor&gt;<span class="w"> </span>status
+cpu<span class="w">                              </span>RUNNING<span class="w">   </span>pid<span class="w"> </span><span class="m">12042</span>,<span class="w"> </span>uptime<span class="w"> </span><span class="m">0</span>:00:09
+memory<span class="w">                           </span>RUNNING<span class="w">   </span>pid<span class="w"> </span><span class="m">12043</span>,<span class="w"> </span>uptime<span class="w"> </span><span class="m">0</span>:00:09
+</code></pre></div>
+<p>我们还可以通过 linux bash 来运行<code>status</code>检查程序的状态，</p>
+<div class="highlight"><pre><span></span><code>supervisorctl<span class="w"> </span>status
+</code></pre></div>
+<p>我们可以从supervisor客户端管理每个程序。</p>
+<p>现在 bash 脚本将继续收集顶级运行的 Linux 进程的 CPU 和内存使用情况。</p>
+<p>这些脚本将由supervisor服务管理。</p>
+<p>要列出主管客户端的所有可用命令，</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv<span class="o">)</span><span class="w"> </span><span class="o">[</span>root@ch1<span class="w"> </span>opt<span class="o">]</span><span class="c1"># supervisorctl</span>
+supervisor&gt;<span class="w"> </span><span class="nb">help</span>
+
+default<span class="w"> </span>commands<span class="w"> </span><span class="o">(</span><span class="nb">type</span><span class="w"> </span><span class="nb">help</span><span class="w"> </span>&lt;topic&gt;<span class="o">)</span>:
+<span class="o">=====================================</span>
+add<span class="w">    </span><span class="nb">exit</span><span class="w">      </span>open<span class="w">  </span>reload<span class="w">  </span>restart<span class="w">   </span>start<span class="w">   </span>tail
+avail<span class="w">  </span><span class="nb">fg</span><span class="w">        </span>pid<span class="w">   </span>remove<span class="w">  </span>shutdown<span class="w">  </span>status<span class="w">  </span>update
+clear<span class="w">  </span>maintail<span class="w">  </span>quit<span class="w">  </span>reread<span class="w">  </span>signal<span class="w">    </span>stop<span class="w">    </span>version
+
+supervisor&gt;
+</code></pre></div>
+<p>我们可以通过运行命令来管理每个程序</p>
+<div class="highlight"><pre><span></span><code><span class="nb">command</span><span class="w"> </span>programname
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>supervisor&gt;<span class="w"> </span>version
+<span class="m">3</span>.4.0
+supervisor&gt;<span class="w"> </span>tail<span class="w"> </span>memory<span class="w"> </span>stderr
+<span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">     </span>0curl:<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w"> </span>Failed<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>localhost:9091<span class="p">;</span><span class="w"> </span>拒绝连接
+<span class="w">  </span>%<span class="w"> </span>Total<span class="w">    </span>%<span class="w"> </span>Received<span class="w"> </span>%<span class="w"> </span>Xferd<span class="w">  </span>Average<span class="w"> </span>Speed<span class="w">   </span>Time<span class="w">    </span>Time<span class="w">     </span>Time<span class="w">  </span>Current
+<span class="w">                                 </span>Dload<span class="w">  </span>Upload<span class="w">   </span>Total<span class="w">   </span>Spent<span class="w">    </span>Left<span class="w">  </span>Speed
+
+<span class="w">  </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">     </span><span class="m">0</span>
+curl:<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w"> </span>Failed<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>localhost:9091<span class="p">;</span><span class="w"> </span>拒绝连接
+supervisor&gt;<span class="w"> </span>tail<span class="w"> </span>cpu<span class="w"> </span>stderr
+<span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">     </span><span class="m">0</span><span class="w">  </span>%<span class="w"> </span>Total<span class="w">    </span>%<span class="w"> </span>Received<span class="w"> </span>%<span class="w"> </span>Xferd<span class="w">  </span>Average<span class="w"> </span>Speed<span class="w">   </span>Time<span class="w">    </span>Time<span class="w">     </span>Time<span class="w">  </span>Current
+<span class="w">                                 </span>Dload<span class="w">  </span>Upload<span class="w">   </span>Total<span class="w">   </span>Spent<span class="w">    </span>Left<span class="w">  </span>Speed
+
+<span class="w">  </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">     </span><span class="m">0</span>
+curl:<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w"> </span>Failed<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>localhost:9091<span class="p">;</span><span class="w"> </span>拒绝连接
+</code></pre></div>
+<h2 id="supervisor-webserver">配置supervisor Webserver 客户端</h2>
+<p>要允许访问 supervisord webserver，请打开 <code>/etc/supervisord.conf</code> 文件并转到 [inet_http_server] 部分。</p>
+<p>取消注释所有四行并如下所示进行配置。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[inet_http_server]</span>
+<span class="na">port</span><span class="o">=</span><span class="s">*:9001</span>
+<span class="na">username</span><span class="o">=</span><span class="s">give_username</span>
+<span class="na">password</span><span class="o">=</span><span class="s">give_password</span>
+</code></pre></div>
+<p>不要忘记将 <code>give_username</code> 和 <code>give_password</code> 替换为所需的凭据。</p>
+<p>保存并关闭文件。</p>
+<p>我们需要重新启动 supervisord 服务才能使更改生效。</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>restart<span class="w"> </span>supervisord
+</code></pre></div>
+<p>我们可以使用服务器的ip地址和端口9001访问supervisor webservice接口。</p>
+<div class="highlight"><pre><span></span><code>http://IPaddress:9001
+</code></pre></div>
+<p>一旦通过身份验证，它将询问用户名和密码。</p>
+<p>您将看到以下屏幕。</p>
+<p><img alt="11" src="https://cdn.shortpixel.ai/client/q_lossless,ret_img,w_790,h_202/https://fitdevops.in/wp-content/uploads/Screenshot-from-2020-06-22-20-37-12.png" /></p>
+<p>从这个界面我们可以管理程序。</p>
+<h2 id="_5">总结</h2>
+<p>我们已经在 Centos 上成功安装和配置了 supervisor，并且我们已经学会了使用 supervisor 服务来管理程序。</p>
+<p>希望对您有所帮助。请查看我的其他文章。</p>
+<ul>
+<li><a href="https://fitdevops.in/top-24-docker-commands-explained-with-examples/">Top 24 Docker Commands Explained With Examples</a></li>
+<li><a href="https://fitdevops.in/how-to-launch-ecs-cluster-using-aws-console/">Launch ECS Cluster Using AWS Console</a></li>
+<li><a href="https://fitdevops.in/how-to-setup-memcached-cluster-in-aws/">Setup Memcached Cluster In AWS</a></li>
+<li><a href="https://fitdevops.in/audit-aws-resources-using-aws-config/">Audit AWS Resources Using AWS Config</a></li>
+<li><a href="https://fitdevops.in/create-elasticsearch-cluster-in-aws/">Create Elasticsearch Cluster In AWS</a></li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月22日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月22日</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>

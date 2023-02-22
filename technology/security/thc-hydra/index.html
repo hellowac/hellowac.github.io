@@ -1,0 +1,1964 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../database/es_aggs/">
+      
+      
+        <link rel="next" href="../sqlmap/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>hydra - 我的编程技术笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hydra" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="我的编程技术笔记" class="md-header__button md-logo" aria-label="我的编程技术笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的编程技术笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              hydra
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../python/" class="md-tabs__link md-tabs__link--active">
+        技术
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../read/" class="md-tabs__link">
+      阅读
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../invest/" class="md-tabs__link">
+      投资
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tools/repos/" class="md-tabs__link">
+        工具
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../documents/docs/" class="md-tabs__link">
+        文档
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../e-book/" class="md-tabs__link">
+      电子书
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="我的编程技术笔记" class="md-nav__button md-logo" aria-label="我的编程技术笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    我的编程技术笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/pip/" class="md-nav__link">
+        pip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/logging/" class="md-nav__link">
+        logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/importlib/" class="md-nav__link">
+        importlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/pycrypto/" class="md-nav__link">
+        crypto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+          文档处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          文档处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/report/docx/" class="md-nav__link">
+        Docx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/report/excel/" class="md-nav__link">
+        Excel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          WEB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          WEB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web/flask/" class="md-nav__link">
+        flask
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/usage_source/" class="md-nav__link">
+        常用资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/port/" class="md-nav__link">
+        端口占用查找
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/disk-mount/" class="md-nav__link">
+        linux磁盘挂载
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          服务组件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          服务组件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/zookeeper/" class="md-nav__link">
+        zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/nginx/" class="md-nav__link">
+        nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/supervisor/" class="md-nav__link">
+        supervisor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/rabbitmq/" class="md-nav__link">
+        rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
+          无头浏览器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          无头浏览器
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
+        openchrome
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/build_env/" class="md-nav__link">
+        环境搭建
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/clickhouse/" class="md-nav__link">
+        ClickHouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+          MySQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql8_install/" class="md-nav__link">
+        mysql8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql/" class="md-nav__link">
+        常用操作
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+          ElasticSearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          ElasticSearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/elasticsearch_py/" class="md-nav__link">
+        elasticsearch-py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_dsl/" class="md-nav__link">
+        elasticsearch-dsl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_aggs/" class="md-nav__link">
+        elasticsearch-aggs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          安全渗透
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          安全渗透
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          hydra
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        hydra
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    从哪儿获取
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    如何编译
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    支持的平台
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    如何使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    登录和密码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    特殊模块和选项
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    恢复中止/崩溃的会话
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    如何扫描/破解代理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    其他提示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    输出结果
+  </a>
+  
+    <nav class="md-nav" aria-label="输出结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    JSON格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    速率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    分析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bugs" class="md-nav__link">
+    bugs和功能
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sqlmap/" class="md-nav__link">
+        sqlmap
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/functions/" class="md-nav__link">
+        Python函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/stock/" class="md-nav__link">
+        收益函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/" class="md-nav__link">
+        阅读
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../invest/" class="md-nav__link">
+        投资
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/repos/" class="md-nav__link">
+        仓库合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documents/docs/" class="md-nav__link">
+        文档合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../e-book/" class="md-nav__link">
+        电子书
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    从哪儿获取
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    如何编译
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    支持的平台
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    如何使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    登录和密码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    特殊模块和选项
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    恢复中止/崩溃的会话
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    如何扫描/破解代理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    其他提示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    输出结果
+  </a>
+  
+    <nav class="md-nav" aria-label="输出结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    JSON格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    速率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    分析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bugs" class="md-nav__link">
+    bugs和功能
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="hydra">Hydra 九头蛇</h1>
+<ul>
+<li>创建时间: 2022年08月03日12:08:35</li>
+<li>github: <a href="https://github.com/vanhauser-thc/thc-hydra">https://github.com/vanhauser-thc/thc-hydra</a></li>
+<li>原文: <a href="https://github.com/vanhauser-thc/thc-hydra/blob/master/README">https://github.com/vanhauser-thc/thc-hydra/blob/master/README</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>                                H Y D R A
+
+                      (c) 2001-2022 by van Hauser / THC
+             &lt;vh@thc.org&gt; https://github.com/vanhauser-thc/thc-hydra
+       many modules were written by David (dot) Maciejak @ gmail (dot) com
+                 BFG code by Jan Dlabal &lt;dlabaljan@gmail.com&gt;
+
+        Licensed under AGPLv3 (see LICENSE file)
+
+           Please do not use in military or secret service organizations,
+                          or for illegal purposes.
+      (This is the wish of the author and non-binding. Many people working
+       in these organizations do not care for laws and ethics anyways.
+            You are not one of the &quot;good&quot; ones if you ignore this.)
+
+           note: no this is not meant to be a markdown doc! old school!
+</code></pre></div>
+<p>可以通过docker直接下载最新github状态的Hydra：</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>vanhauser/hydra
+</code></pre></div>
+<h2 id="_1">简介</h2>
+<p>正如每项密码安全研究所显示的那样，最大的安全漏洞之一是密码。</p>
+<p>这个工具是一个概念验证代码，让研究人员和安全顾问有可能展示从远程系统获得未经授权的访问是多么容易。</p>
+<p><strong>此工具仅用于法律目的！</strong></p>
+<p>已经有几种登录黑客工具可用，但是，没有一种工具既不支持一种以上的攻击协议，也不支持并行连接。</p>
+<p>它经过测试可以在 Linux、Windows/Cygwin、Solaris、FreeBSD/OpenBSD、QNX (Blackberry 10) 和 MacOS 上进行本地编译。</p>
+<p>目前该工具支持以下协议：</p>
+<p>Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP,
+HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY,
+HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST,
+HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MEMCACHED, MONGODB, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener,
+Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, Radmin, RDP, Rexec, Rlogin,
+Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5,
+SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2), Telnet, VMware-Auth,
+VNC and XMPP.</p>
+<p>但是，新服务的模块引擎非常简单，因此在支持更多服务之前不会花费很长时间。 非常感谢您在编写、增强或修复模块方面的帮助！！ :-)</p>
+<h2 id="_2">从哪儿获取</h2>
+<p>您始终可以在<a href="https://github.com/vanhauser-thc/thc-hydra/releases">https://github.com/vanhauser-thc/thc-hydra/releases</a>的项目页面上找到 hydra 的最新发布/生产版本</p>
+<p>如果您对当前的开发状态感兴趣，公共开发存储库位于 Github：</p>
+<p><code>svn co https://github.com/vanhauser-thc/thc-hydra</code></p>
+<p>或者</p>
+<p><code>git clone https://github.com/vanhauser-thc/thc-hydra</code></p>
+<p>使用开发版本需要您自担风险。 它包含新功能和新错误。 事情可能行不通！</p>
+<p>或者（也更容易）可以将其作为 docker 容器拉取：</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>vanhauser/hydra
+</code></pre></div>
+<h2 id="_3">如何编译</h2>
+<p>要配置、编译和安装 hydra，只需输入：</p>
+<div class="highlight"><pre><span></span><code>./configure
+make
+make<span class="w"> </span>install
+</code></pre></div>
+<p>如果你想要 ssh 模块，你必须在你的系统上设置 libssh（不是 libssh2！），从 <a href="https://www.libssh.org">https://www.libssh.org</a> 获取它，对于 ssh v1 支持，你还需要在 cmake 命令行中的选项中添加“-DWITH_SSH1=On " 。</p>
+<blockquote>
+<p><strong>重要</strong>: 如果你在 MacOS 上编译，那么你必须这样做——不要通过 brew 安装 libssh！</p>
+</blockquote>
+<p>如果您使用 Ubuntu/Debian，这将安装一些可选模块所需的补充库（请注意，有些可能在您的发行版中不可用）：</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>libssl-dev<span class="w"> </span>libssh-dev<span class="w"> </span>libidn11-dev<span class="w"> </span>libpcre3-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>libgtk2.0-dev<span class="w"> </span>libmysqlclient-dev<span class="w"> </span>libpq-dev<span class="w"> </span>libsvn-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>firebird-dev<span class="w"> </span>libmemcached-dev<span class="w"> </span>libgpg-error-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>libgcrypt11-dev<span class="w"> </span>libgcrypt20-dev
+</code></pre></div>
+<p>这将启用除 Oracle、SAP R/3、NCP 和苹果归档协议之外的所有可选模块和功能 - 您需要从供应商的网站下载和安装它们。</p>
+<p>对于所有其他 Linux 衍生产品和基于 BSD 的系统，请使用系统软件安装程序并查找与上述命令类似的名称库。 在所有其他情况下，您必须下载所有源库并手动编译它们。</p>
+<h2 id="_4">支持的平台</h2>
+<ul>
+<li>所有 UNIX 平台 (Linux, *BSD, Solaris, etc.)</li>
+<li>MacOS (基本上是一个 BSD 克隆)</li>
+<li>带有 Cygwin 的 Windows（IPv4 和 IPv6）</li>
+<li>基于 Linux、MacOS 或 QNX 的移动系统（例如 Android、iPhone、Blackberry 10、Zaurus、iPaq）</li>
+</ul>
+<h2 id="_5">如何使用</h2>
+<p>如果您只输入 <code>hydra</code>，您将看到可用重要选项的简短摘要。</p>
+<p>键入 <code>./hydra -h</code> 以查看所有可用的命令行选项。</p>
+<p>请注意，不包含登录名/密码文件。 工具会自己生成它们。</p>
+<p>但是存在默认密码列表，请使用“dpl4hydra.sh”生成列表。</p>
+<p>对于 Linux 用户，可以使用 GTK GUI，试试 <code>./xhydra</code></p>
+<p>对于命令行用法，语法如下：</p>
+<div class="highlight"><pre><span></span><code>对于攻击一个目标或网络，您可以使用新的 &quot;://&quot; 样式：
+
+`hydra [some command line options] PROTOCOL://TARGET:PORT/MODULE-OPTIONS`
+
+旧模式也可以用于这些，此外，如果您想从文本文件中指定目标，您 *必须* 使用这个：
+
+`hydra [some command line options] [-s PORT] TARGET PROTOCOL [MODULE-OPTIONS]`
+</code></pre></div>
+<p>通过命令行选项，您可以指定要尝试的登录名、密码、是否应使用 SSL、用于攻击的并行任务数量等。</p>
+<p>PROTOCOL 是您要用于攻击的协议，例如 ftp、smtp、http-get 或许多其他可用 TARGET 是您要攻击的目标 MODULE-OPTIONS 是可选值，每个 PROTOCOL 模块都是特殊的</p>
+<p><strong><em>第一步</em></strong> - 选择你的目标你有三个选项来指定你想要攻击的目标：</p>
+<ol>
+<li>命令行上的单个目标：只需将 IP 或 DNS 地址输入</li>
+<li>命令行上的网络范围：CIDR 规范，如“192.168.0.0/24”</li>
+<li>文本文件中的主机列表：每个条目一行（见下文）</li>
+</ol>
+<p><strong><em>第二步</em></strong> - 选择您的协议</p>
+<p>尽量避免使用 telnet，因为检测正确或错误的登录尝试是不可靠的。</p>
+<p>使用端口扫描器查看目标上启用了哪些协议。</p>
+<p><strong><em>第三步</em></strong> - 检查模块是否有可选参数</p>
+<p><code>hydra -U PROTOCOL</code></p>
+<p>例如: <code>hydra -U smtp</code></p>
+<p><strong><em>第四步</em></strong> - 目标端口</p>
+<p>这是可选的，如果没有提供端口，则使用协议的默认公共端口。</p>
+<p>如果您指定使用 SSL（“-S”选项），则默认使用 SSL 公共端口。</p>
+<p>如果使用 “://” 表示法，如果要提供 IPv6 地址或 CIDR（“192.168.0.0/24”）表示法进行攻击，则必须使用“[” 和 “]”括号：</p>
+<div class="highlight"><pre><span></span><code>  hydra [some command line options] &lt;ftp://[192.168.0.0/24&gt;]/
+  hydra [some command line options] -6 smtps://[2001:db8::1]/NTLM
+</code></pre></div>
+<p>请注意，hydra 所做的一切都只是 IPv4！</p>
+<p>如果要攻击 IPv6 地址，必须添加“-6”命令行选项。</p>
+<p>那么所有的攻击都只是 IPv6！</p>
+<p>如果您想通过文本文件提供目标，则不能使用 :// 符号，而是使用旧样式并仅提供协议（和模块选项）：</p>
+<p><code>hydra [some command line options] -M targets.txt ftp</code></p>
+<p>您还可以通过在文件中的目标条目后添加 <code>:&lt;port&gt;</code> 来为每个目标条目提供端口，例如：</p>
+<div class="highlight"><pre><span></span><code>foo.bar.com
+target.com:21
+unusual.port.com:2121
+default.used.here.com
+127.0.0.1
+127.0.0.1:2121
+</code></pre></div>
+<p>请注意，如果要附加 IPv6 目标，则必须提供 -6 选项并且 <em>必须</em> 将 IPv6 地址放在文件中的中括号中！如下所示：</p>
+<div class="highlight"><pre><span></span><code>foo.bar.com
+target.com:21
+[fe80::1%eth0]
+[2001::1]
+[2002::2]:8080
+[2a01:24a:133:0:00:123:ff:1a]
+</code></pre></div>
+<h2 id="_6">登录和密码</h2>
+<p>对于如何使用登录名和密码进行攻击，您有很多选择使用 -l 登录名和 -p 密码，您告诉 hydra 这是唯一可以尝试的登录名和/或密码。</p>
+<p>使用 -L 登录名 和 -P 密码，您可以为文本文件提供条目。 例如。：</p>
+<div class="highlight"><pre><span></span><code>hydra<span class="w"> </span>-l<span class="w"> </span>admin<span class="w"> </span>-p<span class="w"> </span>password<span class="w"> </span>ftp://localhost/
+hydra<span class="w"> </span>-L<span class="w"> </span>default_logins.txt<span class="w"> </span>-p<span class="w"> </span><span class="nb">test</span><span class="w"> </span>ftp://localhost/
+hydra<span class="w"> </span>-l<span class="w"> </span>admin<span class="w"> </span>-P<span class="w"> </span>common_passwords.txt<span class="w"> </span>ftp://localhost/
+hydra<span class="w"> </span>-L<span class="w"> </span>logins.txt<span class="w"> </span>-P<span class="w"> </span>passwords.txt<span class="w"> </span>ftp://localhost/
+</code></pre></div>
+<p>此外，您可以通过 “-e” 选项尝试基于登录的密码。</p>
+<p>“-e” 选项有三个参数：</p>
+<div class="highlight"><pre><span></span><code>s - 尝试使用密码登录
+n - 尝试空密码
+r - 反转登录并尝试将其作为密码
+</code></pre></div>
+<p>如果你想，例如 尝试“尝试使用密码登录”和“空密码”，在命令行中指定“-e sn”。</p>
+<p>但除了 -p/-P 之外，还有两种尝试密码的模式：</p>
+<p>您可以使用文本文件，其中登录名和密码对由冒号分隔，例如：</p>
+<div class="highlight"><pre><span></span><code>admin:password
+test:test
+foo:bar
+</code></pre></div>
+<p>这是一个常见的默认帐户样式列表，它也是由 hydra 提供的 dpl4hydra.sh 默认帐户文件生成器生成的。</p>
+<p>您可以使用带有 -C 选项的文本文件 - 请注意，在此模式下，您不能使用 -l/-L/-p/-P 选项（但可以使用 -e nsr）。 例子：</p>
+<div class="highlight"><pre><span></span><code>hydra<span class="w"> </span>-C<span class="w"> </span>default_accounts.txt<span class="w"> </span>ftp://localhost/
+</code></pre></div>
+<p>最后，有一个带有 -x 选项的蛮力模式（不能与 -p/-P/-C 一起使用）：</p>
+<div class="highlight"><pre><span></span><code>-x minimum_length:maximum_length:charset
+</code></pre></div>
+<p>字符集定义是 <code>a</code> 表示小写字母，<code>A</code> 表示大写字母，<code>1</code> 表示数字，对于您提供的任何其他内容，它都是它们的真实表示。 例子：</p>
+<div class="highlight"><pre><span></span><code>-x 1:3:a 生成长度为 1 到 3 的所有小写字母的密码
+-x 2:5:/ 生成长度为 2 到 5 的密码，仅包含斜杠
+-x 5:8:A1 使用大写和数字生成长度为 5 到 8 的密码
+</code></pre></div>
+<p>例子：</p>
+<div class="highlight"><pre><span></span><code>hydra<span class="w"> </span>-l<span class="w"> </span>ftp<span class="w"> </span>-x<span class="w"> </span><span class="m">3</span>:3:a<span class="w"> </span>ftp://localhost/
+</code></pre></div>
+<h2 id="_7">特殊模块和选项</h2>
+<p>通过第三个命令行参数 (TARGET SERVICE OPTIONAL) 或 -m 命令行选项，您可以将一个选项传递给模块。</p>
+<p>许多模块使用它，少数需要它！</p>
+<p>要查看模块的特殊选项，请键入：</p>
+<p><code>hydra -U &lt;module&gt;</code></p>
+<p>例如:</p>
+<p><code>./hydra -U http-post-form</code></p>
+<p>特殊选项可以通过 -m 参数作为第三个命令行选项或 service://target/option 格式传递。</p>
+<p>示例（它们都是一样的）：</p>
+<div class="highlight"><pre><span></span><code>./hydra<span class="w"> </span>-l<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-p<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-m<span class="w"> </span>PLAIN<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>imap
+./hydra<span class="w"> </span>-l<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-p<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>imap<span class="w"> </span>PLAIN
+./hydra<span class="w"> </span>-l<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-p<span class="w"> </span><span class="nb">test</span><span class="w"> </span>imap://127.0.0.1/PLAIN
+</code></pre></div>
+<h2 id="_8">恢复中止/崩溃的会话</h2>
+<p>当 hydra 被 Control-C 中止、杀死或崩溃时，它会留下一个“hydra.restore”文件，其中包含恢复会话所需的所有信息。 此会话文件每 5 分钟写入一次。</p>
+<blockquote>
+<p><strong>注意</strong>：不能将 hydra.restore 文件复制到不同的平台（例如，从小端到大端，或从 Solaris 到 AIX）</p>
+</blockquote>
+<h2 id="_9">如何扫描/破解代理</h2>
+<p>环境变量 HYDRA_PROXY_HTTP 定义了 Web 代理（这仅适用于 http 服务！）。 以下语法是有效的：</p>
+<div class="highlight"><pre><span></span><code>HYDRA_PROXY_HTTP=&quot;http://123.45.67.89:8080/&quot;
+HYDRA_PROXY_HTTP=&quot;http://login:password@123.45.67.89:8080/&quot;
+HYDRA_PROXY_HTTP=&quot;proxylist.txt&quot;
+</code></pre></div>
+<p>最后一个示例是一个包含多达 64 个代理的文本文件（格式定义与其他示例相同）。</p>
+<p>对于所有其他服务，使用 HYDRA_PROXY 变量来扫描/破解。 它使用相同的语法。 例如：</p>
+<div class="highlight"><pre><span></span><code>HYDRA_PROXY=[connect|socks4|socks5]://[login:password@]proxy_addr:proxy_port
+</code></pre></div>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><code>HYDRA_PROXY=connect://proxy.anonymizer.com:8000
+HYDRA_PROXY=socks4://auth:pw@127.0.0.1:1080
+HYDRA_PROXY=socksproxylist.txt
+</code></pre></div>
+<h2 id="_10">其他提示</h2>
+<ul>
+<li>按可能性对密码文件进行排序，并使用 -u 选项更快地找到密码！</li>
+<li>唯一化你的字典文件！ 这可以为您节省大量时间: -)</li>
+<li><code>cat words.txt | sort | uniq &gt; dictionary.txt</code></li>
+<li>如果您知道目标正在使用密码策略（只允许用户选择最小长度为 6、至少包含一个字母和一个数字等的密码），请使用 hydra 软件包附带的工具 pw-inspector 减少密码列表：</li>
+<li><code>cat dictionary.txt | pw-inspector -m 6 -c 2 -n &gt; passlist.txt</code></li>
+</ul>
+<h2 id="_11">输出结果</h2>
+<p>结果与其他信息一起输出到 stdio。 通过 -o 命令行选项，也可以将结果写入文件。 使用 -b，可以指定输出的格式。 目前，支持这些：</p>
+<ul>
+<li><code>text</code>   - 纯文本格式</li>
+<li><code>jsonv1</code> - 使用 1.x 版模式的 JSON 数据（定义如下）。</li>
+<li><code>json</code>   - JSON 数据使用最新版本的 schema，目前只有版本 1。</li>
+</ul>
+<p>如果使用 JSON 输出，如果在引导 Hydra 时出现严重错误，结果文件可能不是有效的JSON。</p>
+<h3 id="json">JSON格式</h3>
+<p>这是 JSON 输出的示例。 一些字段的注释：</p>
+<ul>
+<li><code>errormessages</code> - 一个由零个或多个字符串组成的数组，通常在 Hydra 运行结束时打印到 stderr。 文本是非常自由的形式。</li>
+<li><code>success</code> - 指示 Hydra 是否正确运行且没有错误（<strong>NOT</strong> 如果检测到密码）。 此参数是 JSON 值 <code>true</code> 或 <code>false</code> 取决于完成。</li>
+<li><code>quantityfound</code> - 发现了多少个用户名+密码组合。</li>
+<li><code>jsonoutputversion</code> - 模式的版本，1.00、1.01、1.11、2.00、2.03 等。Hydra 将使版本的第二个元组始终为两位数，以使下游处理器更容易（相对于 v1.1 与 v1.10）。 次要版本是附加的，因此 1.02 将包含比 1.00 更多的字段，并且将向后兼容。 2.x 版会破坏 1.x 版输出的某些内容。</li>
+</ul>
+<p>版本 1.00 示例：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;errormessages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;[ERROR] Error Message of Something&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;[ERROR] Another Message&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;These are very free form&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;generator&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;built&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-01 14:44:22&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;commandline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hydra -b jsonv1 -o results.json ... ...&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;jsonoutputversion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http-post-form&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;software&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hydra&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v8.5&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;quantityfound&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;login&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bill@example.com&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bill&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9999</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http-post-form&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;login&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;joe@example.com&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;joe&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9999</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http-post-form&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_12">速率</h2>
+<p>通过并行化功能，这个密码破解工具可以非常快，但是它取决于协议。 最快的一般是 POP3 和 FTP。</p>
+<p>尝试使用任务选项 (-t) 来加快速度！ 越高 - 越快 ;-) （但太高 - 它会禁用服务）</p>
+<h2 id="_13">分析</h2>
+<p>使用包含 295 个条目的“-C FILE”在 localhost 上针对 SuSE Linux 7.2 运行（294 次尝试无效登录，1 次有效）。 每个测试都运行了 3 次（仅针对“1 项任务”一次），平均值记下。</p>
+<div class="highlight"><pre><span></span><code>                         P A R A L L E L    T A S K S
+SERVICE 1        4       8       16      32      50      64      100     128
+------- --------------------------------------------------------------------
+telnet  23:20    5:58    2:58    1:34    1:05    0:33    0:45*   0:25*   0:55*
+ftp     45:54    11:51   5:54    3:06    1:25    0:58    0:46    0:29    0:32
+pop3    92:10    27:16   13:56   6:42    2:55    1:57    1:24    1:14    0:50
+imap    31:05    7:41    3:51    1:58    1:01    0:39    0:32    0:25    0:21
+</code></pre></div>
+<p>(*)</p>
+<p><strong><em>注意</em></strong>: 64 到 128 个任务的 telnet 时间可能非常不同！ 例如 有 128 个任务，运行四次导致时间在 28 到 97 秒之间！ 原因不明……</p>
+<p>每个任务的猜测（四舍五入）：</p>
+<p><code>295    74    38    19    10    6    5    3    3</code></p>
+<p>每次连接可能的猜测（取决于服务器软件和配置）：</p>
+<div class="highlight"><pre><span></span><code>telnet    4
+   ftp    6
+  pop3    1
+  imap    3
+</code></pre></div>
+<h2 id="bugs">bugs和功能</h2>
+<p>Hydra:</p>
+<p>如果您发现错误或编写了新模块，请给我或 David 发送电子邮件。
+vh@thc.org（并在主题行中输入“反垃圾邮件”）</p>
+<p>您应该使用 PGP 加密发往 vh@thc.org 的电子邮件：</p>
+<div class="highlight"><pre><span></span><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v3.3.3 (vh@thc.org)
+
+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
+zB3yrr+vYBT0uDWmxwPjiJs=
+=ytEf
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre></div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月22日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月22日</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>

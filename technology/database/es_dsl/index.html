@@ -1,0 +1,2762 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../elasticsearch_py/">
+      
+      
+        <link rel="next" href="../es_aggs/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>elasticsearch-dsl - 我的编程技术笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#elasticsearch-dsl" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="我的编程技术笔记" class="md-header__button md-logo" aria-label="我的编程技术笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的编程技术笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              elasticsearch-dsl
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../python/" class="md-tabs__link md-tabs__link--active">
+        技术
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../read/" class="md-tabs__link">
+      阅读
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../invest/" class="md-tabs__link">
+      投资
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tools/repos/" class="md-tabs__link">
+        工具
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../documents/docs/" class="md-tabs__link">
+        文档
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../e-book/" class="md-tabs__link">
+      电子书
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="我的编程技术笔记" class="md-nav__button md-logo" aria-label="我的编程技术笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    我的编程技术笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/pip/" class="md-nav__link">
+        pip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/logging/" class="md-nav__link">
+        logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/importlib/" class="md-nav__link">
+        importlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/package/pycrypto/" class="md-nav__link">
+        crypto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+          文档处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          文档处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/report/docx/" class="md-nav__link">
+        Docx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/report/excel/" class="md-nav__link">
+        Excel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          WEB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          WEB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web/flask/" class="md-nav__link">
+        flask
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/usage_source/" class="md-nav__link">
+        常用资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/port/" class="md-nav__link">
+        端口占用查找
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/disk-mount/" class="md-nav__link">
+        linux磁盘挂载
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          服务组件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          服务组件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/zookeeper/" class="md-nav__link">
+        zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/nginx/" class="md-nav__link">
+        nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/supervisor/" class="md-nav__link">
+        supervisor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/rabbitmq/" class="md-nav__link">
+        rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
+          无头浏览器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          无头浏览器
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
+        openchrome
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/build_env/" class="md-nav__link">
+        环境搭建
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        ClickHouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+          MySQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql8_install/" class="md-nav__link">
+        mysql8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        常用操作
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+          ElasticSearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          ElasticSearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch_py/" class="md-nav__link">
+        elasticsearch-py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          elasticsearch-dsl
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        elasticsearch-dsl
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    具体使用
+  </a>
+  
+    <nav class="md-nav" aria-label="具体使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-connection" class="md-nav__link">
+    Default connection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-clusters" class="md-nav__link">
+    Multiple clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-aliases" class="md-nav__link">
+    Using aliases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
+    Manual
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-dsl" class="md-nav__link">
+    Search DSL
+  </a>
+  
+    <nav class="md-nav" aria-label="Search DSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-search-object" class="md-nav__link">
+    The search object
+  </a>
+  
+    <nav class="md-nav" aria-label="The search object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete-by-query" class="md-nav__link">
+    Delete By Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dotted-fields" class="md-nav__link">
+    Dotted fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-combination" class="md-nav__link">
+    Query combination
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregations" class="md-nav__link">
+    Aggregations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    Sorting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlighting" class="md-nav__link">
+    Highlighting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions" class="md-nav__link">
+    Suggestions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra-properties-and-parameters" class="md-nav__link">
+    Extra properties and parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialization-and-deserialization" class="md-nav__link">
+    Serialization and Deserialization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hits" class="md-nav__link">
+    Hits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregations_1" class="md-nav__link">
+    Aggregations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multisearch" class="md-nav__link">
+    MultiSearch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document" class="md-nav__link">
+    Document
+  </a>
+  
+    <nav class="md-nav" aria-label="Document">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    Data types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note-on-dates" class="md-nav__link">
+    Note on dates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-life-cycle" class="md-nav__link">
+    Document life cycle
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-meta-options" class="md-nav__link">
+    class Meta options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-index-options" class="md-nav__link">
+    class Index options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-inheritance" class="md-nav__link">
+    Document Inheritance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    Index
+  </a>
+  
+    <nav class="md-nav" aria-label="Index">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-template" class="md-nav__link">
+    Index Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faceted-search" class="md-nav__link">
+    Faceted Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-by-query" class="md-nav__link">
+    Update By Query
+  </a>
+  
+    <nav class="md-nav" aria-label="Update By Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-update-by-query-object" class="md-nav__link">
+    The Update By Query object
+  </a>
+  
+    <nav class="md-nav" aria-label="The Update By Query object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serialization-and-deserialization_1" class="md-nav__link">
+    Serialization and Deserialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra-properties-and-parameters_1" class="md-nav__link">
+    Extra properties and parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-documentation" class="md-nav__link">
+    API Documentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es_aggs/" class="md-nav__link">
+        elasticsearch-aggs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          安全渗透
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          安全渗透
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/thc-hydra/" class="md-nav__link">
+        hydra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/sqlmap/" class="md-nav__link">
+        sqlmap
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/functions/" class="md-nav__link">
+        Python函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/stock/" class="md-nav__link">
+        收益函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/" class="md-nav__link">
+        阅读
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../invest/" class="md-nav__link">
+        投资
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/repos/" class="md-nav__link">
+        仓库合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documents/docs/" class="md-nav__link">
+        文档合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../e-book/" class="md-nav__link">
+        电子书
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    具体使用
+  </a>
+  
+    <nav class="md-nav" aria-label="具体使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-connection" class="md-nav__link">
+    Default connection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-clusters" class="md-nav__link">
+    Multiple clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-aliases" class="md-nav__link">
+    Using aliases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
+    Manual
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-dsl" class="md-nav__link">
+    Search DSL
+  </a>
+  
+    <nav class="md-nav" aria-label="Search DSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-search-object" class="md-nav__link">
+    The search object
+  </a>
+  
+    <nav class="md-nav" aria-label="The search object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete-by-query" class="md-nav__link">
+    Delete By Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dotted-fields" class="md-nav__link">
+    Dotted fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-combination" class="md-nav__link">
+    Query combination
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregations" class="md-nav__link">
+    Aggregations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    Sorting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlighting" class="md-nav__link">
+    Highlighting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions" class="md-nav__link">
+    Suggestions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra-properties-and-parameters" class="md-nav__link">
+    Extra properties and parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialization-and-deserialization" class="md-nav__link">
+    Serialization and Deserialization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hits" class="md-nav__link">
+    Hits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    Result
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregations_1" class="md-nav__link">
+    Aggregations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multisearch" class="md-nav__link">
+    MultiSearch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document" class="md-nav__link">
+    Document
+  </a>
+  
+    <nav class="md-nav" aria-label="Document">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    Data types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note-on-dates" class="md-nav__link">
+    Note on dates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-life-cycle" class="md-nav__link">
+    Document life cycle
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-meta-options" class="md-nav__link">
+    class Meta options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-index-options" class="md-nav__link">
+    class Index options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-inheritance" class="md-nav__link">
+    Document Inheritance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    Index
+  </a>
+  
+    <nav class="md-nav" aria-label="Index">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-template" class="md-nav__link">
+    Index Template
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faceted-search" class="md-nav__link">
+    Faceted Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-by-query" class="md-nav__link">
+    Update By Query
+  </a>
+  
+    <nav class="md-nav" aria-label="Update By Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-update-by-query-object" class="md-nav__link">
+    The Update By Query object
+  </a>
+  
+    <nav class="md-nav" aria-label="The Update By Query object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serialization-and-deserialization_1" class="md-nav__link">
+    Serialization and Deserialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra-properties-and-parameters_1" class="md-nav__link">
+    Extra properties and parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-documentation" class="md-nav__link">
+    API Documentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="elasticsearch-dsl">ElasticSearch-DSL包</h1>
+<p>原文: <a href="https://elasticsearch-dsl.readthedocs.io/en/latest/" target="_blank">https://elasticsearch-dsl.readthedocs.io/en/latest/</a></p>
+<p>摘自: <a href="https://www.cnblogs.com/lit10050528/p/12178822.html" target="_blank">https://www.cnblogs.com/lit10050528/p/12178822.html</a></p>
+<h2 id="_1">简介</h2>
+<p>elasticsearch-dsl是基于elasticsearch-py封装实现的，提供了更简便的操作elasticsearch的方法。</p>
+<h2 id="_2">具体使用</h2>
+<p>elasticsearch的官方文档介绍一共包括六个部分，分别是：<strong>configuration</strong>、<strong>search dsl</strong>、<strong>persistence</strong>、<strong>update by query</strong>、<strong>API document</strong>。</p>
+<h3 id="configuration">Configuration</h3>
+<p>有许多方式可以配置连接，最简单且有效的方式是设置默认连接，该默认连接可以被未传递其他连接的API调用使用。</p>
+<h4 id="default-connection">Default connection</h4>
+<p>默认连接的实现需要使用到<code>connections.create_connection()</code>方法。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">connections</span>
+
+<span class="n">connections</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span><span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;localhost&#39;</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+<p>同时还可以通过alias给连接设置别名，后续可以通过别名来引用该连接，默认别名为<code>default</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">connections</span>
+
+<span class="n">connections</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s1">&#39;my_new_connection&#39;</span><span class="p">,</span> <span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;localhost&#39;</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="multiple-clusters">Multiple clusters</h4>
+<p>可以通过<code>configure</code>定义多个指向不同集群的连接。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">connections</span>
+
+<span class="n">connections</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">default</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;hosts&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">},</span>
+    <span class="n">dev</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;hosts&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;esdev1.example.com:9200&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;sniff_on_start&#39;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>还可以通过<code>add_connection</code>手动添加连接。</p>
+<h5 id="using-aliases">Using aliases</h5>
+<p>下面的例子展示了如何使用连接别名。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">using</span><span class="o">=</span><span class="s1">&#39;qa&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="manual">Manual</h4>
+<p>如果你不想提供一个全局的连接，你可以通过使用<code>using</code>参数传递一个<code>elasticsearch.Elasticsearch</code>的实例做为连接，如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">using</span><span class="o">=</span><span class="n">Elasticsearch</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">))</span>
+</code></pre></div>
+<p>你还可以通过下面的方式来覆盖已经关联的连接。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">Elasticsearch</span><span class="p">(</span><span class="s1">&#39;otherhost:9200&#39;</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="search-dsl">Search DSL</h3>
+<h4 id="the-search-object">The search object</h4>
+<p>search对象代表整个搜索请求，包括：<code>queries</code>、<code>filters</code>、<code>aggregations</code>、<code>sort</code>、<code>pagination</code>、<code>additional parameters</code>、<code>associated client</code>。</p>
+<p>API被设置为可链接的。search对象是不可变的，除了聚合，对对象的所有更改都将导致创建包含该更改的浅表副本。</p>
+<p>当初始化Search对象时，你可以传递low-level elasticsearch客户端参数。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch</span> <span class="kn">import</span> <span class="n">Elasticsearch</span>
+<span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Search</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Elasticsearch</span><span class="p">()</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">using</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+</code></pre></div>
+<p>注意</p>
+<p>所有的方法都返回一个该对象的拷贝，这样可以保证它被传递给外部代码时是安全的。</p>
+<p>该API是可以链接的，允许你组合多个方法调用在一个语句中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">client</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>执行execute方法将请求发送给elasticsearch：</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</code></pre></div>
+<p>如果仅仅是想要遍历返回结果提示，可以通过遍历Search对象（前提是执行过execute方法）：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">hit</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hit</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</code></pre></div>
+<p>可以通过to_dict()方法将Search对象序列化为一个dict对象，这样可以方便调试。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</code></pre></div>
+<h5 id="delete-by-query">Delete By Query</h5>
+<p>可以通过调用Search对象上的delete方法而不是execute来实现删除匹配查询的文档，如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
+<h5 id="queries">Queries</h5>
+<p>该库为所有的Elasticsearch查询类型都提供了类。以关键字参数传递所有的参数，最终会把参数序列化后传递给Elasticsearch，这意味着在原始查询和它对应的dsl之间有这一个清理的一对一的映射。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl.query</span> <span class="kn">import</span> <span class="n">MultiMatch</span><span class="p">,</span> <span class="n">Match</span>
+
+<span class="c1"># {&quot;multi_match&quot;: {&quot;query&quot;: &quot;python django&quot;, &quot;fields&quot;: [&quot;title&quot;, &quot;body&quot;]}}</span>
+<span class="n">MultiMatch</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;python django&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">])</span>
+
+<span class="c1"># {&quot;match&quot;: {&quot;title&quot;: {&quot;query&quot;: &quot;web framework&quot;, &quot;type&quot;: &quot;phrase&quot;}}}</span>
+<span class="n">Match</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;web framework&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;phrase&quot;</span><span class="p">})</span>
+</code></pre></div>
+<p>你可以使用快捷方式Q通过命名参数或者原始dict类型数据来构建一个查询实例：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Q</span>
+
+<span class="n">Q</span><span class="p">(</span><span class="s2">&quot;multi_match&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;python django&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">])</span>
+<span class="n">Q</span><span class="p">({</span><span class="s2">&quot;multi_match&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;python django&quot;</span><span class="p">,</span> <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">]}})</span>
+</code></pre></div>
+<p>通过.query()方法将查询添加到Search对象中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">q</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="s2">&quot;multi_match&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;python django&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">])</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</code></pre></div>
+<p>该方法还可以接收所有Q的参数作为参数。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;multi_match&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;python django&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h6 id="dotted-fields">Dotted fields</h6>
+<p>有时候你想要引用一个在其他字段中的字段，例如多字段（title.keyword）或者在一个json文档中的address.city。为了方便，Q允许你使用双下划线‘__’代替关键词参数中的‘.’</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">category__keyword</span><span class="o">=</span><span class="s1">&#39;Python&#39;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">address__city</span><span class="o">=</span><span class="s1">&#39;prague&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>除此之外，如果你愿意，也可以随时使用python的kwarg解压缩功能。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;category.keyword&#39;</span><span class="p">:</span> <span class="s1">&#39;Python&#39;</span><span class="p">})</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;address.city&#39;</span><span class="p">:</span> <span class="s1">&#39;prague&#39;</span><span class="p">})</span>
+</code></pre></div>
+<h6 id="query-combination">Query combination</h6>
+<p>查询对象可以通过逻辑运算符组合起来：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Q</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;django&#39;</span><span class="p">)</span>
+<span class="c1"># {&quot;bool&quot;: {&quot;should&quot;: [...]}}</span>
+
+<span class="n">Q</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Q</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;django&#39;</span><span class="p">)</span>
+<span class="c1"># {&quot;bool&quot;: {&quot;must&quot;: [...]}}</span>
+
+<span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="c1"># {&quot;bool&quot;: {&quot;must_not&quot;: [...]}}</span>
+</code></pre></div>
+<p>当调用<code>.query()</code>方法多次时，内部会使用<code>&amp;</code>操作符：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="c1"># {&quot;query&quot;: {&quot;bool&quot;: {...}}}</span>
+</code></pre></div>
+<p>如果你想要精确控制查询的格式，可以通过Q直接构造组合查询：</p>
+<div class="highlight"><pre><span></span><code><span class="n">q</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">,</span>
+    <span class="n">must</span><span class="o">=</span><span class="p">[</span><span class="n">Q</span><span class="p">(</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)],</span>
+    <span class="n">should</span><span class="o">=</span><span class="p">[</span><span class="n">Q</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="n">Q</span><span class="p">(</span><span class="o">...</span><span class="p">)],</span>
+    <span class="n">minimum_should_match</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="filters">Filters</h5>
+<p>如果你想要在过滤上下文中添加查询，可以使用<code>filter()</code>函数来使之变的简单。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">])</span>
+</code></pre></div>
+<p>在背后，这会产生一个<code>bool</code>查询，并将指定的条件查询放入其<code>filter</code>分支，等价与下面的操作：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="p">[</span><span class="n">Q</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">])])</span>
+</code></pre></div>
+<p>如果你想要使用<code>post_filter</code>元素进行多面导航，请使用<code>.post_filter()</code>方法，你还可以使用<code>exculde()</code>方法从查询中排除项目：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h5 id="aggregations">Aggregations</h5>
+<p>你可以是使用A快捷方式来定义一个聚合。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">A</span>
+
+<span class="n">A</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>
+<span class="c1"># {&quot;terms&quot;: {&quot;field&quot;: &quot;tags&quot;}}</span>
+</code></pre></div>
+<p>为了实现聚合嵌套，你可以使用<code>.bucket()</code>、<code>.metirc()</code>以及<code>.pipeline()</code>方法。</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="c1"># {&#39;terms&#39;: {&#39;field&#39;: &#39;category&#39;}}</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s1">&#39;clicks_per_category&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;clicks&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;tags_per_category&#39;</span><span class="p">,</span> <span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>
+
+<span class="c1"># {</span>
+<span class="c1">#   &#39;terms&#39;: {&#39;field&#39;: &#39;category&#39;},</span>
+<span class="c1">#   &#39;aggs&#39;: {</span>
+<span class="c1">#     &#39;clicks_per_category&#39;: {&#39;sum&#39;: {&#39;field&#39;: &#39;clicks&#39;}},</span>
+<span class="c1">#     &#39;tags_per_category&#39;: {&#39;terms&#39;: {&#39;field&#39;: &#39;tags&#39;}}</span>
+<span class="c1">#   }</span>
+<span class="c1"># }</span>
+</code></pre></div>
+<p>为了将聚合添加到<code>Search</code>对象中，使用<code>.aggs</code>属性，它是作为一个<code>top-level</code>聚合的。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">aggs</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;category_terms&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># {</span>
+<span class="c1">#   &#39;aggs&#39;: {</span>
+<span class="c1">#     &#39;category_terms&#39;: {</span>
+<span class="c1">#       &#39;terms&#39;: {</span>
+<span class="c1">#         &#39;field&#39;: &#39;category&#39;</span>
+<span class="c1">#       }</span>
+<span class="c1">#     }</span>
+<span class="c1">#   }</span>
+<span class="c1"># }</span>
+</code></pre></div>
+<p>或者：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">aggs</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;articles_per_day&#39;</span><span class="p">,</span> <span class="s1">&#39;date_histogram&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;publish_date&#39;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s1">&#39;day&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s1">&#39;clicks_per_day&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;clicks&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">pipeline</span><span class="p">(</span><span class="s1">&#39;moving_click_average&#39;</span><span class="p">,</span> <span class="s1">&#39;moving_avg&#39;</span><span class="p">,</span> <span class="n">buckets_path</span><span class="o">=</span><span class="s1">&#39;clicks_per_day&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;tags_per_day&#39;</span><span class="p">,</span> <span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="c1"># {</span>
+<span class="c1">#   &quot;aggs&quot;: {</span>
+<span class="c1">#     &quot;articles_per_day&quot;: {</span>
+<span class="c1">#       &quot;date_histogram&quot;: { &quot;interval&quot;: &quot;day&quot;, &quot;field&quot;: &quot;publish_date&quot; },</span>
+<span class="c1">#       &quot;aggs&quot;: {</span>
+<span class="c1">#         &quot;clicks_per_day&quot;: { &quot;sum&quot;: { &quot;field&quot;: &quot;clicks&quot; } },</span>
+<span class="c1">#         &quot;moving_click_average&quot;: { &quot;moving_avg&quot;: { &quot;buckets_path&quot;: &quot;clicks_per_day&quot; } },</span>
+<span class="c1">#         &quot;tags_per_day&quot;: { &quot;terms&quot;: { &quot;field&quot;: &quot;tags&quot; } }</span>
+<span class="c1">#       }</span>
+<span class="c1">#     }</span>
+<span class="c1">#   }</span>
+<span class="c1"># }</span>
+</code></pre></div>
+<p>你可以通过名字来访问一个存在的桶。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">aggs</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;per_category&#39;</span><span class="p">,</span> <span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">aggs</span><span class="p">[</span><span class="s1">&#39;per_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s1">&#39;clicks_per_category&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;clicks&#39;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">aggs</span><span class="p">[</span><span class="s1">&#39;per_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;tags_per_category&#39;</span><span class="p">,</span> <span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="sorting">Sorting</h5>
+<p>要指定排序顺序，可以使用<code>.order()</code>方法。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span>
+    <span class="s1">&#39;category&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;-title&#39;</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">&quot;lines&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s2">&quot;order&quot;</span> <span class="p">:</span> <span class="s2">&quot;asc&quot;</span><span class="p">,</span> <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">}}</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>可以通过不传任何参数调用sort()函数来重置排序。</p>
+<h5 id="pagination">Pagination</h5>
+<p>要指定from、size，使用slicing API：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+<span class="c1"># {&quot;from&quot;: 10, &quot;size&quot;: 10}</span>
+</code></pre></div>
+<p>要访问匹配的所有文档，可以使用scan()函数，scan()函数使用scan、scroll elasticsearch API：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">hit</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">scan</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hit</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</code></pre></div>
+<p>需要注意的是这种情况下结果是不会被排序的。</p>
+<h5 id="highlighting">Highlighting</h5>
+<p>要指定高亮的通用属性，可以使用<code>highlight_options()</code>方法：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">highlight_options</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>可以通过<code>highlight()</code>方法来为了每个单独的字段设置高亮：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">highlight</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+<span class="c1"># or, including parameters:</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">highlight</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="n">fragment_size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<p>然后，响应中的分段将在每个结果对象上以<code>.meta.highlight.FIELD</code>形式提供，其中将包含分段列表：</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">hit</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">fragment</span> <span class="ow">in</span> <span class="n">hit</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">highlight</span><span class="o">.</span><span class="n">title</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="suggestions">Suggestions</h5>
+<p>要指定一个suggest请求在你的search对象上，可以使用suggest()方法：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># check for correct spelling</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">suggest</span><span class="p">(</span><span class="s1">&#39;my_suggestion&#39;</span><span class="p">,</span> <span class="s1">&#39;pyhton&#39;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;title&#39;</span><span class="p">})</span>
+</code></pre></div>
+<h5 id="extra-properties-and-parameters">Extra properties and parameters</h5>
+<p>要为search对象设置额外的属性，可以使用<code>.extra()</code>方法。可以用来定义body中的key，那些不能通过指定API方法来设置的，例如explain、search_filter。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">extra</span><span class="p">(</span><span class="n">explain</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>要设置查询参数，可以使用<code>.params()</code>方法：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">routing</span><span class="o">=</span><span class="s2">&quot;42&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>如果要限制elasticsearch返回的字段，可以使用<code>source()</code>方法：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># only return the selected fields</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">source</span><span class="p">([</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">])</span>
+<span class="c1"># don&#39;t return any fields, just the metadata</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># explicitly include/exclude fields</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="n">includes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span> <span class="n">excludes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;user.*&quot;</span><span class="p">])</span>
+<span class="c1"># reset the field selection</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="serialization-and-deserialization">Serialization and Deserialization</h5>
+<p>查询对象可以通过使用.to_dict()方法被序列化为一个字典。</p>
+<p>你也可以使用类方法from_dict从一个dict创建一个Search对象。这会创建一个新的Search对象并使用字典中的数据填充它。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">}}})</span>
+</code></pre></div>
+<p>如果你希望修改现有的Search对象，并覆盖其属性，则可以使用update_from_dict()方法就地更改实例。</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">({</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">}},</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
+</code></pre></div>
+<h4 id="response">Response</h4>
+<p>你可以通过调用execute方法来执行你的搜索，它会返回一个Response对象，Response对象允许你通过属性的方式访问返回结果字典中的任何key。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">success</span><span class="p">())</span>
+<span class="c1"># True</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">took</span><span class="p">)</span>
+<span class="c1"># 12</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">hits</span><span class="o">.</span><span class="n">total</span><span class="o">.</span><span class="n">relation</span><span class="p">)</span>
+<span class="c1"># eq</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">hits</span><span class="o">.</span><span class="n">total</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="c1"># 142</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">suggest</span><span class="o">.</span><span class="n">my_suggestions</span><span class="p">)</span>
+</code></pre></div>
+<p>如果想要检查response对象的内容，可以通过to_dict方法访问原始数据。</p>
+<h5 id="hits">Hits</h5>
+<p>可以通过<code>hits</code>属性访问返回的匹配结果，或者遍历Response对象。</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total </span><span class="si">%d</span><span class="s1"> hits found.&#39;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">hits</span><span class="o">.</span><span class="n">total</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="result">Result</h5>
+<p>每个匹配项被封装到一个类中，可以方便通过类属性来访问返回结果字典中的key，所有的元数据存储在meta属性中。</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">hits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1"> returned with score </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">doc_type</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">score</span><span class="p">))</span>
+</code></pre></div>
+<h5 id="aggregations_1">Aggregations</h5>
+<p>可以通过aggregations属性来访问聚合结果：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">aggregations</span><span class="o">.</span><span class="n">per_tag</span><span class="o">.</span><span class="n">buckets</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">tag</span><span class="o">.</span><span class="n">max_lines</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="multisearch">MultiSearch</h4>
+<p>可以通过MultiSearch类同时执行多个搜索，它将会使用_msearch API：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">MultiSearch</span><span class="p">,</span> <span class="n">Search</span>
+
+<span class="n">ms</span> <span class="o">=</span> <span class="n">MultiSearch</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;blogs&#39;</span><span class="p">)</span>
+
+<span class="n">ms</span> <span class="o">=</span> <span class="n">ms</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Search</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">))</span>
+<span class="n">ms</span> <span class="o">=</span> <span class="n">ms</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Search</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="s1">&#39;elasticsearch&#39;</span><span class="p">))</span>
+
+<span class="n">responses</span> <span class="o">=</span> <span class="n">ms</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results for query </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">query</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">hit</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">hit</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="persistence">Persistence</h3>
+<p>你可以使用dsl库来定义你的mappings和一个基本的持久化层为你的应用程序。</p>
+<h4 id="document">Document</h4>
+<p>如果你要为你的文档创建一个model-like的封装，可以使用Document类。它可以被用作创建在elasticsearch中所有需要的mappings和settings。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Date</span><span class="p">,</span> <span class="n">Nested</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">,</span> \
+    <span class="n">analyzer</span><span class="p">,</span> <span class="n">InnerDoc</span><span class="p">,</span> <span class="n">Completion</span><span class="p">,</span> <span class="n">Keyword</span><span class="p">,</span> <span class="n">Text</span>
+
+<span class="n">html_strip</span> <span class="o">=</span> <span class="n">analyzer</span><span class="p">(</span><span class="s1">&#39;html_strip&#39;</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="s2">&quot;lowercase&quot;</span><span class="p">,</span> <span class="s2">&quot;stop&quot;</span><span class="p">,</span> <span class="s2">&quot;snowball&quot;</span><span class="p">],</span>
+    <span class="n">char_filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;html_strip&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">InnerDoc</span><span class="p">):</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="n">Keyword</span><span class="p">()})</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;snowball&#39;</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Date</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">created_at</span>
+
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+    <span class="n">title_suggest</span> <span class="o">=</span> <span class="n">Completion</span><span class="p">()</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Date</span><span class="p">()</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">Boolean</span><span class="p">()</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span>
+        <span class="n">analyzer</span><span class="o">=</span><span class="n">html_strip</span><span class="p">,</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="n">Keyword</span><span class="p">()}</span>
+    <span class="p">)</span>
+
+    <span class="n">comments</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">Comment</span><span class="p">)</span>
+
+     <span class="k">class</span> <span class="nc">Index</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;blog&#39;</span>
+
+    <span class="k">def</span> <span class="nf">add_comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+          <span class="n">Comment</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="n">author</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()))</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">created_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">**</span> <span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="data-types">Data types</h5>
+<p>定义Document实例时，除了可以使用python类型，还可以使用InnerDoc、Range等类型来表示非简单类型的数据。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">DateRange</span><span class="p">,</span> <span class="n">Keyword</span><span class="p">,</span> <span class="n">Range</span>
+
+<span class="k">class</span> <span class="nc">RoomBooking</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
+    <span class="n">room</span> <span class="o">=</span> <span class="n">Keyword</span><span class="p">()</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">DateRange</span><span class="p">()</span>
+
+
+<span class="n">rb</span> <span class="o">=</span> <span class="n">RoomBooking</span><span class="p">(</span>
+  <span class="n">room</span><span class="o">=</span><span class="s1">&#39;Conference Room II&#39;</span><span class="p">,</span>
+  <span class="n">dates</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span>
+    <span class="n">gte</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">lt</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Range supports the in operator correctly:</span>
+<span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">in</span> <span class="n">rb</span><span class="o">.</span><span class="n">dates</span> <span class="c1"># True</span>
+
+<span class="c1"># you can also get the limits and whether they are inclusive or exclusive:</span>
+<span class="n">rb</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">lower</span> <span class="c1"># datetime(2018, 11, 17, 9, 0, 0), True</span>
+<span class="n">rb</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">upper</span> <span class="c1"># datetime(2018, 11, 17, 10, 0, 0), False</span>
+
+<span class="c1"># empty range is unbounded</span>
+<span class="n">Range</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span> <span class="c1"># None, False</span>
+</code></pre></div>
+<h5 id="note-on-dates">Note on dates</h5>
+<p>当实例化一个Date字段时，可以通过设置default_timezone参数来明确指定时区。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Date</span><span class="p">(</span><span class="n">default_timezone</span><span class="o">=</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="document-life-cycle">Document life cycle</h5>
+<p>在你第一次使用Post文档类型前，你需要在elasticsearch中创建mappings。可以通过Index对象或者调用init()方法直接创建mappings。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create the mappings in Elasticsearch</span>
+<span class="n">Post</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</code></pre></div>
+<p>所有metadata字段，可以通过meta属性访问。</p>
+<div class="highlight"><pre><span></span><code><span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="p">(</span><span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
+
+<span class="c1"># prints 42</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+<span class="c1"># override default index</span>
+<span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;my-blog&#39;</span>
+</code></pre></div>
+<p>可以通过get()方法来检索一个存在的文档：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># retrieve the document</span>
+<span class="n">first</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1"># now we can call methods, change fields, ...</span>
+<span class="n">first</span><span class="o">.</span><span class="n">add_comment</span><span class="p">(</span><span class="s1">&#39;me&#39;</span><span class="p">,</span> <span class="s1">&#39;This is nice!&#39;</span><span class="p">)</span>
+<span class="c1"># and save the changes into the cluster again</span>
+<span class="n">first</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div>
+<p>要删除一个文档，直接调用delete()方法即可：</p>
+<div class="highlight"><pre><span></span><code><span class="n">first</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">first</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="analysis">Analysis</h4>
+<p>要为text字段指定analyzer，你只需要使用analyze的名字，使用已有的analyze或者自己定义。</p>
+<h5 id="search">Search</h5>
+<p>为了在该文档类型上搜索，使用search方法即可。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># by calling .search we get back a standard Search object</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
+<span class="c1"># the search is already limited to the index and doc_type of our document</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">published</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="c1"># when you execute the search the results are wrapped in your document class (Post)</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="class-meta-options">class Meta options</h5>
+<p>在Meta类中定义了多个你可以为你的文档定义的metadata，例如mapping。</p>
+<h5 id="class-index-options">class Index options</h5>
+<p>Index类中定义了该索引的信息，它的名字、settings和其他属性。</p>
+<h5 id="document-inheritance">Document Inheritance</h5>
+<h4 id="index">Index</h4>
+<p>在典型情况下，在Document类上使用Index类足够处理任何操作的。在少量case下，直接操作Index对象可能更有用。</p>
+<p>Index是一个类，负责保存一个索引在elasticsearch中的所有关联元数据，例如mapping和settings。由于它允许方便的同时创建多个mapping，所以当定义mapping的时候它是最有用的。当在迁移elasticsearch对象的时候是特别有用的。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Index</span><span class="p">,</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="n">analyzer</span>
+
+<span class="n">blogs</span> <span class="o">=</span> <span class="n">Index</span><span class="p">(</span><span class="s1">&#39;blogs&#39;</span><span class="p">)</span>
+
+<span class="c1"># define custom settings</span>
+<span class="n">blogs</span><span class="o">.</span><span class="n">settings</span><span class="p">(</span>
+    <span class="n">number_of_shards</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">number_of_replicas</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="c1"># define aliases</span>
+<span class="n">blogs</span><span class="o">.</span><span class="n">aliases</span><span class="p">(</span>
+    <span class="n">old_blogs</span><span class="o">=</span><span class="p">{}</span>
+<span class="p">)</span>
+
+<span class="c1"># register a document with the index</span>
+<span class="n">blogs</span><span class="o">.</span><span class="n">document</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+
+<span class="c1"># can also be used as class decorator when defining the Document</span>
+<span class="nd">@blogs</span><span class="o">.</span><span class="n">document</span>
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+
+<span class="c1"># You can attach custom analyzers to the index</span>
+
+<span class="n">html_strip</span> <span class="o">=</span> <span class="n">analyzer</span><span class="p">(</span><span class="s1">&#39;html_strip&#39;</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="s2">&quot;lowercase&quot;</span><span class="p">,</span> <span class="s2">&quot;stop&quot;</span><span class="p">,</span> <span class="s2">&quot;snowball&quot;</span><span class="p">],</span>
+    <span class="n">char_filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;html_strip&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">blogs</span><span class="o">.</span><span class="n">analyzer</span><span class="p">(</span><span class="n">html_strip</span><span class="p">)</span>
+
+<span class="c1"># delete the index, ignore if it doesn&#39;t exist</span>
+<span class="n">blogs</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">ignore</span><span class="o">=</span><span class="mi">404</span><span class="p">)</span>
+
+<span class="c1"># create the index in elasticsearch</span>
+<span class="n">blogs</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+</code></pre></div>
+<p>你可以为你的索引设置模板，并使用clone()方法创建一个指定的拷贝：</p>
+<div class="highlight"><pre><span></span><code><span class="n">blogs</span> <span class="o">=</span> <span class="n">Index</span><span class="p">(</span><span class="s1">&#39;blogs&#39;</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="s1">&#39;production&#39;</span><span class="p">)</span>
+<span class="n">blogs</span><span class="o">.</span><span class="n">settings</span><span class="p">(</span><span class="n">number_of_shards</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">blogs</span><span class="o">.</span><span class="n">document</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+
+<span class="c1"># create a copy of the index with different name</span>
+<span class="n">company_blogs</span> <span class="o">=</span> <span class="n">blogs</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="s1">&#39;company-blogs&#39;</span><span class="p">)</span>
+
+<span class="c1"># create a different copy on different cluster</span>
+<span class="n">dev_blogs</span> <span class="o">=</span> <span class="n">blogs</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="s1">&#39;blogs&#39;</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">)</span>
+<span class="c1"># and change its settings</span>
+<span class="n">dev_blogs</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">number_of_shards</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="index-template">Index Template</h5>
+<p>elasticsearch-dsl还提供了使用IndexTemplate类在elasticsearch中来管理索引模板的选项，该类与Index的API非常相似。</p>
+<p>一旦一个索引模板被保存到elasticsearch，他的内容将会自动应用到匹配模式的新索引上（已存在的索引不会受影响），即使索引是当索引一个文档时自动创建的。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Date</span><span class="p">,</span> <span class="n">Text</span>
+
+
+<span class="k">class</span> <span class="nc">Log</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">Date</span><span class="p">()</span>
+
+    <span class="k">class</span> <span class="nc">Index</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;logs-*&quot;</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="s2">&quot;number_of_shards&quot;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># assign now if no timestamp given</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+        <span class="c1"># override the index to go to the proper timeslot</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;logs-%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="c1"># once, as part of application setup, during deploy/migrations:</span>
+<span class="n">logs</span> <span class="o">=</span> <span class="n">Log</span><span class="o">.</span><span class="n">_index</span><span class="o">.</span><span class="n">as_template</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">logs</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># to perform search across all logs:</span>
+<span class="n">search</span> <span class="o">=</span> <span class="n">Log</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="faceted-search">Faceted Search</h3>
+<p>该API是实验性的，并且也没有用到，所以先跳过。</p>
+<h3 id="update-by-query">Update By Query</h3>
+<h4 id="the-update-by-query-object">The Update By Query object</h4>
+<p>Update By Query对象允许使用_update_by_query实现在一个匹配过程中更新一个文档。</p>
+<h5 id="serialization-and-deserialization_1">Serialization and Deserialization</h5>
+<p>该查询对象可以通过.to_dict()方法序列化为一个字典，也可以通过类方法from_dict()从一个字典构建一个对象。</p>
+<div class="highlight"><pre><span></span><code><span class="n">ubq</span> <span class="o">=</span> <span class="n">UpdateByQuery</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">}}})</span>
+</code></pre></div>
+<h5 id="extra-properties-and-parameters_1">Extra properties and parameters</h5>
+<p>可以通过.extra()方法设置额外的属性：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ubq</span> <span class="o">=</span> <span class="n">ubq</span><span class="o">.</span><span class="n">extra</span><span class="p">(</span><span class="n">explain</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>可以通过.params()方法设置查询参数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ubq</span> <span class="o">=</span> <span class="n">ubq</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">routing</span><span class="o">=</span><span class="s2">&quot;42&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="response_1">Response</h4>
+<p>你可以调用.execute()方法执行查询，它会返回一个Response对象。Response对象允许通过属性访问结果字典中的任何key。</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">ubq</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">success</span><span class="p">())</span>
+<span class="c1"># True</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">took</span><span class="p">)</span>
+<span class="c1"># 12</span>
+</code></pre></div>
+<p>如果需要查看response对象的内容，使用to_dic()方法获取它的原始数据即可。</p>
+<h3 id="api-documentation">API Documentation</h3>
+<p>API Documention详细介绍了<code>elasticsearch-dsl</code>库中的公共类和方法的用法，具体使用的时候直接翻阅参考即可。</p>
+<h2 id="_3">总结</h2>
+<ol>
+<li><code>elasticsearch-dsl</code>相比于<strong>elasticsearch</strong>来说，提供了更简便的方法来操作<strong>elasticsearch</strong>，减少了生成DSL查询语言的复杂性，推荐使用。</li>
+<li><code>elasticsearch-dsl</code>的方法其实还是和<strong>elasticsearch</strong>的<strong>restful API</strong>对应的，所以它的API文档有些地方写的并不清晰，例如实例构造可以传递哪些参数？它的说明时可以接收任何关键字参数并会直接把参数传递给elasticsearch，所以要确定哪些参数生效，还是需要我们去查看<code>elasticsearch</code>的<strong>restful API</strong>文档。</li>
+</ol>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月22日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月22日</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>
