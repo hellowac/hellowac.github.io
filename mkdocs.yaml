@@ -1,0 +1,60 @@
+site_name: 我的编程技术笔记
+
+# 配置主题，在mkdocs.yml文件下
+theme:
+  name: material
+  language: zh
+  palette:            # 文档颜色, https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+    scheme: default   # 配色方案
+    primary: default  # 主色
+    accent: red       # 强调色
+  features:
+    - navigation.tabs # 顶部导航
+    # - navigation.sections # 全部展开(非折叠状态)
+    - navigation.expand # 子目录展开
+    - navigation.top  # 返回顶部按钮
+
+# 插件
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - git-revision-date-localized:  # 支持文档创建时间显示， https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+      locale: zh
+      enable_creation_date: true
+      type: date
+
+# markdown解析扩展
+markdown_extensions:
+  - tables
+  - admonition
+  - attr_list
+  - md_in_html        # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
+  # pymdownx 扩展，参考：https://facelessuser.github.io/pymdown-extensions/
+  - pymdownx.inlinehilite   # 单行高亮, 参考: https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlighting-specific-lines
+  - pymdownx.critic         # 支持部分字段格式化，参考：https://squidfunk.github.io/mkdocs-material/reference/formatting/
+  - pymdownx.highlight      # 支持代码块高亮显示
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.superfences:    # 注释 : 
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.caret          # 下划线, 上标 : https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde 
+                            #               https://facelessuser.github.io/pymdown-extensions/extensions/caret/
+  - pymdownx.mark          # 标记 :https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
+                            #      https://facelessuser.github.io/pymdown-extensions/extensions/mark/
+  - pymdownx.tilde          # 删除线, 下标  参考: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
+                            #                   https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
+
+# 页面导航
+nav:
+  - 首页: index.md
+  - 技术: technology.md
+  - 阅读: read.md
+  - 投资: invest.md
+  - 工具: 
+    - 仓库合集: tools/repos.md
+  - 文档: 
+    - 文档合集: documents/docs.md
+  - 电子书: e-book.md
