@@ -1,8 +1,9 @@
-site_name: 我的编程技术笔记
+site_name: 我的工作学习生活笔记
 
 # 配置主题，在mkdocs.yml文件下
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   palette:            # 文档颜色, https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
     scheme: default   # 配色方案
@@ -13,6 +14,7 @@ theme:
     # - navigation.sections # 全部展开(非折叠状态)
     # - navigation.expand # 子目录展开
     - navigation.top  # 返回顶部按钮
+    - toc.follow
 
 # 插件
 plugins:
@@ -86,6 +88,8 @@ nav:
     - 安全渗透:
       - hydra: technology/security/thc-hydra.md
       - sqlmap: technology/security/sqlmap.md
+    - RFC标准:
+      - oauth2学习笔记: technology/rfc/oauth2.md
     - 其他:
       - Python函数: technology/other/functions.md
       - 收益函数: technology/other/stock.md
