@@ -90,6 +90,7 @@ nav:
       - sqlmap: technology/security/sqlmap.md
     - RFC标准:
       - oauth2学习笔记: technology/rfc/oauth2.md
+      - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
     - 其他:
       - Python函数: technology/other/functions.md
       - 收益函数: technology/other/stock.md
