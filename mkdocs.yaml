@@ -48,6 +48,13 @@ markdown_extensions:
                             #      https://facelessuser.github.io/pymdown-extensions/extensions/mark/
   - pymdownx.tilde          # 删除线, 下标  参考: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
                             #                   https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # 页面导航
 nav:
@@ -55,19 +62,29 @@ nav:
   - 技术: 
     - Python:
       - 安装: technology/python/index.md
-      - pip: technology/python/package/pip.md
-      - logging: technology/python/package/logging.md
-      - importlib: technology/python/package/importlib.md
-      - crypto: technology/python/package/pycrypto.md
-      - 文档处理:
-        - Docx: technology/python/report/docx.md
-        - Excel: technology/python/report/excel.md
-    - WEB:
-      - flask: technology/web/flask.md
+      - pip: technology/python/pip.md
+      - StringIO: technology/python/stringio.md
+      - flask: technology/python/flask.md
+      - logging: technology/python/logging.md
+      - importlib: technology/python/importlib.md
+      - crypto: technology/python/pycrypto.md
+      - petl: technology/python/petl.md
+      - psutil: technology/python/psutil.md
+      - Docx: technology/python/docx.md
+      - Excel: technology/python/excel.md
+      - reportlab: technology/python/reportlab.md
+      - 常用函数合集: technology/python/useful_functions.md
     - Linux:
       - 常用资源: technology/linux/usage_source.md
       - 端口占用查找: technology/linux/port.md
       - linux磁盘挂载: technology/linux/disk-mount.md
+      - shell脚本实战: technology/linux/shell-scripts.md
+    - 前端知识:
+      - 基础: technology/front/base.md
+      - 工程化流程: technology/front/project.md
+      - 包版本知识: technology/front/version.md
+      - package.json知识: technology/front/package.md
+      - WebAssembly: technology/front/webassembly.md
     - 服务组件:
       - zookeeper: technology/components/zookeeper.md
       - nginx: technology/components/nginx.md
@@ -91,9 +108,14 @@ nav:
     - RFC标准:
       - oauth2学习笔记: technology/rfc/oauth2.md
       - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
+    - 知识概念:
+      - xaas概念: technology/concept/xaas.md
+      - 统一用户管理: technology/concept/users.md
+      - ETL数据处理: technology/concept/etl.md
+      - 数据传输和对接: technology/concept/data_transfer.md
+      - 深入理解计算机系统: technology/concept/understand_computer_system.md
     - 其他:
-      - Python函数: technology/other/functions.md
-      - 收益函数: technology/other/stock.md
+      - 暂无: technology/other/backup.md
   - 阅读: read.md
   - 投资: 
     - "理财网站": invest/webs.md
@@ -106,4 +128,6 @@ nav:
     - 前端常用地址: other/front_links.md
     - 后端常用地址: other/back_links.md
     - 其他常用地址: other/other_links.md
+    - 成为高手秘籍: other/become_leader.md
+    - 张一鸣微博: other/zym_weibo.md
   - 关于: about.md
