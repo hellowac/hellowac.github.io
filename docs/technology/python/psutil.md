@@ -2,6 +2,8 @@
 
 源文档: <https://psutil.readthedocs.io/en/latest/>{target="_blank"}
 
+翻译的在线文档: <https://hellowac.github.io/psutil-doc-zh/>{target="_blank"}
+
 基于版本 5.3.0
 
 相关项目:
