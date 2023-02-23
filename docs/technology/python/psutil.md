@@ -883,11 +883,11 @@ _3.0.0 版本中新增._
 
 `class` **psutil.Process(pid=None)** - [原文](https://psutil.readthedocs.io/en/latest/#psutil.Process) <a name="psutil.Process"></a>
 
-代表具有给定 ***pid*** 的系统(OS)进程。 如果省略 ***pid*** ，则使用当前进程的 ***pid*** ([os.getpid][os.getpid])。 如果 ***pid*** 不存在，则抛出 [NoSuchProcess](#psutil.NoSuchProcess) 异常。 在 Linux 上， ***pid*** 也可以指 线程ID（[threads()](#Process.threads) 方法返回的 ***id*** 字段）。 访问该类的方法时，始终准备捕获 [NoSuchProcess](#psutil.NoSuchProcess) 和 [AccessDenied](#psutil.AccessDenied) 异常。 内建函数 [hash][[builtin.hash]] 可用于此类的实例，以便随着时间的推移唯一地标识进程（hash值由 `进程 PID + 创建时间` 混合后确定）。 因此，它也可以与 [set][typs.set] 一起使用。
+代表具有给定 ***pid*** 的系统(OS)进程。 如果省略 ***pid*** ，则使用当前进程的 ***pid*** ([os.getpid][os.getpid])。 如果 ***pid*** 不存在，则抛出 [NoSuchProcess](#psutil.NoSuchProcess) 异常。 在 Linux 上， ***pid*** 也可以指 线程ID（[threads()](#Process.threads) 方法返回的 ***id*** 字段）。 访问该类的方法时，始终准备捕获 [NoSuchProcess](#psutil.NoSuchProcess) 和 [AccessDenied](#psutil.AccessDenied) 异常。 内建函数 [hash][builtin.hash] 可用于此类的实例，以便随着时间的推移唯一地标识进程（hash值由 `进程 PID + 创建时间` 混合后确定）。 因此，它也可以与 [set][typs.set] 一起使用。
 
 **注释**： 为了同时有效地获取有关进程的多个信息，请确保使用 [oneshot()](#Process.oneshot) 上下文管理器或 [as_dict()](#Process.as_dict) 实例方法。
 
-**注释**： 此类和进程绑定的方式是通过其唯一 PID 。这意味着如果进程终止并且操作系统重用其 PID，最终可能会与另一个进程交互。抢先检查进程身份（通过 PID + 创建时间）的唯一例外是以下方法：[nice()](#Process.nice) (set), [ionice()](#Process.ionice) (set), [cpu_affinity()](#Process.cpu_affinity) (set), [rlimit()](#Process.rlimit) (set) , [children()](#Process.children), [parent()](#Process.parent), [parents()](Process.parents), [suspend()](#Process.suspend), [resume()](#Process.resume), [send_signal()](#Process.send_signal), [terminate()](#Process.terminate), [kill()](#Process.kill)。为了防止所有其他方法出现此问题，可以在查询进程之前使用 [is_running()](#Process.is_running) 或 [process_iter()](#psutil.process_iter) 以防迭代所有进程。但必须注意的是，除非处理非常“旧(old)”（非活动(inactive)）的 [Process](#psutil.Process) 实例，否则这几乎不会构成问题。
+**注释**： 此类和进程绑定的方式是通过其唯一 PID 。这意味着如果进程终止并且操作系统重用其 PID，最终可能会与另一个进程交互。抢先检查进程身份（通过 PID + 创建时间）的唯一例外是以下方法：[nice()](#Process.nice) (set), [ionice()](#Process.ionice) (set), [cpu_affinity()](#Process.cpu_affinity) (set), [rlimit()](#Process.rlimit) (set) , [children()](#Process.children), [parent()](#Process.parent), [parents()](#Process.parents), [suspend()](#Process.suspend), [resume()](#Process.resume), [send_signal()](#Process.send_signal), [terminate()](#Process.terminate), [kill()](#Process.kill)。为了防止所有其他方法出现此问题，可以在查询进程之前使用 [is_running()](#Process.is_running) 或 [process_iter()](#psutil.process_iter) 以防迭代所有进程。但必须注意的是，除非处理非常“旧(old)”（非活动(inactive)）的 [Process](#psutil.Process) 实例，否则这几乎不会构成问题。
 
 [os.getpid]: https://docs.python.org/3/library/os.html#os.getpid "os.getpid"
 [typs.set]: https://docs.python.org/zh-cn/3/library/stdtypes.html#types-set. "内置类型 Set"

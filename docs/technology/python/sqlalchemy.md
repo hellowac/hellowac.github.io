@@ -1,15 +1,5 @@
 # SQLAlchemy简明教程
 
-- [SQLAlchemy简明教程](#sqlalchemy简明教程)
-  - [表的设计](#表的设计)
-  - [常见操作](#常见操作)
-    - [常见查询操作](#常见查询操作)
-    - [常见删除操作](#常见删除操作)
-    - [常见更新操作](#常见更新操作)
-    - [常见插入操作](#常见插入操作)
-    - [常见连表查询](#常见连表查询)
-  - [数据库migration](#数据库migration)
-
 原文可见: <https://jiajunhuang.com/articles/2019_10_30-sqlalchemy.md.html>
 
 [这里]: https://docs.sqlalchemy.org/en/13/orm/session_basics.html#session-faq-whentocreate
@@ -22,7 +12,7 @@ SQLAlchemy是Python中常用的一个ORM，SQLAlchemy分成三部分：
 
 它们的关系如下(图片来自官网)：
 
-![sqla arch](../images/sqla_arch.png)
+![sqla arch](./imgs/sqla_arch.png)
 
 先来看看一个简单的例子：
 

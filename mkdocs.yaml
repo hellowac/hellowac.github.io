@@ -18,6 +18,7 @@ theme:
 
 # 插件
 plugins:
+  - glightbox
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - git-revision-date-localized:  # 支持文档创建时间显示， https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
@@ -121,7 +122,18 @@ nav:
       - 深入理解计算机系统: technology/concept/understand_computer_system.md
     - 其他:
       - 暂无: technology/other/backup.md
-  - 阅读: read.md
+  - 阅读: 
+    - 英语: 
+      - BlueLevel: read/english/bluelevel.md
+      - RedLevel: read/english/redlevel.md
+    - 如何阅读一本书: read/book/howtoreadbook.md
+    - 如何避免愚蠢的见识: read/howtoavoid.md
+    - 灵魂的最高处: read/placeofsoul.md
+    - 恶意匹配: read/maliciousmatch.md
+    - 沟通的艺术:
+      - 沟通入门: read/book/artofcommunication01.md
+      - 看入人里:自我: read/book/artofcommunication02.md
+      - 看入人里:知觉: read/book/artofcommunication03.md
   - 投资: 
     - "理财网站": invest/webs.md
   - 工具: 
