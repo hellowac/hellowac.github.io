@@ -95,7 +95,8 @@ nav:
       - Python函数: technology/other/functions.md
       - 收益函数: technology/other/stock.md
   - 阅读: read.md
-  - 投资: invest.md
+  - 投资: 
+    - "理财网站": invest/webs.md
   - 工具: 
     - 仓库合集: tools/repos.md
   - 文档: 
