@@ -74,6 +74,7 @@ nav:
       - Docx: technology/python/docx.md
       - Excel: technology/python/excel.md
       - reportlab: technology/python/reportlab.md
+      - alembic: technology/python/alembic.md
       - 常用函数合集: technology/python/useful_functions.md
     - Linux:
       - 常用资源: technology/linux/usage_source.md
