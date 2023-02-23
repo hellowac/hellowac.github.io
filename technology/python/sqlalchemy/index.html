@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../reportlab/">
+        <link rel="prev" href="../alembic/">
       
       
-        <link rel="next" href="../sqlalchemy/">
+        <link rel="next" href="../useful_functions/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
     
     
       
-        <title>alembic - 我的工作学习生活笔记</title>
+        <title>sqlalchemy - 我的工作学习生活笔记</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#alembic" class="md-skip">
+        <a href="#sqlalchemy" class="md-skip">
           跳转至
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              alembic
+              sqlalchemy
             
           </span>
         </div>
@@ -584,6 +584,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../alembic/" class="md-nav__link">
+        alembic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -596,12 +610,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          alembic
+          sqlalchemy
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        alembic
+        sqlalchemy
       </a>
       
         
@@ -620,30 +634,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#alembic_1" class="md-nav__link">
-    初始化alembic仓库
+  <a href="#_1" class="md-nav__link">
+    表的设计
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    创建模型类
+  <a href="#_2" class="md-nav__link">
+    常见操作
   </a>
   
-    <nav class="md-nav" aria-label="创建模型类">
+    <nav class="md-nav" aria-label="常见操作">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    设置数据库连接
+  <a href="#_3" class="md-nav__link">
+    常见查询操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#target_metadata" class="md-nav__link">
-    设置target_metadata
+  <a href="#_4" class="md-nav__link">
+    常见删除操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    常见更新操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    常见插入操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    常见连表查询
   </a>
   
 </li>
@@ -654,36 +689,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    自动生成迁移文件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    更新数据库
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    修改代码后
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    命令和参数解释
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    经典错误
+  <a href="#migration" class="md-nav__link">
+    数据库migration
   </a>
   
 </li>
@@ -692,20 +699,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sqlalchemy/" class="md-nav__link">
-        sqlalchemy
-      </a>
     </li>
   
 
@@ -2042,30 +2035,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#alembic_1" class="md-nav__link">
-    初始化alembic仓库
+  <a href="#_1" class="md-nav__link">
+    表的设计
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    创建模型类
+  <a href="#_2" class="md-nav__link">
+    常见操作
   </a>
   
-    <nav class="md-nav" aria-label="创建模型类">
+    <nav class="md-nav" aria-label="常见操作">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    设置数据库连接
+  <a href="#_3" class="md-nav__link">
+    常见查询操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#target_metadata" class="md-nav__link">
-    设置target_metadata
+  <a href="#_4" class="md-nav__link">
+    常见删除操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    常见更新操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    常见插入操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    常见连表查询
   </a>
   
 </li>
@@ -2076,36 +2090,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    自动生成迁移文件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    更新数据库
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    修改代码后
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    命令和参数解释
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    经典错误
+  <a href="#migration" class="md-nav__link">
+    数据库migration
   </a>
   
 </li>
@@ -2125,90 +2111,280 @@
                   
 
 
-<h1 id="alembic">alembic教程(转)</h1>
-<p>官方文档: <a href="https://alembic.sqlalchemy.org/en/latest/index.html" target="_blank">https://alembic.sqlalchemy.org/en/latest/index.html</a></p>
-<p>相关项目: <a href="https://github.com/python-gino/gino" target="_blank">https://github.com/python-gino/gino</a> - <a href="https://www.bookstack.cn/read/gino-1.0-zh/3d56d5fe80ab5932.md" target="_blank">文档</a></p>
-<p>翻译的alembic文档: <a href="https://hellowac.github.io/alembic_doc/" target="_blank">https://hellowac.github.io/alembic_doc/</a></p>
-<p><a href="https://alembic.zzzcomputing.com/en/latest/index.html" target="_blank" title="Alembic">alembic</a>是<a href="https://docs.sqlalchemy.org/en/14/" target="_blank" title="SQLAlchemy">sqlalchemy</a>的作者开发的。用来做OMR模型与数据库的迁移与映射。<code>alembic</code>使用方式跟<code>git</code>有点了类似，表现在两个方面，第一个，<code>alembic</code>的所有命令都是以<code>alembic</code>开头；第二，<code>alembic</code>的迁移文件也是通过版本进行控制的。首先，通过<code>pip install alembic</code>进行安装。以下将解释<code>alembic</code>的用法：</p>
-<h2 id="alembic_1">初始化<a href="https://alembic.zzzcomputing.com/en/latest/index.html" target="_blank" title="Alembic">alembic</a>仓库</h2>
-<p>在终端中，<code>cd</code> 到你的项目目录中，然后执行命令<code>alembic init alembic</code>，创建一个名叫<code>alembic</code>的仓库。</p>
-<h2 id="_1">创建模型类</h2>
-<p>创建一个<code>models.py</code>模块，然后在里面定义你的模型类，示例代码如下：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span><span class="n">Integer</span><span class="p">,</span><span class="n">String</span><span class="p">,</span><span class="n">create_engine</span><span class="p">,</span><span class="n">Text</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+<h1 id="sqlalchemy">SQLAlchemy简明教程</h1>
+<ul>
+<li><a href="#sqlalchemy简明教程">SQLAlchemy简明教程</a></li>
+<li><a href="#表的设计">表的设计</a></li>
+<li><a href="#常见操作">常见操作</a><ul>
+<li><a href="#常见查询操作">常见查询操作</a></li>
+<li><a href="#常见删除操作">常见删除操作</a></li>
+<li><a href="#常见更新操作">常见更新操作</a></li>
+<li><a href="#常见插入操作">常见插入操作</a></li>
+<li><a href="#常见连表查询">常见连表查询</a></li>
+</ul>
+</li>
+<li><a href="#数据库migration">数据库migration</a></li>
+</ul>
+<p>原文可见: <a href="https://jiajunhuang.com/articles/2019_10_30-sqlalchemy.md.html">https://jiajunhuang.com/articles/2019_10_30-sqlalchemy.md.html</a></p>
+<p>SQLAlchemy是Python中常用的一个ORM，SQLAlchemy分成三部分：</p>
+<ul>
+<li>ORM，就是我们用类来表示数据库schema的那部分</li>
+<li>SQLAlchemy Core，就是一些基础的操作，例如 <strong>update</strong> , <strong>insert</strong> 等等，也可以直接使用这部分来进行操作，但是它们写起来没有ORM那么自然</li>
+<li>DBAPI，这部分就是数据库驱动</li>
+</ul>
+<p>它们的关系如下(图片来自官网)：</p>
+<p><img alt="sqla arch" src="../images/sqla_arch.png" /></p>
+<p>先来看看一个简单的例子：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">contextlib</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">create_engine</span><span class="p">,</span>
+    <span class="n">Column</span><span class="p">,</span>
+    <span class="n">Integer</span><span class="p">,</span>
+    <span class="n">DateTime</span><span class="p">,</span>
+    <span class="n">String</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">config</span>  <span class="c1"># config模块里有自己写的配置，我们可以换成别的，注意下面用到config的地方也要一起换</span>
 
-<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">SQLALCHEMY_DATABASE_URI</span><span class="p">,</span>  <span class="c1"># SQLAlchemy 数据库连接串，格式见下面</span>
+    <span class="n">echo</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SQLALCHEMY_ECHO</span><span class="p">),</span>  <span class="c1"># 是不是要把所执行的SQL打印出来，一般用于调试</span>
+    <span class="n">pool_size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SQLALCHEMY_POOL_SIZE</span><span class="p">),</span>  <span class="c1"># 连接池大小</span>
+    <span class="n">max_overflow</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SQLALCHEMY_POOL_MAX_SIZE</span><span class="p">),</span>  <span class="c1"># 连接池最大的大小</span>
+    <span class="n">pool_recycle</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SQLALCHEMY_POOL_RECYCLE</span><span class="p">),</span>  <span class="c1"># 多久时间主动回收连接，见下注释</span>
+<span class="p">)</span>
+<span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
 
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">password</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Article</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;article&#39;</span>
+<span class="k">class</span> <span class="nc">BaseMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;model的基类,所有model都必须继承&quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">onupdate</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">deleted_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">)</span>  <span class="c1"># 可以为空, 如果非空, 则为软删</span>
 
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Text</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">get_session</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">s</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="n">e</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">BaseMixin</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span>
+
+    <span class="n">Name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">36</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">Phone</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">36</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="_2">设置数据库连接</h3>
-<p>在<a href="https://alembic.sqlalchemy.org/en/latest/tutorial.html#editing-the-ini-file" target="_blank" title="alembic.ini">alembic.ini</a>中设置数据库的连接，<code>sqlalchemy.url = driver://user:pass@localhost/dbname</code>，比如以mysql数据库为例，则配置后的代码为：</p>
-<div class="highlight"><pre><span></span><code><span class="n">sqlalchemy</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">+</span><span class="n">mysqldb</span><span class="p">:</span><span class="o">//</span><span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="nd">@localhost</span><span class="o">/</span><span class="n">alembic_demo</span><span class="err">?</span><span class="n">charset</span><span class="o">=</span><span class="n">utf8</span>
+<p>注意上面的几点：</p>
+<ul>
+<li><strong>pool_recycle</strong>: 设置主动回收连接的时长，如果不设置，那么可能会遇到数据库主动断开连接的问题，例如<code>MySQL</code>通常会为连接设置最大生命周期为八小时，如果没有通信，那么就会断开连接。因此不设置此选项可能就会遇到 <code>MySQL has gone away</code> 的报错。</li>
+<li><strong>engine</strong>: <code>engine</code> 是 <code>SQLAlchemy</code> 中位于数据库驱动之上的一个抽象概念，它适配了各种数据库驱动，提供了连接池等功能。其用法就是 如上面例子中，<code>engine = create_engine(&lt;数据库连接串&gt;)</code>，数据库连接串的格式是 <code>dialect+driver://username:password@host:port/database?参数</code> 这样的，<strong>dialect</strong> 可以是 <code>mysql</code>, <code>postgresql</code>, <code>oracle</code>, <code>mssql</code>, <code>sqlite</code>，后面的 <strong>driver</strong> 是驱动，比如<code>MySQL</code>的驱动<code>pymysql</code>， 如果不填写，就使用默认驱动。再往后就是<code>用户名</code>、<code>密码</code>、<code>地址</code>、<code>端口</code>、<code>数据库</code>、<code>连接参数</code>了，来看几个例子：</li>
+<li><strong>MySQL</strong>: <code>engine = create_engine('mysql+pymysql://scott:tiger@localhost/foo?charset=utf8mb4')</code></li>
+<li><strong>PostgreSQL</strong>: <code>engine = create_engine('postgresql+psycopg2://scott:tiger@localhost/mydatabase')</code></li>
+<li><strong>Oracle</strong>: <code>engine = create_engine('oracle+cx_oracle://scott:tiger@tnsname')</code></li>
+<li><strong>MS SQL</strong>: <code>engine = create_engine('mssql+pymssql://scott:tiger@hostname:port/dbname')</code></li>
+<li><strong>SQLite</strong>: <code>engine = create_engine('sqlite:////absolute/path/to/foo.db')</code></li>
+<li>详见：<a href="https://docs.sqlalchemy.org/en/13/core/engines.html">https://docs.sqlalchemy.org/en/13/core/engines.html</a></li>
+<li>
+<p><strong>Session</strong>: <code>Session</code>的意思就是会话，也就是说，是一个逻辑组织的概念，因此，这需要靠你的业务逻辑来划分哪些操作使用同一个<code>Session</code>， 哪些操作又划分为不同的业务操作，详见 <a href="https://docs.sqlalchemy.org/en/13/orm/session_basics.html#session-faq-whentocreate">这里</a>。 举个简单的例子，以web应用为例，一个请求里共用一个<code>Session</code>就是一个好的例子，一个异步任务执行过程中使用一个<code>Session</code>也是一个例子。 但是注意，不能直接使用<code>Session</code>，而是使用<strong>Session的实例</strong>，借助上面的代码，我们可以直接这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
 </code></pre></div>
-<h3 id="target_metadata">设置<a href="https://alembic.sqlalchemy.org/en/latest/ops.html?highlight=target_metadata#alembic.operations.Operations.f" target="_blank" title="target_metadata">target_metadata</a></h3>
-<p>为了使用模型类更新数据库，需要在<code>env.py</code>文件中设置<a href="https://alembic.sqlalchemy.org/en/latest/ops.html?highlight=target_metadata#alembic.operations.Operations.f" target="_blank" title="target_metadata">target_metadata</a>，默认为<code>target_metadata=None</code>。使用<code>sys</code>模块把当前项目的路径导入到<code>path</code>中：</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;/../&quot;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Base</span>
-<span class="o">...</span> <span class="c1">#省略代码</span>
-<span class="n">target_metadata</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span> <span class="c1"># 设置创建模型的元类</span>
-<span class="o">...</span> <span class="c1">#省略代码</span>
+</li>
+<li>
+<p><strong>Base</strong>: <code>Base</code>是<code>ORM</code>中的一个<strong>基类</strong>，通过集成<code>Base</code>，我们才能方便的使用一些基本的查询，例如 <code>s.query(User).filter_by(User.name="nick").first()</code>。</p>
+</li>
+<li><strong>BaseMixin</strong>: <code>BaseMixin</code>是定义的一些通用的表结构，通过<code>Mixin</code>的方式集成到类里，比如上面的定义，我们常见的表结构里，都会有 <strong>ID</strong>、<strong>创建时间</strong>、<strong>更新时间</strong>，<strong>软删除标志</strong> 等等，我们把它作为一个独立的类，这样通过继承即可获得相关表属性，省得重复写多次。</li>
+</ul>
+<h2 id="_1">表的设计</h2>
+<p>表的设计通常就如 <code>User</code> 表一样：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">BaseMixin</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span>
+
+    <span class="n">Name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">36</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">Phone</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">36</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="_3">自动生成迁移文件</h2>
-<p>使用<code>alembic revision --autogenerate -m "message"</code>将当前模型中的状态生成迁移文件。</p>
-<h2 id="_4">更新数据库</h2>
-<p>使用<code>alembic upgrade head</code>将刚刚生成的迁移文件，真正映射到数据库中。同理，如果要降级，那么使用<code>alembic downgrade head</code>。</p>
-<h2 id="_5">修改代码后</h2>
-<p>重复4~5的步骤。</p>
-<h2 id="_6">命令和参数解释</h2>
-<ol>
-<li><code>init</code>：创建一个alembic仓库。</li>
-<li><code>revision</code>：创建一个新的版本文件。</li>
-<li><code>–autogenerate</code>：自动将当前模型的修改，生成迁移脚本。</li>
-<li><code>-m</code>：本次迁移做了哪些修改，用户可以指定这个参数，方便回顾。</li>
-<li><code>upgrade</code>：将指定版本的迁移文件映射到数据库中，会执行版本文件中的upgrade函数。如果有多个迁移脚本没有被映射到数据库中，那么会执行多个迁移脚本。</li>
-<li><code>[head]</code>：代表最新的迁移脚本的版本号。</li>
-<li><code>downgrade</code>：会执行指定版本的迁移文件中的downgrade函数。</li>
-<li><code>heads</code>：展示head指向的脚本文件版本号。</li>
-<li><code>history</code>：列出所有的迁移版本及其信息。</li>
-<li><code>current</code>：展示当前数据库中的版本号。</li>
-</ol>
-<p>另外，在你第一次执行<code>upgrade</code>的时候，就会在数据库中创建一个名叫<code>alembic_version</code>表，这个表只会有一条数据，记录当前数据库映射的是哪个版本的迁移文件。</p>
-<h2 id="_7">经典错误</h2>
-<table>
-<thead>
-<tr>
-<th>错误描述</th>
-<th>原因</th>
-<th>解决办法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>FAILED: Target database is not up to date.</code></td>
-<td>主要是<code>heads</code>和<code>current</code>不相同。<code>current</code>落后于heads的版本。</td>
-<td>将<code>current</code>移动到<code>head</code>上。<code>alembic upgrade head</code></td>
-</tr>
-<tr>
-<td><code>FAILED: Can't locate revision identified by '77525ee61b5b'</code></td>
-<td>数据库中存的版本号不在迁移脚本文件中</td>
-<td>删除数据库的<code>alembic_version</code>表中的数据，重新执行<code>alembic upgrade head</code></td>
-</tr>
-</tbody>
-</table>
+<p>首先使用 <strong>__tablename__</strong> 自定义表名，接着写各个表中的属性，也就是对应在数据库表中的列(<code>column</code>)，常见的类型有：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="err">$</span> <span class="n">egrep</span> <span class="s1">&#39;^class &#39;</span> <span class="o">~/.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.6.0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sqlalchemy</span><span class="o">/</span><span class="n">sql</span><span class="o">/</span><span class="n">sqltypes</span><span class="o">.</span><span class="n">py</span>
+<span class="k">class</span> <span class="nc">_LookupExpressionAdapter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Concatenable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Indexable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">String</span><span class="p">(</span><span class="n">Concatenable</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Text</span><span class="p">(</span><span class="n">String</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Unicode</span><span class="p">(</span><span class="n">String</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">UnicodeText</span><span class="p">(</span><span class="n">Text</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Integer</span><span class="p">(</span><span class="n">_LookupExpressionAdapter</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">SmallInteger</span><span class="p">(</span><span class="n">Integer</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">BigInteger</span><span class="p">(</span><span class="n">Integer</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Numeric</span><span class="p">(</span><span class="n">_LookupExpressionAdapter</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Float</span><span class="p">(</span><span class="n">Numeric</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">DateTime</span><span class="p">(</span><span class="n">_LookupExpressionAdapter</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Date</span><span class="p">(</span><span class="n">_LookupExpressionAdapter</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Time</span><span class="p">(</span><span class="n">_LookupExpressionAdapter</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">_Binary</span><span class="p">(</span><span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">LargeBinary</span><span class="p">(</span><span class="n">_Binary</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Binary</span><span class="p">(</span><span class="n">LargeBinary</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">SchemaType</span><span class="p">(</span><span class="n">SchemaEventTarget</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Enum</span><span class="p">(</span><span class="n">Emulated</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">SchemaType</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">PickleType</span><span class="p">(</span><span class="n">TypeDecorator</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Boolean</span><span class="p">(</span><span class="n">Emulated</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">,</span> <span class="n">SchemaType</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">_AbstractInterval</span><span class="p">(</span><span class="n">_LookupExpressionAdapter</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Interval</span><span class="p">(</span><span class="n">Emulated</span><span class="p">,</span> <span class="n">_AbstractInterval</span><span class="p">,</span> <span class="n">TypeDecorator</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">JSON</span><span class="p">(</span><span class="n">Indexable</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">ARRAY</span><span class="p">(</span><span class="n">SchemaEventTarget</span><span class="p">,</span> <span class="n">Indexable</span><span class="p">,</span> <span class="n">Concatenable</span><span class="p">,</span> <span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">REAL</span><span class="p">(</span><span class="n">Float</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">FLOAT</span><span class="p">(</span><span class="n">Float</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">NUMERIC</span><span class="p">(</span><span class="n">Numeric</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">DECIMAL</span><span class="p">(</span><span class="n">Numeric</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">INTEGER</span><span class="p">(</span><span class="n">Integer</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">SMALLINT</span><span class="p">(</span><span class="n">SmallInteger</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">BIGINT</span><span class="p">(</span><span class="n">BigInteger</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TIMESTAMP</span><span class="p">(</span><span class="n">DateTime</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">DATETIME</span><span class="p">(</span><span class="n">DateTime</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">DATE</span><span class="p">(</span><span class="n">Date</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TIME</span><span class="p">(</span><span class="n">Time</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TEXT</span><span class="p">(</span><span class="n">Text</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CLOB</span><span class="p">(</span><span class="n">Text</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">VARCHAR</span><span class="p">(</span><span class="n">String</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">NVARCHAR</span><span class="p">(</span><span class="n">Unicode</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CHAR</span><span class="p">(</span><span class="n">String</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">NCHAR</span><span class="p">(</span><span class="n">Unicode</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">BLOB</span><span class="p">(</span><span class="n">LargeBinary</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">BINARY</span><span class="p">(</span><span class="n">_Binary</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">VARBINARY</span><span class="p">(</span><span class="n">_Binary</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">BOOLEAN</span><span class="p">(</span><span class="n">Boolean</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">NullType</span><span class="p">(</span><span class="n">TypeEngine</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MatchType</span><span class="p">(</span><span class="n">Boolean</span><span class="p">):</span>
+</code></pre></div>
+<h2 id="_2">常见操作</h2>
+<p>我们来看看使用SQLAlchemy完成常见的操作，例如增删查改：</p>
+<h3 id="_3">常见查询操作</h3>
+<ul>
+<li>
+<p><code>SELECT * FROM user</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>SELECT * FROM user WHERE name='nick'</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nick&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;nick&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>  <span class="c1"># 这样写是等同效果的</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>SELECT * FROM user WHERE name='nick' LIMIT 1</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nick&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+</code></pre></div>
+<p>如果需要加判定，例如确保只有一条数据，那就把 <code>first()</code> 替换为 <code>one()</code>，如果确保一行或者没有，那就写 <code>one_or_none()</code>。</p>
+</li>
+<li>
+<p><code>SELECT * FROM user ORDER BY id DESC LIMIT 1</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>SELECT * FROM user ORDER BY id DESC LIMIT 1 OFFSET 20</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+</code></pre></div>
+</li>
+</ul>
+<h3 id="_4">常见删除操作</h3>
+<ul>
+<li>
+<p><code>DELETE FROM user</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>DELETE FROM user WHERE name='nick'</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nick&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>DELETE FROM user WHERE name='nick' LIMIT 1</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nick&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
+</li>
+</ul>
+<h3 id="_5">常见更新操作</h3>
+<ul>
+<li>
+<p><code>UPDATE user SET name='nick'</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;nick&#39;</span><span class="p">})</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>UPDATE user SET name='nick' WHERE id=1</code> 应该这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;nick&#39;</span><span class="p">})</span>
+</code></pre></div>
+<p>也可以通过更改实例的属性，然后提交：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;nick&#39;</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+</li>
+</ul>
+<h3 id="_6">常见插入操作</h3>
+<p>这个就简单了，实例化对象，然后 <code>session.add</code>，最后提交：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_7">常见连表查询</h3>
+<p><code>SQLAlchemy</code> 中可以直接使用 <strong>join语句</strong> ：</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Customer</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Invoice</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Invoice</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">8500</span><span class="p">)</span>
+</code></pre></div>
+<p>可以是这么几种写法：</p>
+<div class="highlight"><pre><span></span><code><span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="n">Address</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>    <span class="c1"># explicit condition</span>
+<span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">addresses</span><span class="p">)</span>                       <span class="c1"># specify relationship from left to right</span>
+<span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">User</span><span class="o">.</span><span class="n">addresses</span><span class="p">)</span>              <span class="c1"># same, with explicit target</span>
+<span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;addresses&#39;</span><span class="p">)</span>                          <span class="c1"># same, using a string</span>
+</code></pre></div>
+<h2 id="migration">数据库migration</h2>
+<p>我们使用alembic来做数据库migration，首先安装：</p>
+<div class="highlight"><pre><span></span><code>&gt;$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>alembic
+&gt;$<span class="w"> </span>alembic<span class="w"> </span>init<span class="w"> </span>alembic<span class="w">  </span><span class="c1"># 此处 alembic init 后接的是保存migration的文件夹名称</span>
+</code></pre></div>
+<p>然后我们要修改 <code>alembic/env.py</code> (假设你设置的保存<code>migration</code>的文件夹名称就是 <code>alembic</code>)，将对应部分修改成如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">config</span><span class="o">.</span><span class="n">set_main_option</span><span class="p">(</span>
+    <span class="s1">&#39;sqlalchemy.url&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">SQLALCHEMY_DATABASE_URI</span>
+<span class="p">)</span>
+<span class="n">target_metadata</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span>  <span class="c1"># 从任意一个我们的model可以拿到总的Base</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">target_metadata</span><span class="o">.</span><span class="n">bind</span>
+</code></pre></div>
+<p>因为<code>SQLAlchemy</code>会把表的信息存储在 <strong>metadata</strong> 里，而我们都继承了 <strong>Base</strong> ，因此可以 通过 <code>Base.metadata</code> 来拿到所有表的信息，这样子 <strong>alembic</strong> 才能够拿到表的结构，然后和数据库进行对比，生成 <strong>migration</strong> 脚本：</p>
+<div class="highlight"><pre><span></span><code>&gt;$<span class="w"> </span>alembic<span class="w"> </span>revision<span class="w"> </span>--autogenerate<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;本次migration的信息，相当于git提交时的评论&#39;</span>
+</code></pre></div>
+<p>这一篇中我们看了如何使用<code>SQLAlchemy</code>来进行常见的操作，我们首先从如何定义表开始，接着我们注意看了常见的SQL操作对应的 <code>SQLAlchemy</code>操作是怎样的，最后我们看了以下<code>alembic</code>应该怎么配置才能自动生成<code>migration</code>脚本。</p>
+<hr />
+<p>参考资料：</p>
+<ul>
+<li><strong><a href="https://docs.sqlalchemy.org/en/13/intro.html">官方文档</a></strong></li>
+</ul>
+<hr />
 
   <hr>
 <div class="md-source-file">
