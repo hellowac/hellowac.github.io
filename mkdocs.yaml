@@ -51,6 +51,7 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+# 扩展支持， 支持数学符号
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
@@ -90,6 +91,7 @@ nav:
       - nginx: technology/components/nginx.md
       - supervisor: technology/components/supervisor.md
       - rabbitmq: technology/components/rabbitmq.md
+      - kafka: technology/components/kafka.md
       - 无头浏览器: 
         - openchrome: technology/unheadchrome/openchrome.md
         - 环境搭建: technology/unheadchrome/build_env.md
@@ -108,6 +110,7 @@ nav:
     - RFC标准:
       - oauth2学习笔记: technology/rfc/oauth2.md
       - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
+      - Oauth2-RFC6750翻译: technology/rfc/rfc6750.md
     - 知识概念:
       - xaas概念: technology/concept/xaas.md
       - 统一用户管理: technology/concept/users.md
