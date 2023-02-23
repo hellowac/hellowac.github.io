@@ -1,0 +1,3005 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../linux/shell-scripts/">
+      
+      
+        <link rel="next" href="../project/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>基础 - 我的工作学习生活笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的工作学习生活笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../python/" class="md-tabs__link md-tabs__link--active">
+        技术
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../read/" class="md-tabs__link">
+      阅读
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../invest/webs/" class="md-tabs__link">
+        投资
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tools/repos/" class="md-tabs__link">
+        工具
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../documents/docs/" class="md-tabs__link">
+        文档
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../e-book/" class="md-tabs__link">
+      电子书
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../other/front_links/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../about/" class="md-tabs__link">
+      关于
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    我的工作学习生活笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pip/" class="md-nav__link">
+        pip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/stringio/" class="md-nav__link">
+        StringIO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/flask/" class="md-nav__link">
+        flask
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/logging/" class="md-nav__link">
+        logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/importlib/" class="md-nav__link">
+        importlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pycrypto/" class="md-nav__link">
+        crypto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/petl/" class="md-nav__link">
+        petl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/psutil/" class="md-nav__link">
+        psutil
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/docx/" class="md-nav__link">
+        Docx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/excel/" class="md-nav__link">
+        Excel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/reportlab/" class="md-nav__link">
+        reportlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/useful_functions/" class="md-nav__link">
+        常用函数合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/usage_source/" class="md-nav__link">
+        常用资源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/port/" class="md-nav__link">
+        端口占用查找
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/disk-mount/" class="md-nav__link">
+        linux磁盘挂载
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/shell-scripts/" class="md-nav__link">
+        shell脚本实战
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          前端知识
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          前端知识
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        基础
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    Node.js服务端的语言
+  </a>
+  
+    <nav class="md-nav" aria-label="Node.js服务端的语言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodejs_1" class="md-nav__link">
+    下载Node.js
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs_2" class="md-nav__link">
+    Node.js是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascriptnodejs" class="md-nav__link">
+    JavaScript与node.js的区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs_3" class="md-nav__link">
+    node.js的基本用法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#es6" class="md-nav__link">
+    ES6新规范
+  </a>
+  
+    <nav class="md-nav" aria-label="ES6新规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#es6_1" class="md-nav__link">
+    什么是ES6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#es6_2" class="md-nav__link">
+    ES6的常见的新特性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    Npm包管理器
+  </a>
+  
+    <nav class="md-nav" aria-label="Npm包管理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm_1" class="md-nav__link">
+    Npm包管理器是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#babel" class="md-nav__link">
+    Babel转码器
+  </a>
+  
+    <nav class="md-nav" aria-label="Babel转码器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#babel_1" class="md-nav__link">
+    Babel转码器是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    如何使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    模块化开发
+  </a>
+  
+    <nav class="md-nav" aria-label="模块化开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    什么是模块化开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commonjs" class="md-nav__link">
+    CommonJS规范
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#es6_3" class="md-nav__link">
+    ES6模块化规划
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webpack" class="md-nav__link">
+    Webpack前端打包编译工具工具
+  </a>
+  
+    <nav class="md-nav" aria-label="Webpack前端打包编译工具工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webpack_1" class="md-nav__link">
+    Webpack什么是
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    打包.js
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css" class="md-nav__link">
+    打包.css
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue-element-admin" class="md-nav__link">
+    Vue-element-admin后台前端解决方案
+  </a>
+  
+    <nav class="md-nav" aria-label="Vue-element-admin后台前端解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    什么是脚手架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vue-element-admin_1" class="md-nav__link">
+    Vue-element-admin是什么
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project/" class="md-nav__link">
+        工程化流程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version/" class="md-nav__link">
+        包版本知识
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../package/" class="md-nav__link">
+        package.json知识
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webassembly/" class="md-nav__link">
+        WebAssembly
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          服务组件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          服务组件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/zookeeper/" class="md-nav__link">
+        zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/nginx/" class="md-nav__link">
+        nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/supervisor/" class="md-nav__link">
+        supervisor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/rabbitmq/" class="md-nav__link">
+        rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/kafka/" class="md-nav__link">
+        kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_6" id="__nav_2_4_6_label" tabindex="0">
+          无头浏览器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          无头浏览器
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
+        openchrome
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/build_env/" class="md-nav__link">
+        环境搭建
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/clickhouse/" class="md-nav__link">
+        ClickHouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+          MySQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql8_install/" class="md-nav__link">
+        mysql8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql/" class="md-nav__link">
+        常用操作
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+          ElasticSearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          ElasticSearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/elasticsearch_py/" class="md-nav__link">
+        elasticsearch-py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_dsl/" class="md-nav__link">
+        elasticsearch-dsl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_aggs/" class="md-nav__link">
+        elasticsearch-aggs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          安全渗透
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          安全渗透
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/thc-hydra/" class="md-nav__link">
+        hydra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/sqlmap/" class="md-nav__link">
+        sqlmap
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          RFC标准
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          RFC标准
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/oauth2/" class="md-nav__link">
+        oauth2学习笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/rfc6749/" class="md-nav__link">
+        Oauth2-RFC6749翻译
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/rfc6750/" class="md-nav__link">
+        Oauth2-RFC6750翻译
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          知识概念
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          知识概念
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/xaas/" class="md-nav__link">
+        xaas概念
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/users/" class="md-nav__link">
+        统一用户管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/etl/" class="md-nav__link">
+        ETL数据处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/data_transfer/" class="md-nav__link">
+        数据传输和对接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/understand_computer_system/" class="md-nav__link">
+        深入理解计算机系统
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/backup/" class="md-nav__link">
+        暂无
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/" class="md-nav__link">
+        阅读
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          投资
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          投资
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../invest/webs/" class="md-nav__link">
+        理财网站
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/repos/" class="md-nav__link">
+        仓库合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documents/docs/" class="md-nav__link">
+        文档合集
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../e-book/" class="md-nav__link">
+        电子书
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/front_links/" class="md-nav__link">
+        前端常用地址
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/back_links/" class="md-nav__link">
+        后端常用地址
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/other_links/" class="md-nav__link">
+        其他常用地址
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/become_leader/" class="md-nav__link">
+        成为高手秘籍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/zym_weibo/" class="md-nav__link">
+        张一鸣微博
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        关于
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    Node.js服务端的语言
+  </a>
+  
+    <nav class="md-nav" aria-label="Node.js服务端的语言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodejs_1" class="md-nav__link">
+    下载Node.js
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs_2" class="md-nav__link">
+    Node.js是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascriptnodejs" class="md-nav__link">
+    JavaScript与node.js的区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs_3" class="md-nav__link">
+    node.js的基本用法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#es6" class="md-nav__link">
+    ES6新规范
+  </a>
+  
+    <nav class="md-nav" aria-label="ES6新规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#es6_1" class="md-nav__link">
+    什么是ES6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#es6_2" class="md-nav__link">
+    ES6的常见的新特性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    Npm包管理器
+  </a>
+  
+    <nav class="md-nav" aria-label="Npm包管理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm_1" class="md-nav__link">
+    Npm包管理器是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#babel" class="md-nav__link">
+    Babel转码器
+  </a>
+  
+    <nav class="md-nav" aria-label="Babel转码器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#babel_1" class="md-nav__link">
+    Babel转码器是什么
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    如何使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    模块化开发
+  </a>
+  
+    <nav class="md-nav" aria-label="模块化开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    什么是模块化开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commonjs" class="md-nav__link">
+    CommonJS规范
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#es6_3" class="md-nav__link">
+    ES6模块化规划
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webpack" class="md-nav__link">
+    Webpack前端打包编译工具工具
+  </a>
+  
+    <nav class="md-nav" aria-label="Webpack前端打包编译工具工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webpack_1" class="md-nav__link">
+    Webpack什么是
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    打包.js
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css" class="md-nav__link">
+    打包.css
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue-element-admin" class="md-nav__link">
+    Vue-element-admin后台前端解决方案
+  </a>
+  
+    <nav class="md-nav" aria-label="Vue-element-admin后台前端解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    什么是脚手架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vue-element-admin_1" class="md-nav__link">
+    Vue-element-admin是什么
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">前端基础知识</h1>
+<h2 id="nodejs">Node.js服务端的语言</h2>
+<p>在编写前端代码时可以使用<strong>VScode</strong>代码编辑工具进行编写，下载地址：<a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
+<h3 id="nodejs_1">下载Node.js</h3>
+<ul>
+<li>下载地址：<a href="https://nodejs.org/zh-cn/download" target="_blank">https://nodejs.org/zh-cn/download</a></li>
+<li>帮助文档：<a href="https://nodejs.org/zh-cn/docs" target="_blank">https://nodejs.org/zh-cn/docs</a></li>
+<li>关于Nodejs：<a href="https://nodejs.org/zh-cn/about" target="_blank">https://nodejs.org/zh-cn/about</a></li>
+<li>安装后检查是否安装成功cmd输入<code>node -v</code></li>
+<li>Node.js是一门计算机语言，运行在系统中的V8（jvm）引擎中。文件后缀<code>js</code>运行命令：node</li>
+</ul>
+<!-- more -->
+
+<h3 id="nodejs_2">Node.js是什么</h3>
+<ul>
+<li>
+<p><strong>node.js是一种服务端的语言</strong></p>
+</li>
+<li>
+<p>node.js一种javascript的运行环境，能够使得javascript脱离浏览器运行</p>
+</li>
+<li>
+<p>node.js是一个基于Chrome JavaScript运行时建立的平台</p>
+</li>
+<li>
+<p>node.js是基于Google的V8引擎</p>
+</li>
+</ul>
+<h3 id="javascriptnodejs">JavaScript与node.js的区别</h3>
+<p>JavaScript：</p>
+<ul>
+<li><code>ESMAScript</code>(语言基础，如：语法、数据类型结构以及一些内置对象)</li>
+<li><code>DOM</code>(操作页面元素)</li>
+<li><code>BOM</code>(操作浏览器的方法)</li>
+</ul>
+<p>Node.js:</p>
+<ul>
+<li><code>ESMAScript</code>(语言基础，如：语法、数据类型结构以及一些内置对象)</li>
+<li><code>os</code>(操作系统)</li>
+<li><code>file</code>(文件系统)</li>
+<li><code>net</code>(网络系统)</li>
+<li><code>database</code>(数据库)</li>
+</ul>
+<h3 id="nodejs_3">node.js的基本用法</h3>
+<p>输出hello-word:</p>
+<ul>
+<li>
+<p>创建hello-word.js文件</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;hello word!!!&quot;</span><span class="p">);</span><span class="c1">//在控制台输出hello word!!!</span>
+</code></pre></div>
+<p>在终端输入<code>node helloword.js</code></p>
+</li>
+</ul>
+<p>实现HTTP请求和响应</p>
+<ul>
+<li>创建一个<code>httpserlvet.js</code>文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">);</span><span class="w">     </span><span class="c1">//require导入模块</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span><span class="w"> </span><span class="c1">//1.创建一个httpservler服务</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,{</span><span class="s1">&#39;Content-type&#39;</span><span class="o">:</span><span class="s1">&#39;text/html&#39;</span><span class="p">});</span><span class="c1">//告诉浏览器用text-plain解析hello server这段数据</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;hello server!!!&lt;h1&gt;&quot;</span><span class="p">);</span><span class="c1">//浏览器输出内容</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mf">8888</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;你启动的服务是http://localhost:8888以启动成功&quot;</span><span class="p">);</span>
+
+<span class="c1">//1.require导入模块</span>
+<span class="c1">//2.创建一个httpservler服务</span>
+<span class="c1">//3.监听端口8888</span>
+<span class="c1">//4.启动运行服务node httpserlvet.js</span>
+<span class="c1">//5.在浏览器访问http://localhost:8888</span>
+</code></pre></div>
+<p>在终端输入<code>node httpserlvet.js</code></p>
+<p>实现MySQl数据库操作</p>
+<ul>
+<li>创建一个<code>database.js</code>文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">mysql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;mysql&quot;</span><span class="p">);</span><span class="w">     </span><span class="c1">//导包</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span><span class="w">  </span><span class="c1">//创建一个mysql连接、配置数据库连接信息</span>
+<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="s2">&quot;root&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="s2">&quot;3306&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">password</span><span class="o">:</span><span class="s2">&quot;123321&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">database</span><span class="o">:</span><span class="s2">&quot;junit&quot;</span>
+<span class="p">});</span>
+<span class="nx">connection</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span><span class="w">       </span><span class="c1">//开启连接</span>
+<span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;select * from classes&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">result</span><span class="p">,</span><span class="nx">fields</span><span class="p">){</span><span class="c1">//创建SQL语句</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span><span class="w">      </span><span class="c1">//如果程序错误，抛出</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;result=&quot;</span><span class="p">,</span><span class="nx">result</span><span class="p">);</span><span class="w">    </span><span class="c1">//查询成功</span>
+<span class="p">});</span>
+<span class="nx">connection</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span><span class="w">        </span><span class="c1">//关闭连接</span>
+<span class="c1">//运行node db.js</span>
+</code></pre></div>
+<p>在终端输入<code>node database.js</code></p>
+<h2 id="es6">ES6新规范</h2>
+<h3 id="es6_1">什么是ES6</h3>
+<ul>
+<li>JavaScipt是由：<code>ECMAScript</code>、<code>Dom</code>、<code>Bom</code>组成。</li>
+<li>ES5：ECMAScript的第五个版本</li>
+<li>ES6：ECMAScript的第六个版本，保证向下兼容的前提下，提供大量新特性</li>
+<li>ES6提供的基本的新特性有</li>
+</ul>
+<h3 id="es6_2">ES6的常见的新特性</h3>
+<p>let 和 const关键字、模板字符串、函数默认参数、箭头函数、对象初始化，对象解构、传播操作符、数组map和reduce方法使用</p>
+<ul>
+<li>let 和 const关键字</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;zhangsan&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// let:定义变量</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span><span class="w">   </span><span class="c1">// const:定义常量</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mf">5</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span><span class="w">  </span><span class="c1">//使用ES5:var定义，变量穿透问题</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">PI</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span><span class="w">    </span><span class="c1">//使用ES5:var定义，变量更改问题</span>
+<span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li>模板字符串</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hello &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">)</span><span class="c1">//ES5方式</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`hello </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="c1">//ES6方式，类似于Java中el表达式 `为键盘数字1左边的键英文输入`</span>
+</code></pre></div>
+<ul>
+<li>函数默认参</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="mf">100</span><span class="p">,</span><span class="nx">b</span><span class="o">=</span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="c1">//设置函数默认参</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">);</span><span class="w">    </span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>箭头函数(<code>=&gt;</code>)</li>
+</ul>
+<p><strong>规则</strong>:</p>
+<ol>
+<li><code>function</code>关键字用<code>=&gt;</code>代替</li>
+<li>当只有一个参数时可以省略</li>
+<li>如果逻辑体只有<code>return</code>关键字可以省略</li>
+<li>支持继承上下文的<code>this</code>关键字</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span><span class="w"> </span><span class="c1">//ES5</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span><span class="w">  </span><span class="c1">//ES6:当只有一个参数时可以省略括号</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="err">，</span><span class="nx">b</span><span class="p">{</span><span class="w"> </span><span class="c1">//ES5</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span><span class="w">      </span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="c1">//ES6:多个参数时不可省略括号</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="err">，</span><span class="nx">b</span><span class="p">{</span><span class="w"> </span><span class="c1">//ES5</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="o">=</span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span><span class="w">                </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">;</span>
+<span class="p">};</span><span class="w">      </span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)=&gt;{</span><span class="w">   </span><span class="c1">//ES6:当有逻辑体时不可以省略大括号</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="o">=</span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span><span class="w">                </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">;</span>
+<span class="p">};</span><span class="w"> </span>
+</code></pre></div>
+<ul>
+<li>对象初始化</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">//ES5</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="s2">&quot;document&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">link</span><span class="o">:</span><span class="s2">&quot;文档&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">go</span><span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;es5-加油加油加油！！！&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+<span class="c1">//因为对象key:value的形式存在,如果key和变量名字一致，可以只定义一次    </span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="o">=</span><span class="s2">&quot;document&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">//ES6</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="o">=</span><span class="s2">&quot;文档&quot;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">info2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">link</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">go</span><span class="p">(){</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;es6-加油加油加油！！！&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">info2</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>对象解构</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="o">=</span><span class="s2">&quot;document&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="o">=</span><span class="s2">&quot;文档&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">info2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">link</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">go</span><span class="p">(){</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;es6-加油加油加油！！！&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="c1">//ES5中，对象是key:value存在，获取对象属性和方法的两种方式. 、[]</span>
+<span class="w">    </span><span class="nx">info2</span><span class="p">.</span><span class="nx">link</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">info2</span><span class="p">.</span><span class="nx">go</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">info2</span><span class="p">[</span><span class="s2">&quot;link&quot;</span><span class="p">];</span>
+<span class="w">    </span><span class="nx">info2</span><span class="p">[</span><span class="s2">&quot;go&quot;</span><span class="p">]();</span>
+<span class="c1">//ES6对象解构-快速获取属性和方法的方式</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="p">,</span><span class="nx">link</span><span class="p">,</span><span class="nx">go</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">info2</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="nx">link</span><span class="p">,</span><span class="nx">go</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>传播操作符</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * 对象传播操作符:在对象解构的过程中如果对象属性太多或者想把对象中属性全部解构出来就可以使用{a,b,...c} | {...c}其中...为传播操作符</span>
+<span class="cm">  * */</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;攀岩&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">addres</span><span class="o">:</span><span class="s2">&quot;跑步&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">link</span><span class="o">:</span><span class="s2">&quot;奋斗&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">phone</span><span class="o">:</span><span class="mf">123456</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">go</span><span class="p">(){</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;为了梦想加油加油加油！！！&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="c1">//使用传播操作符快速解构</span>
+<span class="kd">var</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="p">,</span><span class="nx">addres</span><span class="p">,...</span><span class="nx">person2</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">person</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">addres</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person2</span><span class="p">);</span>
+<span class="c1">//可以简化为</span>
+<span class="kd">var</span><span class="w"> </span><span class="p">{...</span><span class="nx">person3</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">person</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person3</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>数组map</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="mf">2</span><span class="p">,</span><span class="mf">3</span><span class="p">,</span><span class="mf">4</span><span class="p">,</span><span class="mf">5</span><span class="p">,</span><span class="mf">6</span><span class="p">,</span><span class="mf">7</span><span class="p">];</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">newarr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w">      </span><span class="c1">//ES5方式循环遍历</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">            </span><span class="nx">newarr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">*</span><span class="mf">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newarr</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">newarr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ele</span><span class="p">){</span><span class="w"> </span><span class="c1">//ES6方式遍历循环</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w">      </span><span class="c1">//map方式:自带循环并且会把处理的值回填对应的位置，自带循环、回填</span>
+<span class="p">});</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">newarr3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">ele</span><span class="p">=&gt;</span><span class="nx">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w">  </span><span class="c1">//箭头函数简写</span>
+
+<span class="c1">//map方式处理对象的数据:自增+1、并添加属性、可以对json格式的数据进行改造</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="nx">age</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;小学&quot;</span><span class="p">},{</span><span class="nx">age</span><span class="o">:</span><span class="mf">15</span><span class="p">,</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;中学&quot;</span><span class="p">},{</span><span class="nx">age</span><span class="o">:</span><span class="mf">20</span><span class="p">,</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;大学&quot;</span><span class="p">}];</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">newusers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">users</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ele</span><span class="p">){</span>
+<span class="w">      </span><span class="nx">ele</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ele</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w">    </span><span class="c1">//map自增+1</span>
+<span class="w">      </span><span class="nx">ele</span><span class="p">.</span><span class="nx">check</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span><span class="w">     </span><span class="c1">//map添加属性</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">ele</span><span class="p">;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">newuser2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">users</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">ele</span><span class="p">=&gt;{</span><span class="w">   </span><span class="c1">//箭头函数简写</span>
+<span class="w">  </span><span class="nx">le</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ele</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">ele</span><span class="p">.</span><span class="nx">check</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ele</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<ul>
+<li>reduce方法使用</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="mf">2</span><span class="p">,</span><span class="mf">3</span><span class="p">,</span><span class="mf">4</span><span class="p">,</span><span class="mf">5</span><span class="p">,</span><span class="mf">6</span><span class="p">,</span><span class="mf">7</span><span class="p">];</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="w"> </span><span class="c1">//reduce()方法实现数组中数据相加</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">result2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)=&gt;</span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">);</span><span class="w"> </span><span class="c1">//箭头函数简写</span>
+</code></pre></div>
+<ul>
+<li>
+<p>概括</p>
+<p><code>ES6</code>是<code>ES5</code>的拓展版，<code>let 可变</code>，<code>const不可变</code>。模板字符串拼接使用<code>${..}</code>。<code>=&gt;</code>对函数的简写。对象初始化默认参数。对象统一解构。传播符<code>（...A）</code>。<code>map</code>-自带循环、回填，可更改添加属性。<code>reduce方法</code>对数组（对象）中的数进行依次相加。</p>
+</li>
+<li>
+<p><code>Node.js</code>与<code>JavaScript</code>、<code>ES5</code>、<code>ES6</code>之间的关系</p>
+</li>
+<li>
+<p><code>Node.js</code> 是 <code>JavaScript</code> 的服务器<strong>运行环境</strong>。</p>
+</li>
+<li><code>JavaScript</code>包括<code>ECMAScript</code>、<code>DOM</code>、<code>BOM</code> 。</li>
+<li><code>ES6</code>在<code>ES5（ECMAScript）</code>的基础上添加了新规范。</li>
+<li><code>Node.js</code> 对<code>ES6</code> 的支持度更高。</li>
+</ul>
+<h2 id="npm">Npm包管理器</h2>
+<h3 id="npm_1">Npm包管理器是什么</h3>
+<ul>
+<li>由于nodejs是一种服务端的语言，可以对数据库浏览器等进行操作所有在nodejs要导入这些依赖，可以使用npm包管理器来导入依赖。</li>
+<li>npm是Nodejs平台的默认包管理工具，所以npm会随同NodeJS一起安装。可以根据配置package.json下载js库。类似于Java的maven。</li>
+<li>官方网站：<a href="https://www.npmjs.com/">https://www.npmjs.com/</a></li>
+</ul>
+<h3 id="_2">使用</h3>
+<div class="highlight"><pre><span></span><code>npm -v #在命令提示符输入
+</code></pre></div>
+<ul>
+<li>在当前项目下初始化Npm包管理器</li>
+</ul>
+<div class="highlight"><pre><span></span><code>npm init # 方式1
+#配置package.json文件信息
+{
+  &quot;name&quot;: &quot;npm&quot;,                      #工程名
+  &quot;version&quot;: &quot;1.0.1&quot;,                 #项目版本
+  &quot;description&quot;: &quot;我是一个node工程&quot;,   #描述
+  &quot;main&quot;: &quot;index.js&quot;,                 #入口js
+  &quot;scripts&quot;: {                        #运行脚本
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [
+    &quot;node&quot;
+  ],
+  &quot;author&quot;: &quot;xxx&quot;,                    #开发者
+  &quot;license&quot;: &quot;ISC&quot;                    #授权协议
+}
+npm init -y # 方式2
+# 直接生成 package.json 文件
+</code></pre></div>
+<ul>
+<li>切换淘宝镜像</li>
+</ul>
+<div class="highlight"><pre><span></span><code>npm config set registry https://registry.npm.taobao.org #npm install 都会经过淘宝的镜像地址下载
+npm config list  #查看npm配置信息，切换淘宝镜像后可以使用cnpm
+</code></pre></div>
+<ul>
+<li><strong>npm install命令</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>cnpm install jquery
+# 下载的模块会安装到：项目目录\node_modules，安装后会自动添加package-lock.json文件，这个文件帮助锁定安装包的版本
+# 同时package.json 文件中，依赖包会被添加到dependencies节点下，类似maven中的 &lt;dependencies&gt;
+cnpm install jquery@2.1.x #如果安装时想指定特定的版本
+cnpm install -g webpack
+#全局安装
+#Node.js全局安装的npm包和工具的位置：用户目录\AppData\Roaming\npm\node_modules
+#一些命令行工具常使用全局安装的方式
+</code></pre></div>
+<ul>
+<li><strong>其他命令</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>cnpm update &lt;包名&gt;    #更新包（更新到最新版本）
+cnpm update -g &lt;包名&gt;   #全局更新
+cnpm uninstall &lt;包名&gt;   #卸载包
+cnpm uninstall -g &lt;包名&gt;  #全局卸载
+</code></pre></div>
+<ul>
+<li>
+<p><strong>package-lock.json与package.json的区别</strong></p>
+<p>package.json记录当前项目所依赖模块的版本信息，更新模块时锁定模块的大版本号（版本号的第一位）。package-lock.json记录了node_modules目录下所有模块的具体来源和版本号以及其他的信息。</p>
+</li>
+</ul>
+<h2 id="babel">Babel转码器</h2>
+<h3 id="babel_1">Babel转码器是什么</h3>
+<ul>
+<li>ES6的某些高级语法在浏览器环境或者是Node.js环境中无法执行</li>
+<li>Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行</li>
+</ul>
+<h3 id="_3">如何使用</h3>
+<ul>
+<li>安装Babel</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cnpm install -g babel -cli
+babel --version #查看是否 安装成功
+</code></pre></div>
+<ul>
+<li>
+<p>创建Babel文件夹</p>
+</li>
+<li>
+<p>初始化项目（Npm包管理器）</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cnpm init -y
+</code></pre></div>
+<ul>
+<li>创建要解码的js</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]</span>
+<span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>配置.babelrc</li>
+</ul>
+<blockquote>
+<p>Babel的配置文件是.babelrc，存放在项目的根目录下，该文件用来设置转码规则和插件，基本格式如下。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1">//presets字段设定转码规则，将es2015规则加入 .babelrc：   </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;presets&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;es2015&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>安装解码器</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">cnpm</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span><span class="w"> </span><span class="nx">babel</span><span class="o">-</span><span class="nx">preset</span><span class="o">-</span><span class="nx">es2015</span>
+</code></pre></div>
+<ul>
+<li>转码</li>
+</ul>
+<div class="highlight"><pre><span></span><code># npm install --save-dev csv-loader xml-loader
+# 转码结果写入一个文件
+mkdir dist1
+# --out-file 或 -o 参数指定输出文件
+babel src/example.js --out-file dist1/compiled.js
+# 或者
+babel src/example.js -o dist1/compiled.js
+# 整个目录转码
+mkdir dist2
+# --out-dir 或 -d 参数指定输出目录
+babel src --out-dir dist2
+# 或者
+babel src -d dist2
+</code></pre></div>
+<ul>
+<li>方式二自定义脚本转码</li>
+</ul>
+<p>1、改写package.json</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;babel src\\example.js -o dist\\compiled.js&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>2、转码</p>
+<div class="highlight"><pre><span></span><code>mkdir dist
+cnpm run build
+</code></pre></div>
+<h2 id="_4">模块化开发</h2>
+<h3 id="_5">什么是模块化开发</h3>
+<p>现在网页元素越来越丰富，前端代码JavaScript越来越庞大，越来越复杂。如果没有像Java那样包、类模块发的编程，因此针对JavaScript推出了模块化归还，让开发者只需要实现核心的业务逻辑。其他都可以加载别人已经写好的模块。</p>
+<h3 id="commonjs">CommonJS规范</h3>
+<p><strong>CommonJS使用 exports 和require 来导出、导入模块</strong>:</p>
+<ul>
+<li>创建common-js.js文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="w">  </span><span class="c1">//加</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span>
+<span class="p">}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">subtract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="w"> </span><span class="c1">//减</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span>
+<span class="p">}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">multiply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="w"> </span><span class="c1">//乘</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span>
+<span class="p">}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">divide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span><span class="w"> </span><span class="c1">//除</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">b</span>
+<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">//使用module.exports导出该文件的成员</span>
+<span class="w">    </span><span class="nx">sum</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sub</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">mul</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">di</span>
+<span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>创建common-js-require.js文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./common-js.js&quot;</span><span class="p">);</span><span class="c1">//使用require()导入common-js.js模块化开发</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="mf">9</span><span class="p">,</span><span class="mf">1</span><span class="p">));</span><span class="w">   </span><span class="c1">//输出</span>
+</code></pre></div>
+<ul>
+<li>运行程序</li>
+</ul>
+<div class="highlight"><pre><span></span><code>node common-js-require.js
+</code></pre></div>
+<h3 id="es6_3">ES6模块化规划</h3>
+<p><strong>ES6使用 export 和 import 来导出、导入模块。</strong></p>
+<ul>
+<li>创建userExport.js文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">getList</span><span class="p">(){</span>
+<span class="w">        </span><span class="c1">// 在真实业务开发中，异步获取数据</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;获取数据列表&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">save</span><span class="p">(){</span>
+<span class="w">        </span><span class="c1">// 在真实业务开发中，异步获取数据</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;保存数据&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>创建userImport.js文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">userApi</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./userExport.js&#39;</span>
+<span class="nx">userApi</span><span class="p">.</span><span class="nx">getList</span><span class="p">()</span>
+<span class="nx">userApi</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
+</code></pre></div>
+<blockquote>
+<p>ES6在模块化开发中无法在Node.js中执行，需要使用Babel编辑成ES6后再执行</p>
+</blockquote>
+<ul>
+<li>初始化项目</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cnpm init -y
+</code></pre></div>
+<ul>
+<li>配置.babelrc</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;presets&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;es2015&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>安装转码器</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cnpm install --save-dev babel-preset-es2015
+</code></pre></div>
+<ul>
+<li>定义运行脚本，package.json中增加"build"</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="s2">&quot;scripts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;build&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;babel src -d dist&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>执行命令转码</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cnpm run build
+</code></pre></div>
+<ul>
+<li>运行程序</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">node</span><span class="w"> </span><span class="nx">dist</span><span class="o">/</span><span class="nx">userExport</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div>
+<h2 id="webpack">Webpack前端打包编译工具工具</h2>
+<h3 id="webpack_1">Webpack什么是</h3>
+<p>webpack作用：可以将多个静态资源js、css等打包成一个js文件。</p>
+<h3 id="_6">安装</h3>
+<ul>
+<li>全局安装</li>
+</ul>
+<div class="highlight"><pre><span></span><code>npm install -g webpack webpack-cli
+</code></pre></div>
+<ul>
+<li>查看版本号</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">webpack</span><span class="w"> </span><span class="o">-</span><span class="nx">v</span>
+</code></pre></div>
+<h3 id="js">打包.js</h3>
+<p>实现步骤：</p>
+<ol>
+<li>创建两个js文件</li>
+<li>创建文件入口main.js</li>
+<li>创建webpack配置文件</li>
+<li>运行webpack命令</li>
+<li>
+<p>创建index.html页面测试</p>
+</li>
+<li>
+<p>创建两个js</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">str</span><span class="p">){</span><span class="c1">//导出</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span><span class="w">   </span><span class="c1">//控制台</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span><span class="w">  </span><span class="c1">//浏览器</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span><span class="w">  </span><span class="c1">//相加函数</span>
+</code></pre></div>
+<ul>
+<li>创建入口文件main.js</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">util</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./util&quot;</span><span class="p">);</span><span class="c1">//导入util、common</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">common</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./common&quot;</span><span class="p">);</span>
+<span class="nx">common</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;Helloword,&quot;</span><span class="o">+</span><span class="nx">util</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">));</span>
+</code></pre></div>
+<ul>
+<li>创建webpack配置文件<code>webpack.config.js</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">//导入path模块</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">      </span><span class="c1">//定义JS打包的规则</span>
+<span class="w">    </span><span class="nx">entry</span><span class="o">:</span><span class="s2">&quot;./src/main.js&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">output</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="s2">&quot;./dist&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">filename</span><span class="o">:</span><span class="s2">&quot;bundle.js&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>entry:</strong>读取当前项目目录下src文件夹中的main.js（入口文件）内容，分析资源依赖，把相关的js文件打包，<strong>output:path</strong>打包后的文件放入当前目录的dist文件夹下，<strong>filename:</strong>打包后的js文件名为bundle.js</p>
+</blockquote>
+<ul>
+<li>配置项目的npm运行命令，修改package.json文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;scripts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//...,</span>
+<span class="w">    </span><span class="s2">&quot;dev&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;webpack --mode=development&quot;</span>
+<span class="p">}</span>
+<span class="c1">//或者cmd输入:webpack --mode=development表示执行后查看bundle.js 里面包含了上面两个js文件的内容并进行了代码压缩</span>
+</code></pre></div>
+<ul>
+<li>运行npm命令执行打包</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nx">npm</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">dev</span>
+</code></pre></div>
+<ul>
+<li>创建index.html页面测试</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./bundle.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="css">打包.css</h3>
+<p>实现步骤：</p>
+<ol>
+<li>安装转换css的组件</li>
+<li>修改webpack.config.js配置文件</li>
+<li>创建css文件</li>
+<li>修改入口文件，加载css文件</li>
+<li>
+<p>打包测试运行编译命令</p>
+</li>
+<li>
+<p>安装转换css的组件</p>
+</li>
+</ol>
+<blockquote>
+<p>Webpack 本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。</p>
+<p>Loader 可以理解为是模块和资源的转换器。</p>
+<p>安装相关Loader插件</p>
+<ul>
+<li>css-loader 是将 css 装载到 javascript</li>
+<li>style-loader 是让 javascript 认识css</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nx">npm</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span><span class="w"> </span><span class="nx">style</span><span class="o">-</span><span class="nx">loader</span><span class="w"> </span><span class="nx">css</span><span class="o">-</span><span class="nx">loader</span>
+</code></pre></div>
+<ul>
+<li>修改webpack.config.js配置文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span><span class="w">     </span><span class="c1">//导入path模块</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">//定义JS打包的规则</span>
+<span class="w">    </span><span class="nx">entry</span><span class="o">:</span><span class="s2">&quot;./src/main.js&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">output</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="s2">&quot;./dist&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">filename</span><span class="o">:</span><span class="s2">&quot;bundle.js&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">module</span><span class="o">:</span><span class="p">{</span><span class="w">         </span><span class="c1">//定义css打包规则</span>
+<span class="w">        </span><span class="nx">rules</span><span class="o">:</span><span class="p">[{</span>
+<span class="w">            </span><span class="nx">test</span><span class="o">:</span><span class="sr">/\.css$/</span><span class="p">,</span><span class="w">      </span><span class="c1">//把项目中所有的.css结尾的文件进行打包</span>
+<span class="w">            </span><span class="nx">use</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;style-loader&quot;</span><span class="p">,</span><span class="s2">&quot;css-loader&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>创建css文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">body</span><span class="p">{</span>
+<span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">yellow</span><span class="p">;</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>修改入口文件，加载css文件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">util</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./util&quot;</span><span class="p">);</span><span class="w">     </span><span class="c1">//导入util、common</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">common</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./common&quot;</span><span class="p">);</span>
+<span class="nx">common</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;Helloword,&quot;</span><span class="o">+</span><span class="nx">util</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="mf">100</span><span class="p">));</span>
+<span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../style.css&quot;</span><span class="p">);</span><span class="w">      </span><span class="c1">//导入css</span>
+</code></pre></div>
+<ul>
+<li>打包测试运行编译命令</li>
+</ul>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<h2 id="vue-element-admin">Vue-element-admin后台前端解决方案</h2>
+<h3 id="_7">什么是脚手架</h3>
+<p>脚手架是指再软甲开发过程中，有人帮你把开发过程中要用到的工具、环境都配置好了，你就可以方便地直接开始做开发，专注你的业务，而不用再花时间去配置这个开发环境，这个开发环境就是脚手架。</p>
+<h3 id="vue-element-admin_1">Vue-element-admin是什么</h3>
+<p>vue-element-admin 是一个后台前端解决方案，它基于 vue 和 element-ui实现。它使用了最新的前端技术栈，内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。<br />
+vue-element-admin 让后端程序员也能轻松上手做一些前端页面，而且配置打包都很简单。</p>
+<p>官网网址：<a href="https://panjiachen.github.io/vue-element-admin-site/zh/" target="_blank">https://panjiachen.github.io/vue-element-admin-site/zh/</a></p>
+<p><strong>运行工程和编译工程</strong>:</p>
+<blockquote>
+<p>克隆项目：git clone<a href="https://github.com/PanJiaChen/vue-element-admin.git" target="_blank">https://github.com/PanJiaChen/vue-element-admin.git</a>
+进入项目目录：cd vue-element-admin
+安装依赖：npm install
+如果安装慢可以使用：npm install --registry=<a href="https://registry.npm.taobao.org" target="_blank">https://registry.npm.taobao.org</a>
+本地开发 启动项目：npm run dev
+启动完成后会自动打开浏览器访问<a href="http://localhost:9527/">http://localhost:9527</a></p>
+</blockquote>
+<p>还历史以真诚，还生命以过程。 ——余秋雨</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月23日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月23日</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
