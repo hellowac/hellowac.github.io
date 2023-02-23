@@ -102,3 +102,8 @@ nav:
   - 文档: 
     - 文档合集: documents/docs.md
   - 电子书: e-book.md
+  - 其他:
+    - 前端常用地址: other/front_links.md
+    - 后端常用地址: other/back_links.md
+    - 其他常用地址: other/other_links.md
+  - 关于: about.md
