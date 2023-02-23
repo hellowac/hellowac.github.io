@@ -1,2519 +1,1214 @@
 
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="prev" href="../rfc6749/">
-      
-      
-        <link rel="next" href="../../concept/xaas/">
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
-    
-    
-      
-        <title>Oauth2-RFC6750翻译 - 我的工作学习生活笔记</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ffa9267a.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
-      
-      
+<!DOCTYPE html>
 
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
-  
-    
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#oauth2-rfc6750" class="md-skip">
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../rfc6749/" rel="prev"/>
+<link href="../../concept/xaas/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.13" name="generator"/>
+<title>Oauth2-RFC6750翻译 - 我的工作学习生活笔记</title>
+<link href="../../../assets/stylesheets/main.ffa9267a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="default" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#oauth2-rfc6750">
           跳转至
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
+</div>
+<div data-md-component="announce">
+</div>
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="我的工作学习生活笔记" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             我的工作学习生活笔记
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               Oauth2-RFC6750翻译
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="查找">
-        
-        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-  </nav>
-  
+</div>
+</div>
+</div>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-            
-<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
       首页
     </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../python/" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../python/">
         技术
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../read/english/bluelevel/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../read/english/bluelevel/">
         阅读
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../invest/webs/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../invest/webs/">
         投资
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../tools/repos/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tools/repos/">
         工具
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../documents/docs/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../documents/docs/">
         文档
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../e-book/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../e-book/">
       电子书
     </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../other/front_links/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../other/front_links/">
         其他
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../about/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../about/">
       关于
     </a>
-  </li>
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="我的工作学习生活笔记" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
     我的工作学习生活笔记
   </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
         首页
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
           技术
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           技术
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
           Python
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
           Python
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/">
         安装
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/pip/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/pip/">
         pip
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/stringio/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/stringio/">
         StringIO
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/flask/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/flask/">
         flask
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/logging/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/logging/">
         logging
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/importlib/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/importlib/">
         importlib
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/pycrypto/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/pycrypto/">
         crypto
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/petl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/petl/">
         petl
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/psutil/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/psutil/">
         psutil
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/docx/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/docx/">
         Docx
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/excel/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/excel/">
         Excel
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/reportlab/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/reportlab/">
         reportlab
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/alembic/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/alembic/">
         alembic
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/sqlalchemy/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/sqlalchemy/">
         sqlalchemy
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/useful_functions/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/useful_functions/">
         常用函数合集
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
           Linux
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
           Linux
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/usage_source/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/usage_source/">
         常用资源
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/port/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/port/">
         端口占用查找
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/disk-mount/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/disk-mount/">
         linux磁盘挂载
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/shell-scripts/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/shell-scripts/">
         shell脚本实战
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
           前端知识
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
           前端知识
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/base/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/base/">
         基础
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/project/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/project/">
         工程化流程
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/version/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/version/">
         包版本知识
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/package/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/package/">
         package.json知识
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/webassembly/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/webassembly/">
         WebAssembly
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
           服务组件
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
           服务组件
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/zookeeper/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/zookeeper/">
         zookeeper
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/nginx/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/nginx/">
         nginx
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/supervisor/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/supervisor/">
         supervisor
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/rabbitmq/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/rabbitmq/">
         rabbitmq
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/kafka/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/kafka/">
         kafka
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_4_6" id="__nav_2_4_6_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_6" id="__nav_2_4_6_label" tabindex="0">
           无头浏览器
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_4_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_6">
+<span class="md-nav__icon md-icon"></span>
           无头浏览器
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unheadchrome/openchrome/">
         openchrome
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unheadchrome/build_env/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unheadchrome/build_env/">
         环境搭建
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
           数据库
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
           数据库
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/clickhouse/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/clickhouse/">
         ClickHouse
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
           MySQL
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_5_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_2">
+<span class="md-nav__icon md-icon"></span>
           MySQL
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/mysql8_install/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/mysql8_install/">
         mysql8
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/mysql/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/mysql/">
         常用操作
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
           ElasticSearch
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_5_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_3">
+<span class="md-nav__icon md-icon"></span>
           ElasticSearch
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/elasticsearch_py/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/elasticsearch_py/">
         elasticsearch-py
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/es_dsl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/es_dsl/">
         elasticsearch-dsl
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/es_aggs/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/es_aggs/">
         elasticsearch-aggs
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
           安全渗透
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
           安全渗透
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/thc-hydra/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../security/thc-hydra/">
         hydra
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/sqlmap/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../security/sqlmap/">
         sqlmap
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
           RFC标准
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2_7">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
           RFC标准
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../oauth2/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../oauth2/">
         oauth2学习笔记
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rfc6749/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rfc6749/">
         Oauth2-RFC6749翻译
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           Oauth2-RFC6750翻译
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Oauth2-RFC6750翻译
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#oauth-20" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#oauth-20">
     OAuth 2.0授权框架：不记名令牌用法
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
     摘要
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
     本备忘录状态
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
     版权声明
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1">
     1 简介
   </a>
-  
-    <nav class="md-nav" aria-label="1 简介">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+<nav aria-label="1 简介" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11">
     1.1 符号约定
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12">
     1.2 术语
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#13" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13">
     1.3 概述
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
     2 已验证身份的请求
   </a>
-  
-    <nav class="md-nav" aria-label="2 已验证身份的请求">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
+<nav aria-label="2 已验证身份的请求" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21">
     2.1 授权请求头部字段
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#22" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22">
     2.2 表单编码的主体参数
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#23-uri" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-uri">
     2.3 URI查询参数
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-www-authenticate" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-www-authenticate">
     3 WWW-Authenticate响应头部字段
   </a>
-  
-    <nav class="md-nav" aria-label="3 WWW-Authenticate响应头部字段">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
+<nav aria-label="3 WWW-Authenticate响应头部字段" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31">
     3.1 错误代码
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4">
     4 访问令牌响应示例
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5">
     5 安全考量
   </a>
-  
-    <nav class="md-nav" aria-label="5 安全考量">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
+<nav aria-label="5 安全考量" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51">
     5.1 安全威胁
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52">
     5.2 威胁缓解
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#53" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53">
     5.3 建议一览
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#6-iana" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-iana">
     6 IANA考量
   </a>
-  
-    <nav class="md-nav" aria-label="6 IANA考量">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-oauth" class="md-nav__link">
+<nav aria-label="6 IANA考量" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-oauth">
     6.1 OAuth访问令牌类型注册
   </a>
-  
-    <nav class="md-nav" aria-label="6.1 OAuth访问令牌类型注册">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#611-beareroauth" class="md-nav__link">
+<nav aria-label="6.1 OAuth访问令牌类型注册" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#611-beareroauth">
     6.1.1 “Bearer”OAuth访问令牌类型
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#62-oauth" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-oauth">
     6.2 OAuth扩展错误注册
   </a>
-  
-    <nav class="md-nav" aria-label="6.2 OAuth扩展错误注册">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#621-invalid_request" class="md-nav__link">
+<nav aria-label="6.2 OAuth扩展错误注册" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#621-invalid_request">
     6.2.1 “invalid_request”错误值
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#622-invalid_token" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#622-invalid_token">
     6.2.2 “invalid_token”错误值
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#623-insufficient_scope" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#623-insufficient_scope">
     6.2.3 “insufficient_scope”错误值
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7">
     7 参考文献
   </a>
-  
-    <nav class="md-nav" aria-label="7 参考文献">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71" class="md-nav__link">
+<nav aria-label="7 参考文献" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71">
     7.1 规范性引用文献
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#72" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#72">
     7.2 参考性引用文献
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#a" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a">
     附录A 致谢
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
           知识概念
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
           知识概念
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/xaas/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/xaas/">
         xaas概念
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/users/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/users/">
         统一用户管理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/etl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/etl/">
         ETL数据处理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/data_transfer/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/data_transfer/">
         数据传输和对接
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/understand_computer_system/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/understand_computer_system/">
         深入理解计算机系统
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_9">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
           其他
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../other/backup/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../other/backup/">
         暂无
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           阅读
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           阅读
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
           英语
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
           英语
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/english/bluelevel/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/english/bluelevel/">
         BlueLevel
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/english/redlevel/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/english/redlevel/">
         RedLevel
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-          书籍
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_2">
-          <span class="md-nav__icon md-icon"></span>
-          书籍
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/howtoreadbook/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/howtoreadbook/">
         如何阅读一本书
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/howtoavoid/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/howtoavoid/">
         如何避免愚蠢的见识
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/placeofsoul/">
+        灵魂的最高处
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/maliciousmatch/">
+        恶意匹配
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          沟通的艺术
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+          沟通的艺术
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication01/">
+        沟通入门
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication02/">
+        看入人里:自我
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication03/">
+        看入人里:知觉
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           投资
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           投资
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../invest/webs/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../invest/webs/">
         理财网站
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           工具
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           工具
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/repos/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/repos/">
         仓库合集
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           文档
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
           文档
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../documents/docs/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../documents/docs/">
         文档合集
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../e-book/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../e-book/">
         电子书
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
           其他
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/front_links/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/front_links/">
         前端常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/back_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/back_links/">
         后端常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/other_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/other_links/">
         其他常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/become_leader/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/become_leader/">
         成为高手秘籍
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/zym_weibo/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/zym_weibo/">
         张一鸣微博
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../about/">
         关于
       </a>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#oauth-20" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#oauth-20">
     OAuth 2.0授权框架：不记名令牌用法
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
     摘要
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
     本备忘录状态
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
     版权声明
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1">
     1 简介
   </a>
-  
-    <nav class="md-nav" aria-label="1 简介">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+<nav aria-label="1 简介" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11">
     1.1 符号约定
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12">
     1.2 术语
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#13" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13">
     1.3 概述
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
     2 已验证身份的请求
   </a>
-  
-    <nav class="md-nav" aria-label="2 已验证身份的请求">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
+<nav aria-label="2 已验证身份的请求" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21">
     2.1 授权请求头部字段
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#22" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22">
     2.2 表单编码的主体参数
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#23-uri" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-uri">
     2.3 URI查询参数
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-www-authenticate" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-www-authenticate">
     3 WWW-Authenticate响应头部字段
   </a>
-  
-    <nav class="md-nav" aria-label="3 WWW-Authenticate响应头部字段">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
+<nav aria-label="3 WWW-Authenticate响应头部字段" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31">
     3.1 错误代码
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4">
     4 访问令牌响应示例
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5">
     5 安全考量
   </a>
-  
-    <nav class="md-nav" aria-label="5 安全考量">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
+<nav aria-label="5 安全考量" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51">
     5.1 安全威胁
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52">
     5.2 威胁缓解
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#53" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53">
     5.3 建议一览
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#6-iana" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-iana">
     6 IANA考量
   </a>
-  
-    <nav class="md-nav" aria-label="6 IANA考量">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-oauth" class="md-nav__link">
+<nav aria-label="6 IANA考量" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-oauth">
     6.1 OAuth访问令牌类型注册
   </a>
-  
-    <nav class="md-nav" aria-label="6.1 OAuth访问令牌类型注册">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#611-beareroauth" class="md-nav__link">
+<nav aria-label="6.1 OAuth访问令牌类型注册" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#611-beareroauth">
     6.1.1 “Bearer”OAuth访问令牌类型
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#62-oauth" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-oauth">
     6.2 OAuth扩展错误注册
   </a>
-  
-    <nav class="md-nav" aria-label="6.2 OAuth扩展错误注册">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#621-invalid_request" class="md-nav__link">
+<nav aria-label="6.2 OAuth扩展错误注册" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#621-invalid_request">
     6.2.1 “invalid_request”错误值
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#622-invalid_token" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#622-invalid_token">
     6.2.2 “invalid_token”错误值
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#623-insufficient_scope" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#623-insufficient_scope">
     6.2.3 “insufficient_scope”错误值
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7">
     7 参考文献
   </a>
-  
-    <nav class="md-nav" aria-label="7 参考文献">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71" class="md-nav__link">
+<nav aria-label="7 参考文献" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71">
     7.1 规范性引用文献
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#72" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#72">
     7.2 参考性引用文献
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#a" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a">
     附录A 致谢
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
 <h1 id="oauth2-rfc6750">Oauth2-RFC6750翻译</h1>
 <p>转自: <a href="https://github.com/jeansfish/RFC6750.zh-cn">https://github.com/jeansfish/RFC6750.zh-cn</a></p>
-<p>互联网工程任务组（IETF，Internet Engineering Task Force）<br />
-RFC：6750<br />
-淘汰：[5849][RFC5849]<br />
-类别：标准化过程<br />
+<p>互联网工程任务组（IETF，Internet Engineering Task Force）<br/>
+RFC：6750<br/>
+淘汰：[5849][RFC5849]<br/>
+类别：标准化过程<br/>
 ISSN：2070-1721  </p>
-<p>M. Jones<br />
-Microsoft<br />
-D. Hardt<br />
-独立<br />
+<p>M. Jones<br/>
+Microsoft<br/>
+D. Hardt<br/>
+独立<br/>
 2012年10月</p>
 <h2 id="oauth-20">OAuth 2.0授权框架：不记名令牌用法</h2>
 <h2 id="_1">摘要</h2>
@@ -2523,7 +1218,6 @@ D. Hardt<br />
 <p>本文档是互联网工程任务组（IETF）的作品。它代表了IETF社区的共识。它已接受公开审查并被互联网工程指导小组（IESG）批准公布。互联网标准的更多信息可在<a href="http://tools.ietf.org/html/rfc5741#section-2" target="_blank" title="RFC5741第二节">RFC5741的第2节</a>找到。</p>
 <p>可于<a href="http://www.rfc-editor.org/info/rfc6750" target="_blank" title="RFC6750Editor">http://www.rfc-editor.org/info/rfc6750</a>获取有关本文档的当前状态、勘误表以及如何提供反馈的信息。</p>
 <!-- more -->
-
 <h2 id="_3">版权声明</h2>
 <p>IETF信托及标识为本文档的作者版权所有（c）2012。保留所有权利。</p>
 <p>本文档受<a href="http://tools.ietf.org/html/bcp78" title="PCB78">BCP78</a>和IETF信托有关IETF文档的法律条款 (<a href="http://trustee.ietf.org/license-info" target="_blank" title="IETF文档的法律条款">http://trustee.ietf.org/license-info</a>)的约束，自本文档发布之日起生效。请仔细查阅这些文件，因为它们描述了与本文档有关的权利和限制。从本文档中提取的代码组件必须按信托法律条款<a href="http://tools.ietf.org/html/rfc6749#section-4" target="_blank" title="信托法律条款4.e">4.e</a>节所述包含简化BSD许可证文本；并且按简化BSD许可证中所述不附带质量保证。</p>
@@ -2589,8 +1283,8 @@ D. Hardt<br />
     <span class="l">Authorization: Bearer mF_9.B5f-4.1JqM</span>
 </code></pre></div>
 <p>此方案的“Authorization”头部字段的语法遵循<a href="http://tools.ietf.org/html/rfc2617#section-2" target="_blank" title="HTTP身份验证: 基本与摘要访问身份验证-第2节">[RFC2617]第2节</a>定义的基本方案的用法。注意，如Basic一样，它不符合<a href="http://tools.ietf.org/html/rfc2617#section-1.2" target="_blank" title="HTTP身份验证: 基本与摘要访问身份验证-第1.2节">[RFC2617]1.2</a>节中定义的一般语法，但与正在为HTTP1.1[HTTP-AUTH]{target="_blank"}开发的通用身份验证框架兼容，尽管它为反映现有部署不遵循其中描述的最佳实践。不记名凭证的语法如下：</p>
-<div class="highlight"><pre><span></span><code>    b64token = 1*( ALPHA / DIGIT / &quot;-&quot; / &quot;.&quot; / &quot;_&quot; / &quot;~&quot; / &quot;+&quot; / &quot;/&quot; ) *&quot;=&quot;
-    credentials = &quot;Bearer&quot; 1*SP b64token
+<div class="highlight"><pre><span></span><code>    b64token = 1*( ALPHA / DIGIT / "-" / "." / "_" / "~" / "+" / "/" ) *"="
+    credentials = "Bearer" 1*SP b64token
 </code></pre></div>
 <p>客户端应该使用带有“Bearer”HTTP授权方案的“Authorization”请求头部字段发起带有不记名令牌的身份验证请求。资源服务器必须支持此方法。</p>
 <h3 id="22">2.2 表单编码的主体参数</h3>
@@ -2630,20 +1324,20 @@ D. Hardt<br />
 <p>“realm”属性可以被包含来指示以HTTP/1.1 <a href="http://tools.ietf.org/html/rfc2617" target="_blank" title="HTTP/1.1">RFC2617</a>所述的方式保护的范围。“realm”属性不能出现一次以上。</p>
 <p>“scope”属性在<a href="http://tools.ietf.org/html/rfc6749#section-3.3" title="The OAuth 2.0 Authorization Framework-Access Token Scope">[RFC6749]3.3节</a>中定义。“scope”属性是一个空格分隔的大小写敏感的范围值的列表，指示访问令牌访问请求的资源所需的范围。“scope”值是实现定义的；它们没有集中的注册表；允许的值由授权服务器定义。“scope”值的顺序是无关紧要的。在某些情况下，当请求具有充分范围使用受保护资源的新的访问令牌时“scope”值会被使用。“scope”属性的使用是可选的。“scope”属性不能出现一次以上。“scope”值计划供程序使用，并不打算显示给最终用户。</p>
 <p>以下是两个scope值的例子；它们从OpenID Connect[OpenID.Messages]{target="_blank"}和开放身份验证技术委员会（OATC）在线多媒体授权协议[OMAP]{target="_blank"}OAuth2.0用例得到，分别是：</p>
-<div class="highlight"><pre><span></span><code><span class="err">    scope=&quot;openid profile email&quot;</span>
-<span class="err">    scope=&quot;urn:example:channel=HBO&amp;urn:example:rating=G,PG-13&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">    scope="openid profile email"</span>
+<span class="err">    scope="urn:example:channel=HBO&amp;urn:example:rating=G,PG-13"</span>
 </code></pre></div>
 <p>如果受保护资源的请求包含访问令牌但身份验证失败，资源服务器应包含“error”属性为客户端提供访问请求被拒绝的原因。参数值在3.1节中描述。另外，资源服务器可以包含“error_description”属性，为开发者提供人类可读的解释但不意味着显示给最终用户。它也可以含有具有绝对URI的“error_uri”属性，标识一个解释该错误的人类可读的网页。“error”、“error_description”、“error_uri”属性不能出现超过一次。</p>
 <p>“scope”属性的值（<a href="http://tools.ietf.org/html/rfc6749#appendix-A.4" target="_blank" title="The OAuth 2.0 Authorization Framework-scope Syntax">[RFC6749]附录A.4</a>指定）不能包含%x21/%x23-5B /%x5D-7E集合之外的字符来表示范围值且以%/x20在范围值之间分隔。“error”和“error_description”属性的值（<a href="http://tools.ietf.org/html/rfc6749" target="_blank" title="OAuth2.0授权框架">RFC6749</a>附录A.7和A.8指定）不能包含%x20-21/%x23-5B/%x5D集合之外的字符。“error_uri”属性的值（<a href="http://tools.ietf.org/html/rfc6749#appendix-A.9" target="_blank" title="The OAuth 2.0 Authorization Framework-error_uri Syntax">[RFC6749]附录A.9</a>指定）必须符合URI引用的语法，因此不能包含%x21/%x23-5B/%x5D-7E集合之外的字符。</p>
 <p>例如，在没有进行身份验证的受保护资源请求的响应中：</p>
 <div class="highlight"><pre><span></span><code><span class="err">    </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
-    <span class="l">WWW-Authenticate: Bearer realm=&quot;example&quot;</span>
+    <span class="l">WWW-Authenticate: Bearer realm="example"</span>
 </code></pre></div>
 <p>以及在使用过期的访问令牌尝试身份验证的受保护资源请求的响应中：</p>
 <div class="highlight"><pre><span></span><code><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
-     <span class="l">WWW-Authenticate: Bearer realm=&quot;example&quot;,</span>
-                       <span class="l">error=&quot;invalid_token&quot;,</span>
-                       <span class="l">error_description=&quot;The access token expired&quot;</span>
+     <span class="l">WWW-Authenticate: Bearer realm="example",</span>
+                       <span class="l">error="invalid_token",</span>
+                       <span class="l">error_description="The access token expired"</span>
 </code></pre></div>
 <ul>
 <li>3.1. <a href="#31">错误代码</a></li>
@@ -2667,7 +1361,7 @@ D. Hardt<br />
 <p>如果该请求缺少任何身份验证信息（例如，客户端不知道需要身份验证或者试图使用不支持的身份验证方法），资源服务器不应该包含错误代码或其它错误信息。</p>
 <p>例如：</p>
 <div class="highlight"><pre><span></span><code><span class="err">    </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
-    <span class="l">WWW-Authenticate: Bearer realm=&quot;example&quot;</span>
+    <span class="l">WWW-Authenticate: Bearer realm="example"</span>
 </code></pre></div>
 <h2 id="4">4 访问令牌响应示例</h2>
 <p>通常，不记名令牌作为OAuth 2.0<a href="http://tools.ietf.org/html/rfc6749" target="_blank" title="OAuth2.0授权框架">RFC6749</a>访问令牌响应的一部分被返回给客户端。一个这样的响应的例子是：</p>
@@ -2676,10 +1370,10 @@ D. Hardt<br />
     <span class="l">Cache-Control: no-store</span>
     <span class="l">Pragma: no-cache</span>
     <span class="l">{</span>
-      <span class="l">&quot;access_token&quot;:&quot;mF_9.B5f-4.1JqM&quot;,</span>
-      <span class="l">&quot;token_type&quot;:&quot;Bearer&quot;,</span>
-      <span class="l">&quot;expires_in&quot;:3600,</span>
-      <span class="l">&quot;refresh_token&quot;:&quot;tGzv3JOkF0XG5Qx2TlKWIA&quot;</span>
+      <span class="l">"access_token":"mF_9.B5f-4.1JqM",</span>
+      <span class="l">"token_type":"Bearer",</span>
+      <span class="l">"expires_in":3600,</span>
+      <span class="l">"refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"</span>
     <span class="l">}</span>
 </code></pre></div>
 <h2 id="5">5 安全考量</h2>
@@ -2918,74 +1612,47 @@ Sakimura, N., Bradley, J., Jones, M., de Medeiros, B., Mortimore, C., and E. Jay
   独立</p>
 <p>电子邮件：dick.hardt @ gmail.com
   URI：<a href="http://dickhardt.org/">http://dickhardt.org/</a></p>
-
-  <hr>
+<hr/>
 <div class="md-source-file">
-  <small>
+<small>
     
       最后更新:
       <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月23日</span>
-      
-        <br>
+<br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月23日</span>
-      
-    
-  </small>
+</small>
 </div>
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-        </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
           </a>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
       Material for MkDocs
     </a>
-  
 </div>
-      
-    </div>
-  </div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
-      
-        <script src="../../../javascripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
