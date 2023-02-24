@@ -144,7 +144,43 @@ nav:
       - 看人之间:处理人际冲突: read/book/artofcommunication11.md
       - 阅读总结: read/book/artofcommunication12.md
   - 投资: 
-    - "理财网站": invest/webs.md
+    - 理财网站: invest/webs.md
+    - 股票: invest/stock.md
+    - 新股申购: invest/subscription.md
+    - 股票委托: invest/entrust.md
+    - 股票分红: invest/dividend.md
+    - 什么是集合竞价: invest/call_auction.md
+    - 交易规则: invest/trading_rule.md
+    - 港股通: invest/hongkong_stock.md
+    - 港股通:开户条件: invest/hongkong_open_account.md
+    - 港股通:交易规则: invest/hongkong_trading_rule.md
+    - 港股通:交易费用: invest/hongkong_trading_cost.md
+    - 港股通:交易风险: invest/hongkong_trading_risk.md
+    - 市场版块: invest/markets.md
+    - 科创板: invest/st_board.md
+    - 科创板:精要: invest/st_board_guide.md
+    - 基金: invest/fund.md
+    - 基金入门: invest/finance_management01.md
+    - 基金常识: invest/finance_management02.md
+    - 常用术语: invest/finance_management03.md
+    - 指数基金: invest/finance_management04.md
+    - 债券基金: invest/finance_management05.md
+    - 基金理财二十问: invest/finance_20_question.md
+    - EFT基金精要: invest/finance_etf.md
+    - 指数基金家族: invest/index_fund.md
+    - ETF基金简介: invest/etf_fund_guide.md
+    - ETF基金优势: invest/etf_fund_advantage.md
+    - ETF VS 股票: invest/etf_vs_stock.md
+    - ETF基金怎么买: invest/etf_how_buy.md
+    - ETF基金怎么选: invest/etf_how_choice.md
+    - ETF基金投资策略: invest/etf_investment_strategy.md
+    - ETF基金配置策略: invest/etf_how_configure.md
+    - Smart Beta基金简介: invest/smart_beta_guide.md
+    - 债券: invest/bound.md
+    - 金融衍生工具: invest/derivatives.md
+    - 盘口指标: invest/handicap_indicator.md
+    - 筹码分布: invest/tech_analysis_chip_distibution.md
+    - 筹码精选: invest/tech_analysis_chip_choice.md
   - 工具: 
     - 仓库合集: tools/repos.md
   - 文档: 
