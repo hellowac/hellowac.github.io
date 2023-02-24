@@ -149,7 +149,7 @@
 - 两个层面： “聚合期”、“离散期” ； 其他科学家认为还应该包含一个 “维持期”
 - 十个阶段：初始阶段、试验阶段、强化阶段、整合阶段、结合阶段、分化阶段、各自阶段、停滞阶段、逃避阶段、结束阶段。
 
-![关系发展阶段]({% link assets/readingimg/lookinginlookingout06.png %})
+![关系发展阶段](./imgs/lookinginlookingout06.png)
 
 **初始阶段**
 
