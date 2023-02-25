@@ -39,6 +39,7 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.details
   - pymdownx.superfences:    # 注释 : 
+      # preserve_tabs: true
       custom_fences:
         - name: mermaid
           class: mermaid
@@ -57,6 +58,8 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js
+  # - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs
 
 # 页面导航
 nav:
@@ -145,44 +148,59 @@ nav:
       - 阅读总结: read/book/artofcommunication12.md
   - 投资: 
     - 理财网站: invest/webs.md
-    - 股票: invest/stock.md
-    - 新股申购: invest/subscription.md
-    - 股票委托: invest/entrust.md
-    - 股票分红: invest/dividend.md
-    - 什么是集合竞价: invest/call_auction.md
-    - 交易规则: invest/trading_rule.md
-    - 港股通: invest/hongkong_stock.md
-    - 港股通:开户条件: invest/hongkong_open_account.md
-    - 港股通:交易规则: invest/hongkong_trading_rule.md
-    - 港股通:交易费用: invest/hongkong_trading_cost.md
-    - 港股通:交易风险: invest/hongkong_trading_risk.md
-    - 市场版块: invest/markets.md
-    - 科创板: invest/st_board.md
-    - 科创板:精要: invest/st_board_guide.md
-    - 基金: invest/fund.md
-    - 基金入门: invest/finance_management01.md
-    - 基金常识: invest/finance_management02.md
-    - 常用术语: invest/finance_management03.md
-    - 指数基金: invest/finance_management04.md
-    - 债券基金: invest/finance_management05.md
-    - 基金理财二十问: invest/finance_20_question.md
-    - EFT基金精要: invest/finance_etf.md
-    - 指数基金家族: invest/index_fund.md
-    - ETF基金简介: invest/etf_fund_guide.md
-    - ETF基金优势: invest/etf_fund_advantage.md
-    - ETF VS 股票: invest/etf_vs_stock.md
-    - ETF基金怎么买: invest/etf_how_buy.md
-    - ETF基金怎么选: invest/etf_how_choice.md
-    - ETF基金投资策略: invest/etf_investment_strategy.md
-    - ETF基金配置策略: invest/etf_how_configure.md
-    - Smart Beta基金简介: invest/smart_beta_guide.md
-    - 债券: invest/bound.md
-    - 金融衍生工具: invest/derivatives.md
-    - 盘口指标: invest/handicap_indicator.md
-    - 筹码分布: invest/tech_analysis_chip_distibution.md
-    - 筹码精选: invest/tech_analysis_chip_choice.md
+    - 一个散户的自我修养: invest/stock_training.md
+    - 基础知识:
+      - 股票: invest/stock.md
+      - 新股申购: invest/subscription.md
+      - 股票委托: invest/entrust.md
+      - 股票分红: invest/dividend.md
+      - 什么是集合竞价: invest/call_auction.md
+      - 交易规则: invest/trading_rule.md
+      - 港股通: invest/hongkong_stock.md
+      - 港股通:开户条件: invest/hongkong_open_account.md
+      - 港股通:交易规则: invest/hongkong_trading_rule.md
+      - 港股通:交易费用: invest/hongkong_trading_cost.md
+      - 港股通:交易风险: invest/hongkong_trading_risk.md
+      - 市场版块: invest/markets.md
+      - 科创板: invest/st_board.md
+      - 科创板:精要: invest/st_board_guide.md
+      - 基金: invest/fund.md
+      - 基金入门: invest/finance_management01.md
+      - 基金常识: invest/finance_management02.md
+      - 常用术语: invest/finance_management03.md
+      - 指数基金: invest/finance_management04.md
+      - 债券基金: invest/finance_management05.md
+      - 基金理财二十问: invest/finance_20_question.md
+      - EFT基金精要: invest/finance_etf.md
+      - 指数基金家族: invest/index_fund.md
+      - ETF基金简介: invest/etf_fund_guide.md
+      - ETF基金优势: invest/etf_fund_advantage.md
+      - ETF VS 股票: invest/etf_vs_stock.md
+      - ETF基金怎么买: invest/etf_how_buy.md
+      - ETF基金怎么选: invest/etf_how_choice.md
+      - ETF基金投资策略: invest/etf_investment_strategy.md
+      - ETF基金配置策略: invest/etf_how_configure.md
+      - Smart Beta基金简介: invest/smart_beta_guide.md
+      - 债券: invest/bound.md
+      - 金融衍生工具: invest/derivatives.md
+      - 盘口指标: invest/handicap_indicator.md
+      - 筹码分布: invest/tech_analysis_chip_distibution.md
+      - 筹码精选: invest/tech_analysis_chip_choice.md
   - 工具: 
     - 仓库合集: tools/repos.md
+    - git 起步: tools/git1.md
+    - git 基础: tools/git2.md
+    - git 分支: tools/git3.md
+    - git 服务器: tools/git4.md
+    - git 分布式: tools/git5.md
+    - git hub: tools/git6.md
+    - git 工具: tools/git7.md
+    - git 自定义: tools/git8.md
+    - git 与其他系统: tools/git9.md
+    - git 内部原理: tools/git10.md
+    - git 其他环境中使用: tools/gita1.md
+    - git 应用中嵌入: tools/gita2.md
+    - git 命令: tools/gita3.md
   - 文档: 
     - 文档合集: documents/docs.md
   - 电子书: e-book.md
