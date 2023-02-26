@@ -185,6 +185,11 @@
     - [Heralding](https://github.com/johnnykv/heralding){target="_blank"} - 捕获凭据的蜜罐
     - [HoneyWRT](https://github.com/CanadianJeff/honeywrt){target="_blank"} - 基于 Python 的低交互蜜罐，旨在模拟攻击者可能攻击的服务或端口
     - [Honeyd](https://github.com/provos/honeyd){target="_blank"} 请查看[更多 honeyd 工具](#honeyd)
+
+        Honeyd 是一个在网络上创建虚拟主机的小型守护进程。 主机可以配置为运行任意服务，并且可以调整它们的 TCP 特性，使它们看起来像是在运行特定版本的操作系统。 Honeyd 使单个主机能够在 LAN 上声明多个地址——我已经测试了多达 65536 个——用于网络模拟。
+
+        可以 ping 虚拟机，或跟踪它们。 虚拟机上的任何类型的服务都可以根据一个简单的配置文件来模拟。 除了模拟服务，还可以将其代理到另一台机器。
+
     - [Honeysink](http://www.honeynet.org/node/773){target="_blank"} - 开源网络陷阱，提供了检测与阻止指定网络上恶意流量的机制
     - [Hontel](https://github.com/stamparm/hontel){target="_blank"} - Telnet 蜜罐
     - [KFSensor](http://www.keyfocus.net/kfsensor/){target="_blank"} - 基于 Windows 的入侵检测系统蜜罐
