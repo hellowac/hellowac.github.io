@@ -124,7 +124,8 @@ nav:
       - 数据传输和对接: technology/concept/data_transfer.md
       - 深入理解计算机系统: technology/concept/understand_computer_system.md
     - 其他:
-      - 暂无: technology/other/backup.md
+      - 嵌入式行业: technology/other/embedded_industry.md
+      - apache license2.0开源协议: technology/other/apache_license2.md
   - 阅读: 
     - 英语: 
       - BlueLevel: read/english/bluelevel.md
