@@ -45,7 +45,7 @@ SICP 是 Structure and Interpretation of Computer Programs 的缩写，意为: *
 
 《python并发编程》简体中文版克隆自<https://github.com/Voidly/Parallel-Programming-with-Python>{target="_blank"}
 
-* github: <https://github.com/hellowac/Parallel_Programming_with_Python>{target="_blank"}
+* 在线阅读: <https://hellowac.github.io/parallel-programming-with-python-zh/>{target="_blank"}
 
 ## css设计指南
 
