@@ -11,6 +11,7 @@ theme:
     accent: red       # 强调色
   features:
     - navigation.tabs # 顶部导航
+    - navigation.tabs.sticky # 顶部导航粘连
     # - navigation.sections # 全部展开(非折叠状态)
     # - navigation.expand # 子目录展开
     - navigation.top  # 返回顶部按钮
@@ -213,4 +214,5 @@ nav:
     - 张一鸣微博: other/zym_weibo.md
     - 动态商业环境: other/dynamic_business.md
     - 蜜罐资源列表: other/honeypot_list.md
+    - 大数据资源列表: other/bigdata_links.md
   - 关于: about.md
