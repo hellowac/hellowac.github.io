@@ -7,13 +7,6 @@ Python数据库迁移框架Alembic中文文档
 * github: <https://github.com/hellowac/alembic-doc-zh>{target="_blank"}
 * 文档: <https://hellowac.github.io/alembic-doc-zh/>{target="_blank"}
 
-## Flask之旅
-
-摘录的flask之旅
-
-* github: <https://github.com/hellowac/explore-flask-zh>{target="_blank"}
-* 文档: <https://hellowac.github.io/explore-flask-zh/>{target="_blank"}
-
 ## sqlalchemy
 
 翻译的sqlalchemy

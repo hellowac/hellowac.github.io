@@ -20,6 +20,13 @@ SICP 是 Structure and Interpretation of Computer Programs 的缩写，意为: *
 * github: <https://github.com/hellowac/Python-Guide-CN>{target="_blank"}
 * 文档: <https://hellowac.github.io/Python-Guide-CN/>{target="_blank"}
 
+## Flask之旅
+
+摘录的flask之旅
+
+* github: <https://github.com/hellowac/explore-flask-zh>{target="_blank"}
+* 文档: <https://hellowac.github.io/explore-flask-zh/>{target="_blank"}
+
 ## 领域驱动设计
 
 这里有我整理的领域驱动设计文档
