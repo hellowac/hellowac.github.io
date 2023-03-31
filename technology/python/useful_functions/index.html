@@ -1092,8 +1092,149 @@
     <span class="k">return</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="_3">利息以及复利计算</h2>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_income</span><span class="p">(</span><span class="n">principal</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">apr</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">days</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">""" 计算按年利率持有指定天数所获得的利息</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">NoReturn</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+
+<span class="k">class</span> <span class="nc">UnitType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">BY_DAY</span> <span class="o">=</span> <span class="s2">"day"</span>
+    <span class="n">BY_YEAR</span> <span class="o">=</span> <span class="s2">"year"</span>
+
+
+<span class="k">class</span> <span class="nc">Income</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">principal</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">apr</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">cycle</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">replace_unit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">by</span><span class="p">:</span> <span class="n">UnitType</span> <span class="o">=</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_DAY</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""计算收益的类</span>
+
+<span class="sd">        principal: 本金； 例如: 10000, 单位 元</span>
+<span class="sd">        apr: 利率,收益率, 一个持有周期的利率；例如: 0.0051</span>
+<span class="sd">        cycle: 持有周期，例如: 2 代表2个周期，并且复利计算</span>
+<span class="sd">        replace_unit: 一个周期代表的天/年数， 具体根据by的类型确定，例如: 60</span>
+<span class="sd">        by: 周期替换时的单位, 例如: days 代表xxx天</span>
+<span class="sd">        echo: 代表是否打印详细, 例如: true 代表打印</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apr</span> <span class="o">=</span> <span class="n">apr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cycle</span> <span class="o">=</span> <span class="n">cycle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">replace_unit</span> <span class="o">=</span> <span class="n">replace_unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">echo</span> <span class="o">=</span> <span class="n">echo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">by</span> <span class="o">=</span> <span class="n">by</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_type</span> <span class="o">=</span> <span class="s2">"按天"</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">by</span> <span class="o">==</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_DAY</span> <span class="k">else</span> <span class="s2">"按年"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_type_unit</span> <span class="o">=</span> <span class="s2">"天"</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">by</span> <span class="o">==</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_DAY</span> <span class="k">else</span> <span class="s2">"年"</span>
+
+        <span class="c1"># 累计收益</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_total</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 累计利息</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 各个周期利息</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 累计收益率, 百分比</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_rate_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 各个周期收益率, 百分比</span>
+
+    <span class="k">def</span> <span class="nf">get_income</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">principal</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""计算单周期的利息</span>
+
+<span class="sd">        principal: 本金； 例如: 10000, 单位 元</span>
+<span class="sd">        """</span>
+
+        <span class="k">return</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">apr</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">cycle_income</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""计算复利"""</span>
+
+        <span class="c1"># 初始本金</span>
+        <span class="n">congest_capital</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">principal</span>
+        <span class="c1"># 上一次本金</span>
+        <span class="n">prev_captial</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">principal</span>
+        <span class="c1"># 上一次累计收益率</span>
+        <span class="n">prev_income_rate</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 初始利息</span>
+        <span class="n">income_total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 累计收益率</span>
+        <span class="n">income_rate</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cycle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+
+            <span class="n">income</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_income</span><span class="p">(</span><span class="n">congest_capital</span><span class="p">)</span>
+            <span class="n">income</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">income</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">income_total</span> <span class="o">+=</span> <span class="n">income</span>  <span class="c1"># 累计利息</span>
+            <span class="c1"># 上一次累计收益率</span>
+            <span class="n">prev_income_rate</span> <span class="o">=</span> <span class="n">income_rate</span>
+            <span class="c1"># 本次累计收益率, 用本金计算累计的收益率</span>
+            <span class="n">income_rate</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">income_total</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">principal</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">income_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">income</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">income_rate_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">income_rate</span>
+
+            <span class="c1"># 上次本金</span>
+            <span class="n">prev_captial</span> <span class="o">=</span> <span class="n">congest_capital</span>
+
+            <span class="c1"># 累计本金</span>
+            <span class="n">congest_capital</span> <span class="o">+=</span> <span class="n">income</span>
+            <span class="n">congest_capital</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">congest_capital</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="c1"># 累计收益率差额, 减去初始的收益率</span>
+            <span class="n">diff_income_rate</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">income_rate</span> <span class="o">-</span> <span class="n">prev_income_rate</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">apr</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">echo</span><span class="p">:</span>
+                <span class="n">msgs</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">"初始本金: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">principal</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">"复利: 第</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">次"</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">"计算本金: </span><span class="si">{</span><span class="n">prev_captial</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">"本次利息: </span><span class="si">{</span><span class="n">income</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">"累计本息: </span><span class="si">{</span><span class="n">congest_capital</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">"总收益率: </span><span class="si">{</span><span class="n">income_rate</span><span class="si">}</span><span class="s2">%"</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">"收益率增长额: </span><span class="si">{</span><span class="n">diff_income_rate</span><span class="si">}</span><span class="s2">%;"</span><span class="p">,</span>
+                <span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">" - "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msgs</span><span class="p">))</span>
+
+        <span class="c1"># 百分比,  用本金计算累计的收益率</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_total</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">income_total</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">income_rate</span> <span class="o">=</span> <span class="n">income_rate</span>
+
+    <span class="k">def</span> <span class="nf">calculate_income</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""计算收益"""</span>
+        <span class="n">append_years</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">by</span> <span class="o">==</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_DAY</span><span class="p">:</span>
+            <span class="n">append_years</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">replace_unit</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycle</span><span class="p">)</span> <span class="o">/</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">msgs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"本金: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">principal</span><span class="si">}</span><span class="s2">元"</span><span class="p">)</span>
+        <span class="c1"># msgs.append(f"计息方式: {self.income_type}")</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"按</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">replace_unit</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">income_type_unit</span><span class="si">}</span><span class="s2">为一个周期计息"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"共计息:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cycle</span><span class="si">}</span><span class="s2">个周期"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"共占用资金: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">replace_unit</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">cycle</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">income_type_unit</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"约占用资金: </span><span class="si">{</span><span class="n">append_years</span><span class="si">}</span><span class="s2">年"</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">by</span> <span class="o">==</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_DAY</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"周期利率: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">apr</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">echo</span><span class="p">:</span>
+            <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"详细如下: "</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'利益演示摘要: </span><span class="si">{</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msgs</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cycle_income</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"本金: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">principal</span><span class="si">}</span><span class="s2">元"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"共获利息: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">income_total</span><span class="si">}</span><span class="s2">元"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"本息合计: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">income_total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">principal</span><span class="si">}</span><span class="s2">元"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"收益率: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">income_rate</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"占用资金: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">replace_unit</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">cycle</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">income_type_unit</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"约占用资金: </span><span class="si">{</span><span class="n">append_years</span><span class="si">}</span><span class="s2">年"</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">by</span> <span class="o">==</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_DAY</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">" - "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msgs</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">get_income</span><span class="p">(</span><span class="n">principal</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">apr</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">days</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""计算按年利率持有指定天数所获得的利息</span>
 
 <span class="sd">        principal:  本金</span>
 <span class="sd">        apr: 年利率</span>
@@ -1103,16 +1244,16 @@
 <span class="sd">    """</span>
     <span class="c1"># 计算利息</span>
 
-    <span class="k">return</span> <span class="n">principal</span> <span class="o">*</span> <span class="n">apr</span> <span class="o">*</span> <span class="p">(</span><span class="n">days</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">principal</span> <span class="o">*</span> <span class="n">apr</span> <span class="o">*</span> <span class="p">(</span><span class="n">days</span> <span class="o">/</span> <span class="mi">365</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">cycle_income</span><span class="p">(</span><span class="n">capital</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">apr</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">days</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cycle</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">""" 计算按年率持有指定天数并且复利N次所获得的利息收入。</span>
+<span class="k">def</span> <span class="nf">cycle_income</span><span class="p">(</span><span class="n">capital</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">apr</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">days</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cycle</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""计算按年率持有指定天数并且复利N次所获得的利息收入。</span>
 
-<span class="sd">        principal:  本金</span>
-<span class="sd">        apr: 年利率</span>
-<span class="sd">        days: 持有天数</span>
-<span class="sd">        cycle: 复利几次</span>
+<span class="sd">    principal:  本金</span>
+<span class="sd">    apr: 年利率</span>
+<span class="sd">    days: 持有天数</span>
+<span class="sd">    cycle: 复利几次</span>
 <span class="sd">    """</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">capital</span><span class="si">}</span><span class="s2"> 按年利率 </span><span class="si">{</span><span class="n">apr</span><span class="si">}</span><span class="s2"> 持有天数</span><span class="si">{</span><span class="n">days</span><span class="si">}</span><span class="s2"> 复利 </span><span class="si">{</span><span class="n">cycle</span><span class="si">}</span><span class="s2"> 次, 计算如下:"</span><span class="p">)</span>
@@ -1130,37 +1271,64 @@
         <span class="n">congest_capital</span> <span class="o">+=</span> <span class="n">income</span>
         <span class="n">congest_capital</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">congest_capital</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">capital</span><span class="si">}</span><span class="s2"> 第</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">次 共获得利息: </span><span class="si">{</span><span class="n">income</span><span class="si">}</span><span class="s2">, 本息共计: </span><span class="si">{</span><span class="n">congest_capital</span><span class="si">}</span><span class="s2">;"</span><span class="p">)</span>
+        <span class="n">msgs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s2">"本金: </span><span class="si">{</span><span class="n">capital</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">"复利次数: 第</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">次"</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">"本次获得利息: </span><span class="si">{</span><span class="n">income</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">"积累本息共计: </span><span class="si">{</span><span class="n">congest_capital</span><span class="si">}</span><span class="s2">;"</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">" - "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msgs</span><span class="p">))</span>
 
     <span class="n">return_rate</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">income_total</span> <span class="o">/</span> <span class="n">capital</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">capital</span><span class="si">}</span><span class="s2"> 元，一共占用资金: </span><span class="si">{</span><span class="n">days</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cycle</span><span class="si">}</span><span class="s2"> 天, 共获利: </span><span class="si">{</span><span class="n">income_total</span><span class="si">}</span><span class="s2">元, 收益率: </span><span class="si">{</span><span class="n">return_rate</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
-
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">capital</span><span class="si">}</span><span class="s2"> 元，一共占用资金: </span><span class="si">{</span><span class="n">days</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cycle</span><span class="si">}</span><span class="s2"> 天, 共获利: </span><span class="si">{</span><span class="n">income_total</span><span class="si">}</span><span class="s2">元, 收益率: </span><span class="si">{</span><span class="n">return_rate</span><span class="si">}</span><span class="s2">%"</span>
+    <span class="p">)</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="n">capital</span> <span class="o">=</span> <span class="mi">55000</span>  <span class="c1"># 本金</span>
-    <span class="n">rate</span> <span class="o">=</span> <span class="mf">0.0205</span>     <span class="c1"># 年利率</span>
-    <span class="n">days</span> <span class="o">=</span> <span class="mi">15</span>        <span class="c1"># 持有天数</span>
-    <span class="n">cycle</span> <span class="o">=</span> <span class="mi">4</span>        <span class="c1"># 复利四次</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">100</span>  <span class="c1"># 本金</span>
+    <span class="n">echo</span> <span class="o">=</span> <span class="kc">True</span>
 
-    <span class="n">cycle_income</span><span class="p">(</span><span class="n">capital</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">cycle</span><span class="p">)</span>
+    <span class="c1"># 按周期利率计算</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_DAY</span>
+    <span class="n">replace_unit</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="n">apr</span> <span class="o">=</span> <span class="mf">0.51</span>  <span class="c1"># 周期利率, 0.51%</span>
+    <span class="n">cycle</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">30</span>  <span class="c1"># 60天一个周期, 一年6个周期， 30年持有期</span>
+    <span class="c1"># cycle = 6 * 10  # 60天一个周期, 一年6个周期， 10年持有期</span>
+    <span class="c1"># cycle = 6 * 10  # 60天一个周期, 一年6个周期， 5年持有期</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"--"</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># 按年利率计算</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="n">UnitType</span><span class="o">.</span><span class="n">BY_YEAR</span>
+    <span class="n">replace_unit</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">apr</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># 年利率, 3%</span>
+    <span class="n">cycle</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># 30年持有期</span>
+
+    <span class="n">income</span> <span class="o">=</span> <span class="n">Income</span><span class="p">(</span>
+        <span class="n">principal</span><span class="o">=</span><span class="n">principal</span><span class="p">,</span>
+        <span class="n">apr</span><span class="o">=</span><span class="n">apr</span><span class="p">,</span>
+        <span class="n">cycle</span><span class="o">=</span><span class="n">cycle</span><span class="p">,</span>
+        <span class="n">replace_unit</span><span class="o">=</span><span class="n">replace_unit</span><span class="p">,</span>
+        <span class="n">echo</span><span class="o">=</span><span class="n">echo</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="n">by</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">income</span><span class="o">.</span><span class="n">calculate_income</span><span class="p">()</span>
 </code></pre></div>
 <p>最后输出如下:</p>
-<div class="highlight"><pre><span></span><code>55000 按年利率 0.0205 持有天数15 复利 4 次, 计算如下:
-55000 第1次 共获得利息: 46.34, 本息共计: 55046.34;
-55000 第2次 共获得利息: 46.37, 本息共计: 55092.71;
-55000 第3次 共获得利息: 46.41, 本息共计: 55139.12;
-55000 第4次 共获得利息: 46.45, 本息共计: 55185.57;
-55000 元，一共占用资金: 60 天, 共获利: 185.57元, 收益率: 0.34%
+<div class="highlight"><pre><span></span><code>利益演示摘要: 本金: 100000元, 按1年为一个周期计息, 共计息:5个周期, 共占用资金: 5年, 周期利率: 3%, 详细如下: 
+初始本金: 100000 - 复利: 第1次 - 计算本金: 100000 - 本次利息: 3000.0 - 累计本息: 103000.0 - 总收益率: 3.0% - 收益率增长额: 0.0%;
+初始本金: 100000 - 复利: 第2次 - 计算本金: 103000.0 - 本次利息: 3090.0 - 累计本息: 106090.0 - 总收益率: 6.09% - 收益率增长额: 0.09%;
+初始本金: 100000 - 复利: 第3次 - 计算本金: 106090.0 - 本次利息: 3182.7 - 累计本息: 109272.7 - 总收益率: 9.27% - 收益率增长额: 0.18%;
+初始本金: 100000 - 复利: 第4次 - 计算本金: 109272.7 - 本次利息: 3278.18 - 累计本息: 112550.88 - 总收益率: 12.55% - 收益率增长额: 0.28%;
+初始本金: 100000 - 复利: 第5次 - 计算本金: 112550.88 - 本次利息: 3376.53 - 累计本息: 115927.41 - 总收益率: 15.93% - 收益率增长额: 0.38%;
+----------------------------------------------------------------------------------------------------
+本金: 100000元 - 共获利息: 15927.41元 - 本息合计: 115927.41元 - 收益率: 15.93% - 占用资金: 5年
 </code></pre></div>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月23日</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年3月31日</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月22日</span>
