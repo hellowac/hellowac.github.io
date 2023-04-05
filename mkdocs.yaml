@@ -1,4 +1,8 @@
 site_name: 我的工作学习生活笔记
+repo_name: hellowac的个人博客
+repo_url: https://github.com/hellowac/hellowac.github.io/
+site_description: hellowac的工作学习生活笔记
+
 
 # 配置主题，在mkdocs.yml文件下
 theme:
@@ -88,6 +92,8 @@ nav:
       - 端口占用查找: technology/linux/port.md
       - linux磁盘挂载: technology/linux/disk-mount.md
       - shell脚本实战: technology/linux/shell-scripts.md
+    - C: 
+      - C基础: technology/C/c.md
     - 前端知识:
       - 基础: technology/front/base.md
       - 工程化流程: technology/front/project.md
