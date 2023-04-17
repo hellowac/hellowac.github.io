@@ -6,6 +6,14 @@ C 语言是一种通用的高级语言，最初是由丹尼斯·里奇在贝尔�
 
 UNIX 操作系统，C编译器，和几乎所有的 UNIX 应用程序都是用 C 语言编写的。由于各种原因，C 语言现在已经成为一种广泛使用的专业语言。
 
+相关网络资料：
+
+1. C语言基础教程：<https://www.runoob.com/cprogramming/c-tutorial.html>
+2. 从头开始学习C语言：<https://www.cprogramming.com/tutorial/c-tutorial.html>
+3. 快速掌握C语言：<https://www.codecademy.com/learn/learn-c>
+4. 让你轻松理解C语言：<https://www.edx.org/course/programming-c-microsoft-dev210x>
+5. 高级C语言编程：<https://www.udacity.com/course/advanced-c-programming--ud210>
+
 ## 指针
 
 {++**变量为了表示数据而生，指针为了传递数据而生。**++}
@@ -103,7 +111,7 @@ int main()
 
     int key[100] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     open(key, 5);
-}
+
 ```
 
 ## 回调函数

@@ -127,6 +127,7 @@ nav:
       - Oauth2-RFC6750翻译: technology/rfc/rfc6750.md
     - 知识概念:
       - xaas概念: technology/concept/xaas.md
+      - 一文搞懂什么是SaaS、BaaS、PaaS和IaaS: technology/concept/xaas2.md
       - 统一用户管理: technology/concept/users.md
       - ETL数据处理: technology/concept/etl.md
       - 数据传输和对接: technology/concept/data_transfer.md
@@ -155,7 +156,7 @@ nav:
       - 看人之间:增进沟通气氛: read/book/artofcommunication10.md
       - 看人之间:处理人际冲突: read/book/artofcommunication11.md
       - 阅读总结: read/book/artofcommunication12.md
-  - 投资: 
+  - 理财: 
     - 理财网站: invest/webs.md
   - 工具: 
     - 仓库合集: tools/repos.md

@@ -2,6 +2,27 @@
 
 这是我整理的与`python`相关的知识和笔记
 
+Python官方文档体系包括：
+
+- 官方网站上的文档（<https://www.python.org/doc/>）；
+- 最新发布的Python版本的文档（<https://docs.python.org/3/>）；
+- Python标准库文档（<https://docs.python.org/3/library/>）；
+- Python说明文档，为不同的操作系统准备（<https://pythonsheet.com/downloads>）；
+- 针对特定平台的Python文档（<https://wiki.python.org/moin/PlatformSpecifics>）；
+- 核心开发团队提供的文档（<https://devguide.python.org/>）；
+- 学习资源和指南（<https://python.org/resources-for-learning/>）；
+- 国际化文档和本地化文档（<https://www.python.org/doc/intl/>）。
+
+Python进阶文档体系包括：
+
+- Python开发者手册（<https://devguide.python.org/>）；
+- Python贡献者手册（<https://devguide.python.org/contributing/>）；
+- Python开发者FAQ（<https://devfaq.python.org/>）；
+- Python核心开发团队博客（<https://blog.python.org/core-team/>）；
+- Python开发者论坛（<https://forum.python.org/developers/>）；
+- Python社区入门指南（<https://github.com/python/community/blob/master/README.md>）；
+- Python标准库指南（<https://docs.python.org/3/library/index.html>）。
+
 ## centos 安装 Python3
 
 原文: <https://phoenixnap.com/kb/how-to-install-python-3-centos-7>
