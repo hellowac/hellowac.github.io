@@ -126,6 +126,7 @@ nav:
       - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
       - Oauth2-RFC6750翻译: technology/rfc/rfc6750.md
     - 知识概念:
+      - 上位机简介: technology/concept/pc.md
       - xaas概念: technology/concept/xaas.md
       - 一文搞懂什么是SaaS、BaaS、PaaS和IaaS: technology/concept/xaas2.md
       - 统一用户管理: technology/concept/users.md

@@ -2,7 +2,7 @@
 
 优秀的蜜罐、组件等等相关的工具列表，分为 Web、服务等多个类别，重点放在开源项目上
 
-每个类别中没有顺序，按照提交的先后顺序排列，如果您也想提交，请阅读 [指南](CONTRIBUTING.md){target="_blank"}.
+每个类别中没有顺序，按照提交的先后顺序排列，如果您也想提交，请阅读 [指南](https://github.com/paralax/awesome-honeypots/blob/master/CONTRIBUTING.md){target="_blank"}.
 
 探索更多优秀的列表请参阅：[sindresorhus/awesome](https://github.com/sindresorhus/awesome){target="_blank"}.
 
