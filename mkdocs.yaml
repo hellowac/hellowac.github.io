@@ -76,6 +76,7 @@ nav:
       - pip: technology/python/pip.md
       - StringIO: technology/python/stringio.md
       - flask: technology/python/flask.md
+      - django: technology/python/django.md
       - logging: technology/python/logging.md
       - importlib: technology/python/importlib.md
       - crypto: technology/python/pycrypto.md
