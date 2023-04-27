@@ -72,22 +72,23 @@ nav:
   - 首页: index.md
   - 技术: 
     - Python:
-      - 安装: technology/python/index.md
-      - pip: technology/python/pip.md
-      - StringIO: technology/python/stringio.md
-      - flask: technology/python/flask.md
-      - django: technology/python/django.md
-      - logging: technology/python/logging.md
-      - importlib: technology/python/importlib.md
-      - crypto: technology/python/pycrypto.md
-      - petl: technology/python/petl.md
-      - psutil: technology/python/psutil.md
-      - Docx: technology/python/docx.md
-      - Excel: technology/python/excel.md
-      - reportlab: technology/python/reportlab.md
-      - alembic: technology/python/alembic.md
-      - sqlalchemy: technology/python/sqlalchemy.md
-      - 常用函数合集: technology/python/useful_functions.md
+      - technology/python/index.md
+      - technology/python/typehint.md
+      - technology/python/pip.md
+      - technology/python/stringio.md
+      - technology/python/flask.md
+      - technology/python/django.md
+      - technology/python/logging.md
+      - technology/python/importlib.md
+      - technology/python/pycrypto.md
+      - technology/python/petl.md
+      - technology/python/psutil.md
+      - technology/python/docx.md
+      - technology/python/excel.md
+      - technology/python/reportlab.md
+      - technology/python/alembic.md
+      - technology/python/sqlalchemy.md
+      - technology/python/useful_functions.md
     - Linux:
       - 常用资源: technology/linux/usage_source.md
       - 端口占用查找: technology/linux/port.md
@@ -127,6 +128,7 @@ nav:
       - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
       - Oauth2-RFC6750翻译: technology/rfc/rfc6750.md
     - 知识概念:
+      - 项目文档结构示例: technology/concept/pc.md
       - 上位机简介: technology/concept/pc.md
       - xaas概念: technology/concept/xaas.md
       - 一文搞懂什么是SaaS、BaaS、PaaS和IaaS: technology/concept/xaas2.md
