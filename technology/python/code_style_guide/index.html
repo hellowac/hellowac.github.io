@@ -1,3399 +1,1612 @@
 
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="hellowac的工作学习生活笔记">
-      
-      
-      
-      
-        <link rel="prev" href="../typehint/">
-      
-      
-        <link rel="next" href="../pip/">
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.7">
-    
-    
-      
-        <title>编码样式指南 - 我的工作学习生活笔记</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ded33207.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
-      
-      
+<!DOCTYPE html>
 
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-        html.glightbox-open { overflow: initial; height: 100%; }
-        .gslide-title { margin-top: 0px; user-select: text; }
-        .gslide-desc { color: #666; user-select: text; }
-        .gslide-image img { background: white; }
-        
-            .gscrollbar-fixer { padding-right: 15px; }
-            .gdesc-inner { font-size: 0.75rem; }
-            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
-  
-    
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#编码样式指南" class="md-skip">
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="hellowac的工作学习生活笔记" name="description"/>
+<link href="../pep8/" rel="prev"/>
+<link href="../pip/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.13" name="generator"/>
+<title>编码样式指南 - 我的工作学习生活笔记</title>
+<link href="../../../assets/stylesheets/main.ffa9267a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="default" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#编码样式指南">
           跳转至
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="我的工作学习生活笔记" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             我的工作学习生活笔记
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               编码样式指南
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="查找">
-        
-        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     hellowac的个人博客
   </div>
 </a>
-      </div>
-    
-  </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+</div>
+</nav>
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
       首页
     </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
         技术
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../read/english/bluelevel/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../read/english/bluelevel/">
         阅读
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../invest/webs/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../invest/webs/">
         理财
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../tools/repos/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tools/repos/">
         工具
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../documents/docs/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../documents/docs/">
         文档
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../e-book/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../e-book/">
       电子书
     </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../other/front_links/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../other/front_links/">
         其他
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../about/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../about/">
       关于
     </a>
-  </li>
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-    
-  
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="我的工作学习生活笔记" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
     我的工作学习生活笔记
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     hellowac的个人博客
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
         首页
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
           技术
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           技术
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
           Python
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
           Python
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
         简介
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../typehint/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../typehint/">
         类型标注
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pep8/">
+        PEP 8 – Python代码样式指南
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           编码样式指南
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         编码样式指南
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#引子目标" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#引子目标">
     引子(目标)
   </a>
-  
-    <nav class="md-nav" aria-label="引子(目标)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#python之禅" class="md-nav__link">
+<nav aria-label="引子(目标)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#python之禅">
     Python之禅
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#pythonic" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pythonic">
     Pythonic
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#pythonic-小例子" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pythonic-小例子">
     Pythonic 小例子
   </a>
-  
-    <nav class="md-nav" aria-label="Pythonic 小例子">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#变量交换" class="md-nav__link">
+<nav aria-label="Pythonic 小例子" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#变量交换">
     变量交换
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#列表推导" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#列表推导">
     列表推导
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#单行表达式" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#单行表达式">
     单行表达式
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#带索引遍历" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#带索引遍历">
     带索引遍历
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#字符串拼接" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#字符串拼接">
     字符串拼接
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#真假判断" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#真假判断">
     真假判断
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#访问字典元素" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#访问字典元素">
     访问字典元素
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#操作列表" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#操作列表">
     操作列表
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#文件读取" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#文件读取">
     文件读取
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#代码续行" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#代码续行">
     代码续行
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#显式代码" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#显式代码">
     显式代码
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#使用占位符" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#使用占位符">
     使用占位符
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#链式比较" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#链式比较">
     链式比较
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#三目运算" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#三目运算">
     三目运算
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#or赋值" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#or赋值">
     or赋值
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#python3-新特性" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#python3-新特性">
     Python3 新特性
   </a>
-  
-    <nav class="md-nav" aria-label="Python3 新特性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#和解构" class="md-nav__link">
+<nav aria-label="Python3 新特性" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#和解构">
     *和**解构
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#字符串格式化" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#字符串格式化">
     字符串格式化
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#f字符串支持用" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#f字符串支持用">
     f字符串支持用=
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#字典新增合并运算" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#字典新增合并运算">
     字典新增合并运算
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#数字加下划线" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#数字加下划线">
     数字加下划线
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#类型标注" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#类型标注">
     类型标注
   </a>
-  
-    <nav class="md-nav" aria-label="类型标注">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#变量标注" class="md-nav__link">
+<nav aria-label="类型标注" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#变量标注">
     变量标注
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#类型别名" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#类型别名">
     类型别名
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#标准库" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#标准库">
     标准库
   </a>
-  
-    <nav class="md-nav" aria-label="标准库">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#csv" class="md-nav__link">
+<nav aria-label="标准库" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#csv">
     csv
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#io" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#io">
     io
   </a>
-  
-    <nav class="md-nav" aria-label="io">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#文本io" class="md-nav__link">
+<nav aria-label="io" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#文本io">
     文本IO
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#二进制-io" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#二进制-io">
     二进制 I/O
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#collections-常用容器" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#collections-常用容器">
     collections 常用容器
   </a>
-  
-    <nav class="md-nav" aria-label="collections 常用容器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chainmap" class="md-nav__link">
+<nav aria-label="collections 常用容器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#chainmap">
     ChainMap
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#counter" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#counter">
     Counter
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#defaultdict" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#defaultdict">
     defaultdict
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#namedtuple" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#namedtuple">
     namedtuple
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#内置函数" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#内置函数">
     内置函数
   </a>
-  
-    <nav class="md-nav" aria-label="内置函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#map" class="md-nav__link">
+<nav aria-label="内置函数" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#map">
     map
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#filter" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#filter">
     filter
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#any" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#any">
     any
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#all" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#all">
     all
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#zip" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zip">
     zip
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#sorted" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sorted">
     sorted
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#sum" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sum">
     sum
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#range" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#range">
     range
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#getattr" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#getattr">
     getattr
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#setattr" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setattr">
     setattr
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#项目实战" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#项目实战">
     项目实战
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pip/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pip/">
         pip
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../stringio/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stringio/">
         stringIO
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../flask/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../flask/">
         flask
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../django/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../django/">
         django
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../logging/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../logging/">
         logging
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../importlib/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../importlib/">
         importlib
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pycrypto/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pycrypto/">
         crypto
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../petl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../petl/">
         python-petl使用简介
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../psutil/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../psutil/">
         psutil文档-中文版
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../docx/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docx/">
         docx文档
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../excel/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../excel/">
         Excel
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reportlab/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../reportlab/">
         ReportLab
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../alembic/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../alembic/">
         alembic教程(转)
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sqlalchemy/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sqlalchemy/">
         SQLAlchemy简明教程
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../useful_functions/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../useful_functions/">
         常用的函数
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
           Linux
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
           Linux
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/usage_source/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/usage_source/">
         常用资源
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/port/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/port/">
         端口占用查找
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/disk-mount/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/disk-mount/">
         linux磁盘挂载
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/shell-scripts/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/shell-scripts/">
         shell脚本实战
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
           C
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
           C
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../C/c/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../C/c/">
         C基础
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
           前端知识
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
           前端知识
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/base/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/base/">
         基础
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/project/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/project/">
         工程化流程
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/version/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/version/">
         包版本知识
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/package/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/package/">
         package.json知识
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../front/webassembly/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../front/webassembly/">
         WebAssembly
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
           服务组件
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
           服务组件
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/zookeeper/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/zookeeper/">
         zookeeper
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/nginx/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/nginx/">
         nginx
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/supervisor/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/supervisor/">
         supervisor
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/rabbitmq/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/rabbitmq/">
         rabbitmq
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/kafka/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/kafka/">
         kafka
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
           无头浏览器
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_5_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_6">
+<span class="md-nav__icon md-icon"></span>
           无头浏览器
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unheadchrome/openchrome/">
         openchrome
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unheadchrome/build_env/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unheadchrome/build_env/">
         环境搭建
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
           数据库
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
           数据库
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/clickhouse/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/clickhouse/">
         ClickHouse
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
           MySQL
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_6_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
           MySQL
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/mysql8_install/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/mysql8_install/">
         mysql8
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/mysql/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/mysql/">
         常用操作
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
           ElasticSearch
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_6_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_3">
+<span class="md-nav__icon md-icon"></span>
           ElasticSearch
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/elasticsearch_py/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/elasticsearch_py/">
         elasticsearch-py
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/es_dsl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/es_dsl/">
         elasticsearch-dsl
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/es_aggs/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/es_aggs/">
         elasticsearch-aggs
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
           安全渗透
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_7">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
           安全渗透
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/thc-hydra/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../security/thc-hydra/">
         hydra
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/sqlmap/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../security/sqlmap/">
         sqlmap
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
           RFC标准
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
           RFC标准
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rfc/oauth2/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rfc/oauth2/">
         oauth2学习笔记
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rfc/rfc6749/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rfc/rfc6749/">
         Oauth2-RFC6749翻译
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rfc/rfc6750/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rfc/rfc6750/">
         Oauth2-RFC6750翻译
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
           知识概念
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_9">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
           知识概念
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/project_doc_layout/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/project_doc_layout/">
         项目文档结构示例
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/pc/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/pc/">
         上位机简介
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/xaas/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/xaas/">
         xaas概念
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/xaas2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/xaas2/">
         一文搞懂什么是SaaS、BaaS、PaaS和IaaS
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/users/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/users/">
         统一用户管理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/etl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/etl/">
         ETL数据处理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/data_transfer/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/data_transfer/">
         数据传输和对接
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/understand_computer_system/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/understand_computer_system/">
         深入理解计算机系统
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_10">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
           其他
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../other/embedded_industry/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../other/embedded_industry/">
         嵌入式行业
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../other/apache_license2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../other/apache_license2/">
         apache license2.0开源协议
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           阅读
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           阅读
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
           英语
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
           英语
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/english/bluelevel/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/english/bluelevel/">
         BlueLevel
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/english/redlevel/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/english/redlevel/">
         RedLevel
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/howtoreadbook/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/howtoreadbook/">
         如何阅读一本书
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/howtoavoid/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/howtoavoid/">
         如何避免愚蠢的见识
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/placeofsoul/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/placeofsoul/">
         灵魂的最高处
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/maliciousmatch/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/maliciousmatch/">
         恶意匹配
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
           沟通的艺术
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
           沟通的艺术
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication01/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication01/">
         沟通入门
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication02/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication02/">
         看入人里:自我
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication03/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication03/">
         看入人里:知觉
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication04/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication04/">
         看入人里:情绪
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication05/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication05/">
         看出人外:语言
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication06/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication06/">
         看出人外:非语言沟通
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication07/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication07/">
         看出人外:倾听
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication08/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication08/">
         看人之间:沟通和关系的演变
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication09/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication09/">
         看人之间:人际沟通中的亲密关系
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication10/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication10/">
         看人之间:增进沟通气氛
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication11/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication11/">
         看人之间:处理人际冲突
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication12/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication12/">
         阅读总结
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           理财
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           理财
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../invest/webs/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../invest/webs/">
         理财网站
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           工具
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           工具
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/repos/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/repos/">
         仓库合集
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git1/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git1/">
         git 起步
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git2/">
         git 基础
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git3/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git3/">
         git 分支
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git4/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git4/">
         git 服务器
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git5/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git5/">
         git 分布式
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git6/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git6/">
         git hub
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git7/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git7/">
         git 工具
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git8/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git8/">
         git 自定义
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git9/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git9/">
         git 与其他系统
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git10/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git10/">
         git 内部原理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/gita1/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gita1/">
         git 其他环境中使用
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/gita2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gita2/">
         git 应用中嵌入
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/gita3/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gita3/">
         git 命令
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           文档
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
           文档
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../documents/docs/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../documents/docs/">
         文档合集
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../e-book/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../e-book/">
         电子书
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
           其他
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/front_links/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/front_links/">
         前端常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/back_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/back_links/">
         后端常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/other_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/other_links/">
         其他常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/become_leader/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/become_leader/">
         成为高手秘籍
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/zym_weibo/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/zym_weibo/">
         张一鸣微博
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/dynamic_business/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/dynamic_business/">
         动态商业环境
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/honeypot_list/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/honeypot_list/">
         蜜罐资源列表
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/bigdata_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/bigdata_links/">
         大数据资源列表
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../about/">
         关于
       </a>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#引子目标" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#引子目标">
     引子(目标)
   </a>
-  
-    <nav class="md-nav" aria-label="引子(目标)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#python之禅" class="md-nav__link">
+<nav aria-label="引子(目标)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#python之禅">
     Python之禅
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#pythonic" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pythonic">
     Pythonic
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#pythonic-小例子" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pythonic-小例子">
     Pythonic 小例子
   </a>
-  
-    <nav class="md-nav" aria-label="Pythonic 小例子">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#变量交换" class="md-nav__link">
+<nav aria-label="Pythonic 小例子" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#变量交换">
     变量交换
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#列表推导" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#列表推导">
     列表推导
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#单行表达式" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#单行表达式">
     单行表达式
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#带索引遍历" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#带索引遍历">
     带索引遍历
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#字符串拼接" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#字符串拼接">
     字符串拼接
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#真假判断" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#真假判断">
     真假判断
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#访问字典元素" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#访问字典元素">
     访问字典元素
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#操作列表" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#操作列表">
     操作列表
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#文件读取" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#文件读取">
     文件读取
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#代码续行" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#代码续行">
     代码续行
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#显式代码" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#显式代码">
     显式代码
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#使用占位符" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#使用占位符">
     使用占位符
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#链式比较" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#链式比较">
     链式比较
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#三目运算" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#三目运算">
     三目运算
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#or赋值" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#or赋值">
     or赋值
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#python3-新特性" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#python3-新特性">
     Python3 新特性
   </a>
-  
-    <nav class="md-nav" aria-label="Python3 新特性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#和解构" class="md-nav__link">
+<nav aria-label="Python3 新特性" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#和解构">
     *和**解构
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#字符串格式化" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#字符串格式化">
     字符串格式化
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#f字符串支持用" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#f字符串支持用">
     f字符串支持用=
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#字典新增合并运算" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#字典新增合并运算">
     字典新增合并运算
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#数字加下划线" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#数字加下划线">
     数字加下划线
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#类型标注" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#类型标注">
     类型标注
   </a>
-  
-    <nav class="md-nav" aria-label="类型标注">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#变量标注" class="md-nav__link">
+<nav aria-label="类型标注" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#变量标注">
     变量标注
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#类型别名" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#类型别名">
     类型别名
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#标准库" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#标准库">
     标准库
   </a>
-  
-    <nav class="md-nav" aria-label="标准库">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#csv" class="md-nav__link">
+<nav aria-label="标准库" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#csv">
     csv
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#io" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#io">
     io
   </a>
-  
-    <nav class="md-nav" aria-label="io">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#文本io" class="md-nav__link">
+<nav aria-label="io" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#文本io">
     文本IO
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#二进制-io" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#二进制-io">
     二进制 I/O
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#collections-常用容器" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#collections-常用容器">
     collections 常用容器
   </a>
-  
-    <nav class="md-nav" aria-label="collections 常用容器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chainmap" class="md-nav__link">
+<nav aria-label="collections 常用容器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#chainmap">
     ChainMap
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#counter" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#counter">
     Counter
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#defaultdict" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#defaultdict">
     defaultdict
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#namedtuple" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#namedtuple">
     namedtuple
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#内置函数" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#内置函数">
     内置函数
   </a>
-  
-    <nav class="md-nav" aria-label="内置函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#map" class="md-nav__link">
+<nav aria-label="内置函数" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#map">
     map
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#filter" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#filter">
     filter
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#any" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#any">
     any
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#all" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#all">
     all
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#zip" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#zip">
     zip
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#sorted" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sorted">
     sorted
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#sum" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sum">
     sum
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#range" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#range">
     range
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#getattr" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#getattr">
     getattr
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#setattr" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setattr">
     setattr
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#项目实战" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#项目实战">
     项目实战
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-  
-  
-
-
-<h1 id="编码样式指南">编码样式指南<a class="headerlink" href="#编码样式指南" title="Permanent link">&para;</a></h1>
-<h2 id="引子目标">引子(目标)<a class="headerlink" href="#引子目标" title="Permanent link">&para;</a></h2>
-<h3 id="python之禅">Python之禅<a class="headerlink" href="#python之禅" title="Permanent link">&para;</a></h3>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="编码样式指南">编码样式指南<a class="headerlink" href="#编码样式指南" title="Permanent link">¶</a></h1>
+<h2 id="引子目标">引子(目标)<a class="headerlink" href="#引子目标" title="Permanent link">¶</a></h2>
+<h3 id="python之禅">Python之禅<a class="headerlink" href="#python之禅" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
 <span class="n">The</span> <span class="n">Zen</span> <span class="n">of</span> <span class="n">Python</span><span class="p">,</span> <span class="n">by</span> <span class="n">Tim</span> <span class="n">Peters</span>
 <span class="n">Beautiful</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">ugly</span><span class="o">.</span>
@@ -3403,18 +1616,18 @@
 <span class="n">Flat</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">nested</span><span class="o">.</span>
 <span class="n">Sparse</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">dense</span><span class="o">.</span>
 <span class="n">Readability</span> <span class="n">counts</span><span class="o">.</span>
-<span class="n">Special</span> <span class="n">cases</span> <span class="n">aren</span><span class="s1">&#39;t special enough to break the rules.</span>
+<span class="n">Special</span> <span class="n">cases</span> <span class="n">aren</span><span class="s1">'t special enough to break the rules.</span>
 <span class="n">Although</span> <span class="n">practicality</span> <span class="n">beats</span> <span class="n">purity</span><span class="o">.</span>
 <span class="n">Errors</span> <span class="n">should</span> <span class="n">never</span> <span class="k">pass</span> <span class="n">silently</span><span class="o">.</span>
 <span class="n">Unless</span> <span class="n">explicitly</span> <span class="n">silenced</span><span class="o">.</span>
 <span class="n">In</span> <span class="n">the</span> <span class="n">face</span> <span class="n">of</span> <span class="n">ambiguity</span><span class="p">,</span> <span class="n">refuse</span> <span class="n">the</span> <span class="n">temptation</span> <span class="n">to</span> <span class="n">guess</span><span class="o">.</span>
 <span class="n">There</span> <span class="n">should</span> <span class="n">be</span> <span class="n">one</span><span class="o">--</span> <span class="ow">and</span> <span class="n">preferably</span> <span class="n">only</span> <span class="n">one</span> <span class="o">--</span><span class="n">obvious</span> <span class="n">way</span> <span class="n">to</span> <span class="n">do</span> <span class="n">it</span><span class="o">.</span>
-<span class="n">Although</span> <span class="n">that</span> <span class="n">way</span> <span class="n">may</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">obvious</span> <span class="n">at</span> <span class="n">first</span> <span class="n">unless</span> <span class="n">you</span><span class="s1">&#39;re Dutch.</span>
+<span class="n">Although</span> <span class="n">that</span> <span class="n">way</span> <span class="n">may</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">obvious</span> <span class="n">at</span> <span class="n">first</span> <span class="n">unless</span> <span class="n">you</span><span class="s1">'re Dutch.</span>
 <span class="n">Now</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">never</span><span class="o">.</span>
 <span class="n">Although</span> <span class="n">never</span> <span class="ow">is</span> <span class="n">often</span> <span class="n">better</span> <span class="n">than</span> <span class="n">right</span> <span class="n">now</span><span class="o">.**</span>
-<span class="n">If</span> <span class="n">the</span> <span class="n">implementation</span> <span class="ow">is</span> <span class="n">hard</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span><span class="s1">&#39;s a bad idea.</span>
+<span class="n">If</span> <span class="n">the</span> <span class="n">implementation</span> <span class="ow">is</span> <span class="n">hard</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span><span class="s1">'s a bad idea.</span>
 <span class="n">If</span> <span class="n">the</span> <span class="n">implementation</span> <span class="ow">is</span> <span class="n">easy</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">good</span> <span class="n">idea</span><span class="o">.</span>
-<span class="n">Namespaces</span> <span class="n">are</span> <span class="n">one</span> <span class="n">honking</span> <span class="n">great</span> <span class="n">idea</span> <span class="o">--</span> <span class="n">let</span><span class="s1">&#39;s do more of those!</span>
+<span class="n">Namespaces</span> <span class="n">are</span> <span class="n">one</span> <span class="n">honking</span> <span class="n">great</span> <span class="n">idea</span> <span class="o">--</span> <span class="n">let</span><span class="s1">'s do more of those!</span>
 </code></pre></div>
 <p>中文翻译:</p>
 <div class="highlight"><pre><span></span><code>Python 之禅，蒂姆·彼得斯 (Tim Peters)
@@ -3468,7 +1681,7 @@
 <li>本文作者 Tim Peters 解释说这里的荷兰人指的是 Python 的作者 Guido van Rossum 吹捧 gvanrossum 的彩虹屁：等同于“你个荷兰佬他娘的还真是个天才”</li>
 <li>贯穿整个 PEP 20 的核心就是一句话“你的代码是给别人读的！”。从这个角度而言，难以理解、难以维护的代码，即便是“高性能”，也肯定不是好代码；但是反过来，一目了然的逻辑也不代表就一定是好代码。编程可太难了</li>
 </ol>
-<h3 id="pythonic">Pythonic<a class="headerlink" href="#pythonic" title="Permanent link">&para;</a></h3>
+<h3 id="pythonic">Pythonic<a class="headerlink" href="#pythonic" title="Permanent link">¶</a></h3>
 <p>Pythonic 就是很 Python 的 Python 代码。比如「这很知乎」一般用来表示「知乎社区特有的现象」，「这很百度」表示「百度公司特有的行为」，「很 Python 」的代码就是 「 Pythonic 」。也就是说，Python 很明显区别于其它语言的（<del>优雅</del>）写法。</p>
 <p>比如，在 C-Like 语言中一般这样交换两个数字 a，b：</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
@@ -3487,8 +1700,8 @@
 </code></pre></div>
 <p>再比如 <code>for-else</code>、<code>try-else</code> 等等等等很多，诸如此类 Python 特有的，称之为特性也好、语法糖也罢的东西，就是 Pythonic。</p>
 <p>其实，只要认真阅读一遍 <a href="https://link.zhihu.com/?target=https%3A//www.python.org/dev/peps/pep-0008/">PEP 8</a>，并尽量遵守，代码就足够 Pythonic 了。</p>
-<h2 id="pythonic-小例子">Pythonic 小例子<a class="headerlink" href="#pythonic-小例子" title="Permanent link">&para;</a></h2>
-<h3 id="变量交换">变量交换<a class="headerlink" href="#变量交换" title="Permanent link">&para;</a></h3>
+<h2 id="pythonic-小例子">Pythonic 小例子<a class="headerlink" href="#pythonic-小例子" title="Permanent link">¶</a></h2>
+<h3 id="变量交换">变量交换<a class="headerlink" href="#变量交换" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
@@ -3497,7 +1710,7 @@
 <span class="c1"># Pythonic</span>
 <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span>
 </code></pre></div>
-<h3 id="列表推导">列表推导<a class="headerlink" href="#列表推导" title="Permanent link">&para;</a></h3>
+<h3 id="列表推导">列表推导<a class="headerlink" href="#列表推导" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 <span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -3506,67 +1719,67 @@
 <span class="c1"># Pythonic</span>
 <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 </code></pre></div>
-<h3 id="单行表达式">单行表达式<a class="headerlink" href="#单行表达式" title="Permanent link">&para;</a></h3>
+<h3 id="单行表达式">单行表达式<a class="headerlink" href="#单行表达式" title="Permanent link">¶</a></h3>
 <p>虽然列表推导式由于其简洁性及表达性，被广受推崇。</p>
 <p>但是有许多可以写成单行的表达式，并不是好的做法。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
-<span class="nb">print</span> <span class="s1">&#39;one&#39;</span><span class="p">;</span> <span class="nb">print</span> <span class="s1">&#39;two&#39;</span>
+<span class="nb">print</span> <span class="s1">'one'</span><span class="p">;</span> <span class="nb">print</span> <span class="s1">'two'</span>
 
-<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="nb">print</span> <span class="s1">&#39;one&#39;</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="nb">print</span> <span class="s1">'one'</span>
 
 <span class="k">if</span> <span class="o">&lt;</span><span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="o">&lt;</span><span class="n">other</span> <span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span><span class="p">:</span>
     <span class="c1"># do something</span>
 
 <span class="c1"># Pythonic</span>
 
-<span class="nb">print</span> <span class="s1">&#39;one&#39;</span>
-<span class="nb">print</span> <span class="s1">&#39;two&#39;</span>
+<span class="nb">print</span> <span class="s1">'one'</span>
+<span class="nb">print</span> <span class="s1">'two'</span>
 
 <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;one&#39;</span>
+    <span class="nb">print</span> <span class="s1">'one'</span>
 
 <span class="n">cond1</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span>
 <span class="n">cond2</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">other</span> <span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span>
 <span class="k">if</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond2</span><span class="p">:</span>
     <span class="c1"># do something</span>
 </code></pre></div>
-<h3 id="带索引遍历">带索引遍历<a class="headerlink" href="#带索引遍历" title="Permanent link">&para;</a></h3>
+<h3 id="带索引遍历">带索引遍历<a class="headerlink" href="#带索引遍历" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;--&gt;&quot;</span><span class="p">,</span> <span class="n">my_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">"--&gt;"</span><span class="p">,</span> <span class="n">my_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
 <span class="c1"># Pythonic</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;--&gt;&quot;</span><span class="p">,</span><span class="n">item</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">"--&gt;"</span><span class="p">,</span><span class="n">item</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="字符串拼接">字符串拼接<a class="headerlink" href="#字符串拼接" title="Permanent link">&para;</a></h3>
+<h3 id="字符串拼接">字符串拼接<a class="headerlink" href="#字符串拼接" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
-<span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]</span>
-<span class="n">s</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'p'</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">]</span>
+<span class="n">s</span><span class="o">=</span><span class="s2">""</span>
 <span class="k">for</span> <span class="n">let</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
     <span class="n">s</span> <span class="o">+=</span> <span class="n">let</span>
 
 <span class="c1"># Pythonic</span>
-<span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]</span>
-<span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'p'</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">]</span>
+<span class="n">word</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="真假判断">真假判断<a class="headerlink" href="#真假判断" title="Permanent link">&para;</a></h3>
+<h3 id="真假判断">真假判断<a class="headerlink" href="#真假判断" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;True!&#39;</span>
+    <span class="nb">print</span> <span class="s1">'True!'</span>
 
 <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;attr is None!&#39;</span>
+    <span class="nb">print</span> <span class="s1">'attr is None!'</span>
 
 <span class="c1"># Pythonic</span>
 <span class="k">if</span> <span class="n">attr</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;attr is truthy!&#39;</span>
+    <span class="nb">print</span> <span class="s1">'attr is truthy!'</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">attr</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;attr is falsey!&#39;</span>
+    <span class="nb">print</span> <span class="s1">'attr is falsey!'</span>
 
 <span class="k">if</span> <span class="n">attr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;attr is None!&#39;</span>
+    <span class="nb">print</span> <span class="s1">'attr is None!'</span>
 </code></pre></div>
 <p>真假值对照表：</p>
 <table>
@@ -3605,27 +1818,27 @@
 </tr>
 </tbody>
 </table>
-<h3 id="访问字典元素">访问字典元素<a class="headerlink" href="#访问字典元素" title="Permanent link">&para;</a></h3>
+<h3 id="访问字典元素">访问字典元素<a class="headerlink" href="#访问字典元素" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 
-<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hello&#39;</span><span class="p">:</span> <span class="s1">&#39;world&#39;</span><span class="p">}</span>
-<span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">):</span>
-    <span class="nb">print</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">]</span>    <span class="c1"># prints &#39;world&#39;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'hello'</span><span class="p">:</span> <span class="s1">'world'</span><span class="p">}</span>
+<span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="n">d</span><span class="p">[</span><span class="s1">'hello'</span><span class="p">]</span>    <span class="c1"># prints 'world'</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="s1">&#39;default_value&#39;</span>
+    <span class="nb">print</span> <span class="s1">'default_value'</span>
 
 <span class="c1"># Pythonic</span>
 
-<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hello&#39;</span><span class="p">:</span> <span class="s1">&#39;world&#39;</span><span class="p">}</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'hello'</span><span class="p">:</span> <span class="s1">'world'</span><span class="p">}</span>
 
-<span class="nb">print</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;default_value&#39;</span><span class="p">)</span> <span class="c1"># prints &#39;world&#39;</span>
-<span class="nb">print</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thingy&#39;</span><span class="p">,</span> <span class="s1">&#39;default_value&#39;</span><span class="p">)</span> <span class="c1"># prints &#39;default_value&#39;</span>
+<span class="nb">print</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s1">'default_value'</span><span class="p">)</span> <span class="c1"># prints 'world'</span>
+<span class="nb">print</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'thingy'</span><span class="p">,</span> <span class="s1">'default_value'</span><span class="p">)</span> <span class="c1"># prints 'default_value'</span>
 
 <span class="c1"># Or:</span>
-<span class="k">if</span> <span class="s1">&#39;hello&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">]</span>
+<span class="k">if</span> <span class="s1">'hello'</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">d</span><span class="p">[</span><span class="s1">'hello'</span><span class="p">]</span>
 </code></pre></div>
-<h3 id="操作列表">操作列表<a class="headerlink" href="#操作列表" title="Permanent link">&para;</a></h3>
+<h3 id="操作列表">操作列表<a class="headerlink" href="#操作列表" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -3653,40 +1866,40 @@
 <span class="c1"># Or:</span>
 <span class="n">a</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="文件读取">文件读取<a class="headerlink" href="#文件读取" title="Permanent link">&para;</a></h3>
+<h3 id="文件读取">文件读取<a class="headerlink" href="#文件读取" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'file.txt'</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="nb">print</span> <span class="n">a</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="c1"># Pythonic</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'file.txt'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
         <span class="nb">print</span> <span class="n">line</span>
 </code></pre></div>
-<h3 id="代码续行">代码续行<a class="headerlink" href="#代码续行" title="Permanent link">&para;</a></h3>
+<h3 id="代码续行">代码续行<a class="headerlink" href="#代码续行" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
-<span class="n">my_very_big_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;For a long time I used to go to bed early. Sometimes, </span><span class="se">\</span>
+<span class="n">my_very_big_string</span> <span class="o">=</span> <span class="s2">"""For a long time I used to go to bed early. Sometimes, </span><span class="se">\</span>
 <span class="s2">    when I had put out my candle, my eyes would close so quickly that I had not even </span><span class="se">\</span>
-<span class="s2">    time to say “I’m going to sleep.”&quot;&quot;&quot;</span>
+<span class="s2">    time to say “I’m going to sleep.”"""</span>
 
 <span class="kn">from</span> <span class="nn">some.deep.module.inside.a.module</span> <span class="kn">import</span> <span class="n">a_nice_function</span><span class="p">,</span> <span class="n">another_nice_function</span><span class="p">,</span> \
     <span class="n">yet_another_nice_function</span>
 
 <span class="c1"># Pythonic</span>
 <span class="n">my_very_big_string</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;For a long time I used to go to bed early. Sometimes, &quot;</span>
-    <span class="s2">&quot;when I had put out my candle, my eyes would close so quickly &quot;</span>
-    <span class="s2">&quot;that I had not even time to say “I’m going to sleep.”&quot;</span>
+    <span class="s2">"For a long time I used to go to bed early. Sometimes, "</span>
+    <span class="s2">"when I had put out my candle, my eyes would close so quickly "</span>
+    <span class="s2">"that I had not even time to say “I’m going to sleep.”"</span>
 <span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">some.deep.module.inside.a.module</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">a_nice_function</span><span class="p">,</span> <span class="n">another_nice_function</span><span class="p">,</span> <span class="n">yet_another_nice_function</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="显式代码">显式代码<a class="headerlink" href="#显式代码" title="Permanent link">&para;</a></h3>
+<h3 id="显式代码">显式代码<a class="headerlink" href="#显式代码" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 <span class="k">def</span> <span class="nf">make_complex</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">args</span>
@@ -3694,28 +1907,28 @@
 
 <span class="c1"># Pythonic</span>
 <span class="k">def</span> <span class="nf">make_complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
 </code></pre></div>
-<h3 id="使用占位符">使用占位符<a class="headerlink" href="#使用占位符" title="Permanent link">&para;</a></h3>
+<h3 id="使用占位符">使用占位符<a class="headerlink" href="#使用占位符" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pythonic</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;foobar.txt&#39;</span>
-<span class="n">basename</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">'foobar.txt'</span>
+<span class="n">basename</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="链式比较">链式比较<a class="headerlink" href="#链式比较" title="Permanent link">&para;</a></h3>
+<h3 id="链式比较">链式比较<a class="headerlink" href="#链式比较" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;young man&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"young man"</span><span class="p">)</span>
 
 <span class="c1"># Pythonic</span>
 
 <span class="k">if</span> <span class="mi">18</span> <span class="o">&lt;</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;young man&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"young man"</span><span class="p">)</span>
 
 <span class="c1"># 理解了链式比较操作，那么你应该知道为什么下面这行代码输出的结果是 False</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kc">False</span> <span class="o">==</span> <span class="kc">False</span> <span class="o">==</span> <span class="kc">True</span> 
 <span class="kc">False</span>
 </code></pre></div>
-<h3 id="三目运算">三目运算<a class="headerlink" href="#三目运算" title="Permanent link">&para;</a></h3>
+<h3 id="三目运算">三目运算<a class="headerlink" href="#三目运算" title="Permanent link">¶</a></h3>
 <p>这个保留意见。随使用习惯就好。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bad</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -3731,7 +1944,7 @@
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="mi">1</span>
 <span class="c1">#b = 2</span>
 </code></pre></div>
-<h3 id="or赋值">or赋值<a class="headerlink" href="#or赋值" title="Permanent link">&para;</a></h3>
+<h3 id="or赋值">or赋值<a class="headerlink" href="#or赋值" title="Permanent link">¶</a></h3>
 <p>某些情况下，<code>or</code>可以替换<code>if else</code> 达到代码简化的作用，比如在变量赋值时, 并且支持链式调用</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 基本用法</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">p1</span> <span class="ow">or</span> <span class="n">p2</span>
@@ -3749,8 +1962,8 @@
 <span class="c1"># else:</span>
 <span class="c1">#     v = defualt</span>
 </code></pre></div>
-<h2 id="python3-新特性">Python3 新特性<a class="headerlink" href="#python3-新特性" title="Permanent link">&para;</a></h2>
-<h3 id="和解构">*和**解构<a class="headerlink" href="#和解构" title="Permanent link">&para;</a></h3>
+<h2 id="python3-新特性">Python3 新特性<a class="headerlink" href="#python3-新特性" title="Permanent link">¶</a></h2>
+<h3 id="和解构">*和**解构<a class="headerlink" href="#和解构" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pythonic</span>
 
 <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -3765,7 +1978,7 @@
 <span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
 
-<span class="n">fn</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
+<span class="n">fn</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="o">**</span><span class="p">{</span><span class="s1">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
 
 <span class="c1"># 也可以解构元祖，集合set等</span>
 <span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="mi">4</span>
@@ -3774,63 +1987,63 @@
 
 <span class="p">{</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)}</span>
 
-<span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}</span>
+<span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">'y'</span><span class="p">:</span> <span class="mi">2</span><span class="p">}}</span>
 </code></pre></div>
-<h3 id="字符串格式化">字符串格式化<a class="headerlink" href="#字符串格式化" title="Permanent link">&para;</a></h3>
+<h3 id="字符串格式化">字符串格式化<a class="headerlink" href="#字符串格式化" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 早期 - python 2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;name:</span><span class="si">%s</span><span class="s2">, age:</span><span class="si">%s</span><span class="s2">, sex: </span><span class="si">%s</span><span class="s2">,&quot;</span> <span class="o">%</span><span class="p">(</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"name:</span><span class="si">%s</span><span class="s2">, age:</span><span class="si">%s</span><span class="s2">, sex: </span><span class="si">%s</span><span class="s2">,"</span> <span class="o">%</span><span class="p">(</span><span class="s1">'张三'</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">'男'</span><span class="p">))</span>
 
 <span class="c1"># 后来 - python 2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;name:</span><span class="si">{}</span><span class="s2">, age:</span><span class="si">{}</span><span class="s2">, sex:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;name:</span><span class="si">{name}</span><span class="s2">, age:</span><span class="si">{age}</span><span class="s2">, sex:</span><span class="si">{sex}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">&#39;男&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"name:</span><span class="si">{}</span><span class="s2">, age:</span><span class="si">{}</span><span class="s2">, sex:</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">'张三'</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">'男'</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"name:</span><span class="si">{name}</span><span class="s2">, age:</span><span class="si">{age}</span><span class="s2">, sex:</span><span class="si">{sex}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'张三'</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s1">'男'</span><span class="p">))</span>
 
 <span class="c1"># 现在 - python3</span>
-<span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">)</span> <span class="c1"># 自动解包</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;name:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, age:</span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">, sex:</span><span class="si">{</span><span class="n">sex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'张三'</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">'男'</span><span class="p">)</span> <span class="c1"># 自动解包</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"name:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, age:</span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">, sex:</span><span class="si">{</span><span class="n">sex</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="f字符串支持用">f字符串支持用=<a class="headerlink" href="#f字符串支持用" title="Permanent link">&para;</a></h3>
+<h3 id="f字符串支持用">f字符串支持用=<a class="headerlink" href="#f字符串支持用" title="Permanent link">¶</a></h3>
 <p>自动记录表达式和调试文档</p>
 <p>增加 = 说明符用于 <a href="https://docs.python.org/zh-cn/3.8/glossary.html#term-f-string">f-string</a>。 形式为 <code>f'{expr=}'</code> 的 f-字符串将扩展表示为表达式文本，加一个等于号，再加表达式的求值结果。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 基本用法</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">datetime</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;eric_idle&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">user</span> <span class="o">=</span> <span class="s1">'eric_idle'</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">member_since</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1975</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">user</span><span class="si">=}</span><span class="s1"> </span><span class="si">{</span><span class="n">member_since</span><span class="si">=}</span><span class="s1">&#39;</span>
-<span class="s2">&quot;user=&#39;eric_idle&#39; member_since=datetime.date(1975, 7, 31)&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">user</span><span class="si">=}</span><span class="s1"> </span><span class="si">{</span><span class="n">member_since</span><span class="si">=}</span><span class="s1">'</span>
+<span class="s2">"user='eric_idle' member_since=datetime.date(1975, 7, 31)"</span>
 
 <span class="c1"># 通常的 f-字符串格式说明符 允许更细致地控制所要显示的表达式结果:</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">member_since</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">user</span><span class="si">=!s}</span><span class="s1">  </span><span class="si">{</span><span class="n">delta</span><span class="o">.</span><span class="n">days</span><span class="si">=:</span><span class="s1">,d</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="s1">&#39;user=eric_idle  delta.days=17,436&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">user</span><span class="si">=!s}</span><span class="s1">  </span><span class="si">{</span><span class="n">delta</span><span class="o">.</span><span class="n">days</span><span class="si">=:</span><span class="s1">,d</span><span class="si">}</span><span class="s1">'</span>
+<span class="s1">'user=eric_idle  delta.days=17,436'</span>
 
 <span class="c1"># = 说明符将输出整个表达式，以便详细演示计算过程:</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">radians</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">theta</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">theta</span><span class="si">=}</span><span class="s1">  </span><span class="si">{</span><span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="si">=:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">theta</span><span class="si">=}</span><span class="s1">  </span><span class="si">{</span><span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="si">=:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">theta</span><span class="o">=</span><span class="mi">30</span>  <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="o">=</span><span class="mf">0.866</span>
 </code></pre></div>
-<h3 id="字典新增合并运算">字典新增合并运算<a class="headerlink" href="#字典新增合并运算" title="Permanent link">&para;</a></h3>
+<h3 id="字典新增合并运算">字典新增合并运算<a class="headerlink" href="#字典新增合并运算" title="Permanent link">¶</a></h3>
 <p>python 3.9新增特性</p>
 <p>合并 (<code>|</code>) 与更新 (<code>|=</code>) 运算符已被加入内置的 <code>dict</code> 类。 它们为现有的 <code>dict.update</code> 和 <code>{**d1, **d2}</code> 字典合并方法提供了补充。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;张三&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="s2">&quot;男&quot;</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;张小三&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="s2">&quot;男&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"张三"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">:</span> <span class="s2">"男"</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"张小三"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">:</span> <span class="s2">"男"</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">|</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># 取并集并覆盖</span>
-<span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;张小三&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">:</span> <span class="s1">&#39;男&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="s1">'张小三'</span><span class="p">,</span> <span class="s1">'sex'</span><span class="p">:</span> <span class="s1">'男'</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">y</span> <span class="o">|</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># 取并集并覆盖</span>
-<span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;张三&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">:</span> <span class="s1">&#39;男&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="s1">'张三'</span><span class="p">,</span> <span class="s1">'sex'</span><span class="p">:</span> <span class="s1">'男'</span><span class="p">}</span>
 </code></pre></div>
-<h3 id="数字加下划线">数字加下划线<a class="headerlink" href="#数字加下划线" title="Permanent link">&para;</a></h3>
+<h3 id="数字加下划线">数字加下划线<a class="headerlink" href="#数字加下划线" title="Permanent link">¶</a></h3>
 <p>数字中可以使用下划线增强可读性</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">1_000_000_000_000_00</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mh">0x_FF_FF_FF_FF</span><span class="p">)</span>
 
 <span class="c1"># 字符串格式化也支持下划线_选项</span>
 </code></pre></div>
-<h3 id="类型标注">类型标注<a class="headerlink" href="#类型标注" title="Permanent link">&para;</a></h3>
+<h3 id="类型标注">类型标注<a class="headerlink" href="#类型标注" title="Permanent link">¶</a></h3>
 <p>参考官网: <a href="https://docs.python.org/zh-cn/3/library/typing.html">https://docs.python.org/zh-cn/3/library/typing.html</a></p>
-<h4 id="变量标注">变量标注<a class="headerlink" href="#变量标注" title="Permanent link">&para;</a></h4>
+<h4 id="变量标注">变量标注<a class="headerlink" href="#变量标注" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># 需要一部分IDE支持</span>
 <span class="n">primes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -3839,10 +2052,10 @@
 <span class="k">class</span> <span class="nc">Starship</span><span class="p">:</span>
     <span class="n">stats</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;sda&#39;</span><span class="p">)</span>  <span class="c1"># 这里会类型检查不通过</span>
+<span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'sda'</span><span class="p">)</span>  <span class="c1"># 这里会类型检查不通过</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="类型别名">类型别名<a class="headerlink" href="#类型别名" title="Permanent link">&para;</a></h4>
+<h4 id="类型别名">类型别名<a class="headerlink" href="#类型别名" title="Permanent link">¶</a></h4>
 <p>把类型赋给别名，就可以定义类型别名。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Vector 和 list[float] 相同，可互换</span>
 <span class="n">Vector</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
@@ -3869,8 +2082,8 @@
         <span class="n">servers</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
 </code></pre></div>
-<h2 id="标准库">标准库<a class="headerlink" href="#标准库" title="Permanent link">&para;</a></h2>
-<h3 id="csv">csv<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h3>
+<h2 id="标准库">标准库<a class="headerlink" href="#标准库" title="Permanent link">¶</a></h2>
+<h3 id="csv">csv<a class="headerlink" href="#csv" title="Permanent link">¶</a></h3>
 <p>参考标准库: <a href="https://docs.python.org/zh-cn/3/library/csv.html">https://docs.python.org/zh-cn/3/library/csv.html</a></p>
 <p><code>CSV</code> (Comma Separated Values) 格式是电子表格和数据库中最常见的输入、输出文件格式。</p>
 <p><code>csv</code> 模块实现了 <code>CSV</code> 格式表单数据的读写</p>
@@ -3878,88 +2091,88 @@
 <span class="kn">import</span> <span class="nn">csv</span>
 
 <span class="c1"># csv.reader 读取</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-    <span class="n">spamreader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'eggs.csv'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">spamreader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">' '</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s1">'|'</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">spamreader</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
 
 <span class="c1"># csv.writer 写入</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-    <span class="n">spamwriter</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
-                            <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_MINIMAL</span><span class="p">)</span>
-    <span class="n">spamwriter</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Spam&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Baked Beans&#39;</span><span class="p">])</span>
-    <span class="n">spamwriter</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Spam&#39;</span><span class="p">,</span> <span class="s1">&#39;Lovely Spam&#39;</span><span class="p">,</span> <span class="s1">&#39;Wonderful Spam&#39;</span><span class="p">])</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'eggs.csv'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">spamwriter</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">' '</span><span class="p">,</span>
+                            <span class="n">quotechar</span><span class="o">=</span><span class="s1">'|'</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_MINIMAL</span><span class="p">)</span>
+    <span class="n">spamwriter</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">'Spam'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'Baked Beans'</span><span class="p">])</span>
+    <span class="n">spamwriter</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">'Spam'</span><span class="p">,</span> <span class="s1">'Lovely Spam'</span><span class="p">,</span> <span class="s1">'Wonderful Spam'</span><span class="p">])</span>
 
 <span class="c1"># 字典读写</span>
 <span class="kn">import</span> <span class="nn">csv</span>
 
 <span class="c1"># csv.DictReader 读取字典格式</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;names.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'names.csv'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
     <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">'last_name'</span><span class="p">])</span>
 
 <span class="c1"># csv.DictWriter 写入字典格式</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;names.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
-    <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'names.csv'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'last_name'</span><span class="p">]</span>
     <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
 
     <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Baked&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Beans&#39;</span><span class="p">})</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Lovely&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Spam&#39;</span><span class="p">})</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Wonderful&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Spam&#39;</span><span class="p">})</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">'first_name'</span><span class="p">:</span> <span class="s1">'Baked'</span><span class="p">,</span> <span class="s1">'last_name'</span><span class="p">:</span> <span class="s1">'Beans'</span><span class="p">})</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">'first_name'</span><span class="p">:</span> <span class="s1">'Lovely'</span><span class="p">,</span> <span class="s1">'last_name'</span><span class="p">:</span> <span class="s1">'Spam'</span><span class="p">})</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="s1">'first_name'</span><span class="p">:</span> <span class="s1">'Wonderful'</span><span class="p">,</span> <span class="s1">'last_name'</span><span class="p">:</span> <span class="s1">'Spam'</span><span class="p">})</span>
 </code></pre></div>
-<h3 id="io">io<a class="headerlink" href="#io" title="Permanent link">&para;</a></h3>
+<h3 id="io">io<a class="headerlink" href="#io" title="Permanent link">¶</a></h3>
 <p>参考官网: <a href="https://docs.python.org/zh-cn/3/library/io.html">https://docs.python.org/zh-cn/3/library/io.html</a></p>
 <p>io 模块提供了 Python 用于处理各种 I/O 类型的主要工具。三种主要的 I/O类型分别为: 文本 I/O, 二进制 I/O 和 原始 I/O。</p>
-<h4 id="文本io">文本IO<a class="headerlink" href="#文本io" title="Permanent link">&para;</a></h4>
+<h4 id="文本io">文本IO<a class="headerlink" href="#文本io" title="Permanent link">¶</a></h4>
 <p>内存中文本流作为 <a href="https://docs.python.org/zh-cn/3/library/io.html#io.StringIO">StringIO</a> 对象使用：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 文本I/O预期并生成 str 对象。</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;some initial text data&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">"some initial text data"</span><span class="p">)</span>
 
 <span class="c1"># 主要用于生成小的文本文件（例如：csv），便于处理，而非创建一个临时文件（磁盘IO）</span>
 </code></pre></div>
-<h4 id="二进制-io">二进制 I/O<a class="headerlink" href="#二进制-io" title="Permanent link">&para;</a></h4>
+<h4 id="二进制-io">二进制 I/O<a class="headerlink" href="#二进制-io" title="Permanent link">¶</a></h4>
 <p>二进制I/O（也称为<strong>缓冲I/O</strong>）预期 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-bytes-like-object">bytes-like objects</a> 并生成 <a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#bytes">bytes</a> 对象。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 存储二进制数据</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;some initial binary data: </span><span class="se">\x00\x01</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s2">"some initial binary data: </span><span class="se">\x00\x01</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># 多常用于图片、验证码等。</span>
 </code></pre></div>
-<h3 id="collections-常用容器">collections 常用容器<a class="headerlink" href="#collections-常用容器" title="Permanent link">&para;</a></h3>
-<h4 id="chainmap">ChainMap<a class="headerlink" href="#chainmap" title="Permanent link">&para;</a></h4>
+<h3 id="collections-常用容器">collections 常用容器<a class="headerlink" href="#collections-常用容器" title="Permanent link">¶</a></h3>
+<h4 id="chainmap">ChainMap<a class="headerlink" href="#chainmap" title="Permanent link">¶</a></h4>
 <p>一个 <a href="https://docs.python.org/zh-cn/3/library/collections.html#collections.ChainMap">ChainMap</a> 将多个字典或者其他映射组合在一起，创建一个单独的可更新的视图。 如果没有 maps 被指定，就提供一个默认的空字典，这样一个新链至少有一个映射。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">baseline</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;music&#39;</span><span class="p">:</span> <span class="s1">&#39;bach&#39;</span><span class="p">,</span> <span class="s1">&#39;art&#39;</span><span class="p">:</span> <span class="s1">&#39;rembrandt&#39;</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">adjustments</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;art&#39;</span><span class="p">:</span> <span class="s1">&#39;van gogh&#39;</span><span class="p">,</span> <span class="s1">&#39;opera&#39;</span><span class="p">:</span> <span class="s1">&#39;carmen&#39;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">baseline</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'music'</span><span class="p">:</span> <span class="s1">'bach'</span><span class="p">,</span> <span class="s1">'art'</span><span class="p">:</span> <span class="s1">'rembrandt'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">adjustments</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'art'</span><span class="p">:</span> <span class="s1">'van gogh'</span><span class="p">,</span> <span class="s1">'opera'</span><span class="p">:</span> <span class="s1">'carmen'</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">ChainMap</span><span class="p">(</span><span class="n">adjustments</span><span class="p">,</span> <span class="n">baseline</span><span class="p">))</span>
-<span class="p">[</span><span class="s1">&#39;music&#39;</span><span class="p">,</span> <span class="s1">&#39;art&#39;</span><span class="p">,</span> <span class="s1">&#39;opera&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'music'</span><span class="p">,</span> <span class="s1">'art'</span><span class="p">,</span> <span class="s1">'opera'</span><span class="p">]</span>
 
 <span class="c1"># python3 新语法 针对字典 的 | 运算符也可以</span>
 </code></pre></div>
-<h4 id="counter">Counter<a class="headerlink" href="#counter" title="Permanent link">&para;</a></h4>
+<h4 id="counter">Counter<a class="headerlink" href="#counter" title="Permanent link">¶</a></h4>
 <p>一个计数器工具提供快速和方便的计数</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'red'</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">,</span> <span class="s1">'green'</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">]:</span>
 <span class="o">...</span>     <span class="n">cnt</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="o">...</span> 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cnt</span>
-<span class="n">Counter</span><span class="p">({</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s1">'blue'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'green'</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
 </code></pre></div>
-<h4 id="defaultdict">defaultdict<a class="headerlink" href="#defaultdict" title="Permanent link">&para;</a></h4>
+<h4 id="defaultdict">defaultdict<a class="headerlink" href="#defaultdict" title="Permanent link">¶</a></h4>
 <p>返回一个新的类似字典的对象。 <code>defaultdict</code> 是内置 <code>dict</code> 类的子类。 它重载了一个方法并添加了一个可写的实例变量。 其余的功能与 <code>dict</code> 类相同因而不在此文档中写明。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">'blue'</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">'blue'</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">'red'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
 <span class="o">...</span>     <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 <span class="o">...</span> 
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-<span class="p">[(</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span>
+<span class="p">[(</span><span class="s1">'blue'</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span> <span class="p">(</span><span class="s1">'red'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span>
 </code></pre></div>
-<h4 id="namedtuple">namedtuple<a class="headerlink" href="#namedtuple" title="Permanent link">&para;</a></h4>
+<h4 id="namedtuple">namedtuple<a class="headerlink" href="#namedtuple" title="Permanent link">¶</a></h4>
 <p>命名元组赋予每个位置一个含义，提供可读性和自文档性。它们可以用于任何普通元组，并添加了通过名字获取值的能力，通过索引值也是可以的。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Point</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Point&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>  <span class="c1"># 使用位置或关键字参数实例化</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Point</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">'Point'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">])</span>  <span class="c1"># 使用位置或关键字参数实例化</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>                      <span class="c1"># 像普通元组 (11, 22) 一样可索引</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="mi">33</span>
@@ -3971,25 +2184,25 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span>
 <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>                            <span class="c1"># 以可读的name=value形式作为__repr__的输出</span>
 </code></pre></div>
-<h2 id="内置函数">内置函数<a class="headerlink" href="#内置函数" title="Permanent link">&para;</a></h2>
-<h3 id="map">map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
-<h3 id="filter">filter<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h3>
-<h3 id="any">any<a class="headerlink" href="#any" title="Permanent link">&para;</a></h3>
-<h3 id="all">all<a class="headerlink" href="#all" title="Permanent link">&para;</a></h3>
-<h3 id="zip">zip<a class="headerlink" href="#zip" title="Permanent link">&para;</a></h3>
+<h2 id="内置函数">内置函数<a class="headerlink" href="#内置函数" title="Permanent link">¶</a></h2>
+<h3 id="map">map<a class="headerlink" href="#map" title="Permanent link">¶</a></h3>
+<h3 id="filter">filter<a class="headerlink" href="#filter" title="Permanent link">¶</a></h3>
+<h3 id="any">any<a class="headerlink" href="#any" title="Permanent link">¶</a></h3>
+<h3 id="all">all<a class="headerlink" href="#all" title="Permanent link">¶</a></h3>
+<h3 id="zip">zip<a class="headerlink" href="#zip" title="Permanent link">¶</a></h3>
 <p>在多个迭代器上并行迭代，从每个迭代器返回一个数据项组成元组</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 有时候经常遇到sql执行之后返回这样的值</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">keys</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">keys</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">items</span><span class="p">:</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">items</span><span class="p">),</span> <span class="n">values</span><span class="p">)))</span>
-<span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}]</span>
+<span class="p">[{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">6</span><span class="p">},</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">9</span><span class="p">}]</span>
 </code></pre></div>
-<h3 id="sorted">sorted<a class="headerlink" href="#sorted" title="Permanent link">&para;</a></h3>
-<h3 id="sum">sum<a class="headerlink" href="#sum" title="Permanent link">&para;</a></h3>
-<h3 id="range">range<a class="headerlink" href="#range" title="Permanent link">&para;</a></h3>
-<h3 id="getattr">getattr<a class="headerlink" href="#getattr" title="Permanent link">&para;</a></h3>
-<h3 id="setattr">setattr<a class="headerlink" href="#setattr" title="Permanent link">&para;</a></h3>
-<h2 id="项目实战">项目实战<a class="headerlink" href="#项目实战" title="Permanent link">&para;</a></h2>
+<h3 id="sorted">sorted<a class="headerlink" href="#sorted" title="Permanent link">¶</a></h3>
+<h3 id="sum">sum<a class="headerlink" href="#sum" title="Permanent link">¶</a></h3>
+<h3 id="range">range<a class="headerlink" href="#range" title="Permanent link">¶</a></h3>
+<h3 id="getattr">getattr<a class="headerlink" href="#getattr" title="Permanent link">¶</a></h3>
+<h3 id="setattr">setattr<a class="headerlink" href="#setattr" title="Permanent link">¶</a></h3>
+<h2 id="项目实战">项目实战<a class="headerlink" href="#项目实战" title="Permanent link">¶</a></h2>
 <ol>
 <li>导包顺序</li>
 <li>变量赋值以及获取</li>
@@ -3998,76 +2211,49 @@
 <li>常量提取</li>
 <li>标准库函数和工具</li>
 </ol>
-
-  <hr>
+<hr/>
 <div class="md-source-file">
-  <small>
+<small>
     
       最后更新:
       <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月27日</span>
-      
-        <br>
+<br/>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月27日</span>
-      
-    
-  </small>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月26日</span>
+</small>
 </div>
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-        </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
-          </button>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
+          </a>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
       Material for MkDocs
     </a>
-  
 </div>
-      
-    </div>
-  </div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.51198bba.min.js"></script>
-      
-        <script src="../../../javascripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-      
-    
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

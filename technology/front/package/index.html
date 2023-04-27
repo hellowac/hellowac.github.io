@@ -1,3208 +1,1480 @@
 
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="hellowac的工作学习生活笔记">
-      
-      
-      
-      
-        <link rel="prev" href="../version/">
-      
-      
-        <link rel="next" href="../webassembly/">
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.7">
-    
-    
-      
-        <title>package.json知识 - 我的工作学习生活笔记</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ded33207.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
-      
-      
+<!DOCTYPE html>
 
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-        html.glightbox-open { overflow: initial; height: 100%; }
-        .gslide-title { margin-top: 0px; user-select: text; }
-        .gslide-desc { color: #666; user-select: text; }
-        .gslide-image img { background: white; }
-        
-            .gscrollbar-fixer { padding-right: 15px; }
-            .gdesc-inner { font-size: 0.75rem; }
-            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
-  
-    
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#前端packagejson介绍" class="md-skip">
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="hellowac的工作学习生活笔记" name="description"/>
+<link href="../version/" rel="prev"/>
+<link href="../webassembly/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.13" name="generator"/>
+<title>package.json知识 - 我的工作学习生活笔记</title>
+<link href="../../../assets/stylesheets/main.ffa9267a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="default" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#前端packagejson介绍">
           跳转至
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="我的工作学习生活笔记" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             我的工作学习生活笔记
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               package.json知识
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="查找">
-        
-        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     hellowac的个人博客
   </div>
 </a>
-      </div>
-    
-  </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+</div>
+</nav>
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
       首页
     </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../python/" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../python/">
         技术
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../read/english/bluelevel/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../read/english/bluelevel/">
         阅读
       </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../invest/webs/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../invest/webs/">
         理财
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../tools/repos/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tools/repos/">
         工具
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../documents/docs/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../documents/docs/">
         文档
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../e-book/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../e-book/">
       电子书
     </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../other/front_links/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../other/front_links/">
         其他
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../../about/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../about/">
       关于
     </a>
-  </li>
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-    
-  
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="我的工作学习生活笔记" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
     我的工作学习生活笔记
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     hellowac的个人博客
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
         首页
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
           技术
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           技术
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
           Python
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
           Python
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/">
         简介
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/typehint/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/typehint/">
         类型标注
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/code_style_guide/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/pep8/">
+        PEP 8 – Python代码样式指南
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/code_style_guide/">
         编码样式指南
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/pip/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/pip/">
         pip
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/stringio/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/stringio/">
         stringIO
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/flask/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/flask/">
         flask
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/django/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/django/">
         django
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/logging/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/logging/">
         logging
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/importlib/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/importlib/">
         importlib
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/pycrypto/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/pycrypto/">
         crypto
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/petl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/petl/">
         python-petl使用简介
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/psutil/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/psutil/">
         psutil文档-中文版
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/docx/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/docx/">
         docx文档
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/excel/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/excel/">
         Excel
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/reportlab/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/reportlab/">
         ReportLab
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/alembic/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/alembic/">
         alembic教程(转)
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/sqlalchemy/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/sqlalchemy/">
         SQLAlchemy简明教程
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../python/useful_functions/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/useful_functions/">
         常用的函数
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
           Linux
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
           Linux
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/usage_source/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/usage_source/">
         常用资源
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/port/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/port/">
         端口占用查找
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/disk-mount/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/disk-mount/">
         linux磁盘挂载
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/shell-scripts/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/shell-scripts/">
         shell脚本实战
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
           C
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
           C
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../C/c/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../C/c/">
         C基础
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
           前端知识
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
           前端知识
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../base/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../base/">
         基础
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../project/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project/">
         工程化流程
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../version/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../version/">
         包版本知识
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           package.json知识
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         package.json知识
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#概述" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#概述">
     概述
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#name" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#name">
     name
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#version">
     version
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description">
     description
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#keywords" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#keywords">
     keywords
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#homepage" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#homepage">
     homepage
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bugs" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bugs">
     bugs
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#license">
     license
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#关于人的字段-author-contributors" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#关于人的字段-author-contributors">
     关于人的字段: author, contributors
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#funding" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#funding">
     funding
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#files" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#files">
     files
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#main" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#main">
     main
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bin" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bin">
     bin
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#man" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#man">
     man
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#directories" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directories">
     directories
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#directorieslib" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directorieslib">
     directories.lib
   </a>
-  
-    <nav class="md-nav" aria-label="directories.lib">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directoriesbin" class="md-nav__link">
+<nav aria-label="directories.lib" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesbin">
     directories.bin
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#directoriesman" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesman">
     directories.man
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#directoriesdoc" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesdoc">
     directories.doc
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#directoriesexample" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesexample">
     directories.example
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repository">
     repository
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scripts">
     scripts
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#config" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#config">
     config
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dependencies">
     dependencies
   </a>
-  
-    <nav class="md-nav" aria-label="dependencies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#urls作为依赖项" class="md-nav__link">
+<nav aria-label="dependencies" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#urls作为依赖项">
     URLs作为依赖项
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#git-urls作为依赖项" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-urls作为依赖项">
     Git URLs作为依赖项
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#github-urls" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#github-urls">
     GitHub URLs
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#本地路径" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#本地路径">
     本地路径
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#devdependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#devdependencies">
     devDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#peerdependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#peerdependencies">
     peerDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bundleddependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bundleddependencies">
     bundledDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#optionaldependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optionaldependencies">
     optionalDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#engines" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#engines">
     engines
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enginestrict" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enginestrict">
     engineStrict
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#os">
     os
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cpu" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cpu">
     cpu
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#preferglobal" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preferglobal">
     preferGlobal
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#private" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#private">
     private
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#publishconfig" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#publishconfig">
     publishConfig
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#default-values" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#default-values">
     DEFAULT VALUES
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#参考资料" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#参考资料">
     参考资料
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../webassembly/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../webassembly/">
         WebAssembly
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
           服务组件
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
           服务组件
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/zookeeper/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/zookeeper/">
         zookeeper
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/nginx/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/nginx/">
         nginx
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/supervisor/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/supervisor/">
         supervisor
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/rabbitmq/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/rabbitmq/">
         rabbitmq
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../components/kafka/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../components/kafka/">
         kafka
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
           无头浏览器
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_5_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_6">
+<span class="md-nav__icon md-icon"></span>
           无头浏览器
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unheadchrome/openchrome/">
         openchrome
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unheadchrome/build_env/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unheadchrome/build_env/">
         环境搭建
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
           数据库
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
           数据库
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/clickhouse/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/clickhouse/">
         ClickHouse
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
           MySQL
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_6_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
           MySQL
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/mysql8_install/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/mysql8_install/">
         mysql8
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/mysql/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/mysql/">
         常用操作
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
           ElasticSearch
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_6_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_3">
+<span class="md-nav__icon md-icon"></span>
           ElasticSearch
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/elasticsearch_py/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/elasticsearch_py/">
         elasticsearch-py
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/es_dsl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/es_dsl/">
         elasticsearch-dsl
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database/es_aggs/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../database/es_aggs/">
         elasticsearch-aggs
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
           安全渗透
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_7">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
           安全渗透
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/thc-hydra/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../security/thc-hydra/">
         hydra
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../security/sqlmap/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../security/sqlmap/">
         sqlmap
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
           RFC标准
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
           RFC标准
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rfc/oauth2/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rfc/oauth2/">
         oauth2学习笔记
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rfc/rfc6749/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rfc/rfc6749/">
         Oauth2-RFC6749翻译
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../rfc/rfc6750/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rfc/rfc6750/">
         Oauth2-RFC6750翻译
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
           知识概念
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_9">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
           知识概念
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/project_doc_layout/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/project_doc_layout/">
         项目文档结构示例
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/pc/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/pc/">
         上位机简介
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/xaas/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/xaas/">
         xaas概念
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/xaas2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/xaas2/">
         一文搞懂什么是SaaS、BaaS、PaaS和IaaS
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/users/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/users/">
         统一用户管理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/etl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/etl/">
         ETL数据处理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/data_transfer/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/data_transfer/">
         数据传输和对接
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concept/understand_computer_system/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../concept/understand_computer_system/">
         深入理解计算机系统
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2_10">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
           其他
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../other/embedded_industry/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../other/embedded_industry/">
         嵌入式行业
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../other/apache_license2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../other/apache_license2/">
         apache license2.0开源协议
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           阅读
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           阅读
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
           英语
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
           英语
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/english/bluelevel/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/english/bluelevel/">
         BlueLevel
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/english/redlevel/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/english/redlevel/">
         RedLevel
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/howtoreadbook/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/howtoreadbook/">
         如何阅读一本书
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/howtoavoid/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/howtoavoid/">
         如何避免愚蠢的见识
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/placeofsoul/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/placeofsoul/">
         灵魂的最高处
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/maliciousmatch/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/maliciousmatch/">
         恶意匹配
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
           沟通的艺术
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
           沟通的艺术
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication01/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication01/">
         沟通入门
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication02/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication02/">
         看入人里:自我
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication03/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication03/">
         看入人里:知觉
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication04/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication04/">
         看入人里:情绪
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication05/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication05/">
         看出人外:语言
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication06/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication06/">
         看出人外:非语言沟通
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication07/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication07/">
         看出人外:倾听
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication08/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication08/">
         看人之间:沟通和关系的演变
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication09/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication09/">
         看人之间:人际沟通中的亲密关系
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication10/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication10/">
         看人之间:增进沟通气氛
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication11/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication11/">
         看人之间:处理人际冲突
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../read/book/artofcommunication12/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../read/book/artofcommunication12/">
         阅读总结
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           理财
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           理财
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../invest/webs/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../invest/webs/">
         理财网站
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           工具
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           工具
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/repos/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/repos/">
         仓库合集
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git1/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git1/">
         git 起步
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git2/">
         git 基础
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git3/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git3/">
         git 分支
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git4/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git4/">
         git 服务器
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git5/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git5/">
         git 分布式
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git6/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git6/">
         git hub
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git7/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git7/">
         git 工具
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git8/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git8/">
         git 自定义
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git9/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git9/">
         git 与其他系统
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/git10/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git10/">
         git 内部原理
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/gita1/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gita1/">
         git 其他环境中使用
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/gita2/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gita2/">
         git 应用中嵌入
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tools/gita3/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gita3/">
         git 命令
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           文档
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
           文档
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../documents/docs/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../documents/docs/">
         文档合集
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../e-book/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../e-book/">
         电子书
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
           其他
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/front_links/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/front_links/">
         前端常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/back_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/back_links/">
         后端常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/other_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/other_links/">
         其他常用地址
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/become_leader/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/become_leader/">
         成为高手秘籍
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/zym_weibo/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/zym_weibo/">
         张一鸣微博
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/dynamic_business/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/dynamic_business/">
         动态商业环境
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/honeypot_list/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/honeypot_list/">
         蜜罐资源列表
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../other/bigdata_links/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../other/bigdata_links/">
         大数据资源列表
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../about/">
         关于
       </a>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#概述" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#概述">
     概述
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#name" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#name">
     name
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#version">
     version
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#description">
     description
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#keywords" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#keywords">
     keywords
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#homepage" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#homepage">
     homepage
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bugs" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bugs">
     bugs
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#license">
     license
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#关于人的字段-author-contributors" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#关于人的字段-author-contributors">
     关于人的字段: author, contributors
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#funding" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#funding">
     funding
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#files" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#files">
     files
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#main" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#main">
     main
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bin" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bin">
     bin
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#man" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#man">
     man
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#directories" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directories">
     directories
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#directorieslib" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directorieslib">
     directories.lib
   </a>
-  
-    <nav class="md-nav" aria-label="directories.lib">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directoriesbin" class="md-nav__link">
+<nav aria-label="directories.lib" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesbin">
     directories.bin
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#directoriesman" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesman">
     directories.man
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#directoriesdoc" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesdoc">
     directories.doc
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#directoriesexample" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#directoriesexample">
     directories.example
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repository">
     repository
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#scripts" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scripts">
     scripts
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#config" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#config">
     config
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dependencies">
     dependencies
   </a>
-  
-    <nav class="md-nav" aria-label="dependencies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#urls作为依赖项" class="md-nav__link">
+<nav aria-label="dependencies" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#urls作为依赖项">
     URLs作为依赖项
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#git-urls作为依赖项" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-urls作为依赖项">
     Git URLs作为依赖项
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#github-urls" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#github-urls">
     GitHub URLs
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#本地路径" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#本地路径">
     本地路径
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#devdependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#devdependencies">
     devDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#peerdependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#peerdependencies">
     peerDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bundleddependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bundleddependencies">
     bundledDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#optionaldependencies" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optionaldependencies">
     optionalDependencies
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#engines" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#engines">
     engines
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enginestrict" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enginestrict">
     engineStrict
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#os">
     os
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cpu" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cpu">
     cpu
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#preferglobal" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preferglobal">
     preferGlobal
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#private" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#private">
     private
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#publishconfig" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#publishconfig">
     publishConfig
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#default-values" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#default-values">
     DEFAULT VALUES
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#参考资料" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#参考资料">
     参考资料
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-  
-  
-
-
-<h1 id="前端packagejson介绍">前端package.json介绍<a class="headerlink" href="#前端packagejson介绍" title="Permanent link">&para;</a></h1>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="前端packagejson介绍">前端package.json介绍<a class="headerlink" href="#前端packagejson介绍" title="Permanent link">¶</a></h1>
 <p>原文: <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json">https://docs.npmjs.com/cli/v8/configuring-npm/package-json</a>
 翻译转自: <a href="https://www.cnblogs.com/nullcc/p/5829218.html">https://www.cnblogs.com/nullcc/p/5829218.html</a></p>
-<h2 id="概述"><strong>概述</strong><a class="headerlink" href="#概述" title="Permanent link">&para;</a></h2>
-<p>本文囊括了所有<code>package.json</code>文件中你需要知道的细节。注意<code>package.json</code>必须是纯JSON的，而不仅仅是一个JavaScript对象字面量。<br />
+<h2 id="概述"><strong>概述</strong><a class="headerlink" href="#概述" title="Permanent link">¶</a></h2>
+<p>本文囊括了所有<code>package.json</code>文件中你需要知道的细节。注意<code>package.json</code>必须是纯JSON的，而不仅仅是一个JavaScript对象字面量。<br/>
 该文件描述的很多行为都受<code>npm-config</code>中的配置影响。</p>
 <p>下面分别介绍<code>package.json</code>中各个字段的含义和用法。</p>
 <!-- more -->
-
-<h2 id="name"><strong>name</strong><a class="headerlink" href="#name" title="Permanent link">&para;</a></h2>
+<h2 id="name"><strong>name</strong><a class="headerlink" href="#name" title="Permanent link">¶</a></h2>
 <p>name和version字段是<code>package.json</code>文件中最重要的字段。这是必须的字段，如果你的npm包没有指定这两个字段，将无法被安装。name和version字段被假定组合成一个唯一的标识符。包内容的更改和包版本的更改是同步的。</p>
 <p>name字段的含义不需要过多解释，就是npm包名。</p>
 <p>几个规则：</p>
@@ -3220,118 +1492,118 @@
 <li>你可能会需要在深入开发一个包之前先检查npm的registry来确认某个name是否被使用过，可以参考<a href="https://www.npmjs.com/">https://www.npmjs.com/</a>。</li>
 </ol>
 <p>一个name可以用scope来指定一个前缀，比如@myorg/mypackage，可以参考<a href="https://docs.npmjs.com/misc/scope">npm-scope</a>。</p>
-<h2 id="version"><strong>version</strong><a class="headerlink" href="#version" title="Permanent link">&para;</a></h2>
+<h2 id="version"><strong>version</strong><a class="headerlink" href="#version" title="Permanent link">¶</a></h2>
 <p>name和version字段是package.json文件中最重要的字段。这是必须的字段，如果你的npm包没有指定这两个字段，将无法被安装。name和version字段被假定组合成一个唯一的标识符。包内容的更改和包版本的更改是同步的。</p>
 <p>version字段必须能够被<a href="https://github.com/isaacs/node-semver">node-semver</a>解析，node-semver作为依赖项被捆绑进了npm中。(可以使用npm install semver来使用)</p>
 <p>关于版本号和范围的信息可以参考<a href="https://docs.npmjs.com/misc/semver">semver</a>。</p>
-<h2 id="description"><strong>description</strong><a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<h2 id="description"><strong>description</strong><a class="headerlink" href="#description" title="Permanent link">¶</a></h2>
 <p>npm包的描述，description是一个字符串。它可以帮助人们在使用npm search时找到这个包。</p>
-<h2 id="keywords"><strong>keywords</strong><a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h2>
+<h2 id="keywords"><strong>keywords</strong><a class="headerlink" href="#keywords" title="Permanent link">¶</a></h2>
 <p>npm包的关键字，keywords是一个字符串的数组。它可以帮助人们在使用npm search时找到这个包。</p>
-<h2 id="homepage"><strong>homepage</strong><a class="headerlink" href="#homepage" title="Permanent link">&para;</a></h2>
+<h2 id="homepage"><strong>homepage</strong><a class="headerlink" href="#homepage" title="Permanent link">¶</a></h2>
 <p>项目主页的url。</p>
 <p>注意： 这和"url"不一样。如果你放一个"url"字段，registry会以为是一个跳转到你发布在其他地方的地址，然后鄙视你。</p>
-<h2 id="bugs"><strong>bugs</strong><a class="headerlink" href="#bugs" title="Permanent link">&para;</a></h2>
+<h2 id="bugs"><strong>bugs</strong><a class="headerlink" href="#bugs" title="Permanent link">¶</a></h2>
 <p>改项目的issue跟踪页面或这报告issue的email地址。这对使用这个包遇到问题的用户会有帮助。</p>
 <p>差不多是这样：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span>
-<span class="err">　　</span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/owner/project/issues&quot;</span><span class="p">,</span>
-<span class="err">　　</span><span class="nt">&quot;email&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;project@hostname.com&quot;</span>
+<span class="err">　　</span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/owner/project/issues"</span><span class="p">,</span>
+<span class="err">　　</span><span class="nt">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"project@hostname.com"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>你可以择其一或者两个都写上。如果只想提供一个url，你可以对"bugs"字段指定一个字符串而不是object。</p>
 <p>如果提供了一个url，它会被用于npm bugs命令。</p>
-<h2 id="license"><strong>license</strong><a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<h2 id="license"><strong>license</strong><a class="headerlink" href="#license" title="Permanent link">¶</a></h2>
 <p>你应该对你的包指定一个license来让用户知道他们的使用权利和和任何限制。</p>
 <p>如果你正在使用BSD-2-Clause或MIT这样的通用许可证，可以为你的license添加一个当前SPDX的许可证标识符，比如：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BSD-3-Clause&quot;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"license"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"BSD-3-Clause"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>你可以查看<a href="https://spdx.org/licenses/">SPDX许可证标识符的完整列表</a>，理想情况下你应该挑选一个经过<a href="https://opensource.org/licenses/alphabetical">OSI</a>核准的标识符。</p>
 <p>如果你的包在多个通用许可证下被授权，使用一个<a href="https://npmjs.com/package/spdx">SPDX许可证表达式语法v2.0</a>，比如：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(ISC OR GPL-3.0)&quot;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"license"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"(ISC OR GPL-3.0)"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>如果你正在使用的许可未被授予一个SPDX标识符，或者你正在使用自定义的许可证，使用如下：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SEE LICENSE IN &lt;filename&gt;&quot;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"license"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SEE LICENSE IN &lt;filename&gt;"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>然后在包的根目录下提供一个叫的许可证文件。</p>
 <p>一些旧的包使用license对象或一个"license"属性包含一个license的数组：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Not valid metadata</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="w"> </span><span class="p">:</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">"license"</span><span class="w"> </span><span class="p">:</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISC&quot;</span><span class="err">，</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://opensource.org/licenses/ISC&quot;</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="err">，</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://opensource.org/licenses/ISC"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span><span class="w">        </span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">//Notvalidmetadata</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;licenses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"licenses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.opensource.org/licenses/mit-license.php&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.opensource.org/licenses/mit-license.php"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Apache-2.0&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://opensource.org/licenses/apache2.0.php&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apache-2.0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://opensource.org/licenses/apache2.0.php"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>上述这种风格的写法已经被废弃了，取而代之的是SPDX表达式：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISC&quot;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="w"> </span><span class="p">}</span>
 
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(MIT OR Apache-2.0)&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(MIT OR Apache-2.0)"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>最后，如果你不希望授权别人以任何形式使用私有包或未发布的包，可以这样写：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UNLICENSED&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNLICENSED"</span><span class="p">}</span>
 </code></pre></div>
 <p>也可以设置：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;private&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 </code></pre></div>
 <p>来防止意外的发布。</p>
-<h2 id="关于人的字段-author-contributors"><strong>关于人的字段: author, contributors</strong><a class="headerlink" href="#关于人的字段-author-contributors" title="Permanent link">&para;</a></h2>
+<h2 id="关于人的字段-author-contributors"><strong>关于人的字段: author, contributors</strong><a class="headerlink" href="#关于人的字段-author-contributors" title="Permanent link">¶</a></h2>
 <p>author是一个人，contributors是一些人的数组。person是一个对象，拥有必须的name字段和可选的url和email字段，像这样：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Barney Rubble&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b@rubble.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://barnyrubble.tumblr.com/&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barney Rubble"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b@rubble.com"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://barnyrubble.tumblr.com/"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>或者你也可以使用单个字符串的精简形式，npm会帮你解析它：</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;Barney Rubble &lt;b@rubble.com&gt; (http://barnyrubble.tumblr.com/)&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"Barney Rubble &lt;b@rubble.com&gt; (http://barnyrubble.tumblr.com/)"</span>
 </code></pre></div>
 <p>这里email和url也是可选的。</p>
 <p>npm也会使用你提供的npm用户信息来设置一个顶级的"maintainers"字段。</p>
-<h2 id="funding"><strong>funding</strong><a class="headerlink" href="#funding" title="Permanent link">&para;</a></h2>
+<h2 id="funding"><strong>funding</strong><a class="headerlink" href="#funding" title="Permanent link">¶</a></h2>
 <p>你可以指定一个包含 URL 的对象，该 URL 提供有关帮助资助包开发的方法的最新信息，或字符串 URL 或这些的数组：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;funding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;individual&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.com/donate&quot;</span>
+<span class="w">  </span><span class="nt">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"individual"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/donate"</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="nt">&quot;funding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;patreon&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.patreon.com/my-account&quot;</span>
+<span class="w">  </span><span class="nt">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"patreon"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.patreon.com/my-account"</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="nt">&quot;funding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.com/donate&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"funding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/donate"</span><span class="p">,</span>
 
-<span class="w">  </span><span class="nt">&quot;funding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"funding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;individual&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://example.com/donate&quot;</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"individual"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/donate"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">&quot;http://example.com/donateAlso&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"http://example.com/donateAlso"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;patreon&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.patreon.com/my-account&quot;</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"patreon"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.patreon.com/my-account"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>用户可以使用<code>npm fund</code>子命令列出他们项目的所有依赖项的<code>funding</code>URL，直接和间接的方式。 提供项目名称时也提供访问每个帮助网址的快捷方式，例如：<code>npm fund &lt;projectname&gt;</code>（当有多个网址时，将访问第一个）</p>
-<h2 id="files"><strong>files</strong><a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
+<h2 id="files"><strong>files</strong><a class="headerlink" href="#files" title="Permanent link">¶</a></h2>
 <p>files字段是一个被项目包含的文件名数组，如果你在里面放一个文件夹名，那么这个文件夹中的所有文件都会被包含进项目中(除非是那些在其他规则中被忽略的文件)。</p>
 <p>你还可以在包的根目录或子目录下提供一个".npmignore"文件来忽略项目包含文件，即使这些文件被包含在files字段中。.npmignore文件和.gitignore的功能很像。</p>
 <p>某些文件总是被包含的，不论是否在规则中指定了它们：</p>
@@ -3352,110 +1624,110 @@ CVS
 .\_\*  
 npm-debug.log  
 </code></pre></div>
-<h2 id="main"><strong>main</strong><a class="headerlink" href="#main" title="Permanent link">&para;</a></h2>
+<h2 id="main"><strong>main</strong><a class="headerlink" href="#main" title="Permanent link">¶</a></h2>
 <p>main字段指定了模块的入口程序文件。就是说，如果你的模块名叫"foo"，用户安装了它，并且调用了 require("foo")，则这个main字段指定的模块的导出对象会被返回。</p>
 <p>这应该是一个相对于包根目录的模块标识。</p>
 <p>对于大部分模块来说，main字段除了指定一个主入口文件以外没什么其他用处了。</p>
-<h2 id="bin"><strong>bin</strong><a class="headerlink" href="#bin" title="Permanent link">&para;</a></h2>
+<h2 id="bin"><strong>bin</strong><a class="headerlink" href="#bin" title="Permanent link">¶</a></h2>
 <p>许多包有一个或多个可执行文件希望被安装到系统路径。在npm下要这么做非常容易(事实上，npm就是这么运行的)。</p>
 <p>这需要在你的package.json中提供一个bin字段，它是一个命令名和本地文件名的映射。在安装时，如果是全局安装，npm将会使用符号链接把这些文件链接到prefix/bin，如果是本地安装，会链接到./node_modules/.bin/。</p>
 <p>比如，要使用myapp作为命令时可以这么做：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;bin&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;myapp&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./cli.js&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"bin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"myapp"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"./cli.js"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>这么一来，当你安装myapp，npm会从cli.js文件创建一个到/usr/local/bin/myapp的符号链接(这使你可以直接在命令行执行myapp)。</p>
 <p>如果你只有一个可执行文件，那么它的名字应该和包名相同，此时只需要提供这个文件路径(字符串)，比如：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-program&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.5&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;bin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./path/to/program&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-program"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.5"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./path/to/program"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>这和以下这种写法相同：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-program&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.5&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;bin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;my-program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./path/to/program&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-program"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.5"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"my-program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./path/to/program"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="man"><strong>man</strong><a class="headerlink" href="#man" title="Permanent link">&para;</a></h2>
+<h2 id="man"><strong>man</strong><a class="headerlink" href="#man" title="Permanent link">¶</a></h2>
 <p>指定一个单一的文件名或一个文件名数组来让man程序使用。</p>
 <p>如果只给man字段提供一个文件，则安装完毕后，它就是man 的结果，这和此文件名无关，比如：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A packaged foo fooer for fooing foos&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo.js&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;man&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./man/doc.1&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A packaged foo fooer for fooing foos"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"man"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./man/doc.1"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>上面这个配置将会在执行man foo时就会使用./man/doc.1这个文件。</p>
 <p>如果指定的文件名并未以包名开头，那么它会被冠以前缀，像这样：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A packaged foo fooer for fooing foos&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo.js&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;man&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;./man/foo.1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;./man/bar.1&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A packaged foo fooer for fooing foos"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"man"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"./man/foo.1"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"./man/bar.1"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>这将会为man foo和man foo-bar创建文件。</p>
 <p>man文件必须以一个数字结尾，和一个可选的.gz后缀(当它被压缩时)。这个数字说明了这个文件被安装到哪个节中。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A packaged foo fooer for fooing foos&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo.js&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;man&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;./man/foo.1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;./man/foo.2&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A packaged foo fooer for fooing foos"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"man"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"./man/foo.1"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"./man/foo.2"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>会为使用man foo和man 2 foo而创建。</p>
-<h2 id="directories"><strong>directories</strong><a class="headerlink" href="#directories" title="Permanent link">&para;</a></h2>
+<h2 id="directories"><strong>directories</strong><a class="headerlink" href="#directories" title="Permanent link">¶</a></h2>
 <p>CommonJS Packages规范说明了几种你可以用directories对象来标示你的包结构的方法。如果你去看<a href="https://registry.npmjs.org/npm/latest">npm's package.json</a>，你会看到它标示出出doc、lib和man。</p>
 <p>在未来，这个信息可能会被用到。</p>
-<h2 id="directorieslib"><strong>directories.lib</strong><a class="headerlink" href="#directorieslib" title="Permanent link">&para;</a></h2>
+<h2 id="directorieslib"><strong>directories.lib</strong><a class="headerlink" href="#directorieslib" title="Permanent link">¶</a></h2>
 <p>告诉你库文件夹的位置，目前没有什么地方需要用到lib文件夹，但是这是重要的元信息。</p>
-<h3 id="directoriesbin"><strong>directories.bin</strong><a class="headerlink" href="#directoriesbin" title="Permanent link">&para;</a></h3>
+<h3 id="directoriesbin"><strong>directories.bin</strong><a class="headerlink" href="#directoriesbin" title="Permanent link">¶</a></h3>
 <p>如果你在directories.bin中指定一个bin目录，在这个目录中的所有文件都会被当做在bin来使用。</p>
 <p>由于bin指令的工作方式，同时指定一个bin路径和设置directories.bin将是一个错误。如果你想指定独立的文件，使用bin，如果想执行某个文件夹里的所有文件，使用directories.bin。</p>
-<h3 id="directoriesman"><strong>directories.man</strong><a class="headerlink" href="#directoriesman" title="Permanent link">&para;</a></h3>
+<h3 id="directoriesman"><strong>directories.man</strong><a class="headerlink" href="#directoriesman" title="Permanent link">¶</a></h3>
 <p>directories.man指定的文件夹里都是man文件，系统通过遍历这个文件夹来生成一个man的数组。</p>
-<h3 id="directoriesdoc"><strong>directories.doc</strong><a class="headerlink" href="#directoriesdoc" title="Permanent link">&para;</a></h3>
+<h3 id="directoriesdoc"><strong>directories.doc</strong><a class="headerlink" href="#directoriesdoc" title="Permanent link">¶</a></h3>
 <p>把markdown文件放在这。也许某一天这些文件将被漂亮地展示出来，不过这仅仅是也许。  </p>
-<h3 id="directoriesexample"><strong>directories.example</strong><a class="headerlink" href="#directoriesexample" title="Permanent link">&para;</a></h3>
+<h3 id="directoriesexample"><strong>directories.example</strong><a class="headerlink" href="#directoriesexample" title="Permanent link">¶</a></h3>
 <p>把示例脚本放在这。也许某一天会被用到。</p>
-<h2 id="repository"><strong>repository</strong><a class="headerlink" href="#repository" title="Permanent link">&para;</a></h2>
+<h2 id="repository"><strong>repository</strong><a class="headerlink" href="#repository" title="Permanent link">¶</a></h2>
 <p>指明你的代码被托管在何处，这对那些想要参与到这个项目中的人来说很有帮助。如果git仓库在github上，用npm docs命令将会找到你。</p>
 <p>像这样：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/npm/npm.git&quot;</span>
+<span class="w">    </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/npm/npm.git"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>url应该是公开且可用的(可能是只读的)，这个url应该可以被版本控制系统不经修改地处理。不应该是一个在浏览器中打开的html项目页面，这个url是给计算机使用的。</p>
 <p>对于github、github gist、Bitbucket或GitLab的仓库，你可以在npm install中使用相同的缩写形式：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;npm/npm&quot;</span>
-<span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;gist:11081aaa281&quot;</span>
-<span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;bitbucket:example/repo&quot;</span>
-<span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gitlab:another/repo&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="nt">"npm/npm"</span>
+<span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="nt">"gist:11081aaa281"</span>
+<span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="nt">"bitbucket:example/repo"</span>
+<span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gitlab:another/repo"</span>
 </code></pre></div>
-<h2 id="scripts"><strong>scripts</strong><a class="headerlink" href="#scripts" title="Permanent link">&para;</a></h2>
+<h2 id="scripts"><strong>scripts</strong><a class="headerlink" href="#scripts" title="Permanent link">¶</a></h2>
 <p>scripts字段是一个由脚本命令组成的字典，这些命令运行在包的各个生命周期中。这里的键是生命周期事件名，值是要运行的命令。可以参考<a href="https://docs.npmjs.com/files/package.json#directorieslib">npm-scripts</a>获取配置scripts的更多信息。</p>
-<h2 id="config"><strong>config</strong><a class="headerlink" href="#config" title="Permanent link">&para;</a></h2>
+<h2 id="config"><strong>config</strong><a class="headerlink" href="#config" title="Permanent link">¶</a></h2>
 <p>config字段是一个对象，可以用来配置包脚本中的跨版本参数，比如如下这个实例：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8080&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3463,7 +1735,7 @@ npm-debug.log
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>foo:port<span class="w"> </span><span class="m">8001</span>
 </code></pre></div>
 <p>可以参考<a href="https://docs.npmjs.com/misc/config">npm-config</a>和<a href="https://docs.npmjs.com/misc/scripts">npm-scripts</a>获得更多关于包配置的信息。</p>
-<h2 id="dependencies"><strong>dependencies</strong><a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<h2 id="dependencies"><strong>dependencies</strong><a class="headerlink" href="#dependencies" title="Permanent link">¶</a></h2>
 <p>dependencies字段是一个对象，它指定了依赖的包名和其版本范围的映射。版本范围是个有一个或多个空白分隔描述符的字符串。dependencies字段还可以用tarball或者git URL。</p>
 <p>请不要将测试或过渡性的依赖放到dependencies中，请参考下面的devDependencies。</p>
 <p>可以参考<a href="https://docs.npmjs.com/misc/semver">semver</a>获取更多关于指定版本范围的细节信息。</p>
@@ -3473,8 +1745,8 @@ npm-debug.log
 <li><code>&gt;=version</code> 必须大于等于这个version  </li>
 <li><code>&lt; version</code> 必须小于这个version  </li>
 <li><code>&lt;=version</code> 必须小于等于这个version  </li>
-<li><code>~version</code> 大约相当于version，参考<a href="https://docs.npmjs.com/misc/semver">semver</a>  </li>
-<li><code>^version</code> 与version兼容，参考<a href="https://docs.npmjs.com/misc/semver">semver</a>  </li>
+<li><code>~version</code> 大约相当于version，参考<a href="https://docs.npmjs.com/misc/semver">semver</a> </li>
+<li><code>^version</code> 与version兼容，参考<a href="https://docs.npmjs.com/misc/semver">semver</a> </li>
 <li><code>1.2.x</code> 可以是<code>1.2.0</code>、<code>1.2.1</code>等，但不能是<code>1.3.0</code></li>
 <li><code>http://...</code> 参考下面的URL作为依赖项  </li>
 <li><code>*</code> 匹配任何版本  </li>
@@ -3483,50 +1755,50 @@ npm-debug.log
 <li><code>range1 || range2 range1</code>或<code>range2</code>其中一个满足时采用该<code>version</code></li>
 <li><code>git...</code> 参考下面的<code>Git URL</code>作为依赖项  </li>
 <li><code>user/repo</code> 参考下面的<code>GitHub URLs</code></li>
-<li><code>tag</code> 一个以<code>tag</code>发布的指定版本，参考<a href="https://docs.npmjs.com/cli/tag">npm-tag</a>  </li>
+<li><code>tag</code> 一个以<code>tag</code>发布的指定版本，参考<a href="https://docs.npmjs.com/cli/tag">npm-tag</a> </li>
 <li><code>path/path/path</code> 参考下面的本地<code>Paths</code></li>
 </ol>
 <p>举个栗子，下面这种写法是合法的：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0 - 2.9999.9999&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=1.0.2 &lt;2.1.2&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;baz&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;1.0.2 &lt;=2.3.4&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;boo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;qux&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;1.0.0 || &gt;=2.3.1 &lt;2.4.5 || &gt;=2.5.2 &lt;3.0.0&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;asd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://asdf.com/asdf.tar.gz&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;til&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.2&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;elf&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.2.3&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;two&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.x&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;thr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.3.x&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;dyl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file:../dyl&quot;</span>
+<span class="w">    </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0 - 2.9999.9999"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"bar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=1.0.2 &lt;2.1.2"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"baz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;1.0.2 &lt;=2.3.4"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"boo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"qux"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;1.0.0 || &gt;=2.3.1 &lt;2.4.5 || &gt;=2.5.2 &lt;3.0.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"asd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://asdf.com/asdf.tar.gz"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"til"</span><span class="p">:</span><span class="w"> </span><span class="s2">"~1.2"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"elf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"~1.2.3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"two"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.x"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"thr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3.x"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"dyl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file:../dyl"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="urls作为依赖项"><strong>URLs作为依赖项</strong><a class="headerlink" href="#urls作为依赖项" title="Permanent link">&para;</a></h3>
+<h3 id="urls作为依赖项"><strong>URLs作为依赖项</strong><a class="headerlink" href="#urls作为依赖项" title="Permanent link">¶</a></h3>
 <p>可以在version上指定一个压缩包的url。</p>
 <p>当执行npm install时这个压缩包会被下载并且安装到本地。</p>
-<h3 id="git-urls作为依赖项"><strong>Git URLs作为依赖项</strong><a class="headerlink" href="#git-urls作为依赖项" title="Permanent link">&para;</a></h3>
+<h3 id="git-urls作为依赖项"><strong>Git URLs作为依赖项</strong><a class="headerlink" href="#git-urls作为依赖项" title="Permanent link">¶</a></h3>
 <p>Git URLs可以是如下几种形式之一：</p>
-<p>git://github.com/user/project.git#commit-ish<br />
-git+ssh://user@hostname:project.git#commit-ish<br />
-git+ssh://user@hostname/project.git#commit-ish<br />
-git+<a href="http://user@hostname/project/blah.git#commit-ish">http://user@hostname/project/blah.git#commit-ish</a><br />
-git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hostname/project/blah.git#commit-ish</a>  </p>
+<p>git://github.com/user/project.git#commit-ish<br/>
+git+ssh://user@hostname:project.git#commit-ish<br/>
+git+ssh://user@hostname/project.git#commit-ish<br/>
+git+<a href="http://user@hostname/project/blah.git#commit-ish">http://user@hostname/project/blah.git#commit-ish</a><br/>
+git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hostname/project/blah.git#commit-ish</a> </p>
 <p>commit-ish可以是任何tag、sha或者branch，并作为一个参数提供给git进行checkout，默认值是master。</p>
-<h3 id="github-urls"><strong>GitHub URLs</strong><a class="headerlink" href="#github-urls" title="Permanent link">&para;</a></h3>
+<h3 id="github-urls"><strong>GitHub URLs</strong><a class="headerlink" href="#github-urls" title="Permanent link">¶</a></h3>
 <p>从1.1.65版本开始，你可以引用Github urls作为版本号，比如"foo": "user/foo-project"。也可以包含一个commit-ish后缀，举个栗子：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;express&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;visionmedia/express&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;mocha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;visionmedia/mocha#4727d357ea&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visionmedia/express"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"mocha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visionmedia/mocha#4727d357ea"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="本地路径"><strong>本地路径</strong><a class="headerlink" href="#本地路径" title="Permanent link">&para;</a></h3>
+<h3 id="本地路径"><strong>本地路径</strong><a class="headerlink" href="#本地路径" title="Permanent link">¶</a></h3>
 <p>从版本2.0.0开始你可以提供一个包的本地路径。本地路径可以在你使用npm install -S或npm install --save时被保存，具体形式如下：</p>
 <ul>
 <li>../foo/bar  </li>
@@ -3536,58 +1808,58 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 </ul>
 <p>在下面这种情况下它会被规范化成为一个相对路径并且加入到你的package.json文件中，比如：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file:../foo/bar&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"bar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file:../foo/bar"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>这个特性有助于当你不想从一个外部服务器安装npm包的情况，比如本地离线开发和创建测试，但最好不要在发布包到公共registry时这样使用。</p>
-<h2 id="devdependencies"><strong>devDependencies</strong><a class="headerlink" href="#devdependencies" title="Permanent link">&para;</a></h2>
+<h2 id="devdependencies"><strong>devDependencies</strong><a class="headerlink" href="#devdependencies" title="Permanent link">¶</a></h2>
 <p>如果有人计划在他们的项目中下载和使用你的模块，但他们可能并不想或并不需要你开发所使用的外部测试和文档框架。</p>
 <p>在这种情况下，最好将这些附加的项放在devDependencies中。</p>
 <p>这些项将会在根目录下执行npm link或npm install时被安装，并且可以像其他npm配置参数一样被管理。可以参考<a href="https://docs.npmjs.com/misc/config">npm-config</a>获得更多信息。</p>
 <p>对于那些非特定平台的构建步骤，比如编译CoffeeScript或把其他语言转换成JavaScript，可以使用prepublish脚本来处理，并且把这个过程的依赖包放在devDependencies中。</p>
 <p>举个栗子：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ethopia-waza&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a delightfully fruity coffee varietal&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;coffee-script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.6.3&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethopia-waza"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a delightfully fruity coffee varietal"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"coffee-script"</span><span class="p">:</span><span class="w"> </span><span class="s2">"~1.6.3"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;prepublish&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coffee -o lib/ -c src/waza.coffee&quot;</span>
+<span class="w">    </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"prepublish"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coffee -o lib/ -c src/waza.coffee"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lib/waza.js&quot;</span>
+<span class="w">    </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib/waza.js"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>prepublish脚本会在publishing前运行，这样用户就可以不用自己去require来编译就能使用。在开发模式下(比如本地运行npm install)，将会执行这个脚本，这样测试就非常方便了。</p>
-<h2 id="peerdependencies"><strong>peerDependencies</strong><a class="headerlink" href="#peerdependencies" title="Permanent link">&para;</a></h2>
+<h2 id="peerdependencies"><strong>peerDependencies</strong><a class="headerlink" href="#peerdependencies" title="Permanent link">¶</a></h2>
 <p>在某些情况下，当一个主机无法require依赖包时，你会想要告诉它还有哪些工具或库与这个依赖包兼容。这通常被成为一个插件。尤其是在host文档中声明的模块会暴露一个特定的接口。</p>
 <p>举个栗子：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tea-latte&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.3.5&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;peerDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;tea&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.x&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tea-latte"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3.5"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"peerDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"tea"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.x"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>这将确保tea-latte这个包只会和2.x版本的tea一起被安装。执行npm install tea-latte可能产生以下关系图：</p>
-<p>├── tea-latte@1.3.5<br />
+<p>├── tea-latte@1.3.5<br/>
 └── tea@2.2.0</p>
 <p>注意：如果没有在依赖树中显式声明比它们更高的依赖版本，版本1和版本2的npm将会自动安装peerDependencies。在npm的下一个大版本npm3中，情况将完全不同。你将收到一个警告，告诉你peerDependency还没有被安装。在npm1和npm2中这个行为经常会导致混乱，新的npm版本的设计将会极力避免这种情况。</p>
 <p>试图安装一个有冲突的依赖项的插件将会导致一个错误。因此你必须确保你的插件的依赖项版本范围尽可能大，并且不要把版本锁死在一个特点的补丁版本上。</p>
 <p>假设主机使用semver进行编译，只改变这个包的主版本将会导致你的插件不可用。因此，如果你的插件的某个依赖包运行在每个1.x版本下，使用"^1.0"或"1.x"。如果你需要的功能在1.5.2版本中，使用"&gt;= 1.5.2 &lt; 2"。</p>
-<h2 id="bundleddependencies"><strong>bundledDependencies</strong><a class="headerlink" href="#bundleddependencies" title="Permanent link">&para;</a></h2>
+<h2 id="bundleddependencies"><strong>bundledDependencies</strong><a class="headerlink" href="#bundleddependencies" title="Permanent link">¶</a></h2>
 <p>在发布包时，包名的数组会被打包进去。</p>
 <p>如果拼写成"bundleDependencies"(少个d)，也是可以的。</p>
-<h2 id="optionaldependencies"><strong>optionalDependencies</strong><a class="headerlink" href="#optionaldependencies" title="Permanent link">&para;</a></h2>
+<h2 id="optionaldependencies"><strong>optionalDependencies</strong><a class="headerlink" href="#optionaldependencies" title="Permanent link">¶</a></h2>
 <p>如果一个依赖项可用，但希望在这个依赖项无法被找到或者安装时失败npm还能继续处理(不中断)，那么你可以把它放在optionalDependencies中。和dependencies一样，optionalDependencies是一个包名和版本号或url的映射。区别在于optionalDependencies中的依赖构建失败时不会导致npm整体安装失败。</p>
 <p>但是你的程序依然有责任处理这种缺失的依赖项，比如这样：</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">varfoo</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span><span class="nx">varfooVersion</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;foo/package.json&#39;</span><span class="p">).</span><span class="nx">version</span>
+<span class="w">    </span><span class="nx">varfoo</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">)</span><span class="nx">varfooVersion</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">'foo/package.json'</span><span class="p">).</span><span class="nx">version</span>
 <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">er</span><span class="p">){</span>
 <span class="w">    </span><span class="nx">foo</span><span class="o">=</span><span class="kc">null</span>
 <span class="p">}</span><span class="k">if</span><span class="p">(</span><span class="nx">notGoodFooVersion</span><span class="p">(</span><span class="nx">fooVersion</span><span class="p">)){</span>
@@ -3597,58 +1869,58 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <span class="p">}</span>
 </code></pre></div>
 <p>optionalDependencies中的项会覆盖dependencies中的同名项，所以一个特定名字的项最好只出现在一个地方。</p>
-<h2 id="engines"><strong>engines</strong><a class="headerlink" href="#engines" title="Permanent link">&para;</a></h2>
+<h2 id="engines"><strong>engines</strong><a class="headerlink" href="#engines" title="Permanent link">¶</a></h2>
 <p>你可以指定node的工作版本：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;engines&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;node&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=0.10.3 &lt;0.12&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"engines"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"node"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=0.10.3 &lt;0.12"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>和dependencies类似，如果你不指定一个node版本(或者你用'*'指定)，则任何一个node版本都可以。</p>
 <p>如果你指定了一个'engines'字段，则npm将会在某处包含这个node版本。如果忽略'engines'字段，则npm只会仅仅假设这个包工作在node下。</p>
 <p>你还可以使用'engines'字段来指定可以安装这个包的npm版本，举个栗子：</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;engines&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;npm&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.0.20&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">"engines"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"npm"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"~1.0.20"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>请注意，除非用户设置了engine-strict标记，否则这个字段只是一个建议值。</p>
-<h2 id="enginestrict"><strong>engineStrict</strong><a class="headerlink" href="#enginestrict" title="Permanent link">&para;</a></h2>
+<h2 id="enginestrict"><strong>engineStrict</strong><a class="headerlink" href="#enginestrict" title="Permanent link">¶</a></h2>
 <p>这个特性在npm 3.0.0中已经废弃。</p>
 <p>npm 3.0.0之前的版本，这个特性用来处理那些设置了engine-strict标记的包。</p>
-<h2 id="os"><strong>os</strong><a class="headerlink" href="#os" title="Permanent link">&para;</a></h2>
+<h2 id="os"><strong>os</strong><a class="headerlink" href="#os" title="Permanent link">¶</a></h2>
 <p>可以指定模块运行的操作系统：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;os&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;darwin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;linux&quot;</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"os"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"darwin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"linux"</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <p>也可以使用操作系统黑名单来替代白名单，只要在前面加个'!'：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;os&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;!win32&quot;</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"os"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"!win32"</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <p>主机的操作系统可以通过process.platform来确定。</p>
 <p>虽然找不到什么很好的理由支持这么做，但是这里还可以黑名单和白名单混用。</p>
-<h2 id="cpu"><strong>cpu</strong><a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h2>
+<h2 id="cpu"><strong>cpu</strong><a class="headerlink" href="#cpu" title="Permanent link">¶</a></h2>
 <p>如果你的代码只能运行在特定的cpu架构上，你可以指明：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;cpu&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;x64&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ia32&quot;</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"cpu"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"x64"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ia32"</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <p>和os选项类似，你还可以使用黑名单：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;cpu&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;!arm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;!mips&quot;</span><span class="w"> </span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"cpu"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"!arm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"!mips"</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <p>主机的cpu架构可以通过process.arch来确定。</p>
-<h2 id="preferglobal"><strong>preferGlobal</strong><a class="headerlink" href="#preferglobal" title="Permanent link">&para;</a></h2>
+<h2 id="preferglobal"><strong>preferGlobal</strong><a class="headerlink" href="#preferglobal" title="Permanent link">¶</a></h2>
 <p>如果你的包是一个需要进行全局安装的命令行应用，需要设置preferGlobal为true，如果这个包被本地安装会报出一个警告。</p>
 <p>这个选项并不会阻止用户本地安装这个包，但这么做确实能在包未按照预期被安装造成诸多麻烦时提供一些提示。</p>
-<h2 id="private"><strong>private</strong><a class="headerlink" href="#private" title="Permanent link">&para;</a></h2>
+<h2 id="private"><strong>private</strong><a class="headerlink" href="#private" title="Permanent link">¶</a></h2>
 <p>如果你在包的package.json中设置"private": true，则npm会拒绝发布它。</p>
 <p>这是防止私有包被以外发布的一种方法。如果你希望包装某个包只能被发布到特定的一个registry中(比如，一个内部的registry)，则可以使用下面的publishConfig字典来描述以在publish-time重写registry配置参数。</p>
-<h2 id="publishconfig"><strong>publishConfig</strong><a class="headerlink" href="#publishconfig" title="Permanent link">&para;</a></h2>
+<h2 id="publishconfig"><strong>publishConfig</strong><a class="headerlink" href="#publishconfig" title="Permanent link">¶</a></h2>
 <p>这是一个在publish-time时会用到的配置集合。当你想设置tag、registry或access时特别有用，所以你可以确保一个给定的包无法在没有被打上"latest"标记时就被发布到全局公共的registry。</p>
 <p>任何配置都可以被覆盖，当然可能只有"tag", "registry"和"access"和发布意图有关。</p>
 <p>参考<a href="https://docs.npmjs.com/misc/config">npm-config</a>来查看那些可以被覆盖的配置项列表。</p>
-<h2 id="default-values"><strong>DEFAULT VALUES</strong><a class="headerlink" href="#default-values" title="Permanent link">&para;</a></h2>
+<h2 id="default-values"><strong>DEFAULT VALUES</strong><a class="headerlink" href="#default-values" title="Permanent link">¶</a></h2>
 <p>npm会基于包内容设置一些默认值。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node server.js&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node server.js"</span><span class="p">}</span>
 </code></pre></div>
 <p>如果包的根目录中有一个server.js，那么npm会用它来作为入口文件：运行node server.js。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:{</span><span class="nt">&quot;preinstall&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node-gyp rebuild&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"scripts"</span><span class="p">:{</span><span class="nt">"preinstall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node-gyp rebuild"</span><span class="p">}</span>
 </code></pre></div>
 <p>如果包的根目录中有一个binding.gyp文件，那么npm会在运行preinstall命令编译时使用它。</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">&quot;contributors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span>
 </code></pre></div>
 <p>如果包的根目录中有一个AUTHORS文件，那么npm会把它的每一个行格式化成Name \ (url)的形式，其中email和url是可选的。以一个#或者空白符开头的行将被忽略。</p>
-<h2 id="参考资料"><strong>参考资料</strong><a class="headerlink" href="#参考资料" title="Permanent link">&para;</a></h2>
+<h2 id="参考资料"><strong>参考资料</strong><a class="headerlink" href="#参考资料" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://docs.npmjs.com/misc/semver" target="_blank">semver</a></li>
 <li><a href="https://docs.npmjs.com/cli/init" target="_blank">npm-init</a></li>
@@ -3661,76 +1933,49 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <li><a href="https://docs.npmjs.com/cli/publish" target="_blank">npm-publish</a></li>
 <li><a href="https://docs.npmjs.com/cli/uninstall" target="_blank">npm-uninstall</a></li>
 </ul>
-
-  <hr>
+<hr/>
 <div class="md-source-file">
-  <small>
+<small>
     
       最后更新:
       <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月23日</span>
-      
-        <br>
+<br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月23日</span>
-      
-    
-  </small>
+</small>
 </div>
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-        </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
             回到页面顶部
-          </button>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
+          </a>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
       Material for MkDocs
     </a>
-  
 </div>
-      
-    </div>
-  </div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.51198bba.min.js"></script>
-      
-        <script src="../../../javascripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-      
-    
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
