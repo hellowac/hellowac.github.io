@@ -20,7 +20,7 @@ theme:
     # - navigation.sections # 全部展开(非折叠状态)
     # - navigation.expand # 子目录展开
     - navigation.top  # 返回顶部按钮
-    - toc.follow
+    - toc.follow      # 页面目录支持
 
 # 插件
 plugins:
@@ -36,7 +36,14 @@ plugins:
 markdown_extensions:
   - tables
   - admonition
-  - attr_list
+  - attr_list 
+  - footnotes         # 引用支持            https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
+  - def_list          # 键-值组合的list     https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
+  - toc:              # 页面目录支持         https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents
+      permalink: true # 标题锚点支持
+      slugify: !!python/object/apply:pymdownx.slugs.slugify  # 区分大小写的显示标题
+        kwds:
+          case: lower  # 全小写支持
   - md_in_html        # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
   # pymdownx 扩展，参考：https://facelessuser.github.io/pymdown-extensions/
   - pymdownx.inlinehilite   # 单行高亮, 参考: https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlighting-specific-lines
