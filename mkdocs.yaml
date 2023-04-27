@@ -15,6 +15,7 @@ theme:
     accent: red       # 强调色
   features:
     - content.code.copy  # 代码支持拷贝
+    - content.tabs.link  # 内容tabs支持
     - navigation.tabs # 顶部导航
     - navigation.tabs.sticky # 顶部导航粘连
     # - navigation.sections # 全部展开(非折叠状态)
@@ -57,6 +58,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:         # 支持内容tab, https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
+      alternate_style: true 
   - pymdownx.caret          # 下划线, 上标 : https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde 
                             #               https://facelessuser.github.io/pymdown-extensions/extensions/caret/
   - pymdownx.mark          # 标记 :https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
@@ -81,6 +84,7 @@ nav:
     - Python:
       - technology/python/index.md
       - technology/python/typehint.md
+      - technology/python/pep8.md
       - technology/python/code_style_guide.md
       - technology/python/pip.md
       - technology/python/stringio.md

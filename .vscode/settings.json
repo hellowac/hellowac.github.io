@@ -3,5 +3,10 @@
         "**/frontmatter.json": "jsonc",
         "**/.frontmatter/config/*.json": "jsonc",
         "stdio.h": "c"
-    }
+    },
+    "frontMatter.content.pageFolders": [
+        {
+            "path": "[[workspace]]/venv/lib/python3.11/site-packages/pymdown_extensions-9.9.2.dist-info/licenses"
+        }
+    ]
 }
