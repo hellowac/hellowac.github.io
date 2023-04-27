@@ -81,6 +81,7 @@ nav:
     - Python:
       - technology/python/index.md
       - technology/python/typehint.md
+      - technology/python/code_style_guide.md
       - technology/python/pip.md
       - technology/python/stringio.md
       - technology/python/flask.md
@@ -135,7 +136,7 @@ nav:
       - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
       - Oauth2-RFC6750翻译: technology/rfc/rfc6750.md
     - 知识概念:
-      - 项目文档结构示例: technology/concept/pc.md
+      - 项目文档结构示例: technology/concept/project_doc_layout.md
       - 上位机简介: technology/concept/pc.md
       - xaas概念: technology/concept/xaas.md
       - 一文搞懂什么是SaaS、BaaS、PaaS和IaaS: technology/concept/xaas2.md
