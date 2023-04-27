@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sqlalchemy" class="md-skip">
+        <a href="#sqlalchemy简明教程" class="md-skip">
           跳转至
         </a>
       
@@ -701,14 +701,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#表的设计" class="md-nav__link">
     表的设计
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#常见操作" class="md-nav__link">
     常见操作
   </a>
   
@@ -716,35 +716,35 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#常见查询操作" class="md-nav__link">
     常见查询操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#常见删除操作" class="md-nav__link">
     常见删除操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#常见更新操作" class="md-nav__link">
     常见更新操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#常见插入操作" class="md-nav__link">
     常见插入操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#常见连表查询" class="md-nav__link">
     常见连表查询
   </a>
   
@@ -756,7 +756,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#migration" class="md-nav__link">
+  <a href="#数据库migration" class="md-nav__link">
     数据库migration
   </a>
   
@@ -2626,14 +2626,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#表的设计" class="md-nav__link">
     表的设计
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#常见操作" class="md-nav__link">
     常见操作
   </a>
   
@@ -2641,35 +2641,35 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#常见查询操作" class="md-nav__link">
     常见查询操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#常见删除操作" class="md-nav__link">
     常见删除操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#常见更新操作" class="md-nav__link">
     常见更新操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#常见插入操作" class="md-nav__link">
     常见插入操作
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#常见连表查询" class="md-nav__link">
     常见连表查询
   </a>
   
@@ -2681,7 +2681,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#migration" class="md-nav__link">
+  <a href="#数据库migration" class="md-nav__link">
     数据库migration
   </a>
   
@@ -2705,7 +2705,7 @@
   
 
 
-<h1 id="sqlalchemy">SQLAlchemy简明教程</h1>
+<h1 id="sqlalchemy简明教程">SQLAlchemy简明教程<a class="headerlink" href="#sqlalchemy简明教程" title="Permanent link">&para;</a></h1>
 <p>原文可见: <a href="https://jiajunhuang.com/articles/2019_10_30-sqlalchemy.md.html">https://jiajunhuang.com/articles/2019_10_30-sqlalchemy.md.html</a></p>
 <p>SQLAlchemy是Python中常用的一个ORM，SQLAlchemy分成三部分：</p>
 <ul>
@@ -2787,7 +2787,7 @@
 </li>
 <li><strong>BaseMixin</strong>: <code>BaseMixin</code>是定义的一些通用的表结构，通过<code>Mixin</code>的方式集成到类里，比如上面的定义，我们常见的表结构里，都会有 <strong>ID</strong>、<strong>创建时间</strong>、<strong>更新时间</strong>，<strong>软删除标志</strong> 等等，我们把它作为一个独立的类，这样通过继承即可获得相关表属性，省得重复写多次。</li>
 </ul>
-<h2 id="_1">表的设计</h2>
+<h2 id="表的设计">表的设计<a class="headerlink" href="#表的设计" title="Permanent link">&para;</a></h2>
 <p>表的设计通常就如 <code>User</code> 表一样：</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">BaseMixin</span><span class="p">):</span>
     <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span>
@@ -2847,9 +2847,9 @@
 <span class="k">class</span> <span class="nc">NullType</span><span class="p">(</span><span class="n">TypeEngine</span><span class="p">):</span>
 <span class="k">class</span> <span class="nc">MatchType</span><span class="p">(</span><span class="n">Boolean</span><span class="p">):</span>
 </code></pre></div>
-<h2 id="_2">常见操作</h2>
+<h2 id="常见操作">常见操作<a class="headerlink" href="#常见操作" title="Permanent link">&para;</a></h2>
 <p>我们来看看使用SQLAlchemy完成常见的操作，例如增删查改：</p>
-<h3 id="_3">常见查询操作</h3>
+<h3 id="常见查询操作">常见查询操作<a class="headerlink" href="#常见查询操作" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p><code>SELECT * FROM user</code> 应该这样写：</p>
@@ -2884,7 +2884,7 @@
 </code></pre></div>
 </li>
 </ul>
-<h3 id="_4">常见删除操作</h3>
+<h3 id="常见删除操作">常见删除操作<a class="headerlink" href="#常见删除操作" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p><code>DELETE FROM user</code> 应该这样写：</p>
@@ -2905,7 +2905,7 @@
 </code></pre></div>
 </li>
 </ul>
-<h3 id="_5">常见更新操作</h3>
+<h3 id="常见更新操作">常见更新操作<a class="headerlink" href="#常见更新操作" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p><code>UPDATE user SET name='nick'</code> 应该这样写：</p>
@@ -2926,14 +2926,14 @@
 </code></pre></div>
 </li>
 </ul>
-<h3 id="_6">常见插入操作</h3>
+<h3 id="常见插入操作">常见插入操作<a class="headerlink" href="#常见插入操作" title="Permanent link">&para;</a></h3>
 <p>这个就简单了，实例化对象，然后 <code>session.add</code>，最后提交：</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
     <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="_7">常见连表查询</h3>
+<h3 id="常见连表查询">常见连表查询<a class="headerlink" href="#常见连表查询" title="Permanent link">&para;</a></h3>
 <p><code>SQLAlchemy</code> 中可以直接使用 <strong>join语句</strong> ：</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">get_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
         <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Customer</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Invoice</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Invoice</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="mi">8500</span><span class="p">)</span>
@@ -2944,7 +2944,7 @@
 <span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">User</span><span class="o">.</span><span class="n">addresses</span><span class="p">)</span>              <span class="c1"># same, with explicit target</span>
 <span class="n">query</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;addresses&#39;</span><span class="p">)</span>                          <span class="c1"># same, using a string</span>
 </code></pre></div>
-<h2 id="migration">数据库migration</h2>
+<h2 id="数据库migration">数据库migration<a class="headerlink" href="#数据库migration" title="Permanent link">&para;</a></h2>
 <p>我们使用alembic来做数据库migration，首先安装：</p>
 <div class="highlight"><pre><span></span><code>&gt;$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>alembic
 &gt;$<span class="w"> </span>alembic<span class="w"> </span>init<span class="w"> </span>alembic<span class="w">  </span><span class="c1"># 此处 alembic init 后接的是保存migration的文件夹名称</span>

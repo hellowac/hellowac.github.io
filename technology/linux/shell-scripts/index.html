@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#shell" class="md-skip">
+        <a href="#shell脚本实战" class="md-skip">
           跳转至
         </a>
       
@@ -805,21 +805,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#path" class="md-nav__link">
+  <a href="#统计当前变量path中可执行文件和不可执行文件的数量" class="md-nav__link">
     统计当前变量PATH中可执行文件和不可执行文件的数量
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#格式化过长的行" class="md-nav__link">
     格式化过长的行
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#删除文件时做备份" class="md-nav__link">
     删除文件时做备份
   </a>
   
@@ -2585,21 +2585,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#path" class="md-nav__link">
+  <a href="#统计当前变量path中可执行文件和不可执行文件的数量" class="md-nav__link">
     统计当前变量PATH中可执行文件和不可执行文件的数量
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#格式化过长的行" class="md-nav__link">
     格式化过长的行
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#删除文件时做备份" class="md-nav__link">
     删除文件时做备份
   </a>
   
@@ -2623,9 +2623,9 @@
   
 
 
-<h1 id="shell">shell脚本实战</h1>
+<h1 id="shell脚本实战">shell脚本实战<a class="headerlink" href="#shell脚本实战" title="Permanent link">&para;</a></h1>
 <p>书籍参考: <a href="https://www.ituring.com.cn/book/2485">https://www.ituring.com.cn/book/2485</a></p>
-<h2 id="path">统计当前变量PATH中可执行文件和不可执行文件的数量</h2>
+<h2 id="统计当前变量path中可执行文件和不可执行文件的数量">统计当前变量PATH中可执行文件和不可执行文件的数量<a class="headerlink" href="#统计当前变量path中可执行文件和不可执行文件的数量" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># 命令统计: 一个简单的脚本，可以计算出当前PATH中有多少可执行命令。 </span>
 <span class="nv">IFS</span><span class="o">=</span><span class="s2">&quot;:&quot;</span>
@@ -2649,7 +2649,7 @@
 </code></pre></div>
 <!-- more -->
 
-<h2 id="_1">格式化过长的行</h2>
+<h2 id="格式化过长的行">格式化过长的行<a class="headerlink" href="#格式化过长的行" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># fmt -- 文本格式化使用工具，可用作nroff的包装器。</span>
 <span class="c1"># 加入两个实用选项：-w X，指定行宽；-h，允许连字符。</span>
@@ -2672,7 +2672,7 @@ nroff<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
 
 <span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-<h2 id="_2">删除文件时做备份</h2>
+<h2 id="删除文件时做备份">删除文件时做备份<a class="headerlink" href="#删除文件时做备份" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># newrm -- 现有rm命令的替代命令。</span>
 <span class="c1"># 该脚本通过在用户主目录中创建的一个新目录实现了基本的文件恢复功能。</span>

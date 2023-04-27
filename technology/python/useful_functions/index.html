@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#常用的函数" class="md-skip">
           跳转至
         </a>
       
@@ -715,21 +715,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sysexit" class="md-nav__link">
+  <a href="#为何要用sysexit退出" class="md-nav__link">
     为何要用sys.exit()退出？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#驼峰命名法和骆驼命名法互转" class="md-nav__link">
     驼峰命名法和骆驼命名法互转
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#利息以及复利计算" class="md-nav__link">
     利息以及复利计算
   </a>
   
@@ -2585,21 +2585,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sysexit" class="md-nav__link">
+  <a href="#为何要用sysexit退出" class="md-nav__link">
     为何要用sys.exit()退出？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#驼峰命名法和骆驼命名法互转" class="md-nav__link">
     驼峰命名法和骆驼命名法互转
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#利息以及复利计算" class="md-nav__link">
     利息以及复利计算
   </a>
   
@@ -2623,8 +2623,8 @@
   
 
 
-<h1 id="_1">常用的函数</h1>
-<h2 id="sysexit">为何要用sys.exit()退出？</h2>
+<h1 id="常用的函数">常用的函数<a class="headerlink" href="#常用的函数" title="Permanent link">&para;</a></h1>
+<h2 id="为何要用sysexit退出">为何要用sys.exit()退出？<a class="headerlink" href="#为何要用sysexit退出" title="Permanent link">&para;</a></h2>
 <p>原文: <a href="https://www.pynote.net/archives/1036">为何要用sys.exit()退出？</a></p>
 <p>Python有4个不同的退出程序的函数，<code>exit()</code>，<code>quit()</code>，<code>os._exit()</code>和本文要介绍的<code>sys.exit()</code>。</p>
 <p><code>exit()</code>和<code>quit()</code>是一样的，它俩的功能基本上与<code>sys.exit()</code>一样，只有<code>os._exit()</code>有些简单粗暴。</p>
@@ -2684,7 +2684,7 @@
 <p>补充一个细节：</p>
 <p><strong>在python线程中，使用<code>sys.exit</code>（包括<code>exit</code>和<code>quit</code>），都只能实现退出子线程，而不能退出主线程；</strong></p>
 <p><strong>如果在子线程中调用<code>os._exit</code>，可以实现整个程序的退出。</strong></p>
-<h2 id="_2">驼峰命名法和骆驼命名法互转</h2>
+<h2 id="驼峰命名法和骆驼命名法互转">驼峰命名法和骆驼命名法互转<a class="headerlink" href="#驼峰命名法和骆驼命名法互转" title="Permanent link">&para;</a></h2>
 <p>原文: <a href="https://blog.csdn.net/mouday/article/details/90079956">https://blog.csdn.net/mouday/article/details/90079956</a></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
@@ -2720,7 +2720,7 @@
     <span class="n">words</span> <span class="o">=</span> <span class="n">snake_case</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="_3">利息以及复利计算</h2>
+<h2 id="利息以及复利计算">利息以及复利计算<a class="headerlink" href="#利息以及复利计算" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">NoReturn</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 

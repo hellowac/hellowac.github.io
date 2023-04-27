@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#端口占用查找" class="md-skip">
           跳转至
         </a>
       
@@ -785,21 +785,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#命令使用示例" class="md-nav__link">
     命令使用示例
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#查看某一端口的占用情况" class="md-nav__link">
     查看某一端口的占用情况
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#杀死某个端口的所有进程" class="md-nav__link">
     杀死某个端口的所有进程
   </a>
   
@@ -819,21 +819,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#命令使用示例_1" class="md-nav__link">
     命令使用示例
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#查看占用某个端口的进程" class="md-nav__link">
     查看占用某个端口的进程
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#杀死某个端口的占用进程" class="md-nav__link">
     杀死某个端口的占用进程
   </a>
   
@@ -845,7 +845,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#参考资料" class="md-nav__link">
     参考资料
   </a>
   
@@ -2647,21 +2647,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#命令使用示例" class="md-nav__link">
     命令使用示例
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#查看某一端口的占用情况" class="md-nav__link">
     查看某一端口的占用情况
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#杀死某个端口的所有进程" class="md-nav__link">
     杀死某个端口的所有进程
   </a>
   
@@ -2681,21 +2681,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#命令使用示例_1" class="md-nav__link">
     命令使用示例
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#查看占用某个端口的进程" class="md-nav__link">
     查看占用某个端口的进程
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#杀死某个端口的占用进程" class="md-nav__link">
     杀死某个端口的占用进程
   </a>
   
@@ -2707,7 +2707,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#参考资料" class="md-nav__link">
     参考资料
   </a>
   
@@ -2731,12 +2731,12 @@
   
 
 
-<h1 id="_1">端口占用查找</h1>
+<h1 id="端口占用查找">端口占用查找<a class="headerlink" href="#端口占用查找" title="Permanent link">&para;</a></h1>
 <p>查看端口的占用情况、找出并杀死占用进程的方法</p>
 <p>参考: <a href="https://www.cnblogs.com/shoufeng/p/11308614.html">https://www.cnblogs.com/shoufeng/p/11308614.html</a></p>
-<h2 id="lsof">lsof</h2>
+<h2 id="lsof">lsof<a class="headerlink" href="#lsof" title="Permanent link">&para;</a></h2>
 <p>参考: <a href="http://linux.51yip.com/search/lsof" target="_blank">http://linux.51yip.com/search/lsof</a></p>
-<h3 id="_2">命令使用示例</h3>
+<h3 id="命令使用示例">命令使用示例<a class="headerlink" href="#命令使用示例" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 命令为 lsof -i</span>
 <span class="o">[</span>root@onepiece<span class="w"> </span>~<span class="o">]</span><span class="c1"># lsof -i</span>
 <span class="c1"># 将会显示 命令 + 进程ID + 进程所属用户, 以及监听的协议、状态等信息</span>
@@ -2757,7 +2757,7 @@ Complete!
 <span class="c1"># 出现上述的 &quot;Complete!&quot;，说明安装成功。</span>
 </code></pre></div>
 </div>
-<h3 id="_3">查看某一端口的占用情况</h3>
+<h3 id="查看某一端口的占用情况">查看某一端口的占用情况<a class="headerlink" href="#查看某一端口的占用情况" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 比如查看80端口的占用情况，命令为：</span>
 <span class="o">[</span>root@onepiece<span class="w"> </span>~<span class="o">]</span><span class="c1"># lsof -i:22</span>
 COMMAND<span class="w">  </span>PID<span class="w"> </span>USER<span class="w">   </span>FD<span class="w">   </span>TYPE<span class="w">  </span>DEVICE<span class="w"> </span>SIZE/OFF<span class="w"> </span>NODE<span class="w"> </span>NAME
@@ -2765,7 +2765,7 @@ sshd<span class="w">    </span><span class="m">3187</span><span class="w"> </spa
 sshd<span class="w">    </span><span class="m">9528</span><span class="w"> </span>root<span class="w">    </span>3u<span class="w">  </span>IPv4<span class="w"> </span><span class="m">4436480</span><span class="w">      </span>0t0<span class="w">  </span>TCP<span class="w"> </span>onepiece:ssh-&gt;120.253.xx.xx:30214<span class="w"> </span><span class="o">(</span>ESTABLISHED<span class="o">)</span>
 </code></pre></div>
 <p>这里显示出22号端口正被sshd所使用, 状态是LISTEN(监听).</p>
-<h3 id="_4">杀死某个端口的所有进程</h3>
+<h3 id="杀死某个端口的所有进程">杀死某个端口的所有进程<a class="headerlink" href="#杀死某个端口的所有进程" title="Permanent link">&para;</a></h3>
 <div class="admonition err">
 <p>不建议通过 kill 的方式解决端口冲突问题!</p>
 <p>某些极少的情况下是可以直接杀死进程、释放端口的, 比如某个 Tomcat 进程没有成功退出, 导致重启失败.</p>
@@ -2779,9 +2779,9 @@ Connection<span class="w"> </span>to<span class="w"> </span><span class="m">47</
 service<span class="w"> </span>sshd<span class="w"> </span>start
 </code></pre></div>
 <p>这样, 所有与 sshd 的相关进程都会被结束掉 —— 务必慎用.</p>
-<h2 id="netstat">netstat</h2>
+<h2 id="netstat">netstat<a class="headerlink" href="#netstat" title="Permanent link">&para;</a></h2>
 <p>参考文档: <a href="http://linux.51yip.com/search/netstat" target="_blank">http://linux.51yip.com/search/netstat</a></p>
-<h3 id="_5">命令使用示例</h3>
+<h3 id="命令使用示例_1">命令使用示例<a class="headerlink" href="#命令使用示例_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 命令示例如下：</span>
 <span class="o">[</span>root@onepiece<span class="w"> </span>~<span class="o">]</span><span class="c1"># netstat -anp | grep 22</span>
 tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:22<span class="w">              </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span><span class="m">9646</span>/sshd
@@ -2790,14 +2790,14 @@ unix<span class="w">  </span><span class="m">2</span><span class="w">      </spa
 unix<span class="w">  </span><span class="m">3</span><span class="w">      </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w">         </span>STREAM<span class="w">     </span>CONNECTED<span class="w">     </span><span class="m">11122</span><span class="w">    </span><span class="m">476</span>/dbus-daemon<span class="w">      </span>
 </code></pre></div>
 <p>可以看出22端口被9646号进程监听着.</p>
-<h3 id="_6">查看占用某个端口的进程</h3>
+<h3 id="查看占用某个端口的进程">查看占用某个端口的进程<a class="headerlink" href="#查看占用某个端口的进程" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 命令为fuser：</span>
 <span class="o">[</span>root@onepiece<span class="w"> </span>~<span class="o">]</span><span class="c1"># fuser -v -n tcp 22</span>
 <span class="w">                     </span>USER<span class="w">        </span>PID<span class="w"> </span>ACCESS<span class="w"> </span>COMMAND
 <span class="m">22</span>/tcp:<span class="w">              </span>root<span class="w">       </span><span class="m">9646</span><span class="w"> </span>F....<span class="w"> </span>sshd
 <span class="w">                     </span>root<span class="w">       </span><span class="m">9649</span><span class="w"> </span>F....<span class="w"> </span>sshd
 </code></pre></div>
-<h3 id="_7">杀死某个端口的占用进程</h3>
+<h3 id="杀死某个端口的占用进程">杀死某个端口的占用进程<a class="headerlink" href="#杀死某个端口的占用进程" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>root@onepiece<span class="w"> </span>~<span class="o">]</span><span class="c1"># kill -s 9 9646(进程号)</span>
 </code></pre></div>
 <div class="admonition info">
@@ -2805,7 +2805,7 @@ unix<span class="w">  </span><span class="m">3</span><span class="w">      </spa
 <p><code>-9</code>参数表示告诉操作系统直接杀死进程, 无论进程的状态是否可杀死;</p>
 <p>该命令只杀死某个进程, 比 <code>killall</code> 命令相对安全一点.</p>
 </div>
-<h2 id="_8">参考资料</h2>
+<h2 id="参考资料">参考资料<a class="headerlink" href="#参考资料" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://blog.csdn.net/zhu_xun/article/details/16823577">Linux中如何解除端口占用</a></li>
 <li><a href="https://blog.csdn.net/whynotldch/article/details/78163389">linux下如何搜索一个文件或程序所在位置</a></li>

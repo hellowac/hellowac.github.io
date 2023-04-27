@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kafka" class="md-skip">
+        <a href="#kafka命令行使用" class="md-skip">
           跳转至
         </a>
       
@@ -1061,28 +1061,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#topic" class="md-nav__link">
+  <a href="#查看topic列表" class="md-nav__link">
     查看topic列表
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#group" class="md-nav__link">
+  <a href="#查看group列表" class="md-nav__link">
     查看group列表
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#group_1" class="md-nav__link">
+  <a href="#查看某一具体group详情" class="md-nav__link">
     查看某一具体group详情
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#topic_1" class="md-nav__link">
+  <a href="#查看某topic里的数据" class="md-nav__link">
     查看某topic里的数据
   </a>
   
@@ -2592,28 +2592,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#topic" class="md-nav__link">
+  <a href="#查看topic列表" class="md-nav__link">
     查看topic列表
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#group" class="md-nav__link">
+  <a href="#查看group列表" class="md-nav__link">
     查看group列表
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#group_1" class="md-nav__link">
+  <a href="#查看某一具体group详情" class="md-nav__link">
     查看某一具体group详情
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#topic_1" class="md-nav__link">
+  <a href="#查看某topic里的数据" class="md-nav__link">
     查看某topic里的数据
   </a>
   
@@ -2637,9 +2637,9 @@
   
 
 
-<h1 id="kafka">kafka命令行使用</h1>
+<h1 id="kafka命令行使用">kafka命令行使用<a class="headerlink" href="#kafka命令行使用" title="Permanent link">&para;</a></h1>
 <p>默认命令目录：<code>/opt/bitnami/kafka/bin</code></p>
-<h2 id="topic">查看topic列表</h2>
+<h2 id="查看topic列表">查看topic列表<a class="headerlink" href="#查看topic列表" title="Permanent link">&para;</a></h2>
 <!--more-->
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 到kafka的bin目录下</span>
@@ -2678,7 +2678,7 @@ event__f7c7b780-018a-441c-886a-09b2410516d0
 no_org_look_alert_log__
 org__
 </code></pre></div>
-<h2 id="group">查看group列表</h2>
+<h2 id="查看group列表">查看group列表<a class="headerlink" href="#查看group列表" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">#  查看有哪些组</span>
 $<span class="w"> </span>./kafka-consumer-groups.sh<span class="w"> </span>--bootstrap-server<span class="w"> </span>localhost:9092<span class="w"> </span>--list
 
@@ -2692,7 +2692,7 @@ g_out_log
 g_monitor
 g_out_attacker
 </code></pre></div>
-<h2 id="group_1">查看某一具体group详情</h2>
+<h2 id="查看某一具体group详情">查看某一具体group详情<a class="headerlink" href="#查看某一具体group详情" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>CURRENT-OFFSET</strong>： 当前已消费的条数</li>
 <li><strong>LOG-END-OFFSET</strong>： 总条数</li>
@@ -2732,7 +2732,7 @@ g_event<span class="w">         </span>event__10148251-f73a-4e6b-9ec2-d87734acc4
 g_event<span class="w">         </span>event__39dfedf6-6e50-4010-861f-4ccd45d984e3<span class="w"> </span><span class="m">0</span><span class="w">          </span><span class="m">361</span><span class="w">             </span><span class="m">361</span><span class="w">             </span><span class="m">0</span><span class="w">               </span>kafka-python-1.3.5-4366646c-e350-424d-83cb-86f9d9526d92<span class="w"> </span>/172.20.0.1<span class="w">     </span>kafka-python-1.3.5
 g_event<span class="w">         </span>event__85f10ae8-75a5-403c-96d1-fc726d0bab5b<span class="w"> </span><span class="m">0</span><span class="w">          </span><span class="m">3435</span><span class="w">            </span><span class="m">3435</span><span class="w">            </span><span class="m">0</span><span class="w">               </span>kafka-python-1.3.5-4366646c-e350-424d-83cb-86f9d9526d92<span class="w"> </span>/172.20.0.1<span class="w">     </span>kafka-python-1.3.5
 </code></pre></div>
-<h2 id="topic_1">查看某topic里的数据</h2>
+<h2 id="查看某topic里的数据">查看某topic里的数据<a class="headerlink" href="#查看某topic里的数据" title="Permanent link">&para;</a></h2>
 <ul>
 <li>从头开始消费topicname</li>
 <li>手动消费一条数据</li>

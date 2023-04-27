@@ -1033,7 +1033,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
   
@@ -1041,21 +1041,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#supervisor_1" class="md-nav__link">
+  <a href="#supervisor-是什么" class="md-nav__link">
     Supervisor 是什么
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#supervisor_2" class="md-nav__link">
+  <a href="#supervisor-的组成部分" class="md-nav__link">
     Supervisor 的组成部分
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#最低要求" class="md-nav__link">
     最低要求
   </a>
   
@@ -1067,28 +1067,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#安装" class="md-nav__link">
     安装
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#添加程序" class="md-nav__link">
     添加程序
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#supervisor-webserver" class="md-nav__link">
+  <a href="#配置supervisor-webserver-客户端" class="md-nav__link">
     配置supervisor Webserver 客户端
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     总结
   </a>
   
@@ -2626,7 +2626,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
   
@@ -2634,21 +2634,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#supervisor_1" class="md-nav__link">
+  <a href="#supervisor-是什么" class="md-nav__link">
     Supervisor 是什么
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#supervisor_2" class="md-nav__link">
+  <a href="#supervisor-的组成部分" class="md-nav__link">
     Supervisor 的组成部分
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#最低要求" class="md-nav__link">
     最低要求
   </a>
   
@@ -2660,28 +2660,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#安装" class="md-nav__link">
     安装
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#添加程序" class="md-nav__link">
     添加程序
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#supervisor-webserver" class="md-nav__link">
+  <a href="#配置supervisor-webserver-客户端" class="md-nav__link">
     配置supervisor Webserver 客户端
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     总结
   </a>
   
@@ -2705,20 +2705,20 @@
   
 
 
-<h1 id="supervisor">Supervisor</h1>
+<h1 id="supervisor">Supervisor<a class="headerlink" href="#supervisor" title="Permanent link">&para;</a></h1>
 <ul>
 <li>收录时间: 2022年09月20日15:30:48</li>
 <li>官方文档: <a href="http://supervisord.org/">Supervisor: A Process Control System</a></li>
 <li>原文参考: <a href="https://fitdevops.in/install-and-configure-supervisor-on-centos-7/">Install And Configure Supervisor On Centos 7</a></li>
 </ul>
-<h2 id="_1">简介</h2>
-<h3 id="supervisor_1">Supervisor 是什么</h3>
+<h2 id="简介">简介<a class="headerlink" href="#简介" title="Permanent link">&para;</a></h2>
+<h3 id="supervisor-是什么">Supervisor 是什么<a class="headerlink" href="#supervisor-是什么" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Supervisor 是一个客户端/服务器系统，它允许其用户监视和控制类 UNIX 操作系统上的许多进程。</li>
 <li>它与 launchd、daemontools 和 runit 等程序有一些相同的目标。 与其中一些程序不同，它并不意味着作为“进程 id 1”的 init 的替代品运行。</li>
 <li>相反，它旨在用于控制与项目或客户相关的流程，并且旨在在启动时像任何其他程序一样启动。</li>
 </ul>
-<h3 id="supervisor_2">Supervisor 的组成部分</h3>
+<h3 id="supervisor-的组成部分">Supervisor 的组成部分<a class="headerlink" href="#supervisor-的组成部分" title="Permanent link">&para;</a></h3>
 <p>Supervisor 的组成部分如下：</p>
 <p><strong>Supervisord:</strong></p>
 <ul>
@@ -2740,13 +2740,13 @@
 <ul>
 <li>服务于 Web UI 的同一 HTTP 服务器提供一个 <code>XML-RPC</code> 接口，可用于询问和控制主管及其运行的程序。</li>
 </ul>
-<h3 id="_2">最低要求</h3>
+<h3 id="最低要求">最低要求<a class="headerlink" href="#最低要求" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Supervisor 已经过测试并且已知可以在 Linux (Ubuntu 9.10)、Mac OS X (10.4/10.5/10.6)、Solaris (10 for Intel) 和 FreeBSD 6.1 上运行。 它可能在大多数 UNIX 系统上都能正常工作。</li>
 <li>Supervisor 旨在在 Python 3 版本 3.4 或更高版本以及 Python 2 版本 2.7 上工作。</li>
 <li>Supervisor 将不会在任何版本的 Windows 下运行。</li>
 </ul>
-<h2 id="_3">安装</h2>
+<h2 id="安装">安装<a class="headerlink" href="#安装" title="Permanent link">&para;</a></h2>
 <p>确保您具有执行以下命令的 sudo 或 root 权限。</p>
 <p>要在 Centos 上安装supervisor，我们需要将 <code>EPEL</code> 存储库添加到系统中，使用以下命令。</p>
 <div class="highlight"><pre><span></span><code>yum<span class="w"> </span>install<span class="w"> </span>epel-release<span class="w"> </span>-y
@@ -2776,7 +2776,7 @@ systemctl<span class="w"> </span>status<span class="w"> </span>supervisord
 
 systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>supervisord
 </code></pre></div>
-<h2 id="_4">添加程序</h2>
+<h2 id="添加程序">添加程序<a class="headerlink" href="#添加程序" title="Permanent link">&para;</a></h2>
 <ul>
 <li>官方文档说明参考: <a href="http://supervisord.org/running.html#adding-a-program">http://supervisord.org/running.html#adding-a-program</a></li>
 <li>官方配置说明参考: <a href="http://supervisord.org/configuration.html">http://supervisord.org/configuration.html</a></li>
@@ -2891,7 +2891,7 @@ supervisor&gt;<span class="w"> </span>tail<span class="w"> </span>cpu<span class
 <span class="w">  </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">     </span><span class="m">0</span>
 curl:<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w"> </span>Failed<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>localhost:9091<span class="p">;</span><span class="w"> </span>拒绝连接
 </code></pre></div>
-<h2 id="supervisor-webserver">配置supervisor Webserver 客户端</h2>
+<h2 id="配置supervisor-webserver-客户端">配置supervisor Webserver 客户端<a class="headerlink" href="#配置supervisor-webserver-客户端" title="Permanent link">&para;</a></h2>
 <p>要允许访问 supervisord webserver，请打开 <code>/etc/supervisord.conf</code> 文件并转到 [inet_http_server] 部分。</p>
 <p>取消注释所有四行并如下所示进行配置。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[inet_http_server]</span>
@@ -2911,7 +2911,7 @@ curl:<span class="w"> </span><span class="o">(</span><span class="m">7</span><sp
 <p>您将看到以下屏幕。</p>
 <p><a class="glightbox" href="https://cdn.shortpixel.ai/client/q_lossless,ret_img,w_790,h_202/https://fitdevops.in/wp-content/uploads/Screenshot-from-2020-06-22-20-37-12.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="11" src="https://cdn.shortpixel.ai/client/q_lossless,ret_img,w_790,h_202/https://fitdevops.in/wp-content/uploads/Screenshot-from-2020-06-22-20-37-12.png" /></a></p>
 <p>从这个界面我们可以管理程序。</p>
-<h2 id="_5">总结</h2>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
 <p>我们已经在 Centos 上成功安装和配置了 supervisor，并且我们已经学会了使用 supervisor 服务来管理程序。</p>
 <p>希望对您有所帮助。请查看我的其他文章。</p>
 <ul>

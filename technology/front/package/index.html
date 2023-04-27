@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#packagejson" class="md-skip">
+        <a href="#前端packagejson介绍" class="md-skip">
           跳转至
         </a>
       
@@ -943,7 +943,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#概述" class="md-nav__link">
     概述
   </a>
   
@@ -999,7 +999,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#author-contributors" class="md-nav__link">
+  <a href="#关于人的字段-author-contributors" class="md-nav__link">
     关于人的字段: author, contributors
   </a>
   
@@ -1118,14 +1118,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#urls" class="md-nav__link">
+  <a href="#urls作为依赖项" class="md-nav__link">
     URLs作为依赖项
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#git-urls" class="md-nav__link">
+  <a href="#git-urls作为依赖项" class="md-nav__link">
     Git URLs作为依赖项
   </a>
   
@@ -1139,7 +1139,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#本地路径" class="md-nav__link">
     本地路径
   </a>
   
@@ -1235,7 +1235,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#参考资料" class="md-nav__link">
     参考资料
   </a>
   
@@ -2863,7 +2863,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#概述" class="md-nav__link">
     概述
   </a>
   
@@ -2919,7 +2919,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#author-contributors" class="md-nav__link">
+  <a href="#关于人的字段-author-contributors" class="md-nav__link">
     关于人的字段: author, contributors
   </a>
   
@@ -3038,14 +3038,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#urls" class="md-nav__link">
+  <a href="#urls作为依赖项" class="md-nav__link">
     URLs作为依赖项
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#git-urls" class="md-nav__link">
+  <a href="#git-urls作为依赖项" class="md-nav__link">
     Git URLs作为依赖项
   </a>
   
@@ -3059,7 +3059,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#本地路径" class="md-nav__link">
     本地路径
   </a>
   
@@ -3155,7 +3155,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#参考资料" class="md-nav__link">
     参考资料
   </a>
   
@@ -3179,16 +3179,16 @@
   
 
 
-<h1 id="packagejson">前端package.json介绍</h1>
+<h1 id="前端packagejson介绍">前端package.json介绍<a class="headerlink" href="#前端packagejson介绍" title="Permanent link">&para;</a></h1>
 <p>原文: <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json">https://docs.npmjs.com/cli/v8/configuring-npm/package-json</a>
 翻译转自: <a href="https://www.cnblogs.com/nullcc/p/5829218.html">https://www.cnblogs.com/nullcc/p/5829218.html</a></p>
-<h2 id="_1"><strong>概述</strong></h2>
+<h2 id="概述"><strong>概述</strong><a class="headerlink" href="#概述" title="Permanent link">&para;</a></h2>
 <p>本文囊括了所有<code>package.json</code>文件中你需要知道的细节。注意<code>package.json</code>必须是纯JSON的，而不仅仅是一个JavaScript对象字面量。<br />
 该文件描述的很多行为都受<code>npm-config</code>中的配置影响。</p>
 <p>下面分别介绍<code>package.json</code>中各个字段的含义和用法。</p>
 <!-- more -->
 
-<h2 id="name"><strong>name</strong></h2>
+<h2 id="name"><strong>name</strong><a class="headerlink" href="#name" title="Permanent link">&para;</a></h2>
 <p>name和version字段是<code>package.json</code>文件中最重要的字段。这是必须的字段，如果你的npm包没有指定这两个字段，将无法被安装。name和version字段被假定组合成一个唯一的标识符。包内容的更改和包版本的更改是同步的。</p>
 <p>name字段的含义不需要过多解释，就是npm包名。</p>
 <p>几个规则：</p>
@@ -3206,18 +3206,18 @@
 <li>你可能会需要在深入开发一个包之前先检查npm的registry来确认某个name是否被使用过，可以参考<a href="https://www.npmjs.com/">https://www.npmjs.com/</a>。</li>
 </ol>
 <p>一个name可以用scope来指定一个前缀，比如@myorg/mypackage，可以参考<a href="https://docs.npmjs.com/misc/scope">npm-scope</a>。</p>
-<h2 id="version"><strong>version</strong></h2>
+<h2 id="version"><strong>version</strong><a class="headerlink" href="#version" title="Permanent link">&para;</a></h2>
 <p>name和version字段是package.json文件中最重要的字段。这是必须的字段，如果你的npm包没有指定这两个字段，将无法被安装。name和version字段被假定组合成一个唯一的标识符。包内容的更改和包版本的更改是同步的。</p>
 <p>version字段必须能够被<a href="https://github.com/isaacs/node-semver">node-semver</a>解析，node-semver作为依赖项被捆绑进了npm中。(可以使用npm install semver来使用)</p>
 <p>关于版本号和范围的信息可以参考<a href="https://docs.npmjs.com/misc/semver">semver</a>。</p>
-<h2 id="description"><strong>description</strong></h2>
+<h2 id="description"><strong>description</strong><a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>npm包的描述，description是一个字符串。它可以帮助人们在使用npm search时找到这个包。</p>
-<h2 id="keywords"><strong>keywords</strong></h2>
+<h2 id="keywords"><strong>keywords</strong><a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h2>
 <p>npm包的关键字，keywords是一个字符串的数组。它可以帮助人们在使用npm search时找到这个包。</p>
-<h2 id="homepage"><strong>homepage</strong></h2>
+<h2 id="homepage"><strong>homepage</strong><a class="headerlink" href="#homepage" title="Permanent link">&para;</a></h2>
 <p>项目主页的url。</p>
 <p>注意： 这和"url"不一样。如果你放一个"url"字段，registry会以为是一个跳转到你发布在其他地方的地址，然后鄙视你。</p>
-<h2 id="bugs"><strong>bugs</strong></h2>
+<h2 id="bugs"><strong>bugs</strong><a class="headerlink" href="#bugs" title="Permanent link">&para;</a></h2>
 <p>改项目的issue跟踪页面或这报告issue的email地址。这对使用这个包遇到问题的用户会有帮助。</p>
 <p>差不多是这样：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span>
@@ -3227,7 +3227,7 @@
 </code></pre></div>
 <p>你可以择其一或者两个都写上。如果只想提供一个url，你可以对"bugs"字段指定一个字符串而不是object。</p>
 <p>如果提供了一个url，它会被用于npm bugs命令。</p>
-<h2 id="license"><strong>license</strong></h2>
+<h2 id="license"><strong>license</strong><a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>你应该对你的包指定一个license来让用户知道他们的使用权利和和任何限制。</p>
 <p>如果你正在使用BSD-2-Clause或MIT这样的通用许可证，可以为你的license添加一个当前SPDX的许可证标识符，比如：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;license&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BSD-3-Clause&quot;</span><span class="w"> </span><span class="p">}</span>
@@ -3275,7 +3275,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;private&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 </code></pre></div>
 <p>来防止意外的发布。</p>
-<h2 id="author-contributors"><strong>关于人的字段: author, contributors</strong></h2>
+<h2 id="关于人的字段-author-contributors"><strong>关于人的字段: author, contributors</strong><a class="headerlink" href="#关于人的字段-author-contributors" title="Permanent link">&para;</a></h2>
 <p>author是一个人，contributors是一些人的数组。person是一个对象，拥有必须的name字段和可选的url和email字段，像这样：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Barney Rubble&quot;</span><span class="p">,</span>
@@ -3288,7 +3288,7 @@
 </code></pre></div>
 <p>这里email和url也是可选的。</p>
 <p>npm也会使用你提供的npm用户信息来设置一个顶级的"maintainers"字段。</p>
-<h2 id="funding"><strong>funding</strong></h2>
+<h2 id="funding"><strong>funding</strong><a class="headerlink" href="#funding" title="Permanent link">&para;</a></h2>
 <p>你可以指定一个包含 URL 的对象，该 URL 提供有关帮助资助包开发的方法的最新信息，或字符串 URL 或这些的数组：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;funding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -3317,7 +3317,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>用户可以使用<code>npm fund</code>子命令列出他们项目的所有依赖项的<code>funding</code>URL，直接和间接的方式。 提供项目名称时也提供访问每个帮助网址的快捷方式，例如：<code>npm fund &lt;projectname&gt;</code>（当有多个网址时，将访问第一个）</p>
-<h2 id="files"><strong>files</strong></h2>
+<h2 id="files"><strong>files</strong><a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
 <p>files字段是一个被项目包含的文件名数组，如果你在里面放一个文件夹名，那么这个文件夹中的所有文件都会被包含进项目中(除非是那些在其他规则中被忽略的文件)。</p>
 <p>你还可以在包的根目录或子目录下提供一个".npmignore"文件来忽略项目包含文件，即使这些文件被包含在files字段中。.npmignore文件和.gitignore的功能很像。</p>
 <p>某些文件总是被包含的，不论是否在规则中指定了它们：</p>
@@ -3338,11 +3338,11 @@ CVS
 .\_\*  
 npm-debug.log  
 </code></pre></div>
-<h2 id="main"><strong>main</strong></h2>
+<h2 id="main"><strong>main</strong><a class="headerlink" href="#main" title="Permanent link">&para;</a></h2>
 <p>main字段指定了模块的入口程序文件。就是说，如果你的模块名叫"foo"，用户安装了它，并且调用了 require("foo")，则这个main字段指定的模块的导出对象会被返回。</p>
 <p>这应该是一个相对于包根目录的模块标识。</p>
 <p>对于大部分模块来说，main字段除了指定一个主入口文件以外没什么其他用处了。</p>
-<h2 id="bin"><strong>bin</strong></h2>
+<h2 id="bin"><strong>bin</strong><a class="headerlink" href="#bin" title="Permanent link">&para;</a></h2>
 <p>许多包有一个或多个可执行文件希望被安装到系统路径。在npm下要这么做非常容易(事实上，npm就是这么运行的)。</p>
 <p>这需要在你的package.json中提供一个bin字段，它是一个命令名和本地文件名的映射。在安装时，如果是全局安装，npm将会使用符号链接把这些文件链接到prefix/bin，如果是本地安装，会链接到./node_modules/.bin/。</p>
 <p>比如，要使用myapp作为命令时可以这么做：</p>
@@ -3365,7 +3365,7 @@ npm-debug.log
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="man"><strong>man</strong></h2>
+<h2 id="man"><strong>man</strong><a class="headerlink" href="#man" title="Permanent link">&para;</a></h2>
 <p>指定一个单一的文件名或一个文件名数组来让man程序使用。</p>
 <p>如果只给man字段提供一个文件，则安装完毕后，它就是man 的结果，这和此文件名无关，比如：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -3403,21 +3403,21 @@ npm-debug.log
 <span class="p">}</span>
 </code></pre></div>
 <p>会为使用man foo和man 2 foo而创建。</p>
-<h2 id="directories"><strong>directories</strong></h2>
+<h2 id="directories"><strong>directories</strong><a class="headerlink" href="#directories" title="Permanent link">&para;</a></h2>
 <p>CommonJS Packages规范说明了几种你可以用directories对象来标示你的包结构的方法。如果你去看<a href="https://registry.npmjs.org/npm/latest">npm's package.json</a>，你会看到它标示出出doc、lib和man。</p>
 <p>在未来，这个信息可能会被用到。</p>
-<h2 id="directorieslib"><strong>directories.lib</strong></h2>
+<h2 id="directorieslib"><strong>directories.lib</strong><a class="headerlink" href="#directorieslib" title="Permanent link">&para;</a></h2>
 <p>告诉你库文件夹的位置，目前没有什么地方需要用到lib文件夹，但是这是重要的元信息。</p>
-<h3 id="directoriesbin"><strong>directories.bin</strong></h3>
+<h3 id="directoriesbin"><strong>directories.bin</strong><a class="headerlink" href="#directoriesbin" title="Permanent link">&para;</a></h3>
 <p>如果你在directories.bin中指定一个bin目录，在这个目录中的所有文件都会被当做在bin来使用。</p>
 <p>由于bin指令的工作方式，同时指定一个bin路径和设置directories.bin将是一个错误。如果你想指定独立的文件，使用bin，如果想执行某个文件夹里的所有文件，使用directories.bin。</p>
-<h3 id="directoriesman"><strong>directories.man</strong></h3>
+<h3 id="directoriesman"><strong>directories.man</strong><a class="headerlink" href="#directoriesman" title="Permanent link">&para;</a></h3>
 <p>directories.man指定的文件夹里都是man文件，系统通过遍历这个文件夹来生成一个man的数组。</p>
-<h3 id="directoriesdoc"><strong>directories.doc</strong></h3>
+<h3 id="directoriesdoc"><strong>directories.doc</strong><a class="headerlink" href="#directoriesdoc" title="Permanent link">&para;</a></h3>
 <p>把markdown文件放在这。也许某一天这些文件将被漂亮地展示出来，不过这仅仅是也许。  </p>
-<h3 id="directoriesexample"><strong>directories.example</strong></h3>
+<h3 id="directoriesexample"><strong>directories.example</strong><a class="headerlink" href="#directoriesexample" title="Permanent link">&para;</a></h3>
 <p>把示例脚本放在这。也许某一天会被用到。</p>
-<h2 id="repository"><strong>repository</strong></h2>
+<h2 id="repository"><strong>repository</strong><a class="headerlink" href="#repository" title="Permanent link">&para;</a></h2>
 <p>指明你的代码被托管在何处，这对那些想要参与到这个项目中的人来说很有帮助。如果git仓库在github上，用npm docs命令将会找到你。</p>
 <p>像这样：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -3434,9 +3434,9 @@ npm-debug.log
 <span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;bitbucket:example/repo&quot;</span>
 <span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gitlab:another/repo&quot;</span>
 </code></pre></div>
-<h2 id="scripts"><strong>scripts</strong></h2>
+<h2 id="scripts"><strong>scripts</strong><a class="headerlink" href="#scripts" title="Permanent link">&para;</a></h2>
 <p>scripts字段是一个由脚本命令组成的字典，这些命令运行在包的各个生命周期中。这里的键是生命周期事件名，值是要运行的命令。可以参考<a href="https://docs.npmjs.com/files/package.json#directorieslib">npm-scripts</a>获取配置scripts的更多信息。</p>
-<h2 id="config"><strong>config</strong></h2>
+<h2 id="config"><strong>config</strong><a class="headerlink" href="#config" title="Permanent link">&para;</a></h2>
 <p>config字段是一个对象，可以用来配置包脚本中的跨版本参数，比如如下这个实例：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
@@ -3449,7 +3449,7 @@ npm-debug.log
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>foo:port<span class="w"> </span><span class="m">8001</span>
 </code></pre></div>
 <p>可以参考<a href="https://docs.npmjs.com/misc/config">npm-config</a>和<a href="https://docs.npmjs.com/misc/scripts">npm-scripts</a>获得更多关于包配置的信息。</p>
-<h2 id="dependencies"><strong>dependencies</strong></h2>
+<h2 id="dependencies"><strong>dependencies</strong><a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
 <p>dependencies字段是一个对象，它指定了依赖的包名和其版本范围的映射。版本范围是个有一个或多个空白分隔描述符的字符串。dependencies字段还可以用tarball或者git URL。</p>
 <p>请不要将测试或过渡性的依赖放到dependencies中，请参考下面的devDependencies。</p>
 <p>可以参考<a href="https://docs.npmjs.com/misc/semver">semver</a>获取更多关于指定版本范围的细节信息。</p>
@@ -3490,10 +3490,10 @@ npm-debug.log
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="urls"><strong>URLs作为依赖项</strong></h3>
+<h3 id="urls作为依赖项"><strong>URLs作为依赖项</strong><a class="headerlink" href="#urls作为依赖项" title="Permanent link">&para;</a></h3>
 <p>可以在version上指定一个压缩包的url。</p>
 <p>当执行npm install时这个压缩包会被下载并且安装到本地。</p>
-<h3 id="git-urls"><strong>Git URLs作为依赖项</strong></h3>
+<h3 id="git-urls作为依赖项"><strong>Git URLs作为依赖项</strong><a class="headerlink" href="#git-urls作为依赖项" title="Permanent link">&para;</a></h3>
 <p>Git URLs可以是如下几种形式之一：</p>
 <p>git://github.com/user/project.git#commit-ish<br />
 git+ssh://user@hostname:project.git#commit-ish<br />
@@ -3501,7 +3501,7 @@ git+ssh://user@hostname/project.git#commit-ish<br />
 git+<a href="http://user@hostname/project/blah.git#commit-ish">http://user@hostname/project/blah.git#commit-ish</a><br />
 git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hostname/project/blah.git#commit-ish</a>  </p>
 <p>commit-ish可以是任何tag、sha或者branch，并作为一个参数提供给git进行checkout，默认值是master。</p>
-<h3 id="github-urls"><strong>GitHub URLs</strong></h3>
+<h3 id="github-urls"><strong>GitHub URLs</strong><a class="headerlink" href="#github-urls" title="Permanent link">&para;</a></h3>
 <p>从1.1.65版本开始，你可以引用Github urls作为版本号，比如"foo": "user/foo-project"。也可以包含一个commit-ish后缀，举个栗子：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
@@ -3512,7 +3512,7 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_2"><strong>本地路径</strong></h3>
+<h3 id="本地路径"><strong>本地路径</strong><a class="headerlink" href="#本地路径" title="Permanent link">&para;</a></h3>
 <p>从版本2.0.0开始你可以提供一个包的本地路径。本地路径可以在你使用npm install -S或npm install --save时被保存，具体形式如下：</p>
 <ul>
 <li>../foo/bar  </li>
@@ -3529,7 +3529,7 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <span class="p">}</span>
 </code></pre></div>
 <p>这个特性有助于当你不想从一个外部服务器安装npm包的情况，比如本地离线开发和创建测试，但最好不要在发布包到公共registry时这样使用。</p>
-<h2 id="devdependencies"><strong>devDependencies</strong></h2>
+<h2 id="devdependencies"><strong>devDependencies</strong><a class="headerlink" href="#devdependencies" title="Permanent link">&para;</a></h2>
 <p>如果有人计划在他们的项目中下载和使用你的模块，但他们可能并不想或并不需要你开发所使用的外部测试和文档框架。</p>
 <p>在这种情况下，最好将这些附加的项放在devDependencies中。</p>
 <p>这些项将会在根目录下执行npm link或npm install时被安装，并且可以像其他npm配置参数一样被管理。可以参考<a href="https://docs.npmjs.com/misc/config">npm-config</a>获得更多信息。</p>
@@ -3549,7 +3549,7 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <span class="p">}</span>
 </code></pre></div>
 <p>prepublish脚本会在publishing前运行，这样用户就可以不用自己去require来编译就能使用。在开发模式下(比如本地运行npm install)，将会执行这个脚本，这样测试就非常方便了。</p>
-<h2 id="peerdependencies"><strong>peerDependencies</strong></h2>
+<h2 id="peerdependencies"><strong>peerDependencies</strong><a class="headerlink" href="#peerdependencies" title="Permanent link">&para;</a></h2>
 <p>在某些情况下，当一个主机无法require依赖包时，你会想要告诉它还有哪些工具或库与这个依赖包兼容。这通常被成为一个插件。尤其是在host文档中声明的模块会暴露一个特定的接口。</p>
 <p>举个栗子：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -3566,10 +3566,10 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <p>注意：如果没有在依赖树中显式声明比它们更高的依赖版本，版本1和版本2的npm将会自动安装peerDependencies。在npm的下一个大版本npm3中，情况将完全不同。你将收到一个警告，告诉你peerDependency还没有被安装。在npm1和npm2中这个行为经常会导致混乱，新的npm版本的设计将会极力避免这种情况。</p>
 <p>试图安装一个有冲突的依赖项的插件将会导致一个错误。因此你必须确保你的插件的依赖项版本范围尽可能大，并且不要把版本锁死在一个特点的补丁版本上。</p>
 <p>假设主机使用semver进行编译，只改变这个包的主版本将会导致你的插件不可用。因此，如果你的插件的某个依赖包运行在每个1.x版本下，使用"^1.0"或"1.x"。如果你需要的功能在1.5.2版本中，使用"&gt;= 1.5.2 &lt; 2"。</p>
-<h2 id="bundleddependencies"><strong>bundledDependencies</strong></h2>
+<h2 id="bundleddependencies"><strong>bundledDependencies</strong><a class="headerlink" href="#bundleddependencies" title="Permanent link">&para;</a></h2>
 <p>在发布包时，包名的数组会被打包进去。</p>
 <p>如果拼写成"bundleDependencies"(少个d)，也是可以的。</p>
-<h2 id="optionaldependencies"><strong>optionalDependencies</strong></h2>
+<h2 id="optionaldependencies"><strong>optionalDependencies</strong><a class="headerlink" href="#optionaldependencies" title="Permanent link">&para;</a></h2>
 <p>如果一个依赖项可用，但希望在这个依赖项无法被找到或者安装时失败npm还能继续处理(不中断)，那么你可以把它放在optionalDependencies中。和dependencies一样，optionalDependencies是一个包名和版本号或url的映射。区别在于optionalDependencies中的依赖构建失败时不会导致npm整体安装失败。</p>
 <p>但是你的程序依然有责任处理这种缺失的依赖项，比如这样：</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">{</span>
@@ -3583,7 +3583,7 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <span class="p">}</span>
 </code></pre></div>
 <p>optionalDependencies中的项会覆盖dependencies中的同名项，所以一个特定名字的项最好只出现在一个地方。</p>
-<h2 id="engines"><strong>engines</strong></h2>
+<h2 id="engines"><strong>engines</strong><a class="headerlink" href="#engines" title="Permanent link">&para;</a></h2>
 <p>你可以指定node的工作版本：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;engines&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;node&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=0.10.3 &lt;0.12&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
@@ -3593,10 +3593,10 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;engines&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;npm&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.0.20&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>请注意，除非用户设置了engine-strict标记，否则这个字段只是一个建议值。</p>
-<h2 id="enginestrict"><strong>engineStrict</strong></h2>
+<h2 id="enginestrict"><strong>engineStrict</strong><a class="headerlink" href="#enginestrict" title="Permanent link">&para;</a></h2>
 <p>这个特性在npm 3.0.0中已经废弃。</p>
 <p>npm 3.0.0之前的版本，这个特性用来处理那些设置了engine-strict标记的包。</p>
-<h2 id="os"><strong>os</strong></h2>
+<h2 id="os"><strong>os</strong><a class="headerlink" href="#os" title="Permanent link">&para;</a></h2>
 <p>可以指定模块运行的操作系统：</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;os&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;darwin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;linux&quot;</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
@@ -3605,7 +3605,7 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 </code></pre></div>
 <p>主机的操作系统可以通过process.platform来确定。</p>
 <p>虽然找不到什么很好的理由支持这么做，但是这里还可以黑名单和白名单混用。</p>
-<h2 id="cpu"><strong>cpu</strong></h2>
+<h2 id="cpu"><strong>cpu</strong><a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h2>
 <p>如果你的代码只能运行在特定的cpu架构上，你可以指明：</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;cpu&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;x64&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ia32&quot;</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
@@ -3613,17 +3613,17 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;cpu&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;!arm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;!mips&quot;</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <p>主机的cpu架构可以通过process.arch来确定。</p>
-<h2 id="preferglobal"><strong>preferGlobal</strong></h2>
+<h2 id="preferglobal"><strong>preferGlobal</strong><a class="headerlink" href="#preferglobal" title="Permanent link">&para;</a></h2>
 <p>如果你的包是一个需要进行全局安装的命令行应用，需要设置preferGlobal为true，如果这个包被本地安装会报出一个警告。</p>
 <p>这个选项并不会阻止用户本地安装这个包，但这么做确实能在包未按照预期被安装造成诸多麻烦时提供一些提示。</p>
-<h2 id="private"><strong>private</strong></h2>
+<h2 id="private"><strong>private</strong><a class="headerlink" href="#private" title="Permanent link">&para;</a></h2>
 <p>如果你在包的package.json中设置"private": true，则npm会拒绝发布它。</p>
 <p>这是防止私有包被以外发布的一种方法。如果你希望包装某个包只能被发布到特定的一个registry中(比如，一个内部的registry)，则可以使用下面的publishConfig字典来描述以在publish-time重写registry配置参数。</p>
-<h2 id="publishconfig"><strong>publishConfig</strong></h2>
+<h2 id="publishconfig"><strong>publishConfig</strong><a class="headerlink" href="#publishconfig" title="Permanent link">&para;</a></h2>
 <p>这是一个在publish-time时会用到的配置集合。当你想设置tag、registry或access时特别有用，所以你可以确保一个给定的包无法在没有被打上"latest"标记时就被发布到全局公共的registry。</p>
 <p>任何配置都可以被覆盖，当然可能只有"tag", "registry"和"access"和发布意图有关。</p>
 <p>参考<a href="https://docs.npmjs.com/misc/config">npm-config</a>来查看那些可以被覆盖的配置项列表。</p>
-<h2 id="default-values"><strong>DEFAULT VALUES</strong></h2>
+<h2 id="default-values"><strong>DEFAULT VALUES</strong><a class="headerlink" href="#default-values" title="Permanent link">&para;</a></h2>
 <p>npm会基于包内容设置一些默认值。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node server.js&quot;</span><span class="p">}</span>
 </code></pre></div>
@@ -3634,7 +3634,7 @@ git+<a href="https://user@hostname/project/blah.git#commit-ish">https://user@hos
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">&quot;contributors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span>
 </code></pre></div>
 <p>如果包的根目录中有一个AUTHORS文件，那么npm会把它的每一个行格式化成Name \ (url)的形式，其中email和url是可选的。以一个#或者空白符开头的行将被忽略。</p>
-<h2 id="_3"><strong>参考资料</strong></h2>
+<h2 id="参考资料"><strong>参考资料</strong><a class="headerlink" href="#参考资料" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.npmjs.com/misc/semver" target="_blank">semver</a></li>
 <li><a href="https://docs.npmjs.com/cli/init" target="_blank">npm-init</a></li>

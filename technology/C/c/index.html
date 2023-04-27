@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#c" class="md-skip">
+        <a href="#c基础" class="md-skip">
           跳转至
         </a>
       
@@ -853,7 +853,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#指针" class="md-nav__link">
     指针
   </a>
   
@@ -861,7 +861,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#应用场景" class="md-nav__link">
     应用场景
   </a>
   
@@ -873,14 +873,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#回调函数" class="md-nav__link">
     回调函数
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#常用数据结构" class="md-nav__link">
     常用数据结构
   </a>
   
@@ -2598,7 +2598,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#指针" class="md-nav__link">
     指针
   </a>
   
@@ -2606,7 +2606,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#应用场景" class="md-nav__link">
     应用场景
   </a>
   
@@ -2618,14 +2618,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#回调函数" class="md-nav__link">
     回调函数
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#常用数据结构" class="md-nav__link">
     常用数据结构
   </a>
   
@@ -2649,7 +2649,7 @@
   
 
 
-<h1 id="c">C基础</h1>
+<h1 id="c基础">C基础<a class="headerlink" href="#c基础" title="Permanent link">&para;</a></h1>
 <p>C 语言是一种通用的高级语言，最初是由丹尼斯·里奇在贝尔实验室为开发 UNIX 操作系统而设计的。C 语言最开始是于 1972 年在 DEC PDP-11 计算机上被首次实现。</p>
 <p>在 1978 年，布莱恩·柯林汉（Brian Kernighan）和丹尼斯·里奇（Dennis Ritchie）制作了 C 的第一个公开可用的描述，现在被称为 K&amp;R 标准。</p>
 <p>UNIX 操作系统，C编译器，和几乎所有的 UNIX 应用程序都是用 C 语言编写的。由于各种原因，C 语言现在已经成为一种广泛使用的专业语言。</p>
@@ -2661,7 +2661,7 @@
 <li>让你轻松理解C语言：<a href="https://www.edx.org/course/programming-c-microsoft-dev210x">https://www.edx.org/course/programming-c-microsoft-dev210x</a></li>
 <li>高级C语言编程：<a href="https://www.udacity.com/course/advanced-c-programming--ud210">https://www.udacity.com/course/advanced-c-programming--ud210</a></li>
 </ol>
-<h2 id="_1">指针</h2>
+<h2 id="指针">指针<a class="headerlink" href="#指针" title="Permanent link">&para;</a></h2>
 <p><ins class="critic"><strong>变量为了表示数据而生，指针为了传递数据而生。</strong></ins></p>
 <p><strong>指针没有那么神秘，他就是一个变量，不过放的是别的变量地址。</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
@@ -2690,7 +2690,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_2">应用场景</h3>
+<h3 id="应用场景">应用场景<a class="headerlink" href="#应用场景" title="Permanent link">&para;</a></h3>
 <p><strong>智能音响</strong>：音频处理</p>
 <div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">pcm_data_char</span><span class="p">;</span>
 <span class="kt">char</span><span class="w"> </span><span class="n">pcm_data_arrary</span><span class="p">[</span><span class="mi">4096</span><span class="p">];</span>
@@ -2744,7 +2744,7 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
 <span class="w">    </span><span class="n">open</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="_3">回调函数</h2>
+<h2 id="回调函数">回调函数<a class="headerlink" href="#回调函数" title="Permanent link">&para;</a></h2>
 <p><code>指针的实用功能</code></p>
 <p>为什么有？有什么用？</p>
 <ol>
@@ -2804,7 +2804,7 @@
 <span class="w">    </span><span class="n">run</span><span class="p">();</span>
 <span class="p">};</span>
 </code></pre></div>
-<h2 id="_4">常用数据结构</h2>
+<h2 id="常用数据结构">常用数据结构<a class="headerlink" href="#常用数据结构" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>智能音箱：配网时，获取到网络列表后，进行过滤，如何写过滤函数？</p>

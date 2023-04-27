@@ -1171,7 +1171,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#常用查询" class="md-nav__link">
     常用查询
   </a>
   
@@ -1179,14 +1179,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#查询数据库表大小" class="md-nav__link">
     查询数据库表大小
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#集群查询" class="md-nav__link">
     集群查询
   </a>
   
@@ -1198,7 +1198,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clickhouse_1" class="md-nav__link">
+  <a href="#clickhouse-时区" class="md-nav__link">
     Clickhouse 时区
   </a>
   
@@ -1206,21 +1206,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#默认设置" class="md-nav__link">
     默认设置
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#clickhouse_2" class="md-nav__link">
+  <a href="#clickhouse配置" class="md-nav__link">
     clickhouse配置
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#clickhouse_3" class="md-nav__link">
+  <a href="#clickhouse时区函数" class="md-nav__link">
     clickhouse时区函数
   </a>
   
@@ -2625,7 +2625,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#常用查询" class="md-nav__link">
     常用查询
   </a>
   
@@ -2633,14 +2633,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#查询数据库表大小" class="md-nav__link">
     查询数据库表大小
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#集群查询" class="md-nav__link">
     集群查询
   </a>
   
@@ -2652,7 +2652,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clickhouse_1" class="md-nav__link">
+  <a href="#clickhouse-时区" class="md-nav__link">
     Clickhouse 时区
   </a>
   
@@ -2660,21 +2660,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#默认设置" class="md-nav__link">
     默认设置
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#clickhouse_2" class="md-nav__link">
+  <a href="#clickhouse配置" class="md-nav__link">
     clickhouse配置
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#clickhouse_3" class="md-nav__link">
+  <a href="#clickhouse时区函数" class="md-nav__link">
     clickhouse时区函数
   </a>
   
@@ -2703,13 +2703,13 @@
   
 
 
-<h1 id="clickhouse">clickhouse</h1>
+<h1 id="clickhouse">clickhouse<a class="headerlink" href="#clickhouse" title="Permanent link">&para;</a></h1>
 <ul>
 <li>官网: <a href="https://clickhouse.com/">https://clickhouse.com/</a></li>
 <li>文档: <a href="https://clickhouse.com/docs/en/intro/">https://clickhouse.com/docs/en/intro/</a></li>
 </ul>
-<h2 id="_1">常用查询</h2>
-<h3 id="_2">查询数据库表大小</h3>
+<h2 id="常用查询">常用查询<a class="headerlink" href="#常用查询" title="Permanent link">&para;</a></h2>
+<h3 id="查询数据库表大小">查询数据库表大小<a class="headerlink" href="#查询数据库表大小" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="n">concat</span><span class="p">(</span><span class="k">database</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">table</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">table</span><span class="p">,</span>
 <span class="w">    </span><span class="n">formatReadableSize</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="n">bytes</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">size</span><span class="p">,</span>
@@ -2779,7 +2779,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="_3">集群查询</h3>
+<h3 id="集群查询">集群查询<a class="headerlink" href="#集群查询" title="Permanent link">&para;</a></h3>
 <p>参考: <a href="https://clickhouse.com/docs/en/sql-reference/table-functions/cluster/">https://clickhouse.com/docs/en/sql-reference/table-functions/cluster/</a></p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span>
 <span class="w">    </span><span class="k">table</span><span class="p">,</span>
@@ -2853,8 +2853,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="clickhouse_1">Clickhouse 时区</h2>
-<h3 id="_4">默认设置</h3>
+<h2 id="clickhouse-时区">Clickhouse 时区<a class="headerlink" href="#clickhouse-时区" title="Permanent link">&para;</a></h2>
+<h3 id="默认设置">默认设置<a class="headerlink" href="#默认设置" title="Permanent link">&para;</a></h3>
 <p>Clickhouse默认是读取操作系统的时区 我们可以通过操作系统命令和clickhouse的命令查看验证：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># clickhouse查看当前时间</span>
 Clickhouse&gt;<span class="w"> </span><span class="k">select</span><span class="w"> </span>now<span class="o">()</span><span class="p">;</span>
@@ -2908,7 +2908,7 @@ systemctl<span class="w"> </span>start<span class="w"> </span>ntpd
 <span class="c1"># 同步时间</span>
 ntpdate<span class="w"> </span>-u<span class="w"> </span>cn.pool.ntp.org
 </code></pre></div>
-<h3 id="clickhouse_2">clickhouse配置</h3>
+<h3 id="clickhouse配置">clickhouse配置<a class="headerlink" href="#clickhouse配置" title="Permanent link">&para;</a></h3>
 <p>clickhouse提供了配置的参数选型：</p>
 <ol>
 <li>
@@ -2938,7 +2938,7 @@ ntpdate<span class="w"> </span>-u<span class="w"> </span>cn.pool.ntp.org
 <span class="cm">时区的指定是按照IANA标准的时区库指定的，可以在Linux系统中通过命令查询</span>
 <span class="cm">若不指定则使用系统启动的时区。 --&gt;</span>
 </code></pre></div>
-<h3 id="clickhouse_3">clickhouse时区函数</h3>
+<h3 id="clickhouse时区函数">clickhouse时区函数<a class="headerlink" href="#clickhouse时区函数" title="Permanent link">&para;</a></h3>
 <p>原文: <a href="https://blog.csdn.net/vkingnew/article/details/107227037/">https://blog.csdn.net/vkingnew/article/details/107227037/</a></p>
 <p>官网时间日期函数: <a href="https://clickhouse.com/docs/zh/sql-reference/functions/date-time-functions/">https://clickhouse.com/docs/zh/sql-reference/functions/date-time-functions/</a></p>
 <p>clickhouse相关的时区函数：</p>

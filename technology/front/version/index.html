@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#packagejson" class="md-skip">
+        <a href="#packagejson版本号介绍" class="md-skip">
           跳转至
         </a>
       
@@ -929,21 +929,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#语义化版本" class="md-nav__link">
     语义化版本
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#版本的格式" class="md-nav__link">
     版本的格式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#依赖版本号规则" class="md-nav__link">
     依赖版本号规则
   </a>
   
@@ -1014,14 +1014,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#version1-version2" class="md-nav__link">
+  <a href="#version1---version2" class="md-nav__link">
     version1 - version2
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#range1-range2" class="md-nav__link">
+  <a href="#range1--range2" class="md-nav__link">
     range1 || range2
   </a>
   
@@ -2668,21 +2668,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#语义化版本" class="md-nav__link">
     语义化版本
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#版本的格式" class="md-nav__link">
     版本的格式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#依赖版本号规则" class="md-nav__link">
     依赖版本号规则
   </a>
   
@@ -2753,14 +2753,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#version1-version2" class="md-nav__link">
+  <a href="#version1---version2" class="md-nav__link">
     version1 - version2
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#range1-range2" class="md-nav__link">
+  <a href="#range1--range2" class="md-nav__link">
     range1 || range2
   </a>
   
@@ -2789,10 +2789,10 @@
   
 
 
-<h1 id="packagejson">package.json版本号介绍</h1>
+<h1 id="packagejson版本号介绍">package.json版本号介绍<a class="headerlink" href="#packagejson版本号介绍" title="Permanent link">&para;</a></h1>
 <p>转自: <a href="https://segmentfault.com/a/1190000019935845">https://segmentfault.com/a/1190000019935845</a>
 转自: <a href="https://www.cnblogs.com/yalong/p/15013880.html">https://www.cnblogs.com/yalong/p/15013880.html</a></p>
-<h2 id="_1">语义化版本</h2>
+<h2 id="语义化版本">语义化版本<a class="headerlink" href="#语义化版本" title="Permanent link">&para;</a></h2>
 <p>使用第三方依赖时，通常需要指定依赖的版本范围，比如</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="err">...</span>
@@ -2832,40 +2832,40 @@
 redux@^3.7.2：&gt;<span class="o">=</span>redux@3.7.2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>&lt;<span class="w"> </span>redux@4.0.0
 lodash@*：lodash@latest
 </code></pre></div>
-<h2 id="_2">版本的格式</h2>
+<h2 id="版本的格式">版本的格式<a class="headerlink" href="#版本的格式" title="Permanent link">&para;</a></h2>
 <p><strong>major.minor.patch</strong> 代表 <strong>主版本号.次版本号.修补版本号</strong>:</p>
 <ul>
 <li><strong>major</strong>：新的架构调整，不兼容老版本</li>
 <li><strong>minor</strong>：新增功能，兼容老版本</li>
 <li><strong>patch</strong>：修复bug，兼容老版本</li>
 </ul>
-<h2 id="_3">依赖版本号规则</h2>
-<h3 id="version"><strong>version</strong></h3>
+<h2 id="依赖版本号规则">依赖版本号规则<a class="headerlink" href="#依赖版本号规则" title="Permanent link">&para;</a></h2>
+<h3 id="version"><strong>version</strong><a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
 <ul>
 <li>必须匹配某个版本</li>
 <li>如：1.1.2，表示必须依赖1.1.2版</li>
 </ul>
-<h3 id="version_1"><strong>>version</strong></h3>
+<h3 id="version_1"><strong>>version</strong><a class="headerlink" href="#version_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>必须大于某个版本</li>
 <li>如：&gt;1.1.2，表示必须大于1.1.2版</li>
 </ul>
-<h3 id="version_2"><strong>>=version</strong></h3>
+<h3 id="version_2"><strong>>=version</strong><a class="headerlink" href="#version_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>可大于或等于某个版本</li>
 <li>如：&gt;=1.1.2，表示可以等于1.1.2，也可以大于1.1.2版本</li>
 </ul>
-<h3 id="version_3"><strong>&lt;version</strong></h3>
+<h3 id="version_3"><strong>&lt;version</strong><a class="headerlink" href="#version_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>必须小于某个版本</li>
 <li>如：&lt;1.1.2，表示必须小于1.1.2版本</li>
 </ul>
-<h3 id="version_4"><strong>&lt;=version</strong></h3>
+<h3 id="version_4"><strong>&lt;=version</strong><a class="headerlink" href="#version_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>可以小于或等于某个版本</li>
 <li>如：&lt;=1.1.2，表示可以等于1.1.2，也可以小于1.1.2版本</li>
 </ul>
-<h3 id="version_5"><strong>~version</strong></h3>
+<h3 id="version_5"><strong>~version</strong><a class="headerlink" href="#version_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>大概匹配某个版本</li>
 <li>如果minor版本号指定了，那么minor版本号不变，而patch版本号任意</li>
@@ -2874,7 +2874,7 @@ lodash@*：lodash@latest
 <li>如：~1.1，表示&gt;=1.1.0 &lt;1.2.0，可以是同上</li>
 <li>如：~1，表示&gt;=1.0.0 &lt;2.0.0，可以是1.0.0，1.0.1，1.0.2，.....，1.0.n，1.1.n，1.2.n，.....，1.n.n</li>
 </ul>
-<h3 id="version_6"><strong>^version</strong></h3>
+<h3 id="version_6"><strong>^version</strong><a class="headerlink" href="#version_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>兼容某个版本</li>
 <li>版本号中最左边的非0数字的右侧可以任意</li>
@@ -2883,22 +2883,22 @@ lodash@*：lodash@latest
 <li>如：^0.2.3 ，表示&gt;=0.2.3 &lt;0.3.0，可以是0.2.3，0.2.4，.....，0.2.n</li>
 <li>如：^0.0，表示 &gt;=0.0.0 &lt;0.1.0，可以是0.0.0，0.0.1，.....，0.0.n</li>
 </ul>
-<h3 id="x-range"><strong>x-range</strong></h3>
+<h3 id="x-range"><strong>x-range</strong><a class="headerlink" href="#x-range" title="Permanent link">&para;</a></h3>
 <ul>
 <li>x的位置表示任意版本</li>
 <li>如：1.2.x，表示可以1.2.0，1.2.1，.....，1.2.n</li>
 </ul>
-<h3 id="-range"><strong>*-range</strong></h3>
+<h3 id="-range"><strong>*-range</strong><a class="headerlink" href="#-range" title="Permanent link">&para;</a></h3>
 <ul>
 <li>任意版本，""也表示任意版本</li>
 <li>如：*，表示&gt;=0.0.0的任意版本</li>
 </ul>
-<h3 id="version1-version2"><strong>version1 - version2</strong></h3>
+<h3 id="version1---version2"><strong>version1 - version2</strong><a class="headerlink" href="#version1---version2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>大于等于version1，小于等于version2</li>
 <li>如：1.1.2 - 1.3.1，表示包括1.1.2和1.3.1以及他们件的任意版本</li>
 </ul>
-<h3 id="range1-range2"><strong>range1 || range2</strong></h3>
+<h3 id="range1--range2"><strong>range1 || range2</strong><a class="headerlink" href="#range1--range2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>满足range1或者满足range2，可以多个范围</li>
 <li>如：=2.3.1 =2.5.2 &lt;3.0.0，表示满足这3个范围的版本都可以</li>

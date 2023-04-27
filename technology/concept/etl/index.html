@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#etl" class="md-skip">
+        <a href="#etl数据处理" class="md-skip">
           跳转至
         </a>
       
@@ -1565,49 +1565,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#etl_1" class="md-nav__link">
+  <a href="#etl数据处理过程" class="md-nav__link">
     ETL数据处理过程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#预处理阶段" class="md-nav__link">
     预处理阶段
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#第一步缺失值清洗" class="md-nav__link">
     第一步：缺失值清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#第二步格式内容清洗" class="md-nav__link">
     第二步：格式内容清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#第三步逻辑错误清洗" class="md-nav__link">
     第三步：逻辑错误清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#第四步非需求数据清洗" class="md-nav__link">
     第四步：非需求数据清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#第五步关联性验证" class="md-nav__link">
     第五步：关联性验证
   </a>
   
@@ -2613,49 +2613,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#etl_1" class="md-nav__link">
+  <a href="#etl数据处理过程" class="md-nav__link">
     ETL数据处理过程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#预处理阶段" class="md-nav__link">
     预处理阶段
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#第一步缺失值清洗" class="md-nav__link">
     第一步：缺失值清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#第二步格式内容清洗" class="md-nav__link">
     第二步：格式内容清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#第三步逻辑错误清洗" class="md-nav__link">
     第三步：逻辑错误清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#第四步非需求数据清洗" class="md-nav__link">
     第四步：非需求数据清洗
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#第五步关联性验证" class="md-nav__link">
     第五步：关联性验证
   </a>
   
@@ -2679,9 +2679,9 @@
   
 
 
-<h1 id="etl">ETL数据处理</h1>
+<h1 id="etl数据处理">ETL数据处理<a class="headerlink" href="#etl数据处理" title="Permanent link">&para;</a></h1>
 <p>转自 <a href="https://zhuanlan.zhihu.com/p/20571505">https://zhuanlan.zhihu.com/p/20571505</a></p>
-<h2 id="etl_1">ETL数据处理过程</h2>
+<h2 id="etl数据处理过程">ETL数据处理过程<a class="headerlink" href="#etl数据处理过程" title="Permanent link">&para;</a></h2>
 <p>数据清洗， 是整个数据分析过程中不可缺少的一个环节，其结果质量直接关系到模型效果和最终结论。在实际操作中，数据清洗通常会占据分析过程的50%—80%的时间。国外有些学术机构会专门研究如何做数据清洗，相关的书籍也不少。</p>
 <p>如：</p>
 <p><a class="glightbox" href="../imgs/2021-12-10-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="data cleaning" src="../imgs/2021-12-10-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.png" /></a></p>
@@ -2689,13 +2689,13 @@
 <p>我将在这篇文章中，尝试非常浅层次的梳理一下数据清洗过程，供各位参考。</p>
 <p>照例，先上图：</p>
 <p><a class="glightbox" href="../imgs/2021-12-10-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%862.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="数据清洗过程" src="../imgs/2021-12-10-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%862.png" /></a></p>
-<h2 id="_1"><strong>预处理阶段</strong></h2>
+<h2 id="预处理阶段"><strong>预处理阶段</strong><a class="headerlink" href="#预处理阶段" title="Permanent link">&para;</a></h2>
 <p>预处理阶段主要做两件事情：</p>
 <ul>
 <li>一是将数据导入处理工具。通常来说，建议使用数据库，单机跑数搭建MySQL环境即可。如果数据量大（千万级以上），可以使用文本文件存储+Python操作的方式。</li>
 <li>二是看数据。这里包含两个部分：<strong>一是看元数据</strong>，包括字段解释、数据来源、代码表等等一切描述数据的信息；<strong>二是抽取一部分数据</strong>，使用人工查看方式，对数据本身有一个直观的了解，并且初步发现一些问题，为之后的处理做准备。</li>
 </ul>
-<h2 id="_2"><strong>第一步：缺失值清洗</strong></h2>
+<h2 id="第一步缺失值清洗"><strong>第一步：缺失值清洗</strong><a class="headerlink" href="#第一步缺失值清洗" title="Permanent link">&para;</a></h2>
 <p>缺失值是最常见的数据问题，处理缺失值也有很多方法，我建议按照以下四个步骤进行：</p>
 <ul>
 <li><strong>1、确定缺失值范围：</strong> 对每个字段都计算其缺失值比例，然后按照缺失比例和字段重要性，分别制定策略，可用下图表示：
@@ -2717,7 +2717,7 @@
 <p>以上，简单的梳理了缺失值清洗的步骤，但其中有一些内容远比我说的复杂，比如填充缺失值。很多讲统计方法或统计工具的书籍会提到相关方法，有兴趣的各位可以自行深入了解。</p>
 </li>
 </ul>
-<h2 id="_3"><strong>第二步：格式内容清洗</strong></h2>
+<h2 id="第二步格式内容清洗"><strong>第二步：格式内容清洗</strong><a class="headerlink" href="#第二步格式内容清洗" title="Permanent link">&para;</a></h2>
 <p>如果数据是由系统日志而来，那么通常在格式和内容方面，会与元数据的描述一致。而如果数据是由人工收集或用户填写而来，则有很大可能性在格式和内容上存在一些问题，简单来说，格式内容问题有以下几类：</p>
 <ul>
 <li>
@@ -2738,7 +2738,7 @@
 <p>格式内容问题是比较细节的问题，但很多分析失误都是栽在这个坑上，比如跨表关联或VLOOKUP失败（多个空格导致工具认为“陈丹奕”和“陈 丹奕”不是一个人）、统计值不全（数字里掺个字母当然求和时结果有问题）、模型输出失败或效果不好（数据对错列了，把日期和年龄混了，so……）。因此，请各位务必注意这部分清洗工作，尤其是在处理的数据是人工收集而来，或者你确定产品前端校验设计不太好的时候……</p>
 </li>
 </ul>
-<h2 id="_4"><strong>第三步：逻辑错误清洗</strong></h2>
+<h2 id="第三步逻辑错误清洗"><strong>第三步：逻辑错误清洗</strong><a class="headerlink" href="#第三步逻辑错误清洗" title="Permanent link">&para;</a></h2>
 <p>这部分的工作是去掉一些使用简单逻辑推理就可以直接发现问题的数据，防止分析结果走偏。主要包含以下几个步骤：</p>
 <ul>
 <li>
@@ -2772,7 +2772,7 @@
 <p>逻辑错误除了以上列举的情况，还有很多未列举的情况，在实际操作中要酌情处理。另外，这一步骤在之后的数据分析建模过程中有可能重复，因为即使问题很简单，也并非所有问题都能够一次找出，我们能做的是使用工具和方法，尽量减少问题出现的可能性，使分析过程更为高效。</p>
 </li>
 </ul>
-<h2 id="_5"><strong>第四步：非需求数据清洗</strong></h2>
+<h2 id="第四步非需求数据清洗"><strong>第四步：非需求数据清洗</strong><a class="headerlink" href="#第四步非需求数据清洗" title="Permanent link">&para;</a></h2>
 <p>这一步说起来非常简单：把不要的字段删了。</p>
 <p>但实际操作起来，有很多问题，例如：</p>
 <ul>
@@ -2781,7 +2781,7 @@
 <li>一时看走眼，删错字段了。</li>
 </ul>
 <p>前两种情况我给的建议是：如果数据量没有大到不删字段就没办法处理的程度，那么能不删的字段尽量不删。第三种情况，请勤备份数据……</p>
-<h2 id="_6"><strong>第五步：关联性验证</strong></h2>
+<h2 id="第五步关联性验证"><strong>第五步：关联性验证</strong><a class="headerlink" href="#第五步关联性验证" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>如果你的数据有多个来源，那么有必要进行关联性验证。例如，你有汽车的线下购买信息，也有电话客服问卷信息，两者通过姓名和手机号关联，那么要看一下，同一个人线下登记的车辆信息和线上问卷问出来的车辆信息是不是同一辆，如果不是（别笑，业务流程设计不好是有可能出现这种问题的！），那么需要调整或去除数据。</p>

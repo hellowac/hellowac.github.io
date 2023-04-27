@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linux" class="md-skip">
+        <a href="#linux-磁盘挂载" class="md-skip">
           跳转至
         </a>
       
@@ -791,35 +791,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#添加硬盘" class="md-nav__link">
     添加硬盘
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#分区" class="md-nav__link">
     分区
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#格式化" class="md-nav__link">
     格式化
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#挂载" class="md-nav__link">
     挂载
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     总结
   </a>
   
@@ -2599,35 +2599,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#添加硬盘" class="md-nav__link">
     添加硬盘
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#分区" class="md-nav__link">
     分区
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#格式化" class="md-nav__link">
     格式化
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#挂载" class="md-nav__link">
     挂载
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     总结
   </a>
   
@@ -2651,12 +2651,12 @@
   
 
 
-<h1 id="linux">linux 磁盘挂载</h1>
+<h1 id="linux-磁盘挂载">linux 磁盘挂载<a class="headerlink" href="#linux-磁盘挂载" title="Permanent link">&para;</a></h1>
 <ul>
 <li>创建时间: 2022年08月11日20:07:50</li>
 <li>原文: <a href="https://cloud.tencent.com/developer/article/1776730">https://cloud.tencent.com/developer/article/1776730</a></li>
 </ul>
-<h2 id="_1">添加硬盘</h2>
+<h2 id="添加硬盘">添加硬盘<a class="headerlink" href="#添加硬盘" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>首先我们需要先添加一块硬盘。先把虚拟机关机,然后我们在对应的虚拟机选项卡的位置上右键,点开设置。</p>
@@ -2681,7 +2681,7 @@
 <p><a class="glightbox" href="../../imgs/mount07.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="aaa" src="../../imgs/mount07.png" /></a></p>
 </li>
 </ol>
-<h2 id="_2">分区</h2>
+<h2 id="分区">分区<a class="headerlink" href="#分区" title="Permanent link">&para;</a></h2>
 <p>硬盘添加完成后重启系统,输入用户名密码后进入linux操作界面。接着我们需要做的是为新磁盘分区。</p>
 <ol>
 <li>
@@ -2710,7 +2710,7 @@
 <p><a class="glightbox" href="../../imgs/mount13.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="aaa" src="../../imgs/mount13.png" /></a></p>
 </li>
 </ol>
-<h2 id="_3">格式化</h2>
+<h2 id="格式化">格式化<a class="headerlink" href="#格式化" title="Permanent link">&para;</a></h2>
 <p>分区完后,我们需要对每一个分区格式化。</p>
 <ol>
 <li>
@@ -2722,7 +2722,7 @@
 <p><a class="glightbox" href="../../imgs/mount15.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="aaa" src="../../imgs/mount15.png" /></a></p>
 </li>
 </ol>
-<h2 id="_4">挂载</h2>
+<h2 id="挂载">挂载<a class="headerlink" href="#挂载" title="Permanent link">&para;</a></h2>
 <p>在linux中,用户不能直接访问硬件设备，需要将硬件设备挂载到系统目录上，硬件才可以让用户访问到。因此我们需要将格式化后的分区挂载到具体的目录下。</p>
 <ol>
 <li>
@@ -2758,7 +2758,7 @@
 <p>首先我们用vim编辑器打开配置文件进行修改,<code>vim /etc/fstab</code>,把刚格式化就完成的id添加进来。修改成功后重启即可或者命令行输入<code>mount -a</code> 该命令会把配置文件中的所有分区重新挂载一遍。</p>
 </li>
 </ol>
-<h2 id="_5">总结</h2>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
 <p>linux磁盘挂载分为安装磁盘,分区,格式化,挂载四个步骤。</p>
 
   <hr>

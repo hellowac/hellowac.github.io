@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mysql-mariadb" class="md-skip">
+        <a href="#mysql--mariadb" class="md-skip">
           跳转至
         </a>
       
@@ -1228,21 +1228,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#创建修改数据库设置" class="md-nav__link">
     创建/修改数据库设置
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysqldump" class="md-nav__link">
+  <a href="#mysqldump导出数据" class="md-nav__link">
     mysqldump导出数据
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#其他注意事项" class="md-nav__link">
     其他注意事项
   </a>
   
@@ -2587,21 +2587,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#创建修改数据库设置" class="md-nav__link">
     创建/修改数据库设置
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysqldump" class="md-nav__link">
+  <a href="#mysqldump导出数据" class="md-nav__link">
     mysqldump导出数据
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#其他注意事项" class="md-nav__link">
     其他注意事项
   </a>
   
@@ -2625,8 +2625,8 @@
   
 
 
-<h1 id="mysql-mariadb">Mysql &amp; Mariadb</h1>
-<h2 id="_1">创建/修改数据库设置</h2>
+<h1 id="mysql--mariadb">Mysql &amp; Mariadb<a class="headerlink" href="#mysql--mariadb" title="Permanent link">&para;</a></h1>
+<h2 id="创建修改数据库设置">创建/修改数据库设置<a class="headerlink" href="#创建修改数据库设置" title="Permanent link">&para;</a></h2>
 <p>官网: <a href="https://dev.mysql.com/doc/refman/8.0/en/charset-database.html">https://dev.mysql.com/doc/refman/8.0/en/charset-database.html</a></p>
 <p><strong>创建/修改特定字符集</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- utf8mb4_unicode_ci;</span>
@@ -2644,7 +2644,7 @@
 <span class="c1">-- table utf8mb4_general_ci; mysql5.7, 8.0+ 支持</span>
 <span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">alembic_version</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="p">;</span>
 </code></pre></div>
-<h2 id="mysqldump">mysqldump导出数据</h2>
+<h2 id="mysqldump导出数据">mysqldump导出数据<a class="headerlink" href="#mysqldump导出数据" title="Permanent link">&para;</a></h2>
 <p>官网: <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html">https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html</a></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 要备份整个数据库:</span>
 <span class="n">mysqldump</span><span class="w"> </span><span class="n">db_name</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">backup</span><span class="o">-</span><span class="n">file</span><span class="p">.</span><span class="k">sql</span>
@@ -2688,7 +2688,7 @@ mysqldump<span class="w"> </span>--all-databases<span class="w"> </span>--flush-
 <li>要选择 <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_opt">--opt</a> 的效果（某些功能除外），请对每个功能使用 <code>--skip</code> 选项。 要禁用扩展插入和内存缓冲，请使用 <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_opt">--opt</a> <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_extended-insert">--skip-extended-insert</a> <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_quick">--skip-quick</a>。 （实际上， <code>--skip-extended-insert</code> <code>--skip-quick</code> 就足够了，因为 <code>--opt</code> 默认是开启的。）</li>
 <li>要反转 <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_opt">--opt</a> 除禁用索引和表锁定之外的所有功能，请使用 <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_skip-opt">--skip-opt</a> <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_disable-keys">--disable-keys</a> <a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_lock-tables">--lock-tables</a>。</li>
 </ul>
-<h2 id="_2">其他注意事项</h2>
+<h2 id="其他注意事项">其他注意事项<a class="headerlink" href="#其他注意事项" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>多列作为唯一键时，最好指定所有的列都是不能为Null的，因为两个Null值默认是不一样的，所以会导致即使多个列除了Null值以外其他列的值相同，还是会插入数据成功.</p>

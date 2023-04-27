@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#elasticsearch-dsl" class="md-skip">
+        <a href="#elasticsearch-dsl包" class="md-skip">
           跳转至
         </a>
       
@@ -1290,14 +1290,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#具体使用" class="md-nav__link">
     具体使用
   </a>
   
@@ -1683,7 +1683,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     总结
   </a>
   
@@ -2966,14 +2966,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#具体使用" class="md-nav__link">
     具体使用
   </a>
   
@@ -3359,7 +3359,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     总结
   </a>
   
@@ -3383,16 +3383,16 @@
   
 
 
-<h1 id="elasticsearch-dsl">ElasticSearch-DSL包</h1>
+<h1 id="elasticsearch-dsl包">ElasticSearch-DSL包<a class="headerlink" href="#elasticsearch-dsl包" title="Permanent link">&para;</a></h1>
 <p>原文: <a href="https://elasticsearch-dsl.readthedocs.io/en/latest/" target="_blank">https://elasticsearch-dsl.readthedocs.io/en/latest/</a></p>
 <p>摘自: <a href="https://www.cnblogs.com/lit10050528/p/12178822.html" target="_blank">https://www.cnblogs.com/lit10050528/p/12178822.html</a></p>
-<h2 id="_1">简介</h2>
+<h2 id="简介">简介<a class="headerlink" href="#简介" title="Permanent link">&para;</a></h2>
 <p>elasticsearch-dsl是基于elasticsearch-py封装实现的，提供了更简便的操作elasticsearch的方法。</p>
-<h2 id="_2">具体使用</h2>
+<h2 id="具体使用">具体使用<a class="headerlink" href="#具体使用" title="Permanent link">&para;</a></h2>
 <p>elasticsearch的官方文档介绍一共包括六个部分，分别是：<strong>configuration</strong>、<strong>search dsl</strong>、<strong>persistence</strong>、<strong>update by query</strong>、<strong>API document</strong>。</p>
-<h3 id="configuration">Configuration</h3>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>有许多方式可以配置连接，最简单且有效的方式是设置默认连接，该默认连接可以被未传递其他连接的API调用使用。</p>
-<h4 id="default-connection">Default connection</h4>
+<h4 id="default-connection">Default connection<a class="headerlink" href="#default-connection" title="Permanent link">&para;</a></h4>
 <p>默认连接的实现需要使用到<code>connections.create_connection()</code>方法。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">connections</span>
 
@@ -3403,7 +3403,7 @@
 
 <span class="n">connections</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s1">&#39;my_new_connection&#39;</span><span class="p">,</span> <span class="n">hosts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;localhost&#39;</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="multiple-clusters">Multiple clusters</h4>
+<h4 id="multiple-clusters">Multiple clusters<a class="headerlink" href="#multiple-clusters" title="Permanent link">&para;</a></h4>
 <p>可以通过<code>configure</code>定义多个指向不同集群的连接。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">connections</span>
 
@@ -3416,19 +3416,19 @@
 <span class="p">)</span>
 </code></pre></div>
 <p>还可以通过<code>add_connection</code>手动添加连接。</p>
-<h5 id="using-aliases">Using aliases</h5>
+<h5 id="using-aliases">Using aliases<a class="headerlink" href="#using-aliases" title="Permanent link">&para;</a></h5>
 <p>下面的例子展示了如何使用连接别名。</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">using</span><span class="o">=</span><span class="s1">&#39;qa&#39;</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="manual">Manual</h4>
+<h4 id="manual">Manual<a class="headerlink" href="#manual" title="Permanent link">&para;</a></h4>
 <p>如果你不想提供一个全局的连接，你可以通过使用<code>using</code>参数传递一个<code>elasticsearch.Elasticsearch</code>的实例做为连接，如下：</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">using</span><span class="o">=</span><span class="n">Elasticsearch</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">))</span>
 </code></pre></div>
 <p>你还可以通过下面的方式来覆盖已经关联的连接。</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">Elasticsearch</span><span class="p">(</span><span class="s1">&#39;otherhost:9200&#39;</span><span class="p">))</span>
 </code></pre></div>
-<h3 id="search-dsl">Search DSL</h3>
-<h4 id="the-search-object">The search object</h4>
+<h3 id="search-dsl">Search DSL<a class="headerlink" href="#search-dsl" title="Permanent link">&para;</a></h3>
+<h4 id="the-search-object">The search object<a class="headerlink" href="#the-search-object" title="Permanent link">&para;</a></h4>
 <p>search对象代表整个搜索请求，包括：<code>queries</code>、<code>filters</code>、<code>aggregations</code>、<code>sort</code>、<code>pagination</code>、<code>additional parameters</code>、<code>associated client</code>。</p>
 <p>API被设置为可链接的。search对象是不可变的，除了聚合，对对象的所有更改都将导致创建包含该更改的浅表副本。</p>
 <p>当初始化Search对象时，你可以传递low-level elasticsearch客户端参数。</p>
@@ -3454,12 +3454,12 @@
 <p>可以通过to_dict()方法将Search对象序列化为一个dict对象，这样可以方便调试。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
 </code></pre></div>
-<h5 id="delete-by-query">Delete By Query</h5>
+<h5 id="delete-by-query">Delete By Query<a class="headerlink" href="#delete-by-query" title="Permanent link">&para;</a></h5>
 <p>可以通过调用Search对象上的delete方法而不是execute来实现删除匹配查询的文档，如下：</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </code></pre></div>
-<h5 id="queries">Queries</h5>
+<h5 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h5>
 <p>该库为所有的Elasticsearch查询类型都提供了类。以关键字参数传递所有的参数，最终会把参数序列化后传递给Elasticsearch，这意味着在原始查询和它对应的dsl之间有这一个清理的一对一的映射。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl.query</span> <span class="kn">import</span> <span class="n">MultiMatch</span><span class="p">,</span> <span class="n">Match</span>
 
@@ -3482,7 +3482,7 @@
 <p>该方法还可以接收所有Q的参数作为参数。</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;multi_match&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s1">&#39;python django&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">])</span>
 </code></pre></div>
-<h6 id="dotted-fields">Dotted fields</h6>
+<h6 id="dotted-fields">Dotted fields<a class="headerlink" href="#dotted-fields" title="Permanent link">&para;</a></h6>
 <p>有时候你想要引用一个在其他字段中的字段，例如多字段（title.keyword）或者在一个json文档中的address.city。为了方便，Q允许你使用双下划线‘__’代替关键词参数中的‘.’</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">category__keyword</span><span class="o">=</span><span class="s1">&#39;Python&#39;</span><span class="p">)</span>
@@ -3493,7 +3493,7 @@
 <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;category.keyword&#39;</span><span class="p">:</span> <span class="s1">&#39;Python&#39;</span><span class="p">})</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;address.city&#39;</span><span class="p">:</span> <span class="s1">&#39;prague&#39;</span><span class="p">})</span>
 </code></pre></div>
-<h6 id="query-combination">Query combination</h6>
+<h6 id="query-combination">Query combination<a class="headerlink" href="#query-combination" title="Permanent link">&para;</a></h6>
 <p>查询对象可以通过逻辑运算符组合起来：</p>
 <div class="highlight"><pre><span></span><code><span class="n">Q</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;django&#39;</span><span class="p">)</span>
 <span class="c1"># {&quot;bool&quot;: {&quot;should&quot;: [...]}}</span>
@@ -3517,7 +3517,7 @@
 <span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="filters">Filters</h5>
+<h5 id="filters">Filters<a class="headerlink" href="#filters" title="Permanent link">&para;</a></h5>
 <p>如果你想要在过滤上下文中添加查询，可以使用<code>filter()</code>函数来使之变的简单。</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">])</span>
@@ -3530,7 +3530,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">])</span>
 </code></pre></div>
-<h5 id="aggregations">Aggregations</h5>
+<h5 id="aggregations">Aggregations<a class="headerlink" href="#aggregations" title="Permanent link">&para;</a></h5>
 <p>你可以是使用A快捷方式来定义一个聚合。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">A</span>
 
@@ -3595,7 +3595,7 @@
 <span class="n">s</span><span class="o">.</span><span class="n">aggs</span><span class="p">[</span><span class="s1">&#39;per_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s1">&#39;clicks_per_category&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;clicks&#39;</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">aggs</span><span class="p">[</span><span class="s1">&#39;per_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="s1">&#39;tags_per_category&#39;</span><span class="p">,</span> <span class="s1">&#39;terms&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="sorting">Sorting</h5>
+<h5 id="sorting">Sorting<a class="headerlink" href="#sorting" title="Permanent link">&para;</a></h5>
 <p>要指定排序顺序，可以使用<code>.order()</code>方法。</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span>
     <span class="s1">&#39;category&#39;</span><span class="p">,</span>
@@ -3604,7 +3604,7 @@
 <span class="p">)</span>
 </code></pre></div>
 <p>可以通过不传任何参数调用sort()函数来重置排序。</p>
-<h5 id="pagination">Pagination</h5>
+<h5 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h5>
 <p>要指定from、size，使用slicing API：</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
 <span class="c1"># {&quot;from&quot;: 10, &quot;size&quot;: 10}</span>
@@ -3614,7 +3614,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">hit</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
 </code></pre></div>
 <p>需要注意的是这种情况下结果是不会被排序的。</p>
-<h5 id="highlighting">Highlighting</h5>
+<h5 id="highlighting">Highlighting<a class="headerlink" href="#highlighting" title="Permanent link">&para;</a></h5>
 <p>要指定高亮的通用属性，可以使用<code>highlight_options()</code>方法：</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">highlight_options</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
 </code></pre></div>
@@ -3629,12 +3629,12 @@
     <span class="k">for</span> <span class="n">fragment</span> <span class="ow">in</span> <span class="n">hit</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">highlight</span><span class="o">.</span><span class="n">title</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="suggestions">Suggestions</h5>
+<h5 id="suggestions">Suggestions<a class="headerlink" href="#suggestions" title="Permanent link">&para;</a></h5>
 <p>要指定一个suggest请求在你的search对象上，可以使用suggest()方法：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># check for correct spelling</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">suggest</span><span class="p">(</span><span class="s1">&#39;my_suggestion&#39;</span><span class="p">,</span> <span class="s1">&#39;pyhton&#39;</span><span class="p">,</span> <span class="n">term</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;title&#39;</span><span class="p">})</span>
 </code></pre></div>
-<h5 id="extra-properties-and-parameters">Extra properties and parameters</h5>
+<h5 id="extra-properties-and-parameters">Extra properties and parameters<a class="headerlink" href="#extra-properties-and-parameters" title="Permanent link">&para;</a></h5>
 <p>要为search对象设置额外的属性，可以使用<code>.extra()</code>方法。可以用来定义body中的key，那些不能通过指定API方法来设置的，例如explain、search_filter。</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">extra</span><span class="p">(</span><span class="n">explain</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
@@ -3651,7 +3651,7 @@
 <span class="c1"># reset the field selection</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="serialization-and-deserialization">Serialization and Deserialization</h5>
+<h5 id="serialization-and-deserialization">Serialization and Deserialization<a class="headerlink" href="#serialization-and-deserialization" title="Permanent link">&para;</a></h5>
 <p>查询对象可以通过使用.to_dict()方法被序列化为一个字典。</p>
 <p>你也可以使用类方法from_dict从一个dict创建一个Search对象。这会创建一个新的Search对象并使用字典中的数据填充它。</p>
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">}}})</span>
@@ -3660,7 +3660,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">({</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">}},</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
 </code></pre></div>
-<h4 id="response">Response</h4>
+<h4 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h4>
 <p>你可以通过调用execute方法来执行你的搜索，它会返回一个Response对象，Response对象允许你通过属性的方式访问返回结果字典中的任何key。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">success</span><span class="p">())</span>
 <span class="c1"># True</span>
@@ -3676,26 +3676,26 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">suggest</span><span class="o">.</span><span class="n">my_suggestions</span><span class="p">)</span>
 </code></pre></div>
 <p>如果想要检查response对象的内容，可以通过to_dict方法访问原始数据。</p>
-<h5 id="hits">Hits</h5>
+<h5 id="hits">Hits<a class="headerlink" href="#hits" title="Permanent link">&para;</a></h5>
 <p>可以通过<code>hits</code>属性访问返回的匹配结果，或者遍历Response对象。</p>
 <div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total </span><span class="si">%d</span><span class="s1"> hits found.&#39;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">hits</span><span class="o">.</span><span class="n">total</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="result">Result</h5>
+<h5 id="result">Result<a class="headerlink" href="#result" title="Permanent link">&para;</a></h5>
 <p>每个匹配项被封装到一个类中，可以方便通过类属性来访问返回结果字典中的key，所有的元数据存储在meta属性中。</p>
 <div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">hits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1"> returned with score </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
     <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">doc_type</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">score</span><span class="p">))</span>
 </code></pre></div>
-<h5 id="aggregations_1">Aggregations</h5>
+<h5 id="aggregations_1">Aggregations<a class="headerlink" href="#aggregations_1" title="Permanent link">&para;</a></h5>
 <p>可以通过aggregations属性来访问聚合结果：</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">aggregations</span><span class="o">.</span><span class="n">per_tag</span><span class="o">.</span><span class="n">buckets</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">tag</span><span class="o">.</span><span class="n">max_lines</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="multisearch">MultiSearch</h4>
+<h4 id="multisearch">MultiSearch<a class="headerlink" href="#multisearch" title="Permanent link">&para;</a></h4>
 <p>可以通过MultiSearch类同时执行多个搜索，它将会使用_msearch API：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">MultiSearch</span><span class="p">,</span> <span class="n">Search</span>
 
@@ -3711,9 +3711,9 @@
     <span class="k">for</span> <span class="n">hit</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">hit</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="persistence">Persistence</h3>
+<h3 id="persistence">Persistence<a class="headerlink" href="#persistence" title="Permanent link">&para;</a></h3>
 <p>你可以使用dsl库来定义你的mappings和一个基本的持久化层为你的应用程序。</p>
-<h4 id="document">Document</h4>
+<h4 id="document">Document<a class="headerlink" href="#document" title="Permanent link">&para;</a></h4>
 <p>如果你要为你的文档创建一个model-like的封装，可以使用Document类。它可以被用作创建在elasticsearch中所有需要的mappings和settings。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Date</span><span class="p">,</span> <span class="n">Nested</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">,</span> \
@@ -3756,7 +3756,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">created_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">**</span> <span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="data-types">Data types</h5>
+<h5 id="data-types">Data types<a class="headerlink" href="#data-types" title="Permanent link">&para;</a></h5>
 <p>定义Document实例时，除了可以使用python类型，还可以使用InnerDoc、Range等类型来表示非简单类型的数据。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">DateRange</span><span class="p">,</span> <span class="n">Keyword</span><span class="p">,</span> <span class="n">Range</span>
 
@@ -3783,12 +3783,12 @@
 <span class="c1"># empty range is unbounded</span>
 <span class="n">Range</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span> <span class="c1"># None, False</span>
 </code></pre></div>
-<h5 id="note-on-dates">Note on dates</h5>
+<h5 id="note-on-dates">Note on dates<a class="headerlink" href="#note-on-dates" title="Permanent link">&para;</a></h5>
 <p>当实例化一个Date字段时，可以通过设置default_timezone参数来明确指定时区。</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">Date</span><span class="p">(</span><span class="n">default_timezone</span><span class="o">=</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="document-life-cycle">Document life cycle</h5>
+<h5 id="document-life-cycle">Document life cycle<a class="headerlink" href="#document-life-cycle" title="Permanent link">&para;</a></h5>
 <p>在你第一次使用Post文档类型前，你需要在elasticsearch中创建mappings。可以通过Index对象或者调用init()方法直接创建mappings。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># create the mappings in Elasticsearch</span>
 <span class="n">Post</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
@@ -3814,9 +3814,9 @@
 <div class="highlight"><pre><span></span><code><span class="n">first</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">first</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </code></pre></div>
-<h4 id="analysis">Analysis</h4>
+<h4 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h4>
 <p>要为text字段指定analyzer，你只需要使用analyze的名字，使用已有的analyze或者自己定义。</p>
-<h5 id="search">Search</h5>
+<h5 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h5>
 <p>为了在该文档类型上搜索，使用search方法即可。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># by calling .search we get back a standard Search object</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
@@ -3830,12 +3830,12 @@
 <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="class-meta-options">class Meta options</h5>
+<h5 id="class-meta-options">class Meta options<a class="headerlink" href="#class-meta-options" title="Permanent link">&para;</a></h5>
 <p>在Meta类中定义了多个你可以为你的文档定义的metadata，例如mapping。</p>
-<h5 id="class-index-options">class Index options</h5>
+<h5 id="class-index-options">class Index options<a class="headerlink" href="#class-index-options" title="Permanent link">&para;</a></h5>
 <p>Index类中定义了该索引的信息，它的名字、settings和其他属性。</p>
-<h5 id="document-inheritance">Document Inheritance</h5>
-<h4 id="index">Index</h4>
+<h5 id="document-inheritance">Document Inheritance<a class="headerlink" href="#document-inheritance" title="Permanent link">&para;</a></h5>
+<h4 id="index">Index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h4>
 <p>在典型情况下，在Document类上使用Index类足够处理任何操作的。在少量case下，直接操作Index对象可能更有用。</p>
 <p>Index是一个类，负责保存一个索引在elasticsearch中的所有关联元数据，例如mapping和settings。由于它允许方便的同时创建多个mapping，所以当定义mapping的时候它是最有用的。当在迁移elasticsearch对象的时候是特别有用的。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">elasticsearch_dsl</span> <span class="kn">import</span> <span class="n">Index</span><span class="p">,</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="n">analyzer</span>
@@ -3890,7 +3890,7 @@
 <span class="c1"># and change its settings</span>
 <span class="n">dev_blogs</span><span class="o">.</span><span class="n">setting</span><span class="p">(</span><span class="n">number_of_shards</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="index-template">Index Template</h5>
+<h5 id="index-template">Index Template<a class="headerlink" href="#index-template" title="Permanent link">&para;</a></h5>
 <p>elasticsearch-dsl还提供了使用IndexTemplate类在elasticsearch中来管理索引模板的选项，该类与Index的API非常相似。</p>
 <p>一旦一个索引模板被保存到elasticsearch，他的内容将会自动应用到匹配模式的新索引上（已存在的索引不会受影响），即使索引是当索引一个文档时自动创建的。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -3924,23 +3924,23 @@
 <span class="c1"># to perform search across all logs:</span>
 <span class="n">search</span> <span class="o">=</span> <span class="n">Log</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="faceted-search">Faceted Search</h3>
+<h3 id="faceted-search">Faceted Search<a class="headerlink" href="#faceted-search" title="Permanent link">&para;</a></h3>
 <p>该API是实验性的，并且也没有用到，所以先跳过。</p>
-<h3 id="update-by-query">Update By Query</h3>
-<h4 id="the-update-by-query-object">The Update By Query object</h4>
+<h3 id="update-by-query">Update By Query<a class="headerlink" href="#update-by-query" title="Permanent link">&para;</a></h3>
+<h4 id="the-update-by-query-object">The Update By Query object<a class="headerlink" href="#the-update-by-query-object" title="Permanent link">&para;</a></h4>
 <p>Update By Query对象允许使用_update_by_query实现在一个匹配过程中更新一个文档。</p>
-<h5 id="serialization-and-deserialization_1">Serialization and Deserialization</h5>
+<h5 id="serialization-and-deserialization_1">Serialization and Deserialization<a class="headerlink" href="#serialization-and-deserialization_1" title="Permanent link">&para;</a></h5>
 <p>该查询对象可以通过.to_dict()方法序列化为一个字典，也可以通过类方法from_dict()从一个字典构建一个对象。</p>
 <div class="highlight"><pre><span></span><code><span class="n">ubq</span> <span class="o">=</span> <span class="n">UpdateByQuery</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">}}})</span>
 </code></pre></div>
-<h5 id="extra-properties-and-parameters_1">Extra properties and parameters</h5>
+<h5 id="extra-properties-and-parameters_1">Extra properties and parameters<a class="headerlink" href="#extra-properties-and-parameters_1" title="Permanent link">&para;</a></h5>
 <p>可以通过.extra()方法设置额外的属性：</p>
 <div class="highlight"><pre><span></span><code><span class="n">ubq</span> <span class="o">=</span> <span class="n">ubq</span><span class="o">.</span><span class="n">extra</span><span class="p">(</span><span class="n">explain</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>可以通过.params()方法设置查询参数：</p>
 <div class="highlight"><pre><span></span><code><span class="n">ubq</span> <span class="o">=</span> <span class="n">ubq</span><span class="o">.</span><span class="n">params</span><span class="p">(</span><span class="n">routing</span><span class="o">=</span><span class="s2">&quot;42&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="response_1">Response</h4>
+<h4 id="response_1">Response<a class="headerlink" href="#response_1" title="Permanent link">&para;</a></h4>
 <p>你可以调用.execute()方法执行查询，它会返回一个Response对象。Response对象允许通过属性访问结果字典中的任何key。</p>
 <div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">ubq</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 
@@ -3951,9 +3951,9 @@
 <span class="c1"># 12</span>
 </code></pre></div>
 <p>如果需要查看response对象的内容，使用to_dic()方法获取它的原始数据即可。</p>
-<h3 id="api-documentation">API Documentation</h3>
+<h3 id="api-documentation">API Documentation<a class="headerlink" href="#api-documentation" title="Permanent link">&para;</a></h3>
 <p>API Documention详细介绍了<code>elasticsearch-dsl</code>库中的公共类和方法的用法，具体使用的时候直接翻阅参考即可。</p>
-<h2 id="_3">总结</h2>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
 <ol>
 <li><code>elasticsearch-dsl</code>相比于<strong>elasticsearch</strong>来说，提供了更简便的方法来操作<strong>elasticsearch</strong>，减少了生成DSL查询语言的复杂性，推荐使用。</li>
 <li><code>elasticsearch-dsl</code>的方法其实还是和<strong>elasticsearch</strong>的<strong>restful API</strong>对应的，所以它的API文档有些地方写的并不清晰，例如实例构造可以传递哪些参数？它的说明时可以接收任何关键字参数并会直接把参数传递给elasticsearch，所以要确定哪些参数生效，还是需要我们去查看<code>elasticsearch</code>的<strong>restful API</strong>文档。</li>

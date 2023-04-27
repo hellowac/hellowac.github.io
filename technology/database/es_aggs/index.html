@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#es" class="md-skip">
+        <a href="#es聚合查询" class="md-skip">
           跳转至
         </a>
       
@@ -1304,7 +1304,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#普通聚合分析" class="md-nav__link">
     普通聚合分析
   </a>
   
@@ -1312,21 +1312,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#直接聚合统计" class="md-nav__link">
     直接聚合统计
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#先检索-再聚合" class="md-nav__link">
     先检索, 再聚合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fielddatakeyword" class="md-nav__link">
+  <a href="#扩展-fielddata和keyword的聚合比较" class="md-nav__link">
     扩展: fielddata和keyword的聚合比较
   </a>
   
@@ -1338,7 +1338,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#普通聚合分析_1" class="md-nav__link">
     普通聚合分析
   </a>
   
@@ -1346,21 +1346,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#先分组-再聚合统计" class="md-nav__link">
     先分组, 再聚合统计
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#先分组-再统计-最后排序" class="md-nav__link">
     先分组, 再统计, 最后排序
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#先分组-组内再分组-然后统计排序" class="md-nav__link">
     先分组, 组内再分组, 然后统计、排序
   </a>
   
@@ -2634,7 +2634,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#普通聚合分析" class="md-nav__link">
     普通聚合分析
   </a>
   
@@ -2642,21 +2642,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#直接聚合统计" class="md-nav__link">
     直接聚合统计
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#先检索-再聚合" class="md-nav__link">
     先检索, 再聚合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fielddatakeyword" class="md-nav__link">
+  <a href="#扩展-fielddata和keyword的聚合比较" class="md-nav__link">
     扩展: fielddata和keyword的聚合比较
   </a>
   
@@ -2668,7 +2668,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#普通聚合分析_1" class="md-nav__link">
     普通聚合分析
   </a>
   
@@ -2676,21 +2676,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#先分组-再聚合统计" class="md-nav__link">
     先分组, 再聚合统计
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#先分组-再统计-最后排序" class="md-nav__link">
     先分组, 再统计, 最后排序
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#先分组-组内再分组-然后统计排序" class="md-nav__link">
     先分组, 组内再分组, 然后统计、排序
   </a>
   
@@ -2719,12 +2719,12 @@
   
 
 
-<h1 id="es">ES聚合查询</h1>
+<h1 id="es聚合查询">ES聚合查询<a class="headerlink" href="#es聚合查询" title="Permanent link">&para;</a></h1>
 <ul>
 <li>原文: <a href="https://www.cnblogs.com/shoufeng/p/11290669.html" target="_blank">https://www.cnblogs.com/shoufeng/p/11290669.html</a></li>
 </ul>
-<h2 id="_1">普通聚合分析</h2>
-<h3 id="_2">直接聚合统计</h3>
+<h2 id="普通聚合分析">普通聚合分析<a class="headerlink" href="#普通聚合分析" title="Permanent link">&para;</a></h2>
+<h3 id="直接聚合统计">直接聚合统计<a class="headerlink" href="#直接聚合统计" title="Permanent link">&para;</a></h3>
 <p>(1) 计算每个tag下的文档数量, 请求语法:</p>
 <div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">book_shop/i</span><span class="kc">t</span><span class="err">_book/_search</span>
 <span class="p">{</span>
@@ -2830,7 +2830,7 @@ text 类型的字段在创建索引时会进行分词处理, 而聚合操作必�
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_3">先检索, 再聚合</h3>
+<h3 id="先检索-再聚合">先检索, 再聚合<a class="headerlink" href="#先检索-再聚合" title="Permanent link">&para;</a></h3>
 <p>(1) 统计name中含有“jvm”的图书中每个tag的文档数量, 请求语法:</p>
 <div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">book_shop/i</span><span class="kc">t</span><span class="err">_book/_search</span>
 <span class="p">{</span>
@@ -2902,13 +2902,13 @@ text 类型的字段在创建索引时会进行分词处理, 而聚合操作必�
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="fielddatakeyword">扩展: fielddata和keyword的聚合比较</h3>
+<h3 id="扩展-fielddata和keyword的聚合比较">扩展: fielddata和keyword的聚合比较<a class="headerlink" href="#扩展-fielddata和keyword的聚合比较" title="Permanent link">&para;</a></h3>
 <ul>
 <li>为某个 text 类型的字段开启fielddata字段后, 聚合分析操作会对这个字段的所有分词分别进行聚合, 获得的结果大多数情况下并不符合我们的需求.</li>
 <li><strong>使用keyword内置字段, 不会对相关的分词进行聚合, 结果可能更有用</strong>. -- 推荐使用text类型字段的内置keyword进行聚合操作.</li>
 </ul>
-<h2 id="_4">普通聚合分析</h2>
-<h3 id="_5">先分组, 再聚合统计</h3>
+<h2 id="普通聚合分析_1">普通聚合分析<a class="headerlink" href="#普通聚合分析_1" title="Permanent link">&para;</a></h2>
+<h3 id="先分组-再聚合统计">先分组, 再聚合统计<a class="headerlink" href="#先分组-再聚合统计" title="Permanent link">&para;</a></h3>
 <p>(1) 先按tags分组, 再计算每个tag下图书的平均价格, 请求语法:</p>
 <div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">book_shop/i</span><span class="kc">t</span><span class="err">_book/_search</span>
 <span class="p">{</span>
@@ -2955,7 +2955,7 @@ text 类型的字段在创建索引时会进行分词处理, 而聚合操作必�
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 </code></pre></div>
-<h3 id="_6">先分组, 再统计, 最后排序</h3>
+<h3 id="先分组-再统计-最后排序">先分组, 再统计, 最后排序<a class="headerlink" href="#先分组-再统计-最后排序" title="Permanent link">&para;</a></h3>
 <p>(1) 计算每个tag下图书的平均价格, 再按平均价格降序排序, 查询语法:</p>
 <div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">book_shop/i</span><span class="kc">t</span><span class="err">_book/_search</span>
 <span class="p">{</span>
@@ -2977,7 +2977,7 @@ text 类型的字段在创建索引时会进行分词处理, 而聚合操作必�
 </code></pre></div>
 <p>(2) 响应结果:</p>
 <p>与#2.1节内容相似, 区别在于按照价格排序显示了.</p>
-<h3 id="_7">先分组, 组内再分组, 然后统计、排序</h3>
+<h3 id="先分组-组内再分组-然后统计排序">先分组, 组内再分组, 然后统计、排序<a class="headerlink" href="#先分组-组内再分组-然后统计排序" title="Permanent link">&para;</a></h3>
 <p>(1) 先按价格区间分组, 组内再按tags分组, 计算每个tags组的平均价格, 查询语法:</p>
 <div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">book_shop/i</span><span class="kc">t</span><span class="err">_book/_search</span>
 <span class="p">{</span>

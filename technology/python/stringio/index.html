@@ -540,7 +540,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stringio_1" class="md-nav__link">
+  <a href="#stringio的方法" class="md-nav__link">
     StringIO的方法
   </a>
   
@@ -637,7 +637,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stringio_2" class="md-nav__link">
+  <a href="#应用求一个stringio-的-数据长度" class="md-nav__link">
     应用：求一个StringIO 的 数据长度
   </a>
   
@@ -2682,7 +2682,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stringio_1" class="md-nav__link">
+  <a href="#stringio的方法" class="md-nav__link">
     StringIO的方法
   </a>
   
@@ -2779,7 +2779,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stringio_2" class="md-nav__link">
+  <a href="#应用求一个stringio-的-数据长度" class="md-nav__link">
     应用：求一个StringIO 的 数据长度
   </a>
   
@@ -2803,8 +2803,8 @@
   
 
 
-<h1 id="stringio">stringIO</h1>
-<h2 id="iostringio">io.StringIO</h2>
+<h1 id="stringio">stringIO<a class="headerlink" href="#stringio" title="Permanent link">&para;</a></h1>
+<h2 id="iostringio">io.StringIO<a class="headerlink" href="#iostringio" title="Permanent link">&para;</a></h2>
 <p>参考: <a href="https://www.jianshu.com/p/c9ecddf8b87f">https://www.jianshu.com/p/c9ecddf8b87f</a></p>
 <p>python2中：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
@@ -2828,35 +2828,35 @@
 <span class="c1"># 应先将读写位置移动到结尾【s.seek(0, os.SEEK_END)】，然后再写入，</span>
 <span class="c1"># 否则，初始化数据会被覆盖掉，因为读写位置默认是0</span>
 </code></pre></div>
-<h2 id="stringio_1"><code>StringIO</code>的方法</h2>
-<h3 id="readn">read([n])</h3>
+<h2 id="stringio的方法"><code>StringIO</code>的方法<a class="headerlink" href="#stringio的方法" title="Permanent link">&para;</a></h2>
+<h3 id="readn">read([n])<a class="headerlink" href="#readn" title="Permanent link">&para;</a></h3>
 <p>参数n限定读取长度，int类型；缺省状态为从当前读写位置读取对象output中存储的所有数据。读取结束后，读写位置被移动</p>
-<h3 id="readlinelength">readline([length])</h3>
+<h3 id="readlinelength">readline([length])<a class="headerlink" href="#readlinelength" title="Permanent link">&para;</a></h3>
 <p>参数length限定读取的结束位置，int类型; 缺省状态为None,从当前读写位置读取至下一个以"\n"为结束符的当前行。读写位置被移动</p>
-<h3 id="readlinessizehint">readlines([sizehint])</h3>
+<h3 id="readlinessizehint">readlines([sizehint])<a class="headerlink" href="#readlinessizehint" title="Permanent link">&para;</a></h3>
 <p>参数sizehint为int类型；缺省状态为读取所有行并作为列表返回, 且从当前读写位置读取至下一个以"\n"为结束符的当前行。读写位置被移动</p>
-<h3 id="writes">write(s)</h3>
+<h3 id="writes">write(s)<a class="headerlink" href="#writes" title="Permanent link">&para;</a></h3>
 <p>从读写位置将参数s写入给对象output。参数s为str或unicode类型。读写位置被移动</p>
-<h3 id="writelineslist">writelines(list)</h3>
+<h3 id="writelineslist">writelines(list)<a class="headerlink" href="#writelineslist" title="Permanent link">&para;</a></h3>
 <p>从读写位置将list写入给对象output。参数list为一个列表，列表的成员为str或unicode类型。读写位置被移动。</p>
-<h3 id="getvalue">getvalue()</h3>
+<h3 id="getvalue">getvalue()<a class="headerlink" href="#getvalue" title="Permanent link">&para;</a></h3>
 <p>此函数没有参数，无论读写位置在哪里，都能够返回对象output中的所有数据</p>
-<h3 id="truncatesize">truncate([size])</h3>
+<h3 id="truncatesize">truncate([size])<a class="headerlink" href="#truncatesize" title="Permanent link">&para;</a></h3>
 <p>有size参数，无论读写位置在哪里，都从起始位置开始，裁剪size字节的数据
 无size参数，将当前读写位置之前的数据，裁剪下来</p>
-<h3 id="tell">tell()</h3>
+<h3 id="tell">tell()<a class="headerlink" href="#tell" title="Permanent link">&para;</a></h3>
 <p>返回当前读写位置，读写位置默认是0，因此，之后写入的数据（"xxxxx!!!xxxxxx"）会将之前的数据覆盖掉  </p>
-<h3 id="seekposmode">seek(pos[,mode])</h3>
+<h3 id="seekposmode">seek(pos[,mode])<a class="headerlink" href="#seekposmode" title="Permanent link">&para;</a></h3>
 <p>移动当前读写位置至pos处，
 可选参数<code>mode</code>：
 为0时将读写位置移动至pos处，mode的默认值为0。
 为1时将读写位置从当前位置起向前或向后移动|pos|个长度，
 为2时将读写位置置于末尾处再向前或向后移动|pos|个长度；</p>
-<h3 id="close">close()</h3>
+<h3 id="close">close()<a class="headerlink" href="#close" title="Permanent link">&para;</a></h3>
 <p>释放缓冲区，执行此函数后，数据将被释放，也不可再进行操作。</p>
-<h3 id="isatty">isatty()</h3>
+<h3 id="isatty">isatty()<a class="headerlink" href="#isatty" title="Permanent link">&para;</a></h3>
 <p>此函数总是返回0。</p>
-<h3 id="flush">flush()</h3>
+<h3 id="flush">flush()<a class="headerlink" href="#flush" title="Permanent link">&para;</a></h3>
 <p>刷新内部缓冲区。</p>
 <p>举例1：</p>
 <div class="highlight"><pre><span></span><code><span class="n">output</span><span class="o">=</span><span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;Hello</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -2875,7 +2875,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Hello</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Word</span>
 </code></pre></div>
-<h2 id="stringio_2">应用：求一个StringIO 的 数据长度</h2>
+<h2 id="应用求一个stringio-的-数据长度">应用：求一个StringIO 的 数据长度<a class="headerlink" href="#应用求一个stringio-的-数据长度" title="Permanent link">&para;</a></h2>
 <p>参考: <a href="https://stackoverflow.com/questions/4677433/in-python-how-do-i-check-the-size-of-a-stringio-object">https://stackoverflow.com/questions/4677433/in-python-how-do-i-check-the-size-of-a-stringio-object</a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>

@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#alembic" class="md-skip">
+        <a href="#alembic教程转" class="md-skip">
           跳转至
         </a>
       
@@ -687,14 +687,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#alembic_1" class="md-nav__link">
+  <a href="#初始化alembic仓库" class="md-nav__link">
     初始化alembic仓库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#创建模型类" class="md-nav__link">
     创建模型类
   </a>
   
@@ -702,14 +702,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#设置数据库连接" class="md-nav__link">
     设置数据库连接
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#target_metadata" class="md-nav__link">
+  <a href="#设置target_metadata" class="md-nav__link">
     设置target_metadata
   </a>
   
@@ -721,35 +721,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#自动生成迁移文件" class="md-nav__link">
     自动生成迁移文件
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#更新数据库" class="md-nav__link">
     更新数据库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#修改代码后" class="md-nav__link">
     修改代码后
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#命令和参数解释" class="md-nav__link">
     命令和参数解释
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#经典错误" class="md-nav__link">
     经典错误
   </a>
   
@@ -2633,14 +2633,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#alembic_1" class="md-nav__link">
+  <a href="#初始化alembic仓库" class="md-nav__link">
     初始化alembic仓库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#创建模型类" class="md-nav__link">
     创建模型类
   </a>
   
@@ -2648,14 +2648,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#设置数据库连接" class="md-nav__link">
     设置数据库连接
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#target_metadata" class="md-nav__link">
+  <a href="#设置target_metadata" class="md-nav__link">
     设置target_metadata
   </a>
   
@@ -2667,35 +2667,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#自动生成迁移文件" class="md-nav__link">
     自动生成迁移文件
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#更新数据库" class="md-nav__link">
     更新数据库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#修改代码后" class="md-nav__link">
     修改代码后
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#命令和参数解释" class="md-nav__link">
     命令和参数解释
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#经典错误" class="md-nav__link">
     经典错误
   </a>
   
@@ -2719,14 +2719,14 @@
   
 
 
-<h1 id="alembic">alembic教程(转)</h1>
+<h1 id="alembic教程转">alembic教程(转)<a class="headerlink" href="#alembic教程转" title="Permanent link">&para;</a></h1>
 <p>官方文档: <a href="https://alembic.sqlalchemy.org/en/latest/index.html" target="_blank">https://alembic.sqlalchemy.org/en/latest/index.html</a></p>
 <p>相关项目: <a href="https://github.com/python-gino/gino" target="_blank">https://github.com/python-gino/gino</a> - <a href="https://www.bookstack.cn/read/gino-1.0-zh/3d56d5fe80ab5932.md" target="_blank">文档</a></p>
 <p>翻译的alembic文档: <a href="https://hellowac.github.io/alembic_doc/" target="_blank">https://hellowac.github.io/alembic_doc/</a></p>
 <p><a href="https://alembic.zzzcomputing.com/en/latest/index.html" target="_blank" title="Alembic">alembic</a>是<a href="https://docs.sqlalchemy.org/en/14/" target="_blank" title="SQLAlchemy">sqlalchemy</a>的作者开发的。用来做OMR模型与数据库的迁移与映射。<code>alembic</code>使用方式跟<code>git</code>有点了类似，表现在两个方面，第一个，<code>alembic</code>的所有命令都是以<code>alembic</code>开头；第二，<code>alembic</code>的迁移文件也是通过版本进行控制的。首先，通过<code>pip install alembic</code>进行安装。以下将解释<code>alembic</code>的用法：</p>
-<h2 id="alembic_1">初始化<a href="https://alembic.zzzcomputing.com/en/latest/index.html" target="_blank" title="Alembic">alembic</a>仓库</h2>
+<h2 id="初始化alembic仓库">初始化<a href="https://alembic.zzzcomputing.com/en/latest/index.html" target="_blank" title="Alembic">alembic</a>仓库<a class="headerlink" href="#初始化alembic仓库" title="Permanent link">&para;</a></h2>
 <p>在终端中，<code>cd</code> 到你的项目目录中，然后执行命令<code>alembic init alembic</code>，创建一个名叫<code>alembic</code>的仓库。</p>
-<h2 id="_1">创建模型类</h2>
+<h2 id="创建模型类">创建模型类<a class="headerlink" href="#创建模型类" title="Permanent link">&para;</a></h2>
 <p>创建一个<code>models.py</code>模块，然后在里面定义你的模型类，示例代码如下：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span><span class="n">Integer</span><span class="p">,</span><span class="n">String</span><span class="p">,</span><span class="n">create_engine</span><span class="p">,</span><span class="n">Text</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
@@ -2747,11 +2747,11 @@
     <span class="n">title</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Text</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="_2">设置数据库连接</h3>
+<h3 id="设置数据库连接">设置数据库连接<a class="headerlink" href="#设置数据库连接" title="Permanent link">&para;</a></h3>
 <p>在<a href="https://alembic.sqlalchemy.org/en/latest/tutorial.html#editing-the-ini-file" target="_blank" title="alembic.ini">alembic.ini</a>中设置数据库的连接，<code>sqlalchemy.url = driver://user:pass@localhost/dbname</code>，比如以mysql数据库为例，则配置后的代码为：</p>
 <div class="highlight"><pre><span></span><code><span class="n">sqlalchemy</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">+</span><span class="n">mysqldb</span><span class="p">:</span><span class="o">//</span><span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="nd">@localhost</span><span class="o">/</span><span class="n">alembic_demo</span><span class="err">?</span><span class="n">charset</span><span class="o">=</span><span class="n">utf8</span>
 </code></pre></div>
-<h3 id="target_metadata">设置<a href="https://alembic.sqlalchemy.org/en/latest/ops.html?highlight=target_metadata#alembic.operations.Operations.f" target="_blank" title="target_metadata">target_metadata</a></h3>
+<h3 id="设置target_metadata">设置<a href="https://alembic.sqlalchemy.org/en/latest/ops.html?highlight=target_metadata#alembic.operations.Operations.f" target="_blank" title="target_metadata">target_metadata</a><a class="headerlink" href="#设置target_metadata" title="Permanent link">&para;</a></h3>
 <p>为了使用模型类更新数据库，需要在<code>env.py</code>文件中设置<a href="https://alembic.sqlalchemy.org/en/latest/ops.html?highlight=target_metadata#alembic.operations.Operations.f" target="_blank" title="target_metadata">target_metadata</a>，默认为<code>target_metadata=None</code>。使用<code>sys</code>模块把当前项目的路径导入到<code>path</code>中：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -2761,13 +2761,13 @@
 <span class="n">target_metadata</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span> <span class="c1"># 设置创建模型的元类</span>
 <span class="o">...</span> <span class="c1">#省略代码</span>
 </code></pre></div>
-<h2 id="_3">自动生成迁移文件</h2>
+<h2 id="自动生成迁移文件">自动生成迁移文件<a class="headerlink" href="#自动生成迁移文件" title="Permanent link">&para;</a></h2>
 <p>使用<code>alembic revision --autogenerate -m "message"</code>将当前模型中的状态生成迁移文件。</p>
-<h2 id="_4">更新数据库</h2>
+<h2 id="更新数据库">更新数据库<a class="headerlink" href="#更新数据库" title="Permanent link">&para;</a></h2>
 <p>使用<code>alembic upgrade head</code>将刚刚生成的迁移文件，真正映射到数据库中。同理，如果要降级，那么使用<code>alembic downgrade head</code>。</p>
-<h2 id="_5">修改代码后</h2>
+<h2 id="修改代码后">修改代码后<a class="headerlink" href="#修改代码后" title="Permanent link">&para;</a></h2>
 <p>重复4~5的步骤。</p>
-<h2 id="_6">命令和参数解释</h2>
+<h2 id="命令和参数解释">命令和参数解释<a class="headerlink" href="#命令和参数解释" title="Permanent link">&para;</a></h2>
 <ol>
 <li><code>init</code>：创建一个alembic仓库。</li>
 <li><code>revision</code>：创建一个新的版本文件。</li>
@@ -2781,7 +2781,7 @@
 <li><code>current</code>：展示当前数据库中的版本号。</li>
 </ol>
 <p>另外，在你第一次执行<code>upgrade</code>的时候，就会在数据库中创建一个名叫<code>alembic_version</code>表，这个表只会有一条数据，记录当前数据库映射的是哪个版本的迁移文件。</p>
-<h2 id="_7">经典错误</h2>
+<h2 id="经典错误">经典错误<a class="headerlink" href="#经典错误" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
