@@ -2071,7 +2071,7 @@
 <li><code>UPPERCASE</code></li>
 <li><code>UPPER_CASE_WITH_UNDERSCORES</code></li>
 <li>
-<p><code>CapitalizedWords</code>（或 <code>CapWords</code>，或 <code>CamelCase</code>——因其字母[^4]的凹凸外观而得名）。这有时也称为 <code>StudlyCaps</code>。</p>
+<p><code>CapitalizedWords</code>（或 <code>CapWords</code>，或 <code>CamelCase</code>——因其字母<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>的凹凸外观而得名）。这有时也称为 <code>StudlyCaps</code>。</p>
 <p><strong>注意</strong>：在 <code>CapWords</code> 中使用首字母缩略词时，将首字母缩写词的所有字母大写。因此 <code>HTTPServerError</code> 优于 <code>HttpServerError</code>。</p>
 </li>
 <li>
@@ -2223,9 +2223,185 @@
 <li>如果代码需要做一些清理工作，然后让异常通过 <code>raise</code> 向上传播。 <code>try...finally</code> 可能是处理这种情况的更好方法。</li>
 </ol>
 </li>
+<li>
+<p>捕获操作系统错误时，更喜欢 Python 3.3 中引入的<a href="https://docs.python.org/zh-cn/3/library/exceptions.html#exception-hierarchy" target="_blank">显式异常层次结构</a>，而不是对 <code>errno</code> 值的自省。</p>
+</li>
+<li>
+<p>此外，对于所有 <code>try/except</code> 子句，将 <code>try</code> 子句限制为所需的绝对最小代码量。 同样，这避免了掩盖错误：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio"/><input id="__tabbed_17_2" name="__tabbed_17" type="radio"/><div class="tabbed-labels"><label for="__tabbed_17_1">正确的</label><label for="__tabbed_17_2">错误的</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">collection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">key_not_found</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">handle_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 太宽泛！</span>
+    <span class="k">return</span> <span class="n">handle_value</span><span class="p">(</span><span class="n">collection</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="c1"># 还将捕获 handle_value() 引发的 KeyError</span>
+    <span class="k">return</span> <span class="n">key_not_found</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>当资源对于特定代码部分而言是本地资源时，请使用 <code>with</code> 语句以确保在使用后及时可靠地清理它。 <code>try/finally</code> 语句也是可以接受的。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio"/><input id="__tabbed_18_2" name="__tabbed_18" type="radio"/><div class="tabbed-labels"><label for="__tabbed_18_1">正确的</label><label for="__tabbed_18_2">错误的</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin_transaction</span><span class="p">():</span>
+    <span class="n">do_stuff_in_transaction</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">do_stuff_in_transaction</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>后一个示例没有提供任何信息来表明 <code>__enter__</code> 和 <code>__exit__</code> 方法正在做一些事情，而不是在事务后关闭连接。 在这种情况下，明确是很重要的。</p>
+</li>
+<li>
+<p>在返回语句中保持一致。 函数中的所有 <code>return</code> 语句要么都应该返回一个表达式，要么都不应该。 如果任何 <code>return</code> 语句返回一个表达式，任何没有返回值的 <code>return</code> 语句都应该明确地将其声明为 <code>return None</code>，并且函数的末尾应该有一个显式的 <code>return</code> 语句（如果可以）：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio"/><input id="__tabbed_19_2" name="__tabbed_19" type="radio"/><div class="tabbed-labels"><label for="__tabbed_19_1">正确的</label><label for="__tabbed_19_2">错误的</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>使用 <code>''.startswith()</code> 和 <code>''.endswith()</code> 而不是字符串切片来检查前缀或后缀。</p>
+<p><code>startswith()</code> 和 <code>endswith()</code> 更简洁且不易出错：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Correct:</span>
+<span class="k">if</span> <span class="n">foo</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">):</span>
+
+<span class="c1"># Wrong:</span>
+<span class="k">if</span> <span class="n">foo</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'bar'</span><span class="p">:</span>
+</code></pre></div>
+</li>
+<li>
+<p>对象类型比较应始终使用 <code>isinstance()</code> 而不是直接比较类型：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Correct:</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+
+<span class="c1"># Wrong:</span>
+<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+</code></pre></div>
+</li>
+<li>
+<p>对于序列（<code>字符串</code>、<code>列表</code>、<code>元组</code>），使用<code>空序列为假</code>的事实：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Correct:</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">seq</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">seq</span><span class="p">:</span>
+
+<span class="c1"># Wrong:</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+</code></pre></div>
+</li>
+<li>
+<p>不要编写依赖于重要<code>尾随空格</code>的字符串文字。 这样的<code>尾随空格</code>在视觉上无法区分，一些编辑器（或最近的 <code>reindent.py</code>）会裁剪掉它们。</p>
+</li>
+<li>
+<p>不要使用 <code>==</code> 将布尔值与 <code>True</code> 或 <code>False</code> 进行比较：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Correct:</span>
+<span class="k">if</span> <span class="n">greeting</span><span class="p">:</span>
+
+<span class="c1"># Wrong:</span>
+<span class="k">if</span> <span class="n">greeting</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+</code></pre></div>
+<p>更差:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">greeting</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+</code></pre></div>
+</li>
+<li>
+<p>不鼓励在 <code>try...finally</code> 的 <code>finally</code> 套件中使用流程控制语句 <code>return/break/continue</code>，因为流程控制语句会跳出 <code>finally</code> 套件。 这是因为此类语句将隐式取消通过 <code>finally</code> 套件传播的任何活动异常：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Wrong:</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">42</span>
+</code></pre></div>
+</li>
 </ul>
 <h3 id="函数注解">函数注解<a class="headerlink" href="#函数注解" title="Permanent link">¶</a></h3>
+<p>随着 <a href="https://peps.python.org/pep-0484">PEP 484</a> 的接受，函数注释的样式规则发生了变化。</p>
+<ul>
+<li>函数注释应使用 <a href="https://peps.python.org/pep-0484">PEP 484</a> 语法（在上一节中有一些注释的格式建议）。</li>
+<li>不再鼓励之前在此 PEP 中推荐的注释样式实验。</li>
+<li>然而，在 <code>stdlib</code> 之外，现在鼓励在 <a href="https://peps.python.org/pep-0484">PEP 484</a> 规则范围内进行实验。 例如，使用 <a href="https://peps.python.org/pep-0484">PEP 484</a> 样式类型注释标记大型第三方库或应用程序，查看添加这些注释的难易程度，并观察它们的存在是否增加了代码的可理解性。</li>
+<li>Python 标准库在采用此类注释时应该是保守的，但允许在新代码和大型重构中使用它们。</li>
+<li>
+<p>对于想要以不同方式使用函数注释的代码，建议添加以下形式的注释：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># type: ignore</span>
+</code></pre></div>
+<p>靠近文件顶部； 这告诉类型检查器忽略所有注释。（可以在 <a href="https://peps.python.org/pep-0484">PEP 484</a> 中找到更细粒度的禁用类型检查器提示的方法。）</p>
+</li>
+<li>
+<p>与 <code>linters</code> 一样，类型检查器是可选的、独立的工具。 默认情况下，Python 解释器不应由于类型检查而发出任何消息，也不应根据注释改变它们的行为。</p>
+</li>
+<li>不想使用类型检查器的用户可以随意忽略它们。 但是，预计第三方库包的用户可能希望对这些包运行类型检查器。 为此，<a href="https://peps.python.org/pep-0484">PEP 484</a> 建议使用存根文件：类型检查器优先读取相应的 <code>.py</code> 文件的 <code>.pyi</code> 文件。 存根文件可以与库一起分发，也可以通过 <code>typeshed repo</code> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> 单独分发（在库作者的许可下）。</li>
+</ul>
 <h3 id="变量注解">变量注解<a class="headerlink" href="#变量注解" title="Permanent link">¶</a></h3>
+<p><a href="https://peps.python.org/pep-0526">PEP 526</a> 引入了变量注释。 对它们的样式建议与上述函数注释的样式建议类似：</p>
+<ul>
+<li><code>模块级变量</code>、<code>类</code>和<code>实例变量</code>以及<code>局部变量</code>的注释应该<strong>在冒号后有一个空格</strong>。</li>
+<li>冒号前不应有空格。</li>
+<li>
+<p>如果一个赋值有右边，那么等号两边应该只有一个空格：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Correct:</span>
+
+<span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="n">coords</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'&lt;unknown&gt;'</span>
+
+<span class="c1"># Wrong:</span>
+
+<span class="n">code</span><span class="p">:</span><span class="nb">int</span>  <span class="c1"># No space after colon</span>
+<span class="n">code</span> <span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Space before colon</span>
+
+<span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
+    <span class="n">result</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span>  <span class="c1"># No spaces around equality sign</span>
+</code></pre></div>
+</li>
+<li>
+<p>尽管 <code>Python 3.6</code> 接受 <a href="https://peps.python.org/pep-0526">PEP 526</a>，但变量注释语法是所有 Python 版本上存根文件的首选语法（有关详细信息，请参阅 <a href="https://peps.python.org/pep-0484">PEP 484</a>）。</p>
+</li>
+</ul>
 <h2 id="版权">版权<a class="headerlink" href="#版权" title="Permanent link">¶</a></h2>
 <p>本文档已置于公共领域。</p>
 <p>来源：<a href="https://github.com/python/peps/blob/main/pep-0008.txt" target="_blank">https://github.com/python/peps/blob/main/pep-0008.txt</a></p>
@@ -2243,6 +2419,12 @@
 <li id="fn:3">
 <p>Donald Knuth 的 《The TeXBook》，第 195 和 196 页。 <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
 </li>
+<li id="fn:4">
+<p><a href="http://www.wikipedia.com/wiki/CamelCase">http://www.wikipedia.com/wiki/CamelCase</a> <a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn:5">
+<p>Typeshed repo <a href="https://github.com/python/typeshed">https://github.com/python/typeshed</a> <a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
 </ol>
 </div>
 <hr/>
@@ -2250,7 +2432,7 @@
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月27日</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月28日</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月27日</span>
