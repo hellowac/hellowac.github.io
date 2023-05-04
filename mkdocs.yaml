@@ -18,6 +18,7 @@ theme:
     - content.tabs.link  # 内容tabs支持
     - navigation.tabs # 顶部导航
     - navigation.tabs.sticky # 顶部导航粘连
+    - navigation.indexes  # 导航index页面支持
     # - navigation.sections # 全部展开(非折叠状态)
     # - navigation.expand # 子目录展开
     - navigation.top  # 返回顶部按钮
@@ -102,14 +103,14 @@ nav:
       - technology/python/sqlalchemy.md
       - technology/python/useful_functions.md
     - Linux:
-      - 常用资源: technology/linux/usage_source.md
+      - technology/linux/index.md
       - 端口占用查找: technology/linux/port.md
       - linux磁盘挂载: technology/linux/disk-mount.md
       - shell脚本实战: technology/linux/shell-scripts.md
     - C: 
-      - C基础: technology/C/c.md
+      - technology/C/index.md
     - 前端知识:
-      - 基础: technology/front/base.md
+      - technology/front/index.md
       - 工程化流程: technology/front/project.md
       - 包版本知识: technology/front/version.md
       - package.json知识: technology/front/package.md
