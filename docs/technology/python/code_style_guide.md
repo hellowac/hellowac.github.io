@@ -700,11 +700,60 @@ Point(x=11, y=22)                            # 以可读的name=value形式作�
 
 ### map
 
+返回一个迭代器，它将函数应用于可迭代的每个项目，产生结果。 如果传递了额外的可迭代参数，则函数必须采用那么多参数，并并行应用于所有可迭代的项目。
+
+```python
+# 有时候需要批量需要将pk的集合转化为str，然后进行join操作
+>>> pk_list = [1,2,3,4,5,6]
+>>> pk_list_str = ','.join(map(lambda x: str(x), pk_list))
+>>> pk_list_dtr
+>>> pk_list_str
+'1,2,3,4,5,6'
+```
+
 ### filter
+
+从 `iterable` 的那些元素构造一个迭代器，其中 `function` 为真。 `iterable` 可以是序列、支持迭代的容器或迭代器。 如果 `function` 为 `None`，则假设为恒等函数，即 `iterable` 中所有为 `false` 的元素都将被移除。
+
+```python
+# 保留执行函数为真的值
+>>> pk_list = [1,2,3,4,5,6, 7, 8]
+>>> pk_list = filter(lambda x: x%2==0, pk_list)  # 保留能被2整除的PK
+>>> pk_list_str = ','.join(map(lambda x: str(x), pk_list))
+>>> pk_list_str
+'2,4,6,8'
+
+# 过滤值bool判断为false的值
+>>> pk_list = [0, 1,3,0,2, -1, 0, 6]
+>>> pk_list = filter(None, pk_list) 
+>>> pk_list_str = ','.join(map(lambda x: str(x), pk_list))
+>>> pk_list_str
+'1,3,2,-1,6'
+```
 
 ### any
 
+如果 `iterable` 的任一元素为真值则返回 `True`。 如果可迭代对象为空，返回 `False`。 等价于:
+
+```python
+def any(iterable):
+    for element in iterable:
+        if element:
+            return True
+    return False
+```
+
 ### all
+
+如果 `iterable` 的所有元素均为真值（或可迭代对象为空）则返回 `True` 。 等价于：
+
+```python
+def all(iterable):
+    for element in iterable:
+        if not element:
+            return False
+    return True
+```
 
 ### zip
 
@@ -720,7 +769,23 @@ Point(x=11, y=22)                            # 以可读的name=value形式作�
 
 ### sorted
 
+定义: `sorted(iterable, /, *, key=None, reverse=False)`
+
+根据 `iterable` 中的项返回一个新的已排序列表。
+
+具有两个可选参数，它们都必须指定为关键字参数。
+
+`key` 指定带有单个参数的函数，用于从 `iterable` 的每个元素中提取用于比较的键 (例如 `key=str.lower`)。 默认值为 `None` (直接比较元素)。
+
+`reverse` 为一个布尔值。 如果设为 `True`，则每个列表元素将按反向顺序比较进行排序。
+
 ### sum
+
+定义: `sum(iterable, /, start=0)`
+
+从 `start` 开始自左向右对 `iterable` 的项求和并返回总计值。 `iterable` 的项通常为数字，而 `start` 值则不允许为字符串。
+
+对某些用例来说，存在 `sum()` 的更好替代。 拼接字符串序列的更好更快方式是调用 `''.join(sequence)`。 要以扩展精度对浮点值求和，参考 `math.fsum()`。 要拼接一系列可迭代对象，请参考使用 `itertools.chain()`。
 
 ### range
 
@@ -730,10 +795,75 @@ Point(x=11, y=22)                            # 以可读的name=value形式作�
 
 ## 项目实战
 
+### 代码优化1
+
+优化前
+
+```python
+def get_access_token(cls, data):
+    param = data.get('param')
+    code = param.get('code')
+    home_url = param.get('home_url')
+    if not code:
+        raise Exception('缺少参数code')
+    url = 'https://api.weixin.qq.com/sns/oauth2/access_token?grant_type=authorization_code&appid={}&secret={}&' \
+            'code={}'.format(
+            public_account_config.get('app_id'), public_account_config.get('secret'), code)
+    # 获取到微信的access_token、openid
+    res = requests.get(url, params=data).json()
+
+    # 存在跳转链接
+    if home_url:
+        return redirect_link(home_url, res)
+    return {
+        'code': UserStatusCode.OK,
+        'message': 'ok',
+        'data': res
+    }
+```
+
+优化后:
+
+```python
+def get_access_token(cls, data):
+    param = data.get('param')
+    code = param.get('code')
+    home_url = param.get('home_url')
+    app_id = public_account_config.get('app_id')
+    secret = public_account_config.get('secret')
+
+    if not code:
+        raise Exception('缺少参数code')
+    
+    parameters = (
+        ('grant_type', 'authorization_code'),
+        ('appid', app_id),
+        ('secret', secret),
+        ('code', code),
+    )
+
+    param_url = '&'.join([f'{key}={val}' for (key, val) in parameters])
+
+    url = f'https://api.weixin.qq.com/sns/oauth2/access_token?{param_url}'
+    # 获取到微信的access_token、openid
+    res = requests.get(url, params=data).json()
+
+    # 存在跳转链接
+    if home_url:
+        return redirect_link(home_url, res)
+
+    return {
+        'code': UserStatusCode.OK,
+        'message': 'ok',
+        'data': res
+    }
+```
+
+### 代码优化2
+
 1. 导包顺序
 2. 变量赋值以及获取
 3. 代码空格
 4. 重复代码提取
 5. 常量提取
 6. 标准库函数和工具
-

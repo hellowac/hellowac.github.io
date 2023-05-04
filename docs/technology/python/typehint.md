@@ -1671,7 +1671,6 @@ async def infinite_stream(start: int) -> AsyncIterator[int]:
 
 3.9 版后已移除: [collections.abc.AsyncIterable] now supports subscripting ([]).     See [PEP 585] and [GenericAlias 类型].
 
-
 ##### class typing.AsyncIterator(AsyncIterable[T_co])
 
 [collections.abc.AsyncIterator] 的泛型版本。
@@ -1806,7 +1805,6 @@ class Other(Leaf):  # Error reported by type checker
 标明注解不是类型提示的装饰器。
 
 用作类或函数的 [decorator]。用于类时，递归地应用于该类中定义的所有方法，（但不影响超类或子类中定义的方法）。
-
 
 本方法可直接修改函数。
 
