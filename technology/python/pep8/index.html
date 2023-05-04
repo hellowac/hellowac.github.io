@@ -1,1525 +1,3286 @@
 
-<!DOCTYPE html>
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac的工作学习生活笔记">
+      
+      
+      
+      
+        <link rel="prev" href="../typehint/">
+      
+      
+        <link rel="next" href="../code_style_guide/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.7">
+    
+    
+      
+        <title>PEP 8 – Python代码样式指南 - 我的工作学习生活笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
 
-<html class="no-js" lang="zh">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="hellowac的工作学习生活笔记" name="description"/>
-<link href="../typehint/" rel="prev"/>
-<link href="../code_style_guide/" rel="next"/>
-<link href="../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.0.13" name="generator"/>
-<title>PEP 8 – Python代码样式指南 - 我的工作学习生活笔记</title>
-<link href="../../../assets/stylesheets/main.ffa9267a.min.css" rel="stylesheet"/>
-<link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
-<body data-md-color-accent="red" data-md-color-primary="default" data-md-color-scheme="default" dir="ltr">
-<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-<label class="md-overlay" for="__drawer"></label>
-<div data-md-component="skip">
-<a class="md-skip" href="#pep-8--python代码样式指南">
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pep-8--python代码样式指南" class="md-skip">
           跳转至
         </a>
-</div>
-<div data-md-component="announce">
-</div>
-<header class="md-header md-header--lifted" data-md-component="header">
-<nav aria-label="页眉" class="md-header__inner md-grid">
-<a aria-label="我的工作学习生活笔记" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
-</a>
-<label class="md-header__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
-</label>
-<div class="md-header__title" data-md-component="header-title">
-<div class="md-header__ellipsis">
-<div class="md-header__topic">
-<span class="md-ellipsis">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             我的工作学习生活笔记
           </span>
-</div>
-<div class="md-header__topic" data-md-component="header-topic">
-<span class="md-ellipsis">
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             
               PEP 8 – Python代码样式指南
             
           </span>
-</div>
-</div>
-</div>
-<label class="md-header__button md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
-</label>
-<div class="md-search" data-md-component="search" role="dialog">
-<label class="md-search__overlay" for="__search"></label>
-<div class="md-search__inner" role="search">
-<form class="md-search__form" name="search">
-<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
-<label class="md-search__icon md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
-</label>
-<nav aria-label="查找" class="md-search__options">
-<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
-</button>
-</nav>
-</form>
-<div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
-<div class="md-search-result" data-md-component="search-result">
-<div class="md-search-result__meta">
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-<ol class="md-search-result__list" role="presentation"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
-</div>
-<div class="md-source__repository">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
     hellowac的个人博客
   </div>
 </a>
-</div>
-</nav>
-<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
-<div class="md-grid">
-<ul class="md-tabs__list">
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../..">
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
       首页
     </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../">
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         技术
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../read/english/bluelevel/">
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../read/english/bluelevel/" class="md-tabs__link">
         阅读
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../invest/webs/">
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../invest/webs/" class="md-tabs__link">
         理财
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../tools/repos/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tools/repos/" class="md-tabs__link">
         工具
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../documents/docs/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../documents/docs/" class="md-tabs__link">
         文档
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../e-book/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../e-book/" class="md-tabs__link">
       电子书
     </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../other/front_links/">
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../other/front_links/" class="md-tabs__link">
         其他
       </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../about/">
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../about/" class="md-tabs__link">
       关于
     </a>
-</li>
-</ul>
-</div>
+  </li>
+
+      
+    </ul>
+  </div>
 </nav>
+    
+  
 </header>
-<div class="md-container" data-md-component="container">
-<main class="md-main" data-md-component="main">
-<div class="md-main__inner md-grid">
-<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
-<label class="md-nav__title" for="__drawer">
-<a aria-label="我的工作学习生活笔记" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="我的工作学习生活笔记">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
-</a>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
     我的工作学习生活笔记
   </label>
-<div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
-</div>
-<div class="md-source__repository">
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
     hellowac的个人博客
   </div>
 </a>
-</div>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../..">
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         首页
       </a>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
           技术
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_2">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
           技术
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
           Python
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_1_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_1">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
           Python
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         简介
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../typehint/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typehint/" class="md-nav__link">
         类型标注
       </a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
           PEP 8 – Python代码样式指南
           <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         PEP 8 – Python代码样式指南
       </a>
-<nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       目录
     </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#简介">
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#愚蠢的一致性是小脑袋的妖精">
+      
+        <li class="md-nav__item">
+  <a href="#愚蠢的一致性是小脑袋的妖精" class="md-nav__link">
     愚蠢的一致性是小脑袋的妖精
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#代码布局">
+      
+        <li class="md-nav__item">
+  <a href="#代码布局" class="md-nav__link">
     代码布局
   </a>
-<nav aria-label="代码布局" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#缩进">
+  
+    <nav class="md-nav" aria-label="代码布局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#缩进" class="md-nav__link">
     缩进
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#制表符或空格">
+        
+          <li class="md-nav__item">
+  <a href="#制表符或空格" class="md-nav__link">
     制表符或空格？
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#最大行长">
+        
+          <li class="md-nav__item">
+  <a href="#最大行长" class="md-nav__link">
     最大行长
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#换行应该在二元运算符之前还是之后">
+        
+          <li class="md-nav__item">
+  <a href="#换行应该在二元运算符之前还是之后" class="md-nav__link">
     换行应该在二元运算符之前还是之后？
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#空行">
+        
+          <li class="md-nav__item">
+  <a href="#空行" class="md-nav__link">
     空行
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#源文件编码">
+        
+          <li class="md-nav__item">
+  <a href="#源文件编码" class="md-nav__link">
     源文件编码
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#导入">
+        
+          <li class="md-nav__item">
+  <a href="#导入" class="md-nav__link">
     导入
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#模块级-dunder-名称">
+        
+          <li class="md-nav__item">
+  <a href="#模块级-dunder-名称" class="md-nav__link">
     模块级 Dunder 名称
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#字符串引号">
+      
+        <li class="md-nav__item">
+  <a href="#字符串引号" class="md-nav__link">
     字符串引号
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#表达式和语句中的空格">
+      
+        <li class="md-nav__item">
+  <a href="#表达式和语句中的空格" class="md-nav__link">
     表达式和语句中的空格
   </a>
-<nav aria-label="表达式和语句中的空格" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#烦恼">
+  
+    <nav class="md-nav" aria-label="表达式和语句中的空格">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#烦恼" class="md-nav__link">
     烦恼
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#其他建议">
+        
+          <li class="md-nav__item">
+  <a href="#其他建议" class="md-nav__link">
     其他建议
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#何时使用尾随逗号">
+        
+          <li class="md-nav__item">
+  <a href="#何时使用尾随逗号" class="md-nav__link">
     何时使用尾随逗号
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#注释">
+      
+        <li class="md-nav__item">
+  <a href="#注释" class="md-nav__link">
     注释
   </a>
-<nav aria-label="注释" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#块级注释">
+  
+    <nav class="md-nav" aria-label="注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#块级注释" class="md-nav__link">
     块级注释
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#行级注释">
+        
+          <li class="md-nav__item">
+  <a href="#行级注释" class="md-nav__link">
     行级注释
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#文档注释">
+        
+          <li class="md-nav__item">
+  <a href="#文档注释" class="md-nav__link">
     文档注释
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#命名约定">
+      
+        <li class="md-nav__item">
+  <a href="#命名约定" class="md-nav__link">
     命名约定
   </a>
-<nav aria-label="命名约定" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#至高无上的原则">
+  
+    <nav class="md-nav" aria-label="命名约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#至高无上的原则" class="md-nav__link">
     至高无上的原则
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#描述性命名风格">
+        
+          <li class="md-nav__item">
+  <a href="#描述性命名风格" class="md-nav__link">
     描述性：命名风格
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#规范命名约定">
+        
+          <li class="md-nav__item">
+  <a href="#规范命名约定" class="md-nav__link">
     规范：命名约定
   </a>
-<nav aria-label="规范：命名约定" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#要避免的名称">
+  
+    <nav class="md-nav" aria-label="规范：命名约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#要避免的名称" class="md-nav__link">
     要避免的名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ascii-兼容性">
+        
+          <li class="md-nav__item">
+  <a href="#ascii-兼容性" class="md-nav__link">
     ASCII 兼容性
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#包和模块名称">
+        
+          <li class="md-nav__item">
+  <a href="#包和模块名称" class="md-nav__link">
     包和模块名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#类名">
+        
+          <li class="md-nav__item">
+  <a href="#类名" class="md-nav__link">
     类名
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#输入变量名">
+        
+          <li class="md-nav__item">
+  <a href="#输入变量名" class="md-nav__link">
     输入变量名
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#异常名称">
+        
+          <li class="md-nav__item">
+  <a href="#异常名称" class="md-nav__link">
     异常名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#全局变量名">
+        
+          <li class="md-nav__item">
+  <a href="#全局变量名" class="md-nav__link">
     全局变量名
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#函数和变量名称">
+        
+          <li class="md-nav__item">
+  <a href="#函数和变量名称" class="md-nav__link">
     函数和变量名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#函数和方法参数">
+        
+          <li class="md-nav__item">
+  <a href="#函数和方法参数" class="md-nav__link">
     函数和方法参数
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#方法名称和实例变量">
+        
+          <li class="md-nav__item">
+  <a href="#方法名称和实例变量" class="md-nav__link">
     方法名称和实例变量
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#常量">
+        
+          <li class="md-nav__item">
+  <a href="#常量" class="md-nav__link">
     常量
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#为继承而设计">
+        
+          <li class="md-nav__item">
+  <a href="#为继承而设计" class="md-nav__link">
     为继承而设计
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#公共和内部接口">
+        
+          <li class="md-nav__item">
+  <a href="#公共和内部接口" class="md-nav__link">
     公共和内部接口
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#编程建议">
+      
+        <li class="md-nav__item">
+  <a href="#编程建议" class="md-nav__link">
     编程建议
   </a>
-<nav aria-label="编程建议" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#函数注解">
+  
+    <nav class="md-nav" aria-label="编程建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#函数注解" class="md-nav__link">
     函数注解
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#变量注解">
+        
+          <li class="md-nav__item">
+  <a href="#变量注解" class="md-nav__link">
     变量注解
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#版权">
+      
+        <li class="md-nav__item">
+  <a href="#版权" class="md-nav__link">
     版权
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#参考">
+      
+        <li class="md-nav__item">
+  <a href="#参考" class="md-nav__link">
     参考
   </a>
+  
 </li>
-</ul>
+      
+    </ul>
+  
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../code_style_guide/">
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_style_guide/" class="md-nav__link">
         编码样式指南
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../pip/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pip/" class="md-nav__link">
         pip
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../stringio/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stringio/" class="md-nav__link">
         stringIO
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../flask/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flask/" class="md-nav__link">
         flask
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../django/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../django/" class="md-nav__link">
         django
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../logging/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
         logging
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../importlib/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../importlib/" class="md-nav__link">
         importlib
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../pycrypto/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycrypto/" class="md-nav__link">
         crypto
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../petl/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../petl/" class="md-nav__link">
         python-petl使用简介
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../psutil/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../psutil/" class="md-nav__link">
         psutil文档-中文版
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../docx/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docx/" class="md-nav__link">
         docx文档
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../excel/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../excel/" class="md-nav__link">
         Excel
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../reportlab/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reportlab/" class="md-nav__link">
         ReportLab
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../alembic/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alembic/" class="md-nav__link">
         alembic教程(转)
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../sqlalchemy/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sqlalchemy/" class="md-nav__link">
         SQLAlchemy简明教程
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../useful_functions/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../useful_functions/" class="md-nav__link">
         常用的函数
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
           Linux
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_2">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
           Linux
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../linux/usage_source/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/usage_source/" class="md-nav__link">
         常用资源
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../linux/port/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/port/" class="md-nav__link">
         端口占用查找
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../linux/disk-mount/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/disk-mount/" class="md-nav__link">
         linux磁盘挂载
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../linux/shell-scripts/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/shell-scripts/" class="md-nav__link">
         shell脚本实战
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
           C
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
           C
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../C/c/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C/c/" class="md-nav__link">
         C基础
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
           前端知识
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_4">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
           前端知识
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../front/base/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front/base/" class="md-nav__link">
         基础
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../front/project/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front/project/" class="md-nav__link">
         工程化流程
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../front/version/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front/version/" class="md-nav__link">
         包版本知识
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../front/package/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front/package/" class="md-nav__link">
         package.json知识
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../front/webassembly/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front/webassembly/" class="md-nav__link">
         WebAssembly
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
           服务组件
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_5">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
           服务组件
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../components/zookeeper/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/zookeeper/" class="md-nav__link">
         zookeeper
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../components/nginx/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/nginx/" class="md-nav__link">
         nginx
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../components/supervisor/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/supervisor/" class="md-nav__link">
         supervisor
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../components/rabbitmq/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/rabbitmq/" class="md-nav__link">
         rabbitmq
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../components/kafka/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/kafka/" class="md-nav__link">
         kafka
       </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_5_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
           无头浏览器
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_5_6_label" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_5_6">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_6">
+          <span class="md-nav__icon md-icon"></span>
           无头浏览器
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../unheadchrome/openchrome/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/openchrome/" class="md-nav__link">
         openchrome
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../unheadchrome/build_env/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unheadchrome/build_env/" class="md-nav__link">
         环境搭建
       </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
           数据库
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_6">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
           数据库
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../database/clickhouse/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/clickhouse/" class="md-nav__link">
         ClickHouse
       </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_6_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
           MySQL
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_6_2_label" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_6_2">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_2">
+          <span class="md-nav__icon md-icon"></span>
           MySQL
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../database/mysql8_install/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql8_install/" class="md-nav__link">
         mysql8
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../database/mysql/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mysql/" class="md-nav__link">
         常用操作
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_6_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
           ElasticSearch
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_6_3_label" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_6_3">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_3">
+          <span class="md-nav__icon md-icon"></span>
           ElasticSearch
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../database/elasticsearch_py/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/elasticsearch_py/" class="md-nav__link">
         elasticsearch-py
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../database/es_dsl/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_dsl/" class="md-nav__link">
         elasticsearch-dsl
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../database/es_aggs/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/es_aggs/" class="md-nav__link">
         elasticsearch-aggs
       </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
           安全渗透
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_7">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
           安全渗透
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../security/thc-hydra/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/thc-hydra/" class="md-nav__link">
         hydra
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../security/sqlmap/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/sqlmap/" class="md-nav__link">
         sqlmap
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
           RFC标准
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_8">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
           RFC标准
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../rfc/oauth2/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/oauth2/" class="md-nav__link">
         oauth2学习笔记
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../rfc/rfc6749/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/rfc6749/" class="md-nav__link">
         Oauth2-RFC6749翻译
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../rfc/rfc6750/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/rfc6750/" class="md-nav__link">
         Oauth2-RFC6750翻译
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
           知识概念
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_9">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
           知识概念
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/project_doc_layout/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/project_doc_layout/" class="md-nav__link">
         项目文档结构示例
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/pc/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/pc/" class="md-nav__link">
         上位机简介
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/xaas/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/xaas/" class="md-nav__link">
         xaas概念
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/xaas2/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/xaas2/" class="md-nav__link">
         一文搞懂什么是SaaS、BaaS、PaaS和IaaS
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/users/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/users/" class="md-nav__link">
         统一用户管理
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/etl/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/etl/" class="md-nav__link">
         ETL数据处理
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/data_transfer/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/data_transfer/" class="md-nav__link">
         数据传输和对接
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../concept/understand_computer_system/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/understand_computer_system/" class="md-nav__link">
         深入理解计算机系统
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_10">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
           其他
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../other/embedded_industry/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/embedded_industry/" class="md-nav__link">
         嵌入式行业
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../other/apache_license2/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/apache_license2/" class="md-nav__link">
         apache license2.0开源协议
       </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           阅读
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
           阅读
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
           英语
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_1">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
           英语
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/english/bluelevel/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/english/bluelevel/" class="md-nav__link">
         BlueLevel
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/english/redlevel/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/english/redlevel/" class="md-nav__link">
         RedLevel
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/howtoreadbook/">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/howtoreadbook/" class="md-nav__link">
         如何阅读一本书
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/howtoavoid/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/howtoavoid/" class="md-nav__link">
         如何避免愚蠢的见识
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/placeofsoul/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/placeofsoul/" class="md-nav__link">
         灵魂的最高处
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/maliciousmatch/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/maliciousmatch/" class="md-nav__link">
         恶意匹配
       </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
           沟通的艺术
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_6">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
           沟通的艺术
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication01/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication01/" class="md-nav__link">
         沟通入门
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication02/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication02/" class="md-nav__link">
         看入人里:自我
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication03/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication03/" class="md-nav__link">
         看入人里:知觉
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication04/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication04/" class="md-nav__link">
         看入人里:情绪
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication05/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication05/" class="md-nav__link">
         看出人外:语言
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication06/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication06/" class="md-nav__link">
         看出人外:非语言沟通
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication07/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication07/" class="md-nav__link">
         看出人外:倾听
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication08/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication08/" class="md-nav__link">
         看人之间:沟通和关系的演变
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication09/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication09/" class="md-nav__link">
         看人之间:人际沟通中的亲密关系
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication10/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication10/" class="md-nav__link">
         看人之间:增进沟通气氛
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication11/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication11/" class="md-nav__link">
         看人之间:处理人际冲突
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../read/book/artofcommunication12/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../read/book/artofcommunication12/" class="md-nav__link">
         阅读总结
       </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           理财
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_4">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
           理财
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../invest/webs/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../invest/webs/" class="md-nav__link">
         理财网站
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           工具
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_5">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
           工具
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/repos/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/repos/" class="md-nav__link">
         仓库合集
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git1/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git1/" class="md-nav__link">
         git 起步
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git2/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git2/" class="md-nav__link">
         git 基础
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git3/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git3/" class="md-nav__link">
         git 分支
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git4/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git4/" class="md-nav__link">
         git 服务器
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git5/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git5/" class="md-nav__link">
         git 分布式
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git6/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git6/" class="md-nav__link">
         git hub
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git7/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git7/" class="md-nav__link">
         git 工具
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git8/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git8/" class="md-nav__link">
         git 自定义
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git9/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git9/" class="md-nav__link">
         git 与其他系统
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/git10/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git10/" class="md-nav__link">
         git 内部原理
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/gita1/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/gita1/" class="md-nav__link">
         git 其他环境中使用
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/gita2/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/gita2/" class="md-nav__link">
         git 应用中嵌入
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../tools/gita3/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/gita3/" class="md-nav__link">
         git 命令
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
           文档
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_6">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
           文档
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../documents/docs/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documents/docs/" class="md-nav__link">
         文档合集
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../e-book/">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../e-book/" class="md-nav__link">
         电子书
       </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
           其他
           <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_8">
-<span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
           其他
         </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/front_links/">
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/front_links/" class="md-nav__link">
         前端常用地址
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/back_links/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/back_links/" class="md-nav__link">
         后端常用地址
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/other_links/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/other_links/" class="md-nav__link">
         其他常用地址
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/become_leader/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/become_leader/" class="md-nav__link">
         成为高手秘籍
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/zym_weibo/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/zym_weibo/" class="md-nav__link">
         张一鸣微博
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/dynamic_business/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/dynamic_business/" class="md-nav__link">
         动态商业环境
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/honeypot_list/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/honeypot_list/" class="md-nav__link">
         蜜罐资源列表
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../other/bigdata_links/">
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/bigdata_links/" class="md-nav__link">
         大数据资源列表
       </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../about/">
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
         关于
       </a>
-</li>
-</ul>
+    </li>
+  
+
+    
+  </ul>
 </nav>
-</div>
-</div>
-</div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       目录
     </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#简介">
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#愚蠢的一致性是小脑袋的妖精">
+      
+        <li class="md-nav__item">
+  <a href="#愚蠢的一致性是小脑袋的妖精" class="md-nav__link">
     愚蠢的一致性是小脑袋的妖精
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#代码布局">
+      
+        <li class="md-nav__item">
+  <a href="#代码布局" class="md-nav__link">
     代码布局
   </a>
-<nav aria-label="代码布局" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#缩进">
+  
+    <nav class="md-nav" aria-label="代码布局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#缩进" class="md-nav__link">
     缩进
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#制表符或空格">
+        
+          <li class="md-nav__item">
+  <a href="#制表符或空格" class="md-nav__link">
     制表符或空格？
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#最大行长">
+        
+          <li class="md-nav__item">
+  <a href="#最大行长" class="md-nav__link">
     最大行长
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#换行应该在二元运算符之前还是之后">
+        
+          <li class="md-nav__item">
+  <a href="#换行应该在二元运算符之前还是之后" class="md-nav__link">
     换行应该在二元运算符之前还是之后？
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#空行">
+        
+          <li class="md-nav__item">
+  <a href="#空行" class="md-nav__link">
     空行
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#源文件编码">
+        
+          <li class="md-nav__item">
+  <a href="#源文件编码" class="md-nav__link">
     源文件编码
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#导入">
+        
+          <li class="md-nav__item">
+  <a href="#导入" class="md-nav__link">
     导入
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#模块级-dunder-名称">
+        
+          <li class="md-nav__item">
+  <a href="#模块级-dunder-名称" class="md-nav__link">
     模块级 Dunder 名称
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#字符串引号">
+      
+        <li class="md-nav__item">
+  <a href="#字符串引号" class="md-nav__link">
     字符串引号
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#表达式和语句中的空格">
+      
+        <li class="md-nav__item">
+  <a href="#表达式和语句中的空格" class="md-nav__link">
     表达式和语句中的空格
   </a>
-<nav aria-label="表达式和语句中的空格" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#烦恼">
+  
+    <nav class="md-nav" aria-label="表达式和语句中的空格">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#烦恼" class="md-nav__link">
     烦恼
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#其他建议">
+        
+          <li class="md-nav__item">
+  <a href="#其他建议" class="md-nav__link">
     其他建议
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#何时使用尾随逗号">
+        
+          <li class="md-nav__item">
+  <a href="#何时使用尾随逗号" class="md-nav__link">
     何时使用尾随逗号
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#注释">
+      
+        <li class="md-nav__item">
+  <a href="#注释" class="md-nav__link">
     注释
   </a>
-<nav aria-label="注释" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#块级注释">
+  
+    <nav class="md-nav" aria-label="注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#块级注释" class="md-nav__link">
     块级注释
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#行级注释">
+        
+          <li class="md-nav__item">
+  <a href="#行级注释" class="md-nav__link">
     行级注释
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#文档注释">
+        
+          <li class="md-nav__item">
+  <a href="#文档注释" class="md-nav__link">
     文档注释
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#命名约定">
+      
+        <li class="md-nav__item">
+  <a href="#命名约定" class="md-nav__link">
     命名约定
   </a>
-<nav aria-label="命名约定" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#至高无上的原则">
+  
+    <nav class="md-nav" aria-label="命名约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#至高无上的原则" class="md-nav__link">
     至高无上的原则
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#描述性命名风格">
+        
+          <li class="md-nav__item">
+  <a href="#描述性命名风格" class="md-nav__link">
     描述性：命名风格
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#规范命名约定">
+        
+          <li class="md-nav__item">
+  <a href="#规范命名约定" class="md-nav__link">
     规范：命名约定
   </a>
-<nav aria-label="规范：命名约定" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#要避免的名称">
+  
+    <nav class="md-nav" aria-label="规范：命名约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#要避免的名称" class="md-nav__link">
     要避免的名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ascii-兼容性">
+        
+          <li class="md-nav__item">
+  <a href="#ascii-兼容性" class="md-nav__link">
     ASCII 兼容性
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#包和模块名称">
+        
+          <li class="md-nav__item">
+  <a href="#包和模块名称" class="md-nav__link">
     包和模块名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#类名">
+        
+          <li class="md-nav__item">
+  <a href="#类名" class="md-nav__link">
     类名
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#输入变量名">
+        
+          <li class="md-nav__item">
+  <a href="#输入变量名" class="md-nav__link">
     输入变量名
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#异常名称">
+        
+          <li class="md-nav__item">
+  <a href="#异常名称" class="md-nav__link">
     异常名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#全局变量名">
+        
+          <li class="md-nav__item">
+  <a href="#全局变量名" class="md-nav__link">
     全局变量名
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#函数和变量名称">
+        
+          <li class="md-nav__item">
+  <a href="#函数和变量名称" class="md-nav__link">
     函数和变量名称
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#函数和方法参数">
+        
+          <li class="md-nav__item">
+  <a href="#函数和方法参数" class="md-nav__link">
     函数和方法参数
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#方法名称和实例变量">
+        
+          <li class="md-nav__item">
+  <a href="#方法名称和实例变量" class="md-nav__link">
     方法名称和实例变量
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#常量">
+        
+          <li class="md-nav__item">
+  <a href="#常量" class="md-nav__link">
     常量
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#为继承而设计">
+        
+          <li class="md-nav__item">
+  <a href="#为继承而设计" class="md-nav__link">
     为继承而设计
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#公共和内部接口">
+        
+          <li class="md-nav__item">
+  <a href="#公共和内部接口" class="md-nav__link">
     公共和内部接口
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#编程建议">
+      
+        <li class="md-nav__item">
+  <a href="#编程建议" class="md-nav__link">
     编程建议
   </a>
-<nav aria-label="编程建议" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#函数注解">
+  
+    <nav class="md-nav" aria-label="编程建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#函数注解" class="md-nav__link">
     函数注解
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#变量注解">
+        
+          <li class="md-nav__item">
+  <a href="#变量注解" class="md-nav__link">
     变量注解
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#版权">
+      
+        <li class="md-nav__item">
+  <a href="#版权" class="md-nav__link">
     版权
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#参考">
+      
+        <li class="md-nav__item">
+  <a href="#参考" class="md-nav__link">
     参考
   </a>
+  
 </li>
-</ul>
+      
+    </ul>
+  
 </nav>
-</div>
-</div>
-</div>
-<div class="md-content" data-md-component="content">
-<article class="md-content__inner md-typeset">
-<h1 id="pep-8--python代码样式指南">PEP 8 – Python代码样式指南<a class="headerlink" href="#pep-8--python代码样式指南" title="Permanent link">¶</a></h1>
-<p><strong>作者</strong>: Guido van Rossum \&lt;guido at python.org&gt;, Barry Warsaw \&lt;barry at python.org&gt;, Nick Coghlan \&lt;ncoghlan at gmail.com&gt;</p>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="pep-8--python代码样式指南">PEP 8 – Python代码样式指南<a class="headerlink" href="#pep-8--python代码样式指南" title="Permanent link">&para;</a></h1>
+<p><strong>作者</strong>: Guido van Rossum \&lt;guido at python.org>, Barry Warsaw \&lt;barry at python.org>, Nick Coghlan \&lt;ncoghlan at gmail.com></p>
 <p><strong>状态</strong>: <em>积极的</em></p>
 <p><strong>类别</strong>: <em>过程</em></p>
 <p><strong>创建于</strong>: 2001年7月5日</p>
 <p><strong>提交历史</strong>: 2001年7月5日，2013年8月1日</p>
-<h2 id="简介">简介<a class="headerlink" href="#简介" title="Permanent link">¶</a></h2>
+<h2 id="简介">简介<a class="headerlink" href="#简介" title="Permanent link">&para;</a></h2>
 <p>本文档给出了包含主要 Python 发行版中标准库的 Python 代码的编码约定。请参阅<a href="https://peps.python.org/pep-0007">描述Python C 实现中 C 代码样式指南</a>的配套信息 PEP 。</p>
 <p>本文档和<a href="https://peps.python.org/pep-0257">PEP 257</a>（文档字符串约定）改编自 Guido 的原始 Python 风格指南文章，并从 Barry 的风格指南<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>中添加了一些内容。</p>
 <p>这个风格指南随着时间的推移而发展，因为附加的约定被识别出来，过去的约定因语言本身的变化而变得过时。</p>
 <p>许多项目都有自己的编码风格指南。 如有任何冲突，此类特定于项目的指南优先于本项目的使用。</p>
-<h2 id="愚蠢的一致性是小脑袋的妖精">愚蠢的一致性是小脑袋的妖精<a class="headerlink" href="#愚蠢的一致性是小脑袋的妖精" title="Permanent link">¶</a></h2>
+<h2 id="愚蠢的一致性是小脑袋的妖精">愚蠢的一致性是小脑袋的妖精<a class="headerlink" href="#愚蠢的一致性是小脑袋的妖精" title="Permanent link">&para;</a></h2>
 <p>Guido 的主要见解之一是<mark class="critic"><strong>代码被阅读的频率远高于其编写的频率</strong></mark>。此处提供的指南旨在提高代码的可读性，并使其在各种 Python 代码中保持一致。正如<a href="https://peps.python.org/pep-0020">PEP 20</a>所说，“<strong>可读性很重要</strong>”。</p>
 <p>风格指南是关于一致性的。与本风格指南保持一致很重要。<strong>项目内的一致性更为重要</strong>。<strong>一个模块或功能内的一致性是最重要的</strong>。</p>
 <p>但是，知道什么时候不一致——有时风格指南的建议并不适用。如有疑问，请使用您的最佳判断。查看其他示例并确定最好的示例。不要犹豫，问！</p>
@@ -1531,11 +3292,11 @@
 <li>因为有问题的代码早于指南的引入，并且没有其他理由修改该代码。</li>
 <li>当代码需要与不支持样式指南推荐的功能的旧版本 Python 保持兼容时。</li>
 </ol>
-<h2 id="代码布局">代码布局<a class="headerlink" href="#代码布局" title="Permanent link">¶</a></h2>
-<h3 id="缩进">缩进<a class="headerlink" href="#缩进" title="Permanent link">¶</a></h3>
+<h2 id="代码布局">代码布局<a class="headerlink" href="#代码布局" title="Permanent link">&para;</a></h2>
+<h3 id="缩进">缩进<a class="headerlink" href="#缩进" title="Permanent link">&para;</a></h3>
 <p>每个缩进级别使用 4 个空格。</p>
 <p>续行应该使用 Python 的隐式行在圆括号、方括号和大括号内连接，或者使用悬挂缩进 <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>来垂直对齐包装元素。使用悬挂缩进时，应考虑以下因素；第一行不应该有任何参数，并且应该使用进一步的缩进来清楚地将自己区分为续行：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">正确的</label><label for="__tabbed_1_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">正确的</label><label for="__tabbed_1_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># 与左括号对齐</span>
@@ -1567,7 +3328,7 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 <p>4个空格规则对于续行是可选的。</p>
 <p>可选的:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 悬挂缩进 *可以* 缩进比到 4 个空格更少的位置。</span>
@@ -1600,8 +3361,8 @@
     <span class="p">]</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">some_function_that_takes_arguments</span><span class="p">(</span>
-    <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span>
-    <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">,</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div>
 <p>或者它可能排在开始多行构造的行的第一个字符下，如：</p>
@@ -1610,15 +3371,15 @@
     <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
 <span class="p">]</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">some_function_that_takes_arguments</span><span class="p">(</span>
-    <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span>
-    <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">,</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="制表符或空格">制表符或空格？<a class="headerlink" href="#制表符或空格" title="Permanent link">¶</a></h3>
+<h3 id="制表符或空格">制表符或空格？<a class="headerlink" href="#制表符或空格" title="Permanent link">&para;</a></h3>
 <p>空格是首选的缩进方法。</p>
 <p>制表符应仅用于与已经使用制表符缩进的代码保持一致。</p>
 <p>Python 不允许混用制表符和空格进行缩进。</p>
-<h3 id="最大行长">最大行长<a class="headerlink" href="#最大行长" title="Permanent link">¶</a></h3>
+<h3 id="最大行长">最大行长<a class="headerlink" href="#最大行长" title="Permanent link">&para;</a></h3>
 <p>将所有行限制为最多 <strong>79</strong> 个字符。</p>
 <p>对于具有较少结构限制（文档字符串或注释）的流动长文本块，行长度应限制为 <strong>72</strong> 个字符。</p>
 <p>限制所需的编辑器窗口宽度可以并排打开多个文件，并且在使用在相邻列中显示两个版本的代码审查工具时效果很好。</p>
@@ -1627,14 +3388,14 @@
 <p>Python 标准库是保守的，要求将行限制为 <strong>79</strong> 个字符（文档字符串/注释限制为 <strong>72</strong> 个）。</p>
 <p>封装长行的首选方法是在<code>圆括号</code>、<code>方括号</code>和<code>大括号</code>内使用 Python 的隐含行延续。通过将表达式括在括号中，可以将长行分成多行。应该优先使用这些而不是使用反斜杠来续行。</p>
 <p>反斜杠有时可能仍然适用。例如，<code>with</code> 在 <code>Python 3.10</code> 之前，长的多语句不能使用隐式延续，因此在这种情况下可以接受反斜杠：</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'/path/to/some/file/you/want/to/read'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_1</span><span class="p">,</span> \
-     <span class="nb">open</span><span class="p">(</span><span class="s1">'/path/to/some/file/being/written'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_2</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/some/file/you/want/to/read&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_1</span><span class="p">,</span> \
+     <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/some/file/being/written&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_2</span><span class="p">:</span>
     <span class="n">file_2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_1</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </code></pre></div>
 <p>（请参阅前面关于<a href="https://peps.python.org/pep-0008/#multiline-if-statements" target="_blank">多行 if 语句</a>的讨论，以进一步了解此类多行<code>with</code>语句的缩进。）</p>
 <p>另一个这样的例子是<code>assert</code>语句。</p>
 <p>确保适当地缩进续行。</p>
-<h3 id="换行应该在二元运算符之前还是之后">换行应该在二元运算符之前还是之后？<a class="headerlink" href="#换行应该在二元运算符之前还是之后" title="Permanent link">¶</a></h3>
+<h3 id="换行应该在二元运算符之前还是之后">换行应该在二元运算符之前还是之后？<a class="headerlink" href="#换行应该在二元运算符之前还是之后" title="Permanent link">&para;</a></h3>
 <p>几十年来，推荐的风格是在二元运算符之后中断。但这会以两种方式损害可读性：运算符往往分散在屏幕上的不同列中，并且每个运算符都从其操作数移到上一行。在这里，眼睛必须做额外的工作来分辨哪些项目被添加，哪些被减去：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 错误的:</span>
 <span class="c1"># 运算符远离他们的操作数</span>
@@ -1655,22 +3416,22 @@
           <span class="o">-</span> <span class="n">student_loan_interest</span><span class="p">)</span>
 </code></pre></div>
 <p>在 Python 代码中，允许在二元运算符之前或之后中断，只要约定在本地保持一致即可。对于新代码，建议使用 <em>Knuth</em> 的风格。</p>
-<h3 id="空行">空行<a class="headerlink" href="#空行" title="Permanent link">¶</a></h3>
+<h3 id="空行">空行<a class="headerlink" href="#空行" title="Permanent link">&para;</a></h3>
 <p><mark class="critic"><strong>用两个空行包围顶级函数和类定义。</strong></mark></p>
 <p><mark class="critic"><strong>类中的方法定义由一个空行包围。</strong></mark></p>
 <p>可以（有节制地）使用额外的空行来分隔相关函数组。在一堆相关的单行代码（例如一组虚拟实现）之间可以省略空行。</p>
 <p><strong>谨慎地在函数中使用空行来指示逻辑部分。</strong></p>
 <p>Python 接受 <code>control-L</code>（即 <code>^L</code>）换页符作为空格；许多工具将这些字符视为页面分隔符，因此您可以使用它们来分隔文件相关部分的页面。请注意，某些编辑器和基于 Web 的代码查看器可能无法将 <code>control-L</code> 识别为换页，并会在其位置显示另一个字形。</p>
-<h3 id="源文件编码">源文件编码<a class="headerlink" href="#源文件编码" title="Permanent link">¶</a></h3>
+<h3 id="源文件编码">源文件编码<a class="headerlink" href="#源文件编码" title="Permanent link">&para;</a></h3>
 <p>核心 Python 发行版中的代码应始终使用 <code>UTF-8</code>，并且不应有编码声明。</p>
 <p>在标准库中，非 <code>UTF-8</code> 编码应仅用于测试目的。谨慎使用非 <code>ASCII</code> 字符，最好仅用于表示地名和人名。如果使用非 <code>ASCII</code> 字符作为数据，请避免嘈杂的 <code>Unicode</code> 字符，例如 <code>z̯̯͡a̧͎̺l̡͓̫g̹̲o̡̼̘</code> 和字节顺序标记。</p>
 <p>Python 标准库中的所有标识符必须使用纯 <code>ASCII</code> 标识符，并且在可行的情况下应该使用<strong>英语单词</strong>（在许多情况下，使用的缩写词和技术术语不是英语）。</p>
 <p>鼓励具有全球受众的开源项目采用类似的政策。</p>
-<h3 id="导入">导入<a class="headerlink" href="#导入" title="Permanent link">¶</a></h3>
+<h3 id="导入">导入<a class="headerlink" href="#导入" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>导入模块通常应该在不同的行：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">正确的</label><label for="__tabbed_2_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">正确的</label><label for="__tabbed_2_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
@@ -1682,7 +3443,7 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 <p>可以这样说：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 正确的</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
@@ -1728,32 +3489,32 @@
 <p>以这种方式重新发布名称时，以下关于公共和内部接口的指南仍然适用。</p>
 </li>
 </ul>
-<h3 id="模块级-dunder-名称">模块级 Dunder 名称<a class="headerlink" href="#模块级-dunder-名称" title="Permanent link">¶</a></h3>
+<h3 id="模块级-dunder-名称">模块级 Dunder 名称<a class="headerlink" href="#模块级-dunder-名称" title="Permanent link">&para;</a></h3>
 <p>模块级别的<code>“dunders”</code>（即带有两个前导和两个尾随下划线的名称），例如<code>__all__</code>, <code>__author__</code>,<code>__version__</code>等应该放在模块文档字符串之后但除了 导入之外的任何导入语句之前。Python 要求 <code>future-imports</code> 必须出现在除文档字符串之外的任何其他代码之前的模块中：<code>from __future__</code></p>
-<div class="highlight"><pre><span></span><code><span class="sd">"""这是一个示例模块</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;这是一个示例模块</span>
 
 <span class="sd">这个模块不做任何事</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">barry_as_FLUFL</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">'0.1'</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s1">'Cardinal Biggles'</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.1&#39;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Cardinal Biggles&#39;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 </code></pre></div>
-<h2 id="字符串引号">字符串引号<a class="headerlink" href="#字符串引号" title="Permanent link">¶</a></h2>
+<h2 id="字符串引号">字符串引号<a class="headerlink" href="#字符串引号" title="Permanent link">&para;</a></h2>
 <p>在 <code>Python</code> 中，单引号字符串和双引号字符串是相同的。本 PEP 不对此提出建议。选择一个规则并坚持下去。但是，当字符串包含单引号或双引号字符时，请使用另一个来避免字符串中出现反斜杠。它提高了可读性。</p>
 <p>对于三引号字符串，始终使用双引号字符以与<a href="https://peps.python.org/pep-0257">PEP 257</a>中的文档字符串约定保持一致。</p>
-<h2 id="表达式和语句中的空格">表达式和语句中的空格<a class="headerlink" href="#表达式和语句中的空格" title="Permanent link">¶</a></h2>
-<h3 id="烦恼">烦恼<a class="headerlink" href="#烦恼" title="Permanent link">¶</a></h3>
+<h2 id="表达式和语句中的空格">表达式和语句中的空格<a class="headerlink" href="#表达式和语句中的空格" title="Permanent link">&para;</a></h2>
+<h3 id="烦恼">烦恼<a class="headerlink" href="#烦恼" title="Permanent link">&para;</a></h3>
 <p>在以下情况下避免多余的空格：</p>
 <ul>
 <li>
 <p>紧接在圆括号、方括号或大括号内：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">正确的</label><label for="__tabbed_3_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">正确的</label><label for="__tabbed_3_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">spam</span><span class="p">(</span><span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">eggs</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
@@ -1764,11 +3525,11 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>在尾随逗号和紧随其后的右括号之间：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">正确的</label><label for="__tabbed_4_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">正确的</label><label for="__tabbed_4_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">foo</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span>
@@ -1779,11 +3540,11 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>紧接在逗号、分号或冒号之前：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">正确的</label><label for="__tabbed_5_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">正确的</label><label for="__tabbed_5_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
@@ -1794,11 +3555,11 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>但是，在切片中，冒号的作用类似于二元运算符，并且两边的数量应该相等（将其视为具有最低优先级的运算符）。在扩展切片中，两个冒号必须应用相同的间距。例外：省略切片参数时，省略空格：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">正确的</label><label for="__tabbed_6_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">正确的</label><label for="__tabbed_6_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">ham</span><span class="p">[:</span><span class="mi">9</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">3</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">:]</span>
@@ -1816,11 +3577,11 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>紧接在开始函数调用的参数列表的左括号之前：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">正确的</label><label for="__tabbed_7_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">正确的</label><label for="__tabbed_7_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">spam</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -1831,26 +3592,26 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>在开始索引或切片的左括号之前：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">正确的</label><label for="__tabbed_8_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">正确的</label><label for="__tabbed_8_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">dct</span><span class="p">[</span><span class="s1">'key'</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">dct</span> <span class="p">[</span><span class="s1">'key'</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span> <span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">dct</span> <span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span> <span class="p">[</span><span class="n">index</span><span class="p">]</span>
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>赋值（或其他）运算符周围有多个空格以使其与另一个运算符对齐：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">正确的</label><label for="__tabbed_9_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">正确的</label><label for="__tabbed_9_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1865,16 +3626,16 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 </ul>
-<h3 id="其他建议">其他建议<a class="headerlink" href="#其他建议" title="Permanent link">¶</a></h3>
+<h3 id="其他建议">其他建议<a class="headerlink" href="#其他建议" title="Permanent link">&para;</a></h3>
 <ul>
 <li>避免在任何地方尾随空格。因为它通常是不可见的，所以可能会造成混淆：例如反斜杠后跟空格和换行符不算作续行标记。一些编辑器不保留它，许多项目（如 CPython 本身）都有拒绝它的预提交挂钩。</li>
 <li>始终在两边用一个空格包围这些二元运算符：赋值 (<code>=</code>)、扩充赋值 (<code>+=</code>等<code>-=</code> )、比较 ( <code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>!=</code>, <code>&lt;&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>in</code>, <code>not in</code> , <code>is</code>, <code>is not</code>)、布尔值 ( <code>and</code>, <code>or</code>, <code>not</code>)。</li>
 <li>
 <p>如果使用具有不同优先级的运算符，根据你自己的判断请考虑在具有<strong>最低优先级的运算符周围添加空格</strong>；但是，永远不要使用超过一个空格，并且在二元运算符的两边总是有相同数量的空格：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio"><input id="__tabbed_10_2" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">正确的</label><label for="__tabbed_10_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">正确的</label><label for="__tabbed_10_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1893,11 +3654,11 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>函数注释应该使用冒号的正常规则，并且<code>-&gt;</code>如果存在的话，箭头周围总是有空格。（ 有关函数注释的更多信息，请参见下面的函数注释。）：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio"><input id="__tabbed_11_2" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">正确的</label><label for="__tabbed_11_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">正确的</label><label for="__tabbed_11_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">AnyStr</span><span class="p">):</span> <span class="o">...</span>
@@ -1910,11 +3671,11 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 </li>
 <li>
 <p>当<code>=</code>用于指示<strong>关键字参数</strong>或用于指示 <strong>未注释函数参数的默认值时</strong>，请勿在符号周围使用空格：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">正确的</label><label for="__tabbed_12_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">正确的</label><label for="__tabbed_12_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">complex</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
@@ -1927,9 +3688,9 @@
 </code></pre></div>
 </div>
 </div>
-</input></input></div>
+</div>
 <p>但是，当将参数注释与默认值组合时，请在<code>=</code>符号周围使用空格：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio"><input id="__tabbed_13_2" name="__tabbed_13" type="radio"/><div class="tabbed-labels"><label for="__tabbed_13_1">正确的</label><label for="__tabbed_13_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">正确的</label><label for="__tabbed_13_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="n">sep</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span> <span class="o">...</span>
@@ -1942,14 +3703,14 @@
 </code></pre></div>
 </div>
 </div>
-</input></div>
+</div>
 </li>
 <li>
 <p>通常不鼓励使用复合语句（同一行上的多个语句）:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio"/><input id="__tabbed_14_2" name="__tabbed_14" type="radio"/><div class="tabbed-labels"><label for="__tabbed_14_1">正确的</label><label for="__tabbed_14_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">正确的</label><label for="__tabbed_14_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">&#39;blah&#39;</span><span class="p">:</span>
     <span class="n">do_blah_thing</span><span class="p">()</span>
 <span class="n">do_one</span><span class="p">()</span>
 <span class="n">do_two</span><span class="p">()</span>
@@ -1957,7 +3718,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">&#39;blah&#39;</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
 <span class="n">do_one</span><span class="p">();</span> <span class="n">do_two</span><span class="p">();</span> <span class="n">do_three</span><span class="p">()</span>
 </code></pre></div>
 </div>
@@ -1966,16 +3727,16 @@
 </li>
 <li>
 <p>虽然有时将带有小主体的 <code>if/for/while</code> 放在同一行是可以的，但永远不要对多子句语句这样做。还要避免折叠这么长的线！</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio"/><input id="__tabbed_15_2" name="__tabbed_15" type="radio"/><div class="tabbed-labels"><label for="__tabbed_15_1">正确的</label><label for="__tabbed_15_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">正确的</label><label for="__tabbed_15_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">&#39;blah&#39;</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span> <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
 <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> <span class="n">t</span> <span class="o">=</span> <span class="n">delay</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">&#39;blah&#39;</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
 <span class="k">else</span><span class="p">:</span> <span class="n">do_non_blah_thing</span><span class="p">()</span>
 
 <span class="k">try</span><span class="p">:</span> <span class="n">something</span><span class="p">()</span>
@@ -1984,28 +3745,28 @@
 <span class="n">do_one</span><span class="p">();</span> <span class="n">do_two</span><span class="p">();</span> <span class="n">do_three</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="n">argument</span><span class="p">,</span>
                             <span class="nb">list</span><span class="p">,</span> <span class="n">like</span><span class="p">,</span> <span class="n">this</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">one</span><span class="p">();</span> <span class="n">two</span><span class="p">();</span> <span class="n">three</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">&#39;blah&#39;</span><span class="p">:</span> <span class="n">one</span><span class="p">();</span> <span class="n">two</span><span class="p">();</span> <span class="n">three</span><span class="p">()</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </li>
 </ul>
-<h3 id="何时使用尾随逗号">何时使用尾随逗号<a class="headerlink" href="#何时使用尾随逗号" title="Permanent link">¶</a></h3>
+<h3 id="何时使用尾随逗号">何时使用尾随逗号<a class="headerlink" href="#何时使用尾随逗号" title="Permanent link">&para;</a></h3>
 <p>尾随逗号通常是可选的，除非在制作一个元素的元组时它们是强制性的。为清楚起见，建议将后者括在（技术上多余的）括号中：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Correct:</span>
-<span class="n">FILES</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'setup.cfg'</span><span class="p">,)</span>
+<span class="n">FILES</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;setup.cfg&#39;</span><span class="p">,)</span>
 
 <span class="c1"># Wrong:</span>
-<span class="n">FILES</span> <span class="o">=</span> <span class="s1">'setup.cfg'</span><span class="p">,</span>
+<span class="n">FILES</span> <span class="o">=</span> <span class="s1">&#39;setup.cfg&#39;</span><span class="p">,</span>
 </code></pre></div>
 <p>当尾随逗号是多余的时，它们通常在使用版本控制系统时有用，当值列表、参数或导入项预计会随着时间的推移而扩展时。该模式是将每个值（等）单独放在一行，始终添加尾随逗号，并在下一行添加右括号/方括号/大括号。然而，在结束定界符所在的同一行上有一个尾随逗号是没有意义的（除了上述单例元组的情况）：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio"/><input id="__tabbed_16_2" name="__tabbed_16" type="radio"/><div class="tabbed-labels"><label for="__tabbed_16_1">正确的</label><label for="__tabbed_16_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">正确的</label><label for="__tabbed_16_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">FILES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">'setup.cfg'</span><span class="p">,</span>
-    <span class="s1">'tox.ini'</span><span class="p">,</span>
+    <span class="s1">&#39;setup.cfg&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tox.ini&#39;</span><span class="p">,</span>
     <span class="p">]</span>
 <span class="n">initialize</span><span class="p">(</span><span class="n">FILES</span><span class="p">,</span>
         <span class="n">error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -2013,23 +3774,23 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'setup.cfg'</span><span class="p">,</span> <span class="s1">'tox.ini'</span><span class="p">,]</span>
+<div class="highlight"><pre><span></span><code><span class="n">FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;setup.cfg&#39;</span><span class="p">,</span> <span class="s1">&#39;tox.ini&#39;</span><span class="p">,]</span>
 <span class="n">initialize</span><span class="p">(</span><span class="n">FILES</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<h2 id="注释">注释<a class="headerlink" href="#注释" title="Permanent link">¶</a></h2>
+<h2 id="注释">注释<a class="headerlink" href="#注释" title="Permanent link">&para;</a></h2>
 <p><strong>与代码相矛盾的注释比没有注释更糟糕</strong>。当代码更改时，始终优先保持注释是最新的！</p>
 <p>注释应该是完整的句子。第一个单词应该大写，除非它是以小写字母开头的标识符（永远不要改变标识符的大小写！）。</p>
 <p>块注释通常由一个或多个段落组成，这些段落由完整的句子组成，每个句子以句号结尾。</p>
 <p>在多语句注释中，你应该在句末句号之后使用一到两个空格，但在最后一句话之后除外。</p>
 <p>确保您的注释清晰易懂，其他使用您所用语言的人也易于理解。</p>
 <p>来自非英语国家的 Python 程序员：请用英语写你的注释，除非你 120% 确定代码永远不会被不会说你的语言的人阅读。</p>
-<h3 id="块级注释">块级注释<a class="headerlink" href="#块级注释" title="Permanent link">¶</a></h3>
+<h3 id="块级注释">块级注释<a class="headerlink" href="#块级注释" title="Permanent link">&para;</a></h3>
 <p>块级注释通常适用于它们后面的部分（或全部）代码，并缩进到与该代码相同的级别。块级注释的每一行都以一个<code>#</code>空格开头（除非它是注释中的缩进文本）。</p>
 <p>块级注释内的段落由包含单个<code>#</code>.</p>
-<h3 id="行级注释">行级注释<a class="headerlink" href="#行级注释" title="Permanent link">¶</a></h3>
+<h3 id="行级注释">行级注释<a class="headerlink" href="#行级注释" title="Permanent link">&para;</a></h3>
 <p>谨慎使用行内注释。</p>
 <p>行内注释是与语句位于同一行的注释。行内注释应与语句至少用两个空格分隔。它们应该以 <code>#</code> 和一个空格开头。</p>
 <p>行内注释是不必要的，如果它们陈述显而易见的话，实际上会分散注意力。不要这样做：</p>
@@ -2038,29 +3799,29 @@
 <p>但有时，这很有用：</p>
 <div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>                 <span class="c1"># Compensate for border</span>
 </code></pre></div>
-<h3 id="文档注释">文档注释<a class="headerlink" href="#文档注释" title="Permanent link">¶</a></h3>
+<h3 id="文档注释">文档注释<a class="headerlink" href="#文档注释" title="Permanent link">&para;</a></h3>
 <p>编写好的文档注释（又名“<code>docstrings</code>”）的约定在<a href="https://peps.python.org/pep-0257">PEP 257</a>中永垂不朽。</p>
 <ul>
 <li>为所有<code>公共模块</code>、<code>函数</code>、<code>类</code>和<code>方法</code>编写文档注释。非公共方法不需要 <code>Docstrings</code>，但您应该有一个注释来描述该方法的作用。此注释应出现在该<code>def</code>行之后。</li>
 <li>
 <p><a href="https://peps.python.org/pep-0257">PEP 257</a>描述了良好的文档字符串约定。请注意，最重要的是，结束多行文档字符串的<code>“””</code>应该单独成行：</p>
-<div class="highlight"><pre><span></span><code><span class="sd">"""Return a foobang</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Return a foobang</span>
 
 <span class="sd">Optional plotz says to frobnicate the bizbaz first.</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
 </li>
 <li>
 <p>对于一个单行文档注释，请将结尾放在<code>"""</code>同一行</p>
-<div class="highlight"><pre><span></span><code><span class="sd">"""Return an ex-parrot."""</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Return an ex-parrot.&quot;&quot;&quot;</span>
 </code></pre></div>
 </li>
 </ul>
-<h2 id="命名约定">命名约定<a class="headerlink" href="#命名约定" title="Permanent link">¶</a></h2>
+<h2 id="命名约定">命名约定<a class="headerlink" href="#命名约定" title="Permanent link">&para;</a></h2>
 <p>Python 库的命名约定有点乱，所以我们永远无法做到完全一致——尽管如此，这里是目前推荐的命名标准。新的模块和包（包括第三方框架）应该按照这些标准编写，但是如果现有的库有不同的风格，内部一致性是首选。</p>
-<h3 id="至高无上的原则">至高无上的原则<a class="headerlink" href="#至高无上的原则" title="Permanent link">¶</a></h3>
+<h3 id="至高无上的原则">至高无上的原则<a class="headerlink" href="#至高无上的原则" title="Permanent link">&para;</a></h3>
 <p>作为 API 的公共部分对用户可见的名称应<strong>遵循实际使用</strong>而非实现的约定。</p>
-<h3 id="描述性命名风格">描述性：命名风格<a class="headerlink" href="#描述性命名风格" title="Permanent link">¶</a></h3>
+<h3 id="描述性命名风格">描述性：命名风格<a class="headerlink" href="#描述性命名风格" title="Permanent link">&para;</a></h3>
 <p>有很多不同的命名风格。它有助于识别正在使用的命名风格，独立于它们的用途。</p>
 <p>通常区分以下命名样式：</p>
 <ul>
@@ -2086,7 +3847,7 @@
 <li><code>_single_leading_underscore</code>：弱的“<strong>内部使用</strong>”指标。例如，不导入名称以下划线开头的对象。<code>from M import *</code></li>
 <li>
 <p><code>single_trailing_underscore_</code>: 按照惯例使用以避免与 <code>Python</code> 关键字冲突，例如</p>
-<div class="highlight"><pre><span></span><code><span class="n">tkinter</span><span class="o">.</span><span class="n">Toplevel</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'ClassName'</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">tkinter</span><span class="o">.</span><span class="n">Toplevel</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;ClassName&#39;</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
@@ -2094,48 +3855,48 @@
 </li>
 <li><code>double_leading_and_trailing_underscore</code>：存在于用户控制的命名空间中的“<strong>魔法</strong>”对象或属性。例如<code>__init__</code>，<code>import__</code>或<code>__file</code>。永远不要发明这样的名字；仅按照记录使用它们。</li>
 </ul>
-<h3 id="规范命名约定">规范：命名约定<a class="headerlink" href="#规范命名约定" title="Permanent link">¶</a></h3>
-<h4 id="要避免的名称">要避免的名称<a class="headerlink" href="#要避免的名称" title="Permanent link">¶</a></h4>
+<h3 id="规范命名约定">规范：命名约定<a class="headerlink" href="#规范命名约定" title="Permanent link">&para;</a></h3>
+<h4 id="要避免的名称">要避免的名称<a class="headerlink" href="#要避免的名称" title="Permanent link">&para;</a></h4>
 <p>切勿使用字符“<code>l</code>”（小写字母 <code>el</code>）、“<code>O</code>”（大写字母 <code>oh</code>）或“<code>I</code>”（大写字母 <code>eye</code>）作为单字符变量名。</p>
 <p>在某些字体中，这些字符与数字 <code>1</code> 和 <code>0</code> 无法区分。当想要使用“<code>l</code>”时，请改用“<code>L</code>”。</p>
-<h4 id="ascii-兼容性">ASCII 兼容性<a class="headerlink" href="#ascii-兼容性" title="Permanent link">¶</a></h4>
+<h4 id="ascii-兼容性">ASCII 兼容性<a class="headerlink" href="#ascii-兼容性" title="Permanent link">&para;</a></h4>
 <p>标准库中使用的标识符必须是 <code>ASCII</code> 兼容的，如 <a href="https://peps.python.org/pep-3131">PEP 3131</a> 的<a href="https://peps.python.org/pep-3131#policy-specification">政策部分</a>所述。</p>
-<h4 id="包和模块名称">包和模块名称<a class="headerlink" href="#包和模块名称" title="Permanent link">¶</a></h4>
+<h4 id="包和模块名称">包和模块名称<a class="headerlink" href="#包和模块名称" title="Permanent link">&para;</a></h4>
 <p>模块应该有简短的全小写名称。如果提高可读性，可以在模块名称中使用下划线。<code>Python</code> 包也应该有简短的、全小写的名称，尽管不鼓励使用下划线。</p>
 <p>当用 C 或 C++ 编写的扩展模块具有提供更高级别（例如，更面向对象）接口的附带 <code>Python</code> 模块时，<code>C/C++</code> 模块具有前导下划线（例如 ）<code>_socket</code>。</p>
-<h4 id="类名">类名<a class="headerlink" href="#类名" title="Permanent link">¶</a></h4>
+<h4 id="类名">类名<a class="headerlink" href="#类名" title="Permanent link">&para;</a></h4>
 <p>类名通常应使用 <code>CapWords</code> 约定。</p>
 <p>在记录接口并主要用作可调用接口的情况下，可以使用函数的命名约定。</p>
 <p>请注意，内置名称有一个单独的约定：大多数内置名称是单个单词（或两个单词一起运行），<code>CapWords</code> 约定仅用于异常名称和内置常量。</p>
-<h4 id="输入变量名">输入变量名<a class="headerlink" href="#输入变量名" title="Permanent link">¶</a></h4>
+<h4 id="输入变量名">输入变量名<a class="headerlink" href="#输入变量名" title="Permanent link">&para;</a></h4>
 <p><a href="https://peps.python.org/pep-0484">PEP 484</a>中引入的类型变量的名称通常应该使用 <code>CapWords</code>，更喜欢短名称：<code>T</code>, <code>AnyStr</code>, <code>Num</code>。建议为用于声明<code>协变</code>或<code>逆变行为</code>的变量添加后缀<code>_co</code> 或者 <code>_contra</code></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span>
 
-<span class="n">VT_co</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">'VT_co'</span><span class="p">,</span> <span class="n">covariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">KT_contra</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">'KT_contra'</span><span class="p">,</span> <span class="n">contravariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">VT_co</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;VT_co&#39;</span><span class="p">,</span> <span class="n">covariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">KT_contra</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;KT_contra&#39;</span><span class="p">,</span> <span class="n">contravariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="异常名称">异常名称<a class="headerlink" href="#异常名称" title="Permanent link">¶</a></h4>
+<h4 id="异常名称">异常名称<a class="headerlink" href="#异常名称" title="Permanent link">&para;</a></h4>
 <p>因为异常应该是类，所以这里适用类命名约定。但是，您应该在异常名称上使用后缀“<code>Error</code>”（如果异常实际上是错误）。</p>
-<h4 id="全局变量名">全局变量名<a class="headerlink" href="#全局变量名" title="Permanent link">¶</a></h4>
+<h4 id="全局变量名">全局变量名<a class="headerlink" href="#全局变量名" title="Permanent link">&para;</a></h4>
 <p>（希望这些变量仅供在一个模块内使用。）这些约定与函数的约定大致相同。</p>
 <p>设计为通过 <code>from M import *</code> 使用的模块应该使用 <code>__all__</code> 机制来防止导出全局变量，或者使用在此类全局变量前加上下划线的旧约定（您可能想这样做以表明这些全局变量是“<strong>模块的而非公共</strong>”）。</p>
-<h4 id="函数和变量名称">函数和变量名称<a class="headerlink" href="#函数和变量名称" title="Permanent link">¶</a></h4>
+<h4 id="函数和变量名称">函数和变量名称<a class="headerlink" href="#函数和变量名称" title="Permanent link">&para;</a></h4>
 <p><mark class="critic"><strong>函数名应该是小写的，必要时用下划线分隔单词以提高可读性。</strong></mark></p>
 <p><strong>变量名称遵循与函数名称相同的约定。</strong></p>
 <p><code>mixedCase</code> 只允许在已经是流行风格的上下文中使用（例如 <code>threading.py</code>），以保持向后兼容性。</p>
-<h4 id="函数和方法参数">函数和方法参数<a class="headerlink" href="#函数和方法参数" title="Permanent link">¶</a></h4>
+<h4 id="函数和方法参数">函数和方法参数<a class="headerlink" href="#函数和方法参数" title="Permanent link">&para;</a></h4>
 <p>始终使用 <code>self</code> 作为实例方法的第一个参数。</p>
 <p>始终使用 <code>cls</code> 作为类方法的第一个参数。</p>
 <p><strong>如果函数参数的名称与保留关键字冲突，通常最好在末尾附加一个下划线，而不是使用缩写或拼写错误。</strong> 因此 <code>class_</code> 优于 <code>clss</code>。 （也许更好的方法是使用同义词来避免此类冲突。）</p>
-<h4 id="方法名称和实例变量">方法名称和实例变量<a class="headerlink" href="#方法名称和实例变量" title="Permanent link">¶</a></h4>
+<h4 id="方法名称和实例变量">方法名称和实例变量<a class="headerlink" href="#方法名称和实例变量" title="Permanent link">&para;</a></h4>
 <p>使用函数命名规则：<strong>小写字母，必要时用下划线分隔单词以提高可读性。</strong></p>
 <p><strong>仅对非公共方法和实例变量使用一个前导下划线。</strong></p>
 <p>为避免与子类的名称冲突，请使用两个前导下划线来调用 Python 的名称修改规则。</p>
 <p>Python 将这些名称与类名称混淆：如果类 <code>Foo</code> 具有名为 <code>__a</code> 的属性，则 <code>Foo.__a</code> 无法访问它。 （坚持不懈的用户仍然可以通过调用 <code>Foo._Foo__a</code> 获得访问权限。）通常，双前导下划线应该只用于避免与设计为子类化的类中的属性发生名称冲突。</p>
 <p>注意：关于 <code>__names</code> 的使用存在一些争议（见下文）。</p>
-<h4 id="常量">常量<a class="headerlink" href="#常量" title="Permanent link">¶</a></h4>
+<h4 id="常量">常量<a class="headerlink" href="#常量" title="Permanent link">&para;</a></h4>
 <p>常量通常在模块级别定义，并全部用大写字母书写，并用下划线分隔单词。示例包括 <code>MAX_OVERFLOW</code>和<code>TOTAL</code>。</p>
-<h4 id="为继承而设计">为继承而设计<a class="headerlink" href="#为继承而设计" title="Permanent link">¶</a></h4>
+<h4 id="为继承而设计">为继承而设计<a class="headerlink" href="#为继承而设计" title="Permanent link">&para;</a></h4>
 <p>始终决定一个类的方法和实例变量（统称为“属性”）应该是公共的还是非公共的。如有疑问，选择非公开；稍后将其公开比将公共属性设为非公开更容易。</p>
 <p>公共属性是您希望您的类的不相关客户使用的属性，并且您承诺避免向后不兼容的更改。 非公共属性是指不打算由第三方使用的属性； 您不保证非公共属性不会更改甚至被删除。</p>
 <p>我们在这里不使用术语“<code>private</code>”，因为在 Python 中没有属性是真正私有的（通常没有不必要的工作量）。</p>
@@ -2159,14 +3920,14 @@
 <p>注 3：不是每个人都喜欢名称修改。 尝试在避免意外名称冲突的需要与高级调用者的潜在使用之间取得平衡。</p>
 </li>
 </ul>
-<h3 id="公共和内部接口">公共和内部接口<a class="headerlink" href="#公共和内部接口" title="Permanent link">¶</a></h3>
+<h3 id="公共和内部接口">公共和内部接口<a class="headerlink" href="#公共和内部接口" title="Permanent link">&para;</a></h3>
 <p>任何向后兼容性保证仅适用于公共接口。因此，用户能够清楚地区分公共界面和内部界面是很重要的。</p>
 <p>记录的接口被认为是公共的，除非文档明确声明它们是临时的或内部接口，不受通常的向后兼容性保证的约束。<strong>应假定所有未记录的接口都是内部的。</strong></p>
 <p>为了更好地支持内省，模块应该使用属性在其公共 API 中显式声明名称<code>__all__</code>。设置 <code>__all__</code>为空列表表示该模块没有公共 API。</p>
 <p>即使<code>__all__</code>设置得当，内部接口（包、模块、类、函数、属性或其他名称）仍应以单个前导下划线作为前缀。</p>
 <p>如果任何包含的命名空间（包、模块或类）被认为是内部的，那么接口也被认为是内部的。</p>
 <p>导入的名称应始终被视为实现细节。 其他模块不得依赖于对此类导入名称的间接访问，除非它们是包含模块 API 的明确记录部分，例如 <code>os.path</code> 或包的 <code>__init__</code> 模块公开子模块的功能。</p>
-<h2 id="编程建议">编程建议<a class="headerlink" href="#编程建议" title="Permanent link">¶</a></h2>
+<h2 id="编程建议">编程建议<a class="headerlink" href="#编程建议" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>代码的编写方式应不损害 <code>Python</code> 的其他实现（<code>PyPy</code>、<code>Jython</code>、<code>IronPython</code>、<code>Cython</code>、<code>Psyco</code> 等）。</p>
@@ -2228,7 +3989,7 @@
 </li>
 <li>
 <p>此外，对于所有 <code>try/except</code> 子句，将 <code>try</code> 子句限制为所需的绝对最小代码量。 同样，这避免了掩盖错误：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio"/><input id="__tabbed_17_2" name="__tabbed_17" type="radio"/><div class="tabbed-labels"><label for="__tabbed_17_1">正确的</label><label for="__tabbed_17_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">正确的</label><label for="__tabbed_17_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
@@ -2253,7 +4014,7 @@
 </li>
 <li>
 <p>当资源对于特定代码部分而言是本地资源时，请使用 <code>with</code> 语句以确保在使用后及时可靠地清理它。 <code>try/finally</code> 语句也是可以接受的。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio"/><input id="__tabbed_18_2" name="__tabbed_18" type="radio"/><div class="tabbed-labels"><label for="__tabbed_18_1">正确的</label><label for="__tabbed_18_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">正确的</label><label for="__tabbed_18_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin_transaction</span><span class="p">():</span>
@@ -2271,7 +4032,7 @@
 </li>
 <li>
 <p>在返回语句中保持一致。 函数中的所有 <code>return</code> 语句要么都应该返回一个表达式，要么都不应该。 如果任何 <code>return</code> 语句返回一个表达式，任何没有返回值的 <code>return</code> 语句都应该明确地将其声明为 <code>return None</code>，并且函数的末尾应该有一个显式的 <code>return</code> 语句（如果可以）：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio"/><input id="__tabbed_19_2" name="__tabbed_19" type="radio"/><div class="tabbed-labels"><label for="__tabbed_19_1">正确的</label><label for="__tabbed_19_2">错误的</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">正确的</label><label for="__tabbed_19_2">错误的</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -2304,10 +4065,10 @@
 <p>使用 <code>''.startswith()</code> 和 <code>''.endswith()</code> 而不是字符串切片来检查前缀或后缀。</p>
 <p><code>startswith()</code> 和 <code>endswith()</code> 更简洁且不易出错：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Correct:</span>
-<span class="k">if</span> <span class="n">foo</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">):</span>
+<span class="k">if</span> <span class="n">foo</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">):</span>
 
 <span class="c1"># Wrong:</span>
-<span class="k">if</span> <span class="n">foo</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'bar'</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">foo</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span>
 </code></pre></div>
 </li>
 <li>
@@ -2356,7 +4117,7 @@
 </code></pre></div>
 </li>
 </ul>
-<h3 id="函数注解">函数注解<a class="headerlink" href="#函数注解" title="Permanent link">¶</a></h3>
+<h3 id="函数注解">函数注解<a class="headerlink" href="#函数注解" title="Permanent link">&para;</a></h3>
 <p>随着 <a href="https://peps.python.org/pep-0484">PEP 484</a> 的接受，函数注释的样式规则发生了变化。</p>
 <ul>
 <li>函数注释应使用 <a href="https://peps.python.org/pep-0484">PEP 484</a> 语法（在上一节中有一些注释的格式建议）。</li>
@@ -2374,7 +4135,7 @@
 </li>
 <li>不想使用类型检查器的用户可以随意忽略它们。 但是，预计第三方库包的用户可能希望对这些包运行类型检查器。 为此，<a href="https://peps.python.org/pep-0484">PEP 484</a> 建议使用存根文件：类型检查器优先读取相应的 <code>.py</code> 文件的 <code>.pyi</code> 文件。 存根文件可以与库一起分发，也可以通过 <code>typeshed repo</code> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> 单独分发（在库作者的许可下）。</li>
 </ul>
-<h3 id="变量注解">变量注解<a class="headerlink" href="#变量注解" title="Permanent link">¶</a></h3>
+<h3 id="变量注解">变量注解<a class="headerlink" href="#变量注解" title="Permanent link">&para;</a></h3>
 <p><a href="https://peps.python.org/pep-0526">PEP 526</a> 引入了变量注释。 对它们的样式建议与上述函数注释的样式建议类似：</p>
 <ul>
 <li><code>模块级变量</code>、<code>类</code>和<code>实例变量</code>以及<code>局部变量</code>的注释应该<strong>在冒号后有一个空格</strong>。</li>
@@ -2387,7 +4148,7 @@
 
 <span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
     <span class="n">coords</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
-    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'&lt;unknown&gt;'</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&lt;unknown&gt;&#39;</span>
 
 <span class="c1"># Wrong:</span>
 
@@ -2402,74 +4163,103 @@
 <p>尽管 <code>Python 3.6</code> 接受 <a href="https://peps.python.org/pep-0526">PEP 526</a>，但变量注释语法是所有 Python 版本上存根文件的首选语法（有关详细信息，请参阅 <a href="https://peps.python.org/pep-0484">PEP 484</a>）。</p>
 </li>
 </ul>
-<h2 id="版权">版权<a class="headerlink" href="#版权" title="Permanent link">¶</a></h2>
+<h2 id="版权">版权<a class="headerlink" href="#版权" title="Permanent link">&para;</a></h2>
 <p>本文档已置于公共领域。</p>
 <p>来源：<a href="https://github.com/python/peps/blob/main/pep-0008.txt" target="_blank">https://github.com/python/peps/blob/main/pep-0008.txt</a></p>
 <p>最后修改时间：2023-02-25 12:44:10 GMT</p>
-<h2 id="参考">参考<a class="headerlink" href="#参考" title="Permanent link">¶</a></h2>
+<h2 id="参考">参考<a class="headerlink" href="#参考" title="Permanent link">&para;</a></h2>
 <div class="footnote">
-<hr/>
+<hr />
 <ol>
 <li id="fn:1">
-<p>悬挂缩进是一种排版样式，其中段落中除第一行外的所有行都缩进。在 Python 的上下文中，该术语用于描述一种样式，其中带括号的语句的左括号是该行的最后一个非空白字符，后续行缩进直到右括号。 <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+<p>悬挂缩进是一种排版样式，其中段落中除第一行外的所有行都缩进。在 Python 的上下文中，该术语用于描述一种样式，其中带括号的语句的左括号是该行的最后一个非空白字符，后续行缩进直到右括号。&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>Barry 的 GNU Mailman 风格指南 <a href="http://barry.warsaw.us/software/STYLEGUIDE.txt" target="_blank">http://barry.warsaw.us/software/STYLEGUIDE.txt</a> <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+<p>Barry 的 GNU Mailman 风格指南 <a href="http://barry.warsaw.us/software/STYLEGUIDE.txt" target="_blank">http://barry.warsaw.us/software/STYLEGUIDE.txt</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>Donald Knuth 的 《The TeXBook》，第 195 和 196 页。 <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
+<p>Donald Knuth 的 《The TeXBook》，第 195 和 196 页。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p><a href="http://www.wikipedia.com/wiki/CamelCase">http://www.wikipedia.com/wiki/CamelCase</a> <a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">↩</a></p>
+<p><a href="http://www.wikipedia.com/wiki/CamelCase">http://www.wikipedia.com/wiki/CamelCase</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>Typeshed repo <a href="https://github.com/python/typeshed">https://github.com/python/typeshed</a> <a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">↩</a></p>
+<p>Typeshed repo <a href="https://github.com/python/typeshed">https://github.com/python/typeshed</a>&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
-<hr/>
+
+  <hr>
 <div class="md-source-file">
-<small>
+  <small>
     
       最后更新:
       <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月28日</span>
-<br/>
+      
+        <br>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月27日</span>
-</small>
+      
+    
+  </small>
 </div>
-</article>
-</div>
-<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
-</div>
-<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             回到页面顶部
-          </a>
-</main>
-<footer class="md-footer">
-<div class="md-footer-meta md-typeset">
-<div class="md-footer-meta__inner md-grid">
-<div class="md-copyright">
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
     </a>
+  
 </div>
-</div>
-</div>
+      
+    </div>
+  </div>
 </footer>
-</div>
-<div class="md-dialog" data-md-component="dialog">
-<div class="md-dialog__inner md-typeset"></div>
-</div>
-<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
-<script src="../../../javascripts/mathjax.js"></script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
