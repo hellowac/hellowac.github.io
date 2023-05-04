@@ -789,13 +789,65 @@ def all(iterable):
 
 ### range
 
+生成指定区间的整数数列
+
+```python
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> list(range(1, 11))
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> list(range(0, 30, 5))
+[0, 5, 10, 15, 20, 25]
+>>> list(range(0, 10, 3))
+[0, 3, 6, 9]
+```
+
 ### getattr
 
+返回对象命名属性的值。 名称必须是字符串。 
+
 ### setattr
+
+赋值指定属性以及值给对象。
+
+如 `setattr(x, 'foobar', 123)` 等价于 `x.foobar = 123`。
+
+### hasattr
+
+判断一个对象是否拥有某个属性， 如果拥有返回`True`、否则返回`False`
+
+### enumerate
+
+返回一个枚举对象。`iterable` 必须是一个序列，或 `iterator`，或其他支持迭代的对象。 `enumerate()` 返回的迭代器的 `__next__()` 方法返回一个元组，里面包含一个计数值（从 `start` 开始，默认为 `0`）和通过迭代 `iterable` 获得的值。
+
+```python
+>>> seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+>>> list(enumerate(seasons))
+[(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
+>>> list(enumerate(seasons, start=1))
+[(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
+```
+
+等价于:
+
+```python
+def enumerate(iterable, start=0):
+    n = start
+    for elem in iterable:
+        yield n, elem
+        n += 1
+```
 
 ## 项目实战
 
 ### 代码优化1
+
+优化要点:
+
+1. 赋值初始化语句和取值语句提取到一块
+2. 各个代码块之间增加一个空行，便于阅读
+3. 优化URL参数数据结构构造
+4. 类型标注
 
 优化前
 
@@ -825,7 +877,7 @@ def get_access_token(cls, data):
 优化后:
 
 ```python
-def get_access_token(cls, data):
+def get_access_token(cls, data: dict) -> Union[dict, str]:
     param = data.get('param')
     code = param.get('code')
     home_url = param.get('home_url')
@@ -846,7 +898,7 @@ def get_access_token(cls, data):
 
     url = f'https://api.weixin.qq.com/sns/oauth2/access_token?{param_url}'
     # 获取到微信的access_token、openid
-    res = requests.get(url, params=data).json()
+    res = requests.get(url).json()
 
     # 存在跳转链接
     if home_url:

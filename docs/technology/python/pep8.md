@@ -1078,9 +1078,13 @@ Python 将这些名称与类名称混淆：如果类 `Foo` 具有名为 `__a` �
 ## 参考
 
 [^1]: 悬挂缩进是一种排版样式，其中段落中除第一行外的所有行都缩进。在 Python 的上下文中，该术语用于描述一种样式，其中带括号的语句的左括号是该行的最后一个非空白字符，后续行缩进直到右括号。
+
 [^2]: Barry 的 GNU Mailman 风格指南 <http://barry.warsaw.us/software/STYLEGUIDE.txt>{target="_blank"}
+
 [^3]: Donald Knuth 的 《The TeXBook》，第 195 和 196 页。
+
 [^4]: <http://www.wikipedia.com/wiki/CamelCase>
+
 [^5]: Typeshed repo <https://github.com/python/typeshed>
 
 [PEP 484]: https://peps.python.org/pep-0484
