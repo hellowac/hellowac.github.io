@@ -918,6 +918,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#hasattr" class="md-nav__link">
+    hasattr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerate" class="md-nav__link">
+    enumerate
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3395,6 +3409,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#hasattr" class="md-nav__link">
+    hasattr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerate" class="md-nav__link">
+    enumerate
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4086,10 +4114,47 @@
 <p>从 <code>start</code> 开始自左向右对 <code>iterable</code> 的项求和并返回总计值。 <code>iterable</code> 的项通常为数字，而 <code>start</code> 值则不允许为字符串。</p>
 <p>对某些用例来说，存在 <code>sum()</code> 的更好替代。 拼接字符串序列的更好更快方式是调用 <code>''.join(sequence)</code>。 要以扩展精度对浮点值求和，参考 <code>math.fsum()</code>。 要拼接一系列可迭代对象，请参考使用 <code>itertools.chain()</code>。</p>
 <h3 id="range">range<a class="headerlink" href="#range" title="Permanent link">&para;</a></h3>
+<p>生成指定区间的整数数列</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</code></pre></div>
 <h3 id="getattr">getattr<a class="headerlink" href="#getattr" title="Permanent link">&para;</a></h3>
+<p>返回对象命名属性的值。 名称必须是字符串。 </p>
 <h3 id="setattr">setattr<a class="headerlink" href="#setattr" title="Permanent link">&para;</a></h3>
+<p>赋值指定属性以及值给对象。</p>
+<p>如 <code>setattr(x, 'foobar', 123)</code> 等价于 <code>x.foobar = 123</code>。</p>
+<h3 id="hasattr">hasattr<a class="headerlink" href="#hasattr" title="Permanent link">&para;</a></h3>
+<p>判断一个对象是否拥有某个属性， 如果拥有返回<code>True</code>、否则返回<code>False</code></p>
+<h3 id="enumerate">enumerate<a class="headerlink" href="#enumerate" title="Permanent link">&para;</a></h3>
+<p>返回一个枚举对象。<code>iterable</code> 必须是一个序列，或 <code>iterator</code>，或其他支持迭代的对象。 <code>enumerate()</code> 返回的迭代器的 <code>__next__()</code> 方法返回一个元组，里面包含一个计数值（从 <code>start</code> 开始，默认为 <code>0</code>）和通过迭代 <code>iterable</code> 获得的值。</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">seasons</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spring&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">seasons</span><span class="p">))</span>
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Spring&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">)]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">seasons</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Spring&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<p>等价于:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span><span class="p">,</span> <span class="n">elem</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
 <h2 id="项目实战">项目实战<a class="headerlink" href="#项目实战" title="Permanent link">&para;</a></h2>
 <h3 id="代码优化1">代码优化1<a class="headerlink" href="#代码优化1" title="Permanent link">&para;</a></h3>
+<p>优化要点:</p>
+<ol>
+<li>赋值初始化语句和取值语句提取到一块</li>
+<li>各个代码块之间增加一个空行，便于阅读</li>
+<li>优化URL参数数据结构构造</li>
+<li>类型标注</li>
+</ol>
 <p>优化前</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_access_token</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="n">param</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;param&#39;</span><span class="p">)</span>
@@ -4113,7 +4178,7 @@
     <span class="p">}</span>
 </code></pre></div>
 <p>优化后:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_access_token</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_access_token</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
     <span class="n">param</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;param&#39;</span><span class="p">)</span>
     <span class="n">code</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span>
     <span class="n">home_url</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;home_url&#39;</span><span class="p">)</span>
@@ -4134,7 +4199,7 @@
 
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://api.weixin.qq.com/sns/oauth2/access_token?</span><span class="si">{</span><span class="n">param_url</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="c1"># 获取到微信的access_token、openid</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
     <span class="c1"># 存在跳转链接</span>
     <span class="k">if</span> <span class="n">home_url</span><span class="p">:</span>
@@ -4161,7 +4226,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年4月27日</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年5月4日</span>
       
         <br>
         创建日期:
