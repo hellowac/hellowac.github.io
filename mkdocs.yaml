@@ -3,33 +3,32 @@ repo_name: hellowac的个人博客
 repo_url: https://github.com/hellowac/hellowac.github.io/
 site_description: hellowac的工作学习生活笔记
 
-
 # 配置主题，在mkdocs.yml文件下
 theme:
   name: material
   custom_dir: overrides
   language: zh
-  palette:            # 文档颜色, https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
-    scheme: default   # 配色方案
-    primary: default  # 主色
-    accent: red       # 强调色
+  palette: # 文档颜色, https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+    scheme: default # 配色方案
+    primary: default # 主色
+    accent: red # 强调色
   features:
-    - content.code.copy  # 代码支持拷贝
-    - content.tabs.link  # 内容tabs支持
+    - content.code.copy # 代码支持拷贝
+    - content.tabs.link # 内容tabs支持
     - navigation.tabs # 顶部导航
     - navigation.tabs.sticky # 顶部导航粘连
-    - navigation.indexes  # 导航index页面支持
+    - navigation.indexes # 导航index页面支持
     # - navigation.sections # 全部展开(非折叠状态)
     # - navigation.expand # 子目录展开
-    - navigation.top  # 返回顶部按钮
-    - toc.follow      # 页面目录支持
+    - navigation.top # 返回顶部按钮
+    - toc.follow # 页面目录支持
 
 # 插件
 plugins:
   - glightbox
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-  - git-revision-date-localized:  # 支持文档创建时间显示， https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  - git-revision-date-localized: # 支持文档创建时间显示， https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
       locale: zh
       enable_creation_date: true
       type: date
@@ -38,35 +37,36 @@ plugins:
 markdown_extensions:
   - tables
   - admonition
-  - attr_list 
-  - footnotes         # 引用支持            https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
-  - def_list          # 键-值组合的list     https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
-  - toc:              # 页面目录支持         https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents
+  - attr_list
+  - footnotes # 引用支持            https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
+  - def_list # 键-值组合的list     https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
+  - toc: # 页面目录支持         https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents
       permalink: true # 标题锚点支持
-      slugify: !!python/object/apply:pymdownx.slugs.slugify  # 区分大小写的显示标题
+      slugify:
+        !!python/object/apply:pymdownx.slugs.slugify # 区分大小写的显示标题
         kwds:
-          case: lower  # 全小写支持
-  - md_in_html        # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
+          case: lower # 全小写支持
+  - md_in_html # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes
   # pymdownx 扩展，参考：https://facelessuser.github.io/pymdown-extensions/
-  - pymdownx.inlinehilite   # 单行高亮, 参考: https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlighting-specific-lines
-  - pymdownx.critic         # 支持部分字段格式化，参考：https://squidfunk.github.io/mkdocs-material/reference/formatting/
-  - pymdownx.highlight      # 支持代码块高亮显示
+  - pymdownx.inlinehilite # 单行高亮, 参考: https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#highlighting-specific-lines
+  - pymdownx.critic # 支持部分字段格式化，参考：https://squidfunk.github.io/mkdocs-material/reference/formatting/
+  - pymdownx.highlight # 支持代码块高亮显示
   - pymdownx.snippets
   - pymdownx.details
-  - pymdownx.superfences:    # 注释 : 
+  - pymdownx.superfences: # 注释 :
       # preserve_tabs: true
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:         # 支持内容tab, https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
-      alternate_style: true 
-  - pymdownx.caret          # 下划线, 上标 : https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde 
-                            #               https://facelessuser.github.io/pymdown-extensions/extensions/caret/
-  - pymdownx.mark          # 标记 :https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
-                            #      https://facelessuser.github.io/pymdown-extensions/extensions/mark/
-  - pymdownx.tilde          # 删除线, 下标  参考: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
-                            #                   https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
+  - pymdownx.tabbed: # 支持内容tab, https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
+      alternate_style: true
+  - pymdownx.caret # 下划线, 上标 : https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
+    #               https://facelessuser.github.io/pymdown-extensions/extensions/caret/
+  - pymdownx.mark # 标记 :https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
+    #      https://facelessuser.github.io/pymdown-extensions/extensions/mark/
+  - pymdownx.tilde # 删除线, 下标  参考: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/?h=caret#caret-mark-tilde
+    #                   https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
   - pymdownx.arithmatex:
       generic: true
 
@@ -81,125 +81,127 @@ extra_javascript:
 # 页面导航
 nav:
   - 首页: index.md
-  - 技术: 
-    - Python:
-      - technology/python/index.md
-      - technology/python/typehint.md
-      - technology/python/pep8.md
-      - technology/python/code_style_guide.md
-      - technology/python/pip.md
-      - technology/python/stringio.md
-      - technology/python/flask.md
-      - technology/python/django.md
-      - technology/python/logging.md
-      - technology/python/importlib.md
-      - technology/python/pycrypto.md
-      - technology/python/petl.md
-      - technology/python/psutil.md
-      - technology/python/docx.md
-      - technology/python/excel.md
-      - technology/python/reportlab.md
-      - technology/python/alembic.md
-      - technology/python/sqlalchemy.md
-      - technology/python/useful_functions.md
-    - Linux:
-      - technology/linux/index.md
-      - 端口占用查找: technology/linux/port.md
-      - linux磁盘挂载: technology/linux/disk-mount.md
-      - shell脚本实战: technology/linux/shell-scripts.md
-    - C: 
-      - technology/C/index.md
-    - 前端知识:
-      - technology/front/index.md
-      - 工程化流程: technology/front/project.md
-      - 包版本知识: technology/front/version.md
-      - package.json知识: technology/front/package.md
-      - WebAssembly: technology/front/webassembly.md
-    - 服务组件:
-      - zookeeper: technology/components/zookeeper.md
-      - nginx: technology/components/nginx.md
-      - supervisor: technology/components/supervisor.md
-      - rabbitmq: technology/components/rabbitmq.md
-      - kafka: technology/components/kafka.md
-      - 无头浏览器: 
-        - openchrome: technology/unheadchrome/openchrome.md
-        - 环境搭建: technology/unheadchrome/build_env.md
-    - 数据库:
-      - ClickHouse: technology/database/clickhouse.md
-      - MySQL: 
-        - mysql8: technology/database/mysql8_install.md
-        - 常用操作: technology/database/mysql.md
-      - ElasticSearch:
-        - elasticsearch-py: technology/database/elasticsearch_py.md
-        - elasticsearch-dsl: technology/database/es_dsl.md
-        - elasticsearch-aggs: technology/database/es_aggs.md
-    - 安全渗透:
-      - hydra: technology/security/thc-hydra.md
-      - sqlmap: technology/security/sqlmap.md
-    - RFC标准:
-      - oauth2学习笔记: technology/rfc/oauth2.md
-      - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
-      - Oauth2-RFC6750翻译: technology/rfc/rfc6750.md
-    - 知识概念:
-      - 项目文档结构示例: technology/concept/project_doc_layout.md
-      - 上位机简介: technology/concept/pc.md
-      - xaas概念: technology/concept/xaas.md
-      - 一文搞懂什么是SaaS、BaaS、PaaS和IaaS: technology/concept/xaas2.md
-      - 统一用户管理: technology/concept/users.md
-      - ETL数据处理: technology/concept/etl.md
-      - 数据传输和对接: technology/concept/data_transfer.md
-      - 深入理解计算机系统: technology/concept/understand_computer_system.md
-    - 其他:
-      - 嵌入式行业: technology/other/embedded_industry.md
-      - apache license2.0开源协议: technology/other/apache_license2.md
-  - 阅读: 
-    - 英语: 
-      - BlueLevel: read/english/bluelevel.md
-      - RedLevel: read/english/redlevel.md
-    - 如何阅读一本书: read/book/howtoreadbook.md
-    - 如何避免愚蠢的见识: read/howtoavoid.md
-    - 灵魂的最高处: read/placeofsoul.md
-    - 恶意匹配: read/maliciousmatch.md
-    - 沟通的艺术:
-      - 沟通入门: read/book/artofcommunication01.md
-      - 看入人里:自我: read/book/artofcommunication02.md
-      - 看入人里:知觉: read/book/artofcommunication03.md
-      - 看入人里:情绪: read/book/artofcommunication04.md
-      - 看出人外:语言: read/book/artofcommunication05.md
-      - 看出人外:非语言沟通: read/book/artofcommunication06.md
-      - 看出人外:倾听: read/book/artofcommunication07.md
-      - 看人之间:沟通和关系的演变: read/book/artofcommunication08.md
-      - 看人之间:人际沟通中的亲密关系: read/book/artofcommunication09.md
-      - 看人之间:增进沟通气氛: read/book/artofcommunication10.md
-      - 看人之间:处理人际冲突: read/book/artofcommunication11.md
-      - 阅读总结: read/book/artofcommunication12.md
-  - 理财: 
-    - 理财网站: invest/webs.md
-  - 工具: 
-    - 仓库合集: tools/repos.md
-    - git 起步: tools/git1.md
-    - git 基础: tools/git2.md
-    - git 分支: tools/git3.md
-    - git 服务器: tools/git4.md
-    - git 分布式: tools/git5.md
-    - git hub: tools/git6.md
-    - git 工具: tools/git7.md
-    - git 自定义: tools/git8.md
-    - git 与其他系统: tools/git9.md
-    - git 内部原理: tools/git10.md
-    - git 其他环境中使用: tools/gita1.md
-    - git 应用中嵌入: tools/gita2.md
-    - git 命令: tools/gita3.md
-  - 文档: 
-    - 文档合集: documents/docs.md
+  - 技术:
+      - Python:
+          - technology/python/index.md
+          - technology/python/typehint.md
+          - technology/python/pep8.md
+          - technology/python/code_style_guide.md
+          - technology/python/pip.md
+          - technology/python/stringio.md
+          - technology/python/flask.md
+          - technology/python/django.md
+          - technology/python/logging.md
+          - technology/python/importlib.md
+          - technology/python/pycrypto.md
+          - technology/python/petl.md
+          - technology/python/psutil.md
+          - technology/python/docx.md
+          - technology/python/excel.md
+          - technology/python/reportlab.md
+          - technology/python/alembic.md
+          - technology/python/sqlalchemy.md
+          - technology/python/nemeko_playground.md
+          - technology/python/useful_functions.md
+      - Linux:
+          - technology/linux/index.md
+          - 端口占用查找: technology/linux/port.md
+          - linux磁盘挂载: technology/linux/disk-mount.md
+          - shell脚本实战: technology/linux/shell-scripts.md
+      - C:
+          - technology/C/index.md
+      - 前端知识:
+          - technology/front/index.md
+          - 工程化流程: technology/front/project.md
+          - 包版本知识: technology/front/version.md
+          - package.json知识: technology/front/package.md
+          - WebAssembly: technology/front/webassembly.md
+      - 服务组件:
+          - zookeeper: technology/components/zookeeper.md
+          - nginx: technology/components/nginx.md
+          - supervisor: technology/components/supervisor.md
+          - rabbitmq: technology/components/rabbitmq.md
+          - kafka: technology/components/kafka.md
+          - 无头浏览器:
+              - openchrome: technology/unheadchrome/openchrome.md
+              - 环境搭建: technology/unheadchrome/build_env.md
+      - 数据库:
+          - ClickHouse: technology/database/clickhouse.md
+          - MySQL:
+              - mysql8: technology/database/mysql8_install.md
+              - 常用操作: technology/database/mysql.md
+          - ElasticSearch:
+              - elasticsearch-py: technology/database/elasticsearch_py.md
+              - elasticsearch-dsl: technology/database/es_dsl.md
+              - elasticsearch-aggs: technology/database/es_aggs.md
+      - 安全渗透:
+          - hydra: technology/security/thc-hydra.md
+          - sqlmap: technology/security/sqlmap.md
+      - RFC标准:
+          - oauth2学习笔记: technology/rfc/oauth2.md
+          - Oauth2-RFC6749翻译: technology/rfc/rfc6749.md
+          - Oauth2-RFC6750翻译: technology/rfc/rfc6750.md
+      - 知识概念:
+          - 项目文档结构示例: technology/concept/project_doc_layout.md
+          - 上位机简介: technology/concept/pc.md
+          - xaas概念: technology/concept/xaas.md
+          - 一文搞懂什么是SaaS、BaaS、PaaS和IaaS: technology/concept/xaas2.md
+          - 统一用户管理: technology/concept/users.md
+          - ETL数据处理: technology/concept/etl.md
+          - 数据传输和对接: technology/concept/data_transfer.md
+          - 深入理解计算机系统: technology/concept/understand_computer_system.md
+      - 其他:
+          - 嵌入式行业: technology/other/embedded_industry.md
+          - apache license2.0开源协议: technology/other/apache_license2.md
+  - 阅读:
+      - 英语:
+          - BlueLevel: read/english/bluelevel.md
+          - RedLevel: read/english/redlevel.md
+      - 如何阅读一本书: read/book/howtoreadbook.md
+      - 如何避免愚蠢的见识: read/howtoavoid.md
+      - 灵魂的最高处: read/placeofsoul.md
+      - 恶意匹配: read/maliciousmatch.md
+      - 沟通的艺术:
+          - 沟通入门: read/book/artofcommunication01.md
+          - 看入人里:自我: read/book/artofcommunication02.md
+          - 看入人里:知觉: read/book/artofcommunication03.md
+          - 看入人里:情绪: read/book/artofcommunication04.md
+          - 看出人外:语言: read/book/artofcommunication05.md
+          - 看出人外:非语言沟通: read/book/artofcommunication06.md
+          - 看出人外:倾听: read/book/artofcommunication07.md
+          - 看人之间:沟通和关系的演变: read/book/artofcommunication08.md
+          - 看人之间:人际沟通中的亲密关系: read/book/artofcommunication09.md
+          - 看人之间:增进沟通气氛: read/book/artofcommunication10.md
+          - 看人之间:处理人际冲突: read/book/artofcommunication11.md
+          - 阅读总结: read/book/artofcommunication12.md
+  - 理财:
+      - 理财网站: invest/webs.md
+  - 工具:
+      - 仓库合集: tools/repos.md
+      - git常用操作备忘: tools/git0.md
+      - git 起步: tools/git1.md
+      - git 基础: tools/git2.md
+      - git 分支: tools/git3.md
+      - git 服务器: tools/git4.md
+      - git 分布式: tools/git5.md
+      - git hub: tools/git6.md
+      - git 工具: tools/git7.md
+      - git 自定义: tools/git8.md
+      - git 与其他系统: tools/git9.md
+      - git 内部原理: tools/git10.md
+      - git 其他环境中使用: tools/gita1.md
+      - git 应用中嵌入: tools/gita2.md
+      - git 命令: tools/gita3.md
+  - 文档:
+      - 文档合集: documents/docs.md
   - 电子书: e-book.md
   - 其他:
-    - 前端常用地址: other/front_links.md
-    - 后端常用地址: other/back_links.md
-    - 其他常用地址: other/other_links.md
-    - 成为高手秘籍: other/become_leader.md
-    - 张一鸣微博: other/zym_weibo.md
-    - 动态商业环境: other/dynamic_business.md
-    - 蜜罐资源列表: other/honeypot_list.md
-    - 大数据资源列表: other/bigdata_links.md
+      - 前端常用地址: other/front_links.md
+      - 后端常用地址: other/back_links.md
+      - 其他常用地址: other/other_links.md
+      - 成为高手秘籍: other/become_leader.md
+      - 张一鸣微博: other/zym_weibo.md
+      - 动态商业环境: other/dynamic_business.md
+      - 蜜罐资源列表: other/honeypot_list.md
+      - 大数据资源列表: other/bigdata_links.md
   - 关于: about.md
