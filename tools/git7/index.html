@@ -3357,6 +3357,11 @@
 <h2 id="79-rerere">7.9 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-Rerere" target="_blank">Rerere</a><a class="headerlink" href="#79-rerere" title="Permanent link">&para;</a></h2>
 <h2 id="710-使用-git-调试">7.10 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95" target="_blank">使用 Git 调试</a><a class="headerlink" href="#710-使用-git-调试" title="Permanent link">&para;</a></h2>
 <h2 id="711-子模块">7.11 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank">子模块</a><a class="headerlink" href="#711-子模块" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>这里执行<code>git submodule add &lt;repo_url&gt;</code>命令时，工作目录需在项目的根目录，即顶级目录，存在<code>.gitignore</code>文件的目录。否则会导致<code>.gitmodules</code>子模块文件创建不成功.</p>
+<p>相关文章参考: <a href="https://mp.weixin.qq.com/s?__biz=MzA5MDIyNTM3Mw==&amp;mid=2666581388&amp;idx=1&amp;sn=1a7442163d87649b6dd1a4c8d70acd73&amp;chksm=8b0a823ebc7d0b2823466d68a70c2510ea42a9cad37d3d40b113eb2353a6b462eab5931a71b5&amp;scene=27" target="_blank">Git必备命令-子模块</a></p>
+</div>
 <p>有种情况我们经常会遇到：某个工作中的项目需要包含并使用另一个项目。 也许是第三方库，或者你独立开发的，用于多个父项目的库。 现在问题来了：你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。</p>
 <p>我们举一个例子。 假设你正在开发一个网站然后创建了 Atom 订阅。 你决定使用一个库，而不是写自己的 Atom 生成代码。 你可能不得不通过 CPAN 安装或 Ruby gem 来包含共享库中的代码，或者将源代码直接拷贝到自己的项目中。 如果将这个库包含进来，那么无论用何种方式都很难定制它，部署则更加困难，因为你必须确保每一个客户端都包含该库。 如果将代码复制到自己的项目中，那么你做的任何自定义修改都会使合并上游的改动变得困难。</p>
 <p>Git 通过子模块来解决这个问题。 子模块允许你将一个 Git 仓库作为另一个 Git 仓库的子目录。 它能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。</p>
@@ -4057,7 +4062,7 @@ Switched<span class="w"> </span>to<span class="w"> </span>branch<span class="w">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年2月25日</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年5月18日</span>
       
         <br>
         创建日期:
