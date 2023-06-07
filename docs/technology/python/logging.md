@@ -3,6 +3,22 @@
 - 创建时间: 2022年08月09日16:17:05
 - 官网: <https://docs.python.org/zh-cn/3.7/library/logging.html>
 
+## 输出到控制台:
+
+```python
+import logging
+
+formatter = logging.Formatter("[%(asctime)s] - %(pathname)s:%(lineno)d %(message)s")
+logger = logging.getLogger("parse_ppt")
+logger.setLevel(logging.DEBUG)
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+console.setFormatter(formatter)
+logger.addHandler(console)
+
+logger.info("这是日志")
+```
+
 ## 快速创建logger
 
 ```python
