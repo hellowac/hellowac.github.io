@@ -12,7 +12,6 @@ formatter = logging.Formatter("[%(asctime)s] - %(pathname)s:%(lineno)d %(message
 logger = logging.getLogger("parse_ppt")
 logger.setLevel(logging.DEBUG)
 console = logging.StreamHandler()
-console.setLevel(logging.INFO)
 console.setFormatter(formatter)
 logger.addHandler(console)
 
