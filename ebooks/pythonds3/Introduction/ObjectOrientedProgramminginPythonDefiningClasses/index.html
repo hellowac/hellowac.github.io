@@ -1,0 +1,5270 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac的工作学习生活笔记">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+    
+    
+      
+        <title>ObjectOrientedProgramminginPythonDefiningClasses - 我的工作学习生活笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d451bc0e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的工作学习生活笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ObjectOrientedProgramminginPythonDefiningClasses
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac的个人博客
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/python/" class="md-tabs__link">
+          
+  
+    
+  
+  技术
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/rfc/oauth2/" class="md-tabs__link">
+          
+  
+    
+  
+  标准
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/python/lxml-objectify/" class="md-tabs__link">
+          
+  
+    
+  
+  汉化
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  开源电子书
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../read/english/bluelevel/" class="md-tabs__link">
+          
+  
+    
+  
+  阅读
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../invest/webs/" class="md-tabs__link">
+          
+  
+    
+  
+  理财
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../tools/repos/" class="md-tabs__link">
+          
+  
+    
+  
+  工具
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../documents/docs/" class="md-tabs__link">
+          
+  
+    
+  
+  文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../e-book/" class="md-tabs__link">
+        
+  
+    
+  
+  电子书
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../other/front_links/" class="md-tabs__link">
+          
+  
+    
+  
+  其他
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    我的工作学习生活笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac的个人博客
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    技术
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            技术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/typehint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类型标注
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pep8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PEP 8 – Python代码样式指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/code_style_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    编码样式指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/stringio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    stringIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/flask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    flask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/django/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    django
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/importlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    importlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pycrypto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    crypto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/petl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    python-petl使用简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/psutil/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psutil文档-中文版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/docx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docx文档
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/excel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/reportlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ReportLab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/alembic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    alembic教程(转)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQLAlchemy简明教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/nemeko_playground/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nameko 的使用及注意事项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/xml-parse-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML解析地图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/useful_functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用的函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    lxml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            lxml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/lxml-objectify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/linux/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    端口占用查找
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/disk-mount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux磁盘挂载
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/shell-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    shell脚本实战
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/C/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/front/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    前端知识
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            前端知识
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工程化流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    包版本知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    package.json知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/webassembly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebAssembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    服务组件
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            服务组件
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/zookeeper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    zookeeper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/supervisor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    supervisor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rabbitmq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kafka
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_6" id="__nav_2_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无头浏览器
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            无头浏览器
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/unheadchrome/openchrome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openchrome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/unheadchrome/build_env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    环境搭建
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据库
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            数据库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/clickhouse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClickHouse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_2" id="__nav_2_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/mysql8_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mysql8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/mysql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用操作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_3" id="__nav_2_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ElasticSearch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            ElasticSearch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/elasticsearch_py/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/es_dsl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-dsl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/es_aggs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-aggs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全渗透
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            安全渗透
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/security/thc-hydra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    hydra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/security/sqlmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqlmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    知识概念
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            知识概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/project_doc_layout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目文档结构示例
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/pc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    上位机简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/xaas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    xaas概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/xaas2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一文搞懂什么是SaaS、BaaS、PaaS和IaaS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/users/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    统一用户管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/etl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETL数据处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/data_transfer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据传输和对接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/understand_computer_system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深入理解计算机系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    其他
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/other/embedded_industry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    嵌入式行业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/other/apache_license2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apache license2.0开源协议
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RFC标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            RFC标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/oauth2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    oauth2学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/rfc6749/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oauth2-RFC6749翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/rfc6750/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oauth2-RFC6750翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ECMA376标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ECMA376标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/ecma376/part1-refrence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECMA-376-1:2016 - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    汉化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            汉化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    lxml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            lxml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/lxml-objectify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lxml.objectify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    开源电子书
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            开源电子书
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    py3数据结构和算法
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            py3数据结构和算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    阅读
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            阅读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    英语
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            英语
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/english/bluelevel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BlueLevel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/english/redlevel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RedLevel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/howtoreadbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何阅读一本书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/howtoavoid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何避免愚蠢的见识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/placeofsoul/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    灵魂的最高处
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/maliciousmatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    恶意匹配
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    沟通的艺术
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            沟通的艺术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    沟通入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:自我
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:知觉
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:情绪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:非语言沟通
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:倾听
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:沟通和关系的演变
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:人际沟通中的亲密关系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:增进沟通气氛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:处理人际冲突
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    阅读总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    理财
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            理财
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../invest/webs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    理财网站
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    工具
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/repos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    仓库合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git常用操作备忘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 起步
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 分支
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 服务器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 分布式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git hub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 自定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 与其他系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 内部原理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 其他环境中使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 应用中嵌入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../documents/docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文档合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../e-book/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电子书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    其他
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/front_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前端常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/back_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/other_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    其他常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/become_leader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    成为高手秘籍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/zym_weibo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    张一鸣微博
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/dynamic_business/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动态商业环境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/honeypot_list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    蜜罐资源列表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/bigdata_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大数据资源列表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>ObjectOrientedProgramminginPythonDefiningClasses</h1>
+
+<p>..  Copyright (C)  Brad Miller, David Ranum
+    This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.</p>
+<p>Object-Oriented Programming in Python: Defining Classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>We stated earlier that Python is an object-oriented programming
+language. So far, we have used a number of built-in classes to show
+examples of data and control structures. One of the most powerful
+features in an object-oriented programming language is the ability to
+allow a programmer (problem solver) to create new classes that model
+data that is needed to solve the problem.</p>
+<p>Remember that we use abstract data types to provide the logical
+description of what a data object looks like (its state) and what it can
+do (its <strong>methods</strong>). By building a class that implements an abstract data
+type, a programmer can take advantage of the abstraction process and at
+the same time provide the details necessary to actually use the
+abstraction in a program. Whenever we want to implement an abstract data
+type, we will do so with a new class.</p>
+<p>A <code>Fraction</code> Class
+<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>^^</p>
+<p>A very common example to show the details of implementing a user-defined
+class is to construct a class to implement the abstract data type
+<code>Fraction</code>. We have already seen that Python provides a number of
+numeric classes for our use. There are times, however, that it would be
+most appropriate to be able to create data objects that look like fractions to the user.</p>
+<p>A fraction such as :math:<code>\frac {3}{5}</code> consists of two parts. The top
+value, known as the numerator, can be any integer. The bottom value,
+called the denominator, can be any integer greater than 0 (negative
+fractions have a negative numerator). Although it is possible to create
+a floating point approximation for any fraction, in this case we would
+like to represent the fraction as an exact value.</p>
+<p>The operations for the <code>Fraction</code> type will allow a <code>Fraction</code> data
+object to behave like any other numeric value. We need to be able to
+add, subtract, multiply, and divide fractions. We also want to be able
+to show fractions using the standard “slash” form, for example 3/5. In
+addition, all fraction methods should return results in their lowest
+terms so that no matter what computation is performed, we always end up
+with the most common form.</p>
+<p>In Python, we define a new class by providing a name and a set of method
+definitions that are syntactically similar to function definitions. For
+this example,</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>class Fraction:
+   # the methods go here
+</code></pre></div>
+<p>provides the framework for us to define the methods. The first method
+that all classes should provide is the constructor. The constructor
+defines the way in which data objects are created. To create a
+<code>Fraction</code> object, we will need to provide two pieces of data, the
+numerator and the denominator. In Python, the constructor method is
+always called <strong>init</strong> (two underscores before and after <code>init</code>),
+as shown in :ref:<code>Listing 2 &lt;lst_pyconstructor&gt;</code>.</p>
+<p>.. _lst_pyconstructor:</p>
+<p><strong>Listing 2</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>class Fraction:
+    &quot;&quot;&quot;Class Fraction&quot;&quot;&quot;
+    def __init__(self, top, bottom):
+        &quot;&quot;&quot;Constructor definition&quot;&quot;&quot;
+        self.num = top
+        self.den = bottom
+</code></pre></div>
+<p>Notice that the formal parameter list contains three items (<code>self</code>,
+<code>top</code>, <code>bottom</code>). <code>self</code> is a special parameter that will always
+be used as a reference back to the object itself. It must always be the
+first formal parameter; however, it will never be given an actual
+parameter value upon invocation. As described earlier, fractions require
+two pieces of state data, the numerator and the denominator. The
+notation <code>self.num</code> in the constructor defines the <code>Fraction</code> object
+to have an internal data object called <code>num</code> as part of its state.
+Likewise, <code>self.den</code> creates the denominator. The values of the two
+formal parameters are initially assigned to the state, allowing the new
+<code>Fraction</code> object to know its starting value.</p>
+<p>To create an instance of the <code>Fraction</code> class, we must invoke the
+constructor. This happens by using the name of the class and passing
+actual values for the necessary state (note that we never directly
+<code>invoke __init__</code>). For example,</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>my_fraction = Fraction(3, 5)
+</code></pre></div>
+<p>creates an object called <code>my_fraction</code> representing the fraction
+:math:<code>\frac {3}{5}</code> (three-fifths). :ref:<code>Figure 5 &lt;fig_fraction1&gt;</code> shows this
+object as it is now implemented.</p>
+<p>.. _fig_fraction1:</p>
+<p>.. figure:: Figures/fraction1.png
+   :align: center</p>
+<p>Figure 5: An Instance of the <code>Fraction</code> Class</p>
+<p>The next thing we need to do is implement the behavior that the abstract
+data type requires. To begin, consider what happens when we try to print
+a <code>Fraction</code> object.</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; my_fraction = Fraction(3, 5)
+&gt;&gt;&gt; print(my_fraction)
+&lt;__main__.Fraction object at 0x103203eb8&gt;
+</code></pre></div>
+<p>The <code>Fraction</code> object, <code>my_fraction</code>, does not know how to respond to this
+request to print. The <code>print</code> function requires that the object
+convert itself into a string so that the string can be written to the
+output. The only choice <code>my_fraction</code> has is to show the actual reference that
+is stored in the variable (the address itself). This is not what we
+want.</p>
+<p>There are two ways we can solve this problem. One is to define a method
+called <code>show</code> that will allow the <code>Fraction</code> object to print itself
+as a string. We can implement this method as shown in
+:ref:<code>Listing 3 &lt;lst_showmethod&gt;</code>. If we create a <code>Fraction</code> object as before
+we can ask it to show itself (in other words, print itself  in the proper format).
+Unfortunately, this does not work in general. In order to make
+printing work properly, we need to tell the <code>Fraction</code> class how to
+convert itself into a string. This is what the <code>print</code> function needs
+in order to do its job.</p>
+<p>.. _lst_showmethod:</p>
+<p><strong>Listing 3</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>def show(self):
+        print(f&quot;{self.num}/{self.den}&quot;)
+</code></pre></div>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; my_fraction = Fraction(3, 5)
+&gt;&gt;&gt; my_fraction.show()
+3/5
+&gt;&gt;&gt; print(my_fraction)
+&lt;__main__.Fraction object at 0x40bce9ac&gt;
+</code></pre></div>
+<p>In Python, all classes have a set of standard methods that are provided
+but may not work properly. One of these, <code>__str__</code>, is the method to
+convert an object into a string. The default implementation for this
+method is to return the instance address string as we have already seen.
+What we need to do is provide a better implementation for this method.
+We will say that this implementation <strong>overrides</strong> the previous one, or
+that it redefines the method’s behavior.</p>
+<p>To do this, we simply define a method with the name <code>__str__</code> and
+give it a new implementation as shown in :ref:<code>Listing 4 &lt;lst_str&gt;</code>. This definition
+does not need any other information except the special parameter
+<code>self</code>. In turn, the method will build a string representation by
+converting each piece of internal state data to a string and then
+placing a <code>/</code> character in between the strings using string
+concatenation. The resulting string will be returned any time a
+<code>Fraction</code> object is asked to convert itself to a string. Notice the
+various ways that this function is used.</p>
+<p>.. _lst_str:</p>
+<p><strong>Listing 4</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>def __str__(self):
+    return f&quot;{self.num}/{self.den}&quot;
+</code></pre></div>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; my_fraction = Fraction(3, 5)
+&gt;&gt;&gt; print(my_fraction)
+3/5
+&gt;&gt;&gt; print(f&quot;I ate {my_fraction} of pizza&quot;)
+I ate 3/5 of pizza
+&gt;&gt;&gt; my_fraction.__str__()
+&#39;3/5&#39;
+&gt;&gt;&gt; str(my_fraction)
+&#39;3/5&#39;
+</code></pre></div>
+<p>We can override many other methods for our new <code>Fraction</code> class. Some
+of the most important of these are the basic arithmetic operations. We
+would like to be able to create two <code>Fraction</code> objects and then add
+them together using the standard <code>+</code> notation. At this point, if we try
+to add two fractions, we get the following:</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; f1 = Fraction(1, 4)
+&gt;&gt;&gt; f2 = Fraction(1, 2)
+&gt;&gt;&gt; f1 + f2
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: unsupported operand type(s) for +: &#39;Fraction&#39; and &#39;Fraction&#39;
+</code></pre></div>
+<p>If you look closely at the error, you see that the problem is that the
+<code>+</code> operator does not understand the <code>Fraction</code> operands.
+We can fix this by providing the <code>Fraction</code> class with a method that
+overrides the addition method. In Python, this method is called
+<code>__add__</code> and it requires two parameters. The first, <code>self</code>, is
+always needed, and the second represents the other operand in the
+expression. For example,</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>f1.__add__(f2)
+</code></pre></div>
+<p>would ask the <code>Fraction</code> object <code>f1</code> to add the <code>Fraction</code> object
+<code>f2</code> to itself. This can be written in the standard notation,
+<code>f1 + f2</code>.</p>
+<p>Two fractions must have the same denominator to be added. The easiest
+way to make sure they have the same denominator is to simply use the
+product of the two denominators as a common denominator so that
+:math:<code>\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}</code>.
+The implementation is shown in :ref:<code>Listing 5 &lt;lst_addmethod&gt;</code>. The addition
+function returns a new <code>Fraction</code> object with the numerator and
+denominator of the sum. We can use this method by writing a standard
+arithmetic expression involving fractions, assigning the result of the
+addition, and then printing our result.</p>
+<p>.. _lst_addmethod:</p>
+<p><strong>Listing 5</strong></p>
+<p>.. sourcecode:: python</p>
+<p>def <strong>add</strong>(self, other_fraction):
+        new_num = self.num * other_fraction.den + \
+                    self.den * other_fraction.num
+        new_den = self.den * other_fraction.den</p>
+<div class="highlight"><pre><span></span><code>    return Fraction(new_num, new_den)
+</code></pre></div>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; f1 = Fraction(1, 4)
+&gt;&gt;&gt; f2 = Fraction(1, 2)
+&gt;&gt;&gt; print(f1 + f2)
+6/8
+</code></pre></div>
+<p>The addition method works as we desire, but one thing could be better.
+Note that :math:<code>6/8</code> is the correct result
+(:math:<code>\frac {1}{4} + \frac {1}{2}</code>) but that it is not in the
+“lowest terms” representation. The best representation would be
+:math:<code>3/4</code>. In order to be sure that our results are always in the
+lowest terms, we need a helper function that knows how to reduce
+fractions. This function will need to look for the greatest common
+divisor, or GCD. We can then divide the numerator and the denominator by
+the GCD and the result will be reduced to lowest terms.</p>
+<p>The best-known algorithm for finding the greatest common divisor is
+Euclid’s algorithm, which will be discussed in detail in Chapter 8.
+It states that the greatest common divisor of two
+integers :math:<code>m</code> and :math:<code>n</code> is :math:<code>n</code> if :math:<code>n</code>
+divides :math:<code>m</code> evenly. However, if :math:<code>n</code> does not divide
+:math:<code>m</code> evenly, then the answer is the greatest common divisor of
+:math:<code>n</code> and the remainder of :math:<code>m</code> divided by :math:<code>n</code>. We
+will simply provide an iterative implementation here (see
+:ref:<code>ActiveCode 1 &lt;lst_gcd&gt;</code>). Note that this implementation of the GCD algorithm
+works only when the denominator is positive. This is acceptable for our
+fraction class because we have said that a negative fraction will be
+represented by a negative numerator.</p>
+<p>.. _lst_gcd:</p>
+<p>.. activecode::  gcd_cl
+    :caption: The Greatest Common Divisor Function</p>
+<div class="highlight"><pre><span></span><code>def gcd(m, n):
+    while m % n != 0:
+        m, n = n, m % n
+    return n
+
+print(gcd(20, 10))
+</code></pre></div>
+<p>Now we can use this function to help reduce any fraction. To put a
+fraction in lowest terms, we will divide the numerator and the
+denominator by their greatest common divisor. So, for the fraction
+:math:<code>6/8</code>, the greatest common divisor is 2. Dividing the top and
+the bottom by 2 creates a new fraction, :math:<code>3/4</code> (see
+:ref:<code>Listing 6 &lt;lst_newaddmethod&gt;</code>).</p>
+<p>.. _lst_newaddmethod:</p>
+<p><strong>Listing 6</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>def __add__(self, other_fraction):
+    new_num = self.num * other_fraction.den + \
+                 self.den * other_fraction.num
+    new_den = self.den * other_fraction.den
+    common = gcd(new_num, new_den)
+    return Fraction(new_num // common, new_den // common)
+</code></pre></div>
+<p>Our <code>Fraction</code> object now has two very useful methods as depicted in :ref:<code>Figure 6 &lt;fig_fraction2&gt;</code>.</p>
+<p>.. _fig_fraction2:</p>
+<p>.. figure:: Figures/fraction2.png
+   :align: center</p>
+<p>Figure 6: An Instance of the <code>Fraction</code> Class with Two Methods</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; f1 = Fraction(1, 4)
+&gt;&gt;&gt; f2 = Fraction(1, 2)
+&gt;&gt;&gt; print(f1 + f2)
+3/4
+</code></pre></div>
+<p>An additional group of methods that we need to
+include in our example <code>Fraction</code> class will allow two fractions to
+compare themselves to one another. Assume we have two <code>Fraction</code>
+objects, <code>f1</code> and <code>f2</code>. <code>f1==f2</code> will only be <code>True</code> if they are
+references to the same object. Two different objects with the same
+numerators and denominators would not be equal under this
+implementation. This is called <strong>shallow equality</strong> (see
+:ref:<code>Figure 7 &lt;fig_fraction3&gt;</code>).</p>
+<p>.. _fig_fraction3:</p>
+<p>.. figure:: Figures/fraction3.png
+   :align: center</p>
+<p>Figure 7: Shallow Equality Versus Deep Equality</p>
+<p>We can create <strong>deep equality</strong>–equality by the
+same value, not the same reference–by overriding the <code>__eq__</code>
+method (see :ref:<code>Figure 7 &lt;fig_fraction3&gt;</code>).
+The <code>__eq__</code> method is another standard method available in
+any class. The <code>__eq__</code> method compares two objects and returns
+<code>True</code> if their values are the same, <code>False</code> otherwise.</p>
+<p>In the <code>Fraction</code> class, we can implement the <code>__eq__</code> method by
+again putting the two fractions in common terms and then comparing the
+numerators (see :ref:<code>Listing 7 &lt;lst_cmpmethod&gt;</code>). It is important to note that there
+are other relational operators that can be overridden. For example, the
+<code>__le__</code> method provides the less than or equal functionality.</p>
+<p>.. _lst_cmpmethod:</p>
+<p><strong>Listing 7</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>def __eq__(self, other_fraction):
+    first_num = self.num * other_fraction.den
+    second_num = other_fraction.num * self.den
+
+    return first_num == second_num
+</code></pre></div>
+<p>The complete <code>Fraction</code> class, up to this point, is shown in
+:ref:<code>ActiveCode 2 &lt;lst_fractioncode&gt;</code>. We leave the remaining arithmetic and relational
+methods as exercises.</p>
+<p>.. _lst_fractioncode:</p>
+<p>.. activecode:: fraction_class
+   :caption: The Fraction Class</p>
+<p>def gcd(m, n):
+       while m % n != 0:
+           m, n = n, m % n
+       return n</p>
+<p>class Fraction:
+       def <strong>init</strong>(self, top, bottom):
+           self.num = top
+           self.den = bottom</p>
+<div class="highlight"><pre><span></span><code>   def __str__(self):
+       return &quot;{:d}/{:d}&quot;.format(self.num, self.den)
+
+   def __eq__(self, other_fraction):
+       first_num = self.num * other_fraction.den
+       second_num = other_fraction.num * self.den
+
+       return first_num == second_num
+
+   def __add__(self, other_fraction):
+       new_num = self.num * other_fraction.den \
+       + self.den * other_fraction.num
+       new_den = self.den * other_fraction.den
+       cmmn = gcd(new_num, new_den)
+       return Fraction(new_num // cmmn, new_den // cmmn)
+
+   def show(self):
+       print(&quot;{:d}/{:d}&quot;.format(self.num, self.den))
+</code></pre></div>
+<p>x = Fraction(1, 2)
+   x.show()
+   y = Fraction(2, 3)
+   print(y)
+   print(x + y)
+   print(x == y)</p>
+<p>.. admonition:: Self  Check</p>
+<p>To make sure you understand how operators are implemented in Python classes, and how to properly write methods, write some methods to implement <code>*, /,</code> and <code>-</code> .  Also implement comparison operators &gt; and &lt;</p>
+<p>.. actex:: self_check_4</p>
+<p>.. youtube:: gFb9tvJZHXo
+    :divid: fraction
+    :height: 315
+    :width: 560
+    :align: left</p>
+<p>Inheritance: Logic Gates and Circuits
+<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>^</p>
+<p>Our final section will introduce another important aspect of
+object-oriented programming. <strong>Inheritance</strong> is the ability of one
+class to be related to another class in much the same way that people
+can be related to one another. Children inherit characteristics from
+their parents. Similarly, Python child classes can inherit
+characteristic data and behavior from a parent class. These classes are
+often referred to as <strong>subclasses</strong> and <strong>superclasses</strong>.</p>
+<p>:ref:<code>Figure 8 &lt;fig_inherit1&gt;</code> shows the built-in Python collections and their
+relationships to one another. We call a relationship structure such as
+this an <strong>inheritance hierarchy</strong>. For example, the list is a <em>child</em> of
+the sequential collection. In this case, we call the list the child and
+the <em>sequence</em> the parent (or <em>subclass list</em> and <em>superclass sequence</em>). This
+is often referred to as an <strong>Is-a relationship</strong> (the list Is-a
+sequential collection). This implies that lists inherit important
+characteristics from sequences, namely the ordering of the underlying
+data and operations such as concatenation, repetition, and indexing.</p>
+<p>.. _fig_inherit1:</p>
+<p>.. figure::  Figures/inheritance1.png
+   :align: center</p>
+<p>Figure 8: An Inheritance Hierarchy for Python Collections</p>
+<p>Lists, tuples, and strings are all examples of sequential collections. They
+all inherit common data organization and operations. However, each of
+them is distinct based on whether the data is homogeneous and whether
+the collection is immutable. The children all gain from their parents
+but distinguish themselves by adding additional characteristics.</p>
+<p>By organizing classes in this hierarchical fashion, object-oriented
+programming languages allow previously written code to be extended to
+meet the needs of a new situation. In addition, by organizing data in
+this hierarchical manner, we can better understand the relationships
+that exist. We can be more efficient in building our abstract
+representations.</p>
+<p>To explore this idea further, we will construct a <strong>simulation</strong>, an
+application to simulate digital circuits. The basic building block for
+this simulation will be the logic gate. These electronic switches
+represent Boolean algebra relationships between their input and their
+output. In general, gates have a single output line. The value of the
+output is dependent on the values given on the input lines.</p>
+<p>AND gates have two input lines, each of which can be either 0 or 1
+(representing <code>False</code> or <code>True</code>, respectively). If both of the input
+lines have the value 1, the resulting output is 1. However, if either or
+both of the input lines is 0, the result is 0. OR gates also have two
+input lines and produce a 1 if one or both of the input values is a 1.
+In the case where both input lines are 0, the result is 0.</p>
+<p>NOT gates differ from the other two gates in that they have only a
+single input line. The output value is simply the opposite of the input
+value. If 0 appears on the input, 1 is produced on the output.
+Similarly, 1 produces 0. :ref:<code>Figure 9 &lt;fig_truthtable&gt;</code> shows how each of these
+gates is typically represented. Each gate also has a <strong>truth table</strong> of
+values showing the input-to-output mapping that is performed by the
+gate.</p>
+<p>.. _fig_truthtable:</p>
+<p>.. figure:: Figures/truthtable.png
+   :align: center</p>
+<p>Figure 9: Three Types of Logic Gates</p>
+<p>By combining these gates in various patterns and then applying a set of
+input values, we can build circuits that have logical functions.
+:ref:<code>Figure 10 &lt;fig_circuit1&gt;</code> shows a circuit consisting of two AND gates, one OR
+gate, and a single NOT gate. The output lines from the two AND gates
+feed directly into the OR gate, and the resulting output from the OR
+gate is given to the NOT gate. If we apply a set of input values to the
+four input lines (two for each AND gate), the values are processed and a
+result appears at the output of the NOT gate. :ref:<code>Figure 10 &lt;fig_circuit1&gt;</code> also
+shows an example with values.</p>
+<p>.. _fig_circuit1:</p>
+<p>.. figure:: Figures/circuit1.png
+   :align: center</p>
+<p>Figure 10: A Circuit</p>
+<p>In order to implement a circuit, we will first build a representation
+for logic gates. Logic gates are easily organized into a class
+inheritance hierarchy as shown in :ref:<code>Figure 11 &lt;fig_gates&gt;</code>. At the top of the
+hierarchy, the <code>LogicGate</code> class represents the most general
+characteristics of logic gates: namely, a label for the gate and an
+output line. The next level of subclasses breaks the logic gates into
+two families, those that have one input line and those that have two.
+Below that, the specific logic functions of each appear.</p>
+<p>.. _fig_gates:</p>
+<p>.. figure:: Figures/gates.png
+   :align: center</p>
+<p>Figure 11: An Inheritance Hierarchy for Logic Gates</p>
+<p>We can now start to implement the classes by starting with the most
+general, <code>LogicGate</code>. As noted earlier, each gate has a label for
+identification and a single output line. In addition, we need methods to
+allow a user of a gate to ask the gate for its label.</p>
+<p>The other behavior that every logic gate needs is the ability to know
+its output value. This will require that the gate perform the
+appropriate logic based on the current input. In order to produce
+output, the gate needs to know specifically what that logic is. This
+means calling a method to perform the logic computation. The complete
+class is shown in :ref:<code>Listing 8 &lt;lst_logicgateclass&gt;</code>.</p>
+<p>.. _lst_logicgateclass:</p>
+<p><strong>Listing 8</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>class LogicGate:
+    def __init__(self, lbl):
+        self.label = lbl
+        self.output = None
+
+    def get_label(self):
+        return self.label
+
+    def get_output(self):
+        self.output = self.perform_gate_logic()
+        return self.output
+</code></pre></div>
+<p>At this point, we will not implement the <code>perform_gate_logic</code> function.
+The reason for this is that we do not know how each gate will perform
+its own logic operation. Those details will be included by each
+individual gate that is added to the hierarchy. This is a very powerful
+idea in object-oriented programming. We are writing a method that will
+use code that does not exist yet. The parameter <code>self</code> is a reference
+to the actual gate object invoking the method. Any new logic gate that
+gets added to the hierarchy will simply need to implement the
+<code>perform_gate_logic</code> function and it will be used at the appropriate
+time. Once done, the gate can provide its output value. This ability to
+extend a hierarchy that currently exists and provide the specific
+functions that the hierarchy needs to use the new class is extremely
+important for reusing existing code.</p>
+<p>We categorized the logic gates based on the number of input lines,
+as shown in :ref:<code>Figure 11 &lt;fig_gates&gt;</code>: the AND gate and OR gate both have two input lines,
+whereas the NOT gate has only one. <code>LogicGate</code> has two subclasses: <code>BinaryGate</code>,
+which will add two input lines, and <code>UnaryGate</code>, which will have only a single input line.
+In computer circuit design, these lines
+are sometimes called <em>pins</em>, so we will use that terminology in our
+implementation.</p>
+<p>:ref:<code>Listing 9 &lt;lst_logicgateclass&gt;</code> and :ref:<code>Listing 10 &lt;lst_logicgateclass&gt;</code> implement these two
+classes. The constructors in both of these classes start with an
+explicit call to the constructor of the parent class using the parent's <code>__init__</code>
+method. When creating an instance of the <code>BinaryGate</code> class, we
+first want to initialize any data items that are inherited from
+<code>LogicGate</code>. In this case, that means the label for the gate. The
+constructor then goes on to add the two input lines (<code>pin_a</code> and
+<code>pin_b</code>). This is a very common pattern that you should always use when
+building class hierarchies. Child class constructors need to call parent
+class constructors and then move on to their own distinguishing data.</p>
+<p>.. _lst_binarygateclass:</p>
+<p><strong>Listing 9</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>class BinaryGate(LogicGate):
+    def __init__(self, lbl):
+        LogicGate.__init__(self, lbl)
+        self.pin_a = None
+        self.pin_b = None
+
+    def get_pin_a(self):
+        return int(input(f&quot;Enter pin A input for gate \
+            {self.get_label()}: &quot;))
+
+    def get_pin_b(self):
+        return int(input(f&quot;Enter pin B input for gate \
+            {self.get_label()}: &quot;))
+</code></pre></div>
+<p>.. _lst_unarygateclass:</p>
+<p><strong>Listing 10</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>class UnaryGate(LogicGate):
+    def __init__(self, lbl):
+        LogicGate.__init__(self, lbl)
+        self.pin = None
+
+    def get_pin(self):
+        return int(input(f&quot;Enter pin input for gate \
+            {self.get_label()}: &quot;))
+</code></pre></div>
+<p>Python also has a function called <code>super</code> which can be used in place of explicitly
+naming the parent class.  This is a more general mechanism and is widely
+used, especially when a class has more than one parent. In our example above,
+<code>LogicGate.__init__(self, lbl)</code> could be replaced with <code>super().__init__(lbl)</code>, 
+<code>super(UnaryGate, self).__init__(lbl)</code>, or <code>super().__init__("UnaryGate", lbl)</code>.
+The specific details are beyond the scope of this text.</p>
+<p>The only behavior that the <code>BinaryGate</code> class adds is the ability to
+get the values from the two input lines. Since these values come from
+some external place, we will simply ask the user to provide them via an input statement.
+The same implementation occurs for the <code>UnaryGate</code>
+class except that there is only one input line.</p>
+<p>Now that we have a general class for gates depending on the number of
+input lines, we can build specific gates that have unique behavior. For
+example, the <code>AndGate</code> class will be a subclass of <code>BinaryGate</code>
+since AND gates have two input lines. As before, the first line of the
+constructor calls upon the parent class constructor (<code>BinaryGate</code>),
+which in turn calls its parent class constructor (<code>LogicGate</code>). Note
+that the <code>AndGate</code> class does not provide any new data since it
+inherits two input lines, one output line, and a label.</p>
+<p>The only thing <code>AndGate</code> needs to add is the specific behavior that
+performs the Boolean operation that was described earlier. This is the
+place where we can provide the <code>perform_gate_logic</code> method. For an AND
+gate, this method first must get the two input values and then only
+return 1 if both input values are 1. The complete class is shown in
+:ref:<code>Listing 11 &lt;lst_andgateclass&gt;</code>.</p>
+<p>.. _lst_andgateclass:</p>
+<p><strong>Listing 11</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>class AndGate(BinaryGate):
+    def __init__(self, lbl):
+        super().__init__(lbl)
+
+    def perform_gate_logic(self):
+        a = self.get_pin_a()
+        b = self.get_pin_b()
+        if a == 1 and b == 1:
+            return 1
+        else:
+            return 0
+</code></pre></div>
+<p>We can show the <code>AndGate</code> class in action by creating an instance and
+asking it to compute its output. The following session shows an
+<code>AndGate</code> object, <code>g1</code>, that has an internal label <code>"G1"</code>. When we
+invoke the <code>get_output</code> method, the object must first call its
+<code>perform_gate_logic</code> method which in turn queries the two input lines.
+Once the values are provided, the correct output is shown.</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; g1 = AndGate(&quot;G1&quot;)
+&gt;&gt;&gt; g1.get_output()
+Enter pin A input for gate G1: 1
+Enter pin B input for gate G1: 0
+0
+</code></pre></div>
+<p>The same development can be done for OR gates and NOT gates. The
+<code>OrGate</code> class will also be a subclass of <code>BinaryGate</code> and the
+<code>NotGate</code> class will extend the <code>UnaryGate</code> class. Both of these
+classes will need to provide their own <code>perform_gate_logic</code> functions,
+as this is their specific behavior.</p>
+<p>We can use a single gate by first constructing an instance of one of the
+gate classes and then asking the gate for its output (which will in turn
+need inputs to be provided). For example:</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; g2 = OrGate(&quot;G2&quot;)
+&gt;&gt;&gt; g2.get_output()
+Enter pin A input for gate G2: 1
+Enter pin B input for gate G2: 1
+1
+&gt;&gt;&gt; g2.get_output()
+Enter pin A input for gate G2: 0
+Enter pin B input for gate G2: 0
+0
+&gt;&gt;&gt; g3 = NotGate(&quot;G3&quot;)
+&gt;&gt;&gt; g3.get_output()
+Enter pin input for gate G3: 0
+1
+</code></pre></div>
+<p>Now that we have the basic gates working, we can turn our attention to
+building circuits. In order to create a circuit, we need to connect
+gates together, the output of one flowing into the input of another. To
+do this, we will implement a new class called <code>Connector</code>.</p>
+<p>The <code>Connector</code> class will not reside in the gate hierarchy. It will,
+however, use the gate hierarchy in that each connector will have two
+gates, one on either end (see :ref:<code>Figure 12 &lt;fig_connector&gt;</code>). This relationship is
+very important in object-oriented programming. It is called the <strong>Has-a
+relationship</strong>. Recall earlier that we used the phrase <em>Is-a
+relationship</em> to say that a child class is related to a parent class,
+for example <code>UnaryGate</code> Is-a <code>LogicGate</code>.</p>
+<p>.. _fig_connector:</p>
+<p>.. figure:: Figures/connector.png
+   :align: center</p>
+<p>Figure 12: A Connector Connects the Output of One Gate to the Input of Another</p>
+<p>Now, with the <code>Connector</code> class, we say that a <code>Connector</code> Has-a
+<code>LogicGate</code>, meaning that connectors will have instances of the
+<code>LogicGate</code> class within them but are not part of the hierarchy. When
+designing classes, it is very important to distinguish between those
+that have the Is-a relationship (which requires inheritance) and those
+that have Has-a relationships (with no inheritance).</p>
+<p>:ref:<code>Listing 12 &lt;lst_Connectorclass&gt;</code> shows the <code>Connector</code> class. The two gate
+instances within each connector object will be referred to as the
+<code>from_gate</code> and the <code>to_gate</code>, recognizing that data values will
+flow from the output of one gate into an input line of the next. The
+call to <code>set_next_pin</code> is very important for making connections (see
+:ref:<code>Listing 13 &lt;lst_setpin&gt;</code>). We need to add this method to our gate classes so
+that each <code>to_gate</code> can choose the proper input line for the
+connection.</p>
+<p>.. _lst_Connectorclass:</p>
+<p><strong>Listing 12</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>class Connector:
+    def __init__(self, fgate, tgate):
+        self.from_gate = fgate
+        self.to_gate = tgate
+
+        tgate.set_next_pin(self)
+
+    def get_from(self):
+        return self.from_gate
+
+    def get_to(self):
+        return self.to_gate
+</code></pre></div>
+<p>.. _lst_setpin:</p>
+<p><strong>Listing 13</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>def set_next_pin(self, source):
+    if self.pin_a == None:
+        self.pin_a = source
+    else:
+        if self.pin_b == None:
+            self.pin_b = source
+        else:
+            raise RuntimeError(&quot;Error: NO EMPTY PINS&quot;)
+</code></pre></div>
+<p>In the <code>BinaryGate</code> class, for gates with two possible input lines,
+the connector must be connected to only one line. If both of them are
+available, we will choose <code>pin_a</code> by default. If <code>pin_a</code> is already
+connected, then we will choose <code>pin_b</code>. It is not possible to connect
+to a gate with no available input lines.</p>
+<p>Now it is possible to get input from two places: externally, as before,
+and from the output of a gate that is connected to that input line. This
+requires a change to the <code>get_pin_a</code> and <code>get_pin_b</code> methods (see
+:ref:<code>Listing 14 &lt;lst_newgetpin&gt;</code>). If the input line is not connected to anything
+(<code>None</code>), then ask the user externally as before. However, if there is
+a connection, the connection is accessed and <code>from_gate</code>’s output value
+is retrieved. This in turn causes that gate to process its logic. This
+continues until all input is available and the final output value
+becomes the required input for the gate in question. In a sense, the
+circuit works backwards to find the input necessary to finally produce
+output.</p>
+<p>.. _lst_newgetpin:</p>
+<p><strong>Listing 14</strong></p>
+<p>.. sourcecode:: python</p>
+<div class="highlight"><pre><span></span><code>def get_pin_a(self):
+    if self.pin_a == None:
+        return input(
+            f&quot;Enter pin A input for gate \
+            {self.get_label()}: &quot;
+        )
+    else:
+        return self.pin_a.get_from().get_output()
+</code></pre></div>
+<p>The following fragment constructs the circuit shown earlier in the
+section:</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; g1 = AndGate(&quot;G1&quot;)
+&gt;&gt;&gt; g2 = AndGate(&quot;G2&quot;)
+&gt;&gt;&gt; g3 = OrGate(&quot;G3&quot;)
+&gt;&gt;&gt; g4 = NotGate(&quot;G4&quot;)
+&gt;&gt;&gt; c1 = Connector(g1, g3)
+&gt;&gt;&gt; c2 = Connector(g2, g3)
+&gt;&gt;&gt; c3 = Connector(g3, g4)
+</code></pre></div>
+<p>The outputs from the two AND gates (<code>g1</code> and <code>g2</code>) are connected to
+the OR gate (<code>g3</code>) and that output is connected to the NOT gate
+(<code>g4</code>). The output from the NOT gate is the output of the entire
+circuit. For example:</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; g4.get_output()
+Enter pin A input for gate G1: 0
+Enter pin B input for gate G1: 1
+Enter pin A input for gate G2: 1
+Enter pin B input for gate G2: 1
+0
+</code></pre></div>
+<p>Try it yourself using ActiveCode 4.</p>
+<p>.. activecode:: complete_cuircuit
+    :caption: The Complete Circuit Program.</p>
+<div class="highlight"><pre><span></span><code>class LogicGate:
+
+    def __init__(self, lbl):
+        self.name = lbl
+        self.output = None
+
+    def get_label(self):
+        return self.name
+
+    def get_output(self):
+        self.output = self.perform_gate_logic()
+        return self.output
+
+
+class BinaryGate(LogicGate):
+
+    def __init__(self, lbl):
+        super(BinaryGate, self).__init__(lbl)
+
+        self.pin_a = None
+        self.pin_b = None
+
+    def get_pin_a(self):
+        if self.pin_a == None:
+            return int(input(&quot;Enter pin A input for gate &quot; + self.get_label() + &quot;: &quot;))
+        else:
+            return self.pin_a.get_from().get_output()
+
+    def get_pin_b(self):
+        if self.pin_b == None:
+            return int(input(&quot;Enter pin B input for gate &quot; + self.get_label() + &quot;: &quot;))
+        else:
+            return self.pin_b.get_from().get_output()
+
+    def set_next_pin(self, source):
+        if self.pin_a == None:
+            self.pin_a = source
+        else:
+            if self.pin_b == None:
+                self.pin_b = source
+            else:
+                print(&quot;Cannot Connect: NO EMPTY PINS on this gate&quot;)
+
+
+class AndGate(BinaryGate):
+
+    def __init__(self, lbl):
+        BinaryGate.__init__(self, lbl)
+
+    def perform_gate_logic(self):
+
+        a = self.get_pin_a()
+        b = self.get_pin_b()
+        if a == 1 and b == 1:
+            return 1
+        else:
+            return 0
+
+class OrGate(BinaryGate):
+
+    def __init__(self, lbl):
+        BinaryGate.__init__(self, lbl)
+
+    def perform_gate_logic(self):
+
+        a = self.get_pin_a()
+        b = self.get_pin_b()
+        if a == 1 or b == 1:
+            return 1
+        else:
+            return 0
+
+class UnaryGate(LogicGate):
+
+    def __init__(self, lbl):
+        LogicGate.__init__(self, lbl)
+
+        self.pin = None
+
+    def get_pin(self):
+        if self.pin == None:
+            return int(input(&quot;Enter pin input for gate &quot; + self.get_label() + &quot;: &quot;))
+        else:
+            return self.pin.get_from().get_output()
+
+    def set_next_pin(self, source):
+        if self.pin == None:
+            self.pin = source
+        else:
+            print(&quot;Cannot Connect: NO EMPTY PINS on this gate&quot;)
+
+
+class NotGate(UnaryGate):
+
+    def __init__(self, lbl):
+        UnaryGate.__init__(self, lbl)
+
+    def perform_gate_logic(self):
+        if self.get_pin():
+            return 0
+        else:
+            return 1
+
+
+class Connector:
+
+    def __init__(self, fgate, tgate):
+        self.from_gate = fgate
+        self.to_gate = tgate
+
+        tgate.set_next_pin(self)
+
+    def get_from(self):
+        return self.from_gate
+
+    def get_to(self):
+        return self.to_gate
+
+
+def main():
+    g1 = AndGate(&quot;G1&quot;)
+    g2 = AndGate(&quot;G2&quot;)
+    g3 = OrGate(&quot;G3&quot;)
+    g4 = NotGate(&quot;G4&quot;)
+    c1 = Connector(g1, g3)
+    c2 = Connector(g2, g3)
+    c3 = Connector(g3, g4)
+    print(g4.get_output())
+
+main()
+</code></pre></div>
+<p>.. admonition:: Self Check</p>
+<p>Create a two new gate classes,  one called NorGate the other called NandGate.  NandGates work like AndGates that have a Not attached to the output.  NorGates work lake OrGates that have a Not attached to the output.</p>
+<p>Create a series of gates that prove the following equality NOT (( A and B) or (C and D)) is that same as NOT( A and B ) and NOT (C and D).  Make sure to use some of your new gates in the simulation.</p>
+<p>.. actex:: self_check_5</p>
+<div class="highlight"><pre><span></span><code>  class LogicGate:
+
+      def __init__(self,n):
+          self.name = n
+          self.output = None
+
+      def get_label(self):
+          return self.name
+
+      def get_output(self):
+          self.output = self.perform_gate_logic()
+          return self.output
+
+
+  class BinaryGate(LogicGate):
+
+      def __init__(self,n):
+          LogicGate.__init__(self,n)
+
+          self.pin_a = None
+          self.pin_b = None
+
+      def get_pin_a(self):
+          if self.pin_a == None:
+              return int(input(&quot;Enter Pin A input for gate &quot;+self.get_label()+&quot;--&gt;&quot;))
+          else:
+              return self.pin_a.get_from().get_output()
+
+      def get_pin_b(self):
+          if self.pin_b == None:
+              return int(input(&quot;Enter Pin B input for gate &quot;+self.get_label()+&quot;--&gt;&quot;))
+          else:
+              return self.pin_b.get_from().get_output()
+
+      def set_next_pin(self,source):
+          if self.pin_a == None:
+              self.pin_a = source
+          else:
+              if self.pin_b == None:
+                  self.pin_b = source
+              else:
+                  print(&quot;Cannot Connect: NO EMPTY PINS on this gate&quot;)
+
+
+  class AndGate(BinaryGate):
+
+      def __init__(self,n):
+          BinaryGate.__init__(self,n)
+
+      def perform_gate_logic(self):
+
+          a = self.get_pin_a()
+          b = self.get_pin_b()
+          if a==1 and b==1:
+              return 1
+          else:
+              return 0
+
+  class OrGate(BinaryGate):
+
+      def __init__(self,n):
+          BinaryGate.__init__(self,n)
+
+      def perform_gate_logic(self):
+
+          a = self.get_pin_a()
+          b = self.get_pin_b()
+          if a ==1 or b==1:
+              return 1
+          else:
+              return 0
+
+  class UnaryGate(LogicGate):
+
+      def __init__(self,n):
+          LogicGate.__init__(self,n)
+
+          self.pin = None
+
+      def get_pin(self):
+          if self.pin == None:
+              return int(input(&quot;Enter Pin input for gate &quot;+self.get_label()+&quot;--&gt;&quot;))
+          else:
+              return self.pin.get_from().get_output()
+
+      def set_next_pin(self,source):
+          if self.pin == None:
+              self.pin = source
+          else:
+              print(&quot;Cannot Connect: NO EMPTY PINS on this gate&quot;)
+
+
+  class NotGate(UnaryGate):
+
+      def __init__(self,n):
+          UnaryGate.__init__(self,n)
+
+      def perform_gate_logic(self):
+          if self.get_pin():
+              return 0
+          else:
+              return 1
+
+
+  class Connector:
+
+      def __init__(self, fgate, tgate):
+          self.from_gate = fgate
+          self.to_gate = tgate
+
+          tgate.set_next_pin(self)
+
+      def get_from(self):
+          return self.from_gate
+
+      def get_to(self):
+          return self.to_gate
+
+
+
+  def main():
+     g1 = AndGate(&quot;G1&quot;)
+
+     print(g1.get_output())
+
+  main()
+</code></pre></div>
+<p>.. youtube:: brrpvAlzOyM
+    :divid: logicgates
+    :height: 315
+    :width: 560
+    :align: left</p>
+<p>.. .. admonition:: Self  Check Challenge</p>
+<p>..    One of the fundamental building blocks of a computer is something called a flip flop.  It's not something that computer science professors wear on their feet, but rather a kind of circuit that is stable and stores the last piece of data that was put on it.  A simple flip-flop can be made from two NOR gates that are tied together as in the following diagram.</p>
+<p>..    .. image:: Figures/flipflop.png</p>
+<p>..    This is a challenge problem because the entire
+..    Note if the initial inputs to Reset and Set are both 0 then the output of the flip-flop is 0.  But if the Set input is toggled to 1 then the output becomes 1.  The great thing is that when the set input goes to 0 the output stays 1, until the reset input is toggled to 1 which resets the output of the circuit back to zero.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月10日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月10日</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.726fbb30.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

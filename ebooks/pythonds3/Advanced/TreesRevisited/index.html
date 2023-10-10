@@ -1,0 +1,4868 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac的工作学习生活笔记">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+    
+    
+      
+        <title>Trees Revisited: Quantizing Images - 我的工作学习生活笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d451bc0e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#trees-revisited-quantizing-images" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的工作学习生活笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Trees Revisited: Quantizing Images
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac的个人博客
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/python/" class="md-tabs__link">
+          
+  
+    
+  
+  技术
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/rfc/oauth2/" class="md-tabs__link">
+          
+  
+    
+  
+  标准
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/python/lxml-objectify/" class="md-tabs__link">
+          
+  
+    
+  
+  汉化
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  开源电子书
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../read/english/bluelevel/" class="md-tabs__link">
+          
+  
+    
+  
+  阅读
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../invest/webs/" class="md-tabs__link">
+          
+  
+    
+  
+  理财
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../tools/repos/" class="md-tabs__link">
+          
+  
+    
+  
+  工具
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../documents/docs/" class="md-tabs__link">
+          
+  
+    
+  
+  文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../e-book/" class="md-tabs__link">
+        
+  
+    
+  
+  电子书
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../other/front_links/" class="md-tabs__link">
+          
+  
+    
+  
+  其他
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    我的工作学习生活笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac的个人博客
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    技术
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            技术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/typehint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类型标注
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pep8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PEP 8 – Python代码样式指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/code_style_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    编码样式指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/stringio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    stringIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/flask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    flask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/django/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    django
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/importlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    importlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pycrypto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    crypto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/petl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    python-petl使用简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/psutil/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psutil文档-中文版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/docx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docx文档
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/excel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/reportlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ReportLab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/alembic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    alembic教程(转)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQLAlchemy简明教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/nemeko_playground/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nameko 的使用及注意事项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/xml-parse-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML解析地图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/useful_functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用的函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    lxml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            lxml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/lxml-objectify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/linux/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    端口占用查找
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/disk-mount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux磁盘挂载
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/shell-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    shell脚本实战
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/C/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/front/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    前端知识
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            前端知识
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工程化流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    包版本知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    package.json知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/webassembly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebAssembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    服务组件
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            服务组件
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/zookeeper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    zookeeper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/supervisor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    supervisor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rabbitmq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kafka
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_6" id="__nav_2_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无头浏览器
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            无头浏览器
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/unheadchrome/openchrome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openchrome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/unheadchrome/build_env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    环境搭建
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据库
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            数据库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/clickhouse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClickHouse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_2" id="__nav_2_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/mysql8_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mysql8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/mysql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用操作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_3" id="__nav_2_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ElasticSearch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            ElasticSearch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/elasticsearch_py/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/es_dsl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-dsl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/es_aggs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-aggs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全渗透
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            安全渗透
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/security/thc-hydra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    hydra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/security/sqlmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqlmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    知识概念
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            知识概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/project_doc_layout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目文档结构示例
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/pc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    上位机简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/xaas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    xaas概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/xaas2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一文搞懂什么是SaaS、BaaS、PaaS和IaaS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/users/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    统一用户管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/etl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETL数据处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/data_transfer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据传输和对接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/understand_computer_system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深入理解计算机系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    其他
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/other/embedded_industry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    嵌入式行业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/other/apache_license2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apache license2.0开源协议
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RFC标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            RFC标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/oauth2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    oauth2学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/rfc6749/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oauth2-RFC6749翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/rfc6750/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oauth2-RFC6750翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ECMA376标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ECMA376标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/ecma376/part1-refrence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECMA-376-1:2016 - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    汉化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            汉化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    lxml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            lxml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/lxml-objectify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lxml.objectify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    开源电子书
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            开源电子书
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    py3数据结构和算法
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            py3数据结构和算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    阅读
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            阅读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    英语
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            英语
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/english/bluelevel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BlueLevel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/english/redlevel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RedLevel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/howtoreadbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何阅读一本书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/howtoavoid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何避免愚蠢的见识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/placeofsoul/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    灵魂的最高处
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/maliciousmatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    恶意匹配
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    沟通的艺术
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            沟通的艺术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    沟通入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:自我
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:知觉
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:情绪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:非语言沟通
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:倾听
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:沟通和关系的演变
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:人际沟通中的亲密关系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:增进沟通气氛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:处理人际冲突
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    阅读总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    理财
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            理财
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../invest/webs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    理财网站
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    工具
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/repos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    仓库合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git常用操作备忘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 起步
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 分支
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 服务器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 分布式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git hub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 自定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 与其他系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 内部原理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 其他环境中使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 应用中嵌入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../documents/docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文档合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../e-book/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电子书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    其他
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/front_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前端常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/back_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/other_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    其他常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/become_leader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    成为高手秘籍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/zym_weibo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    张一鸣微博
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/dynamic_business/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动态商业环境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/honeypot_list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    蜜罐资源列表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/bigdata_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大数据资源列表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-quick-review-of-digital-images" class="md-nav__link">
+    A Quick Review of Digital Images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantizing-an-image" class="md-nav__link">
+    Quantizing an Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-improved-quantization-algorithm-using-octrees" class="md-nav__link">
+    An Improved Quantization Algorithm Using Octrees
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="trees-revisited-quantizing-images">Trees Revisited: Quantizing Images<a class="headerlink" href="#trees-revisited-quantizing-images" title="Permanent link">&para;</a></h1>
+<p>Next to text, digital images are the most common element found on the
+internet. However, the internet would feel much slower if every
+advertisement-sized image required 196,560 bytes of memory. Instead, a
+banner ad image requires only 14,246, just 7.2% of what it could take.
+Where do these numbers come from? How is such a phenomenal savings
+achieved? The answers to these questions are the topic of this section.</p>
+<h2 id="a-quick-review-of-digital-images">A Quick Review of Digital Images<a class="headerlink" href="#a-quick-review-of-digital-images" title="Permanent link">&para;</a></h2>
+<p>A digital image is composed of thousands of individual components called
+<strong>pixels</strong>. The pixels are arranged as a rectangle that forms the image.
+Each pixel in an image represents a particular color in the image. On a
+computer, the color of each pixel is determined by a mixture of three
+primary colors: red, green, and blue. A simple example of how pixels are
+arranged to form a picture is shown in Figure <code>1 &lt;#fig_smallimage&gt;</code>__.</p>
+<p>.. figure:: Figures/8by8image.png
+   :alt: A Simple Image
+   :name: fig_smallimage
+   :height: 2in</p>
+<p>A Simple Image Composed of Pixels</p>
+<p>In the physical world colors are not discrete quantities. The colors in
+our physical world have an infinite amount of variation to them. Just as
+computers must approximate floating point numbers, they also must
+approximate the colors in an image. The human eye can distinguish
+between 200 different levels in each of the three primary colors, or a
+total of about 8 million individual colors. In practice we use one byte
+(8 bits) of memory for each color component of a pixel. Eight bits gives
+us 256 different levels for each of the red, green, and blue components,
+for a total of 16.7 million different possible colors for each pixel.
+While the huge number of colors allows artists and graphic designers to
+create wonderfully detailed images, the downside of all of these color
+possibilities is that image size grows very rapidly. For example, a
+single image from a one-megapixel camera would take 3 megabytes of
+memory.</p>
+<p>In Python we might represent an image using a list of a list of tuples,
+where the tuples consist of three numbers between 0 and 255, one for
+each of the red, green, and blue components. In other languages, such as
+C++ and Java, an image could be represented as a two-dimensional array.
+The list of lists representation of the first two rows of the image in
+Figure <code>1 &lt;#fig_smallimage&gt;</code>__ is shown below:</p>
+<p>::</p>
+<p>im = [[(255,255,255),(255,255,255),(255,255,255),(12,28,255),
+         (12,28,255),(255,255,255),(255,255,255),(255,255,255),],
+         [(255,255,255),(255,255,255),(12,28,255),(255,255,255),
+          (255,255,255),(12,28,255),(255,255,255),(255,255,255)],
+    ... ]</p>
+<p>The color white is represented by the tuple :math:<code>(255, 255, 255)</code>. A bluish
+color is represented by the tuple :math:<code>(12, 28, 255)</code>. You can obtain the color
+value for any pixel in the image by simply using list indices, for
+example:</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>   &gt;&gt;&gt; im[3][2]
+   (255, 18, 39)
+</code></pre></div>
+<p>With this representation for an image in mind, you can imagine that it
+would be easy to store an image to a file just by writing a tuple for
+each pixel. You might start by writing the number of rows and columns in
+the image and then by writing three integer values per line. In
+practice, the Python package <code>Pillow</code> provides us with some
+powerful classes. Using the <code>Image</code> class we can get and set pixels
+using <code>getpixel((col, row))</code> and <code>putpixel((col, row), color)</code>. Note
+that the parameters for the image methods are in the traditional
+:math:<code>x, y</code> order but many people forget and think in terms of row,
+column order.</p>
+<h2 id="quantizing-an-image">Quantizing an Image<a class="headerlink" href="#quantizing-an-image" title="Permanent link">&para;</a></h2>
+<p>There are many ways of reducing the storage requirements for an image.
+One of the easiest ways is to simply use fewer colors. Fewer color
+choices means fewer bits for each red, green, and blue component, which
+means reduced memory requirements. In fact, one of the most popular
+image formats used for images on the World Wide Web uses only 256 colors
+for an image. Using 256 colors reduces the storage requirements from
+three bytes per pixel to one byte per pixel.</p>
+<p>Right now you are probably asking yourself how to take an image that 
+may have as many as 16 million colors and reduce it
+to just 256? The answer is a process called <strong>quantization</strong>. To
+understand the process of quantization let’s think about colors as a
+three-dimensional space. Each color can be represented by a point in
+space where the red component is the <em>x</em> axis, the green component is the
+<em>y</em> axis, and the blue component is the <em>z</em> axis. We can think of the space
+of all possible colors as a :math:<code>256 \times 256 \times 256</code> cube. The
+colors closest to the vertex at :math:<code>(0, 0, 0)</code> are going to be black and dark
+color shades. The colors closest to the vertex at :math:<code>(255, 255, 255)</code> are
+bright and close to white. The colors closest to :math:<code>(255, 0, 0)</code> are red and
+so forth.</p>
+<p>The simplest way to think about quantizing an image is to imagine
+taking the :math:<code>256 \times 256 \times 256</code> cube and turning it into an
+:math:<code>8 \times 8 \times 8</code> cube. The overall size of the cube stays the
+same, but now many colors in the old cube are represented by a single
+color in the new cube. Figure <code>2 &lt;#fig_colorcube&gt;</code>__ shows an example of
+the quantization just described.</p>
+<p>.. figure:: Figures/quantizeCube.png
+   :alt: Color Quantization
+   :name: fig_colorcube</p>
+<p>Color Quantization</p>
+<p>We can turn this simple idea of color quantization into the Python
+program shown in Listing <code>[lst_simplequant] &lt;#lst_simplequant&gt;</code>__. The
+<code>simple_quant</code> algorithm works by mapping the color components for
+each pixel represented by its full 256 bits to the color at the center
+of the cube in its area. This is easy to do using integer division in
+Python. In the <code>simple_quant</code> algorithm there are seven distinct
+values in the red dimension and six distinct values in the green and
+blue dimensions.</p>
+<p>::</p>
+<p>from PIL import Image</p>
+<p>def simple_quant(filename):
+       im = Image.open(filename)
+       w, h = im.size
+       for row in range(h):
+           for col in range(w):
+               r, g, b = im.getpixel((col, row))
+               r = r // 36 * 36
+               g = g // 42 * 42
+               b = b // 42 * 42
+               im.putpixel((col, row), (r, g, b))
+       im.show()</p>
+<p>simple_quant("bubbles.jpg")</p>
+<p>Figure <code>[fig_simplecompare] &lt;#fig_simplecompare&gt;</code>__ shows a before and
+after comparison of original and quantized images. Of course, these
+are color pictures that have been converted to gray scale for
+publication.
+You can use any JPEG color image from your collection and run the program to see the real difference in full color.
+Notice how much
+detail is lost in the quantized picture. The grass has lost nearly all
+its detail and is uniformly green, and the skin tones have been reduced
+to two shades of tan.</p>
+<h2 id="an-improved-quantization-algorithm-using-octrees">An Improved Quantization Algorithm Using Octrees<a class="headerlink" href="#an-improved-quantization-algorithm-using-octrees" title="Permanent link">&para;</a></h2>
+<p>The problem with the simple method of quantization just described is
+that the colors in most pictures are not evenly distributed throughout
+the color cube. Many colors may not appear in the image, so parts of
+the cube may go completely unused. Allocating an unused color to the
+quantized image is a waste. Figure <code>3 &lt;#fig_colordist&gt;</code>__ shows the
+distribution of the colors that are used in the example image. Notice
+how little of the color cube space is actually used.</p>
+<p>.. figure:: Figures/colorcube.png
+   :alt: Plot of Colors Used in Image as Points in Color Cube
+   :name: fig_colordist
+   :height: 3in</p>
+<p>Plot of Colors Used in Image as Points in Color Cube</p>
+<p>To make a better quantized image we need to find a way to do a better
+job of selecting the set of colors we want to use to represent our
+image. There are several algorithms for dividing the color cube in
+different ways to allow for the better use of colors. In this section we
+are going to look at a tree-based solution. The tree solution we will
+use makes use of an <strong>octree</strong>. An octree is similar to a binary
+tree; however, each node in an octree has eight children. Here is the
+interface we will implement for our octree abstract data type:</p>
+<ul>
+<li>
+<p><code>Octree()</code> creates a new empty octree.</p>
+</li>
+<li>
+<p><code>insert(r, g, b)</code> adds a new node to the octree using the red,
+   green, and blue color values as the key.</p>
+</li>
+<li>
+<p><code>find(r, g, b)</code> finds an existing node, or the closest
+   approximation, using the red, green, and blue color values as the
+   search key.</p>
+</li>
+<li>
+<p><code>reduce(n)</code> reduces the size of the octree so that there are
+   :math:<code>n</code> or fewer leaf nodes.</p>
+</li>
+</ul>
+<p>Here is how an octree is used to divide the color cube:</p>
+<ul>
+<li>
+<p>The root of the octree represents the entire cube.</p>
+</li>
+<li>
+<p>The second level of the octree represents a single slice through
+   each dimension (:math:<code>x</code>, :math:<code>y</code>, and :math:<code>z</code>) that evenly divides the cube into eight
+   pieces.</p>
+</li>
+<li>
+<p>The next level of the tree divides each of the eight sub-cubes into eight
+   additional cubes for a total of 64 cubes. Notice that the cube
+   represented by the parent node totally contains all of the sub-cubes
+   represented by the children. As we follow any path down the tree we
+   are staying within the boundary of the parent, but getting
+   progressively more specific about the portion of the cube.</p>
+</li>
+<li>
+<p>The eighth level of the tree represents the full resolution of 16.7
+   million colors in our color cube.</p>
+</li>
+</ul>
+<p>Now that you know how we can represent the color cube using an
+octree, you may be thinking that the octree is just another
+way to divide up the color cube into even parts. You are correct.
+However, because the octree is hierarchical, we can take advantage
+of the hierarchy to use larger cubes to represent unused portions of the
+color cube and smaller cubes to represent the popular colors. Here is an
+overview of how we will use an octree to do a better job of
+selecting a subset of the colors in an image:</p>
+<h1 id="-for-each-pixel-in-the-image">. For each pixel in the image:<a class="headerlink" href="#-for-each-pixel-in-the-image" title="Permanent link">&para;</a></h1>
+<p>#. Search for the color of this pixel in the octree. The color
+      will be a leaf node at the eighth level.</p>
+<p>#. If the color is not found create a new leaf node at the eighth
+      level (and possibly some internal nodes above the leaf).</p>
+<p>#. If the color is already present in the tree increment the counter
+      in the leaf node to keep track of how many pixels are this color.</p>
+<h1 id="-repeat-until-the-number-of-leaf-nodes-is-less-than-or-equal-to-the">. Repeat until the number of leaf nodes is less than or equal to the<a class="headerlink" href="#-repeat-until-the-number-of-leaf-nodes-is-less-than-or-equal-to-the" title="Permanent link">&para;</a></h1>
+<p>target number of colors.</p>
+<p>#. Find the deepest leaf node with the smallest number of uses.</p>
+<p>#. Merge the leaf node and all of its siblings together to form a new
+      leaf node.</p>
+<h1 id="-the-remaining-leaf-nodes-form-the-color-set-for-this-image">. The remaining leaf nodes form the color set for this image.<a class="headerlink" href="#-the-remaining-leaf-nodes-form-the-color-set-for-this-image" title="Permanent link">&para;</a></h1>
+<h1 id="-to-map-an-original-color-to-its-quantized-value-simply-search-down">. To map an original color to its quantized value simply search down<a class="headerlink" href="#-to-map-an-original-color-to-its-quantized-value-simply-search-down" title="Permanent link">&para;</a></h1>
+<p>the tree until you get to a leaf node. Return the color values stored
+   in the leaf.</p>
+<p>The ideas outlined above are encoded as a Python function to read,
+quantize, and display an image in the function <code>build_and_display()</code>
+in Listing <code>[lst_bad] &lt;#lst_bad&gt;</code>__.</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>def build_and_display(filename):
+    img = Image.open(filename)
+    w, h = img.size
+    ot = Octree()
+    for row in range(h):
+        for col in range(w):
+            r, g, b = img.getpixel((col, row))
+            ot.insert(r, g, b)
+    ot.reduce(256)
+
+    for row in range(h):
+        for col in range(w):
+            r, g, b = img.getpixel((col, row))
+            nr, ng, nb = ot.find(r, g, b)
+            img.putpixel((col, row), (nr, ng, nb))
+    img.show()
+</code></pre></div>
+<p>The <code>build_and_display</code> function follows the basic process just described.
+First, the loops in lines
+<code>[lst_bad:line_bldotstrt] &lt;#lst_bad:line_bldotstrt&gt;</code><strong>–<code>[lst_bad:line_bldotend] &lt;#lst_bad:line_bldotend&gt;</code></strong>
+read each pixel and add it to the octree.
+Second, the
+number of leaf nodes is reduced by the <code>reduce</code> method on line
+<code>[lst_bad:line_callotreduce] &lt;#lst_bad:line_callotreduce&gt;</code><strong>.
+Finally, the image is updated by searching for a color, using <code>find</code>,
+in the reduced octree on line
+<code>[lst_bad:line_otfind] &lt;#lst_bad:line_otfind&gt;</code></strong>.</p>
+<p>We are using the Python image library to
+open an existing image file (<code>Image.open</code>), read a pixel
+(<code>getpixel</code>), write a pixel (<code>putpixel</code>), and display the
+result to the screen (<code>show</code>). <code>build_and_display</code> interacts with the octree
+using an instance of the <code>Octree</code> class (Listing <code>[lst_octreedef] &lt;#lst_octreedef&gt;</code>__).</p>
+<p>::</p>
+<p>class octree:
+       def <strong>init</strong>(self):
+           self.root = None
+           self.max_level = 5
+           self.num_leaves = 0
+           self.all_leaves = []</p>
+<div class="highlight"><pre><span></span><code>   def insert(self, r, g, b):
+       if not self.root:
+           self.root = self.OTNode(outer=self)
+       self.root.insert(r, g, b, 0, self)
+
+   def find(self, r, g, b):
+       if self.root:
+           return self.root.find(r, g, b, 0)
+
+   def reduce(self, max_cubes):  |\label{lst_octreedef:line_otreduce}|
+       while len(self.all_leaves) &gt; max_cubes:
+           smallest = self.find_min_cube()
+           smallest.parent.merge()  |\label{lst_octreedef:line_otredmerge}|
+           self.all_leaves.append(smallest.parent)
+           self.num_leaves = self.num_leaves + 1
+
+   def find_min_cube(self):
+       min_count = sys.maxsize
+       max_level = 0
+       min_cube = None
+       for i in self.all_leaves:
+           if (
+               i.count &lt;= min_count
+               and i.level &gt;= max_level
+           ):
+               min_cube = i
+               min_count = i.count
+               max_level = i.level
+       return min_cube
+</code></pre></div>
+<p>First notice that the constructor for an <code>Octree</code> initializes the
+root node to <code>None</code>. Then it sets up three important attributes that
+all the nodes of an octree may need to access. Those attributes
+are <code>max_level</code>, <code>num_leaves</code>, and <code>all_leaves</code>. The
+<code>max_level</code> attribute limits the total depth of the tree. Notice that
+in our implementation we have initialized <code>max_level</code> to five. This is
+a small optimization that simply allows us to ignore the two least
+significant bits of color information. It keeps the overall size of the
+tree much smaller and doesn’t hurt the quality of the final image at
+all. The <code>num_leaves</code> and <code>all_leaves</code> attributes allow us to keep
+track of the number of leaf nodes and allow us direct access to the
+leaves without traversing all the way down the tree. We will see why
+this is important shortly.</p>
+<p>The <code>insert</code> and <code>find</code> methods behave exactly like their cousins in
+chapter <code>[chap_tree] &lt;#chap_tree&gt;</code>__. They each check to see if a root
+node exists, and then call the corresponding method in the root node.
+Notice that <code>insert</code> and <code>find</code> both use the red, green, and blue
+components (<code>(r, g, b)</code>) to identify a node in the tree.</p>
+<p>The <code>reduce</code> method is defined on line
+<code>[lst_octreedef:line_otreduce] &lt;#lst_octreedef:line_otreduce&gt;</code><strong> of
+Listing <code>[lst:octreedef] &lt;#lst:octreedef&gt;</code></strong>. This method simply loops
+until the number of leaves in the leaf list is less than the total
+number of colors we want to have in the final image (defined by the
+parameter <code>max_cubes</code>). <code>reduce</code> makes use of a helper function
+<code>find_min_cube</code> to find the node in the octree with the smallest
+reference count. Once the node with the smallest reference count is
+found, that node is merged into a single node with all of its siblings
+(see line
+<code>[lst_octreedef:line_otredmerge] &lt;#lst_octreedef:line_otredmerge&gt;</code>__).</p>
+<p>The <code>find_min_cube</code> method is implemented using the <code>all_leaves</code> and
+a simple find minimum loop pattern. When the number of leaf nodes is
+large, and it could be as large is 16.7 million, this approach is not
+very efficient. In one of the exercises you are asked to modify the
+<code>Octree</code> class and improve the efficiency of <code>find_min_cube</code>.</p>
+<p>One of the things to mention about the <code>Octree</code> class is that it uses an instance
+of the class <code>OTNode</code> which is defined inside the the <code>Octree</code> class. A class
+that is defined inside another class is called an <em>inner class</em>.
+We define <code>OTNode</code> inside <code>Octree</code> because each node
+of an octree needs to have access to some information that is
+stored in an instance of the <code>Octree</code> class. Another reason for making
+<code>OTNode</code> an inner class is that there is no reason for any code
+outside of the <code>Octree</code> class to use it. The way that an octree
+is implemented is really a private detail that nobody
+else needs to know about. This is a good software engineering practice
+known as <em>information hiding</em>.</p>
+<p>Now let’s look at the class definition for the nodes in an octree
+(Listing <code>[lst_otnodedef] &lt;#lst_otnodedef&gt;</code>__).
+The constructor for the <code>OTNode</code> class has three optional parameters: <code>parent</code>,
+<code>level</code>, and <code>outer</code>.
+These parameters allow the <code>Octree</code> methods to construct new
+nodes under a variety of circumstances. As we did with binary search
+trees, we will keep track of the parent of a node explicitly. The level
+of the node simply indicates its depth in the tree. The most interesting
+of these three parameters is the <code>outer</code> parameter, which is a
+reference to the instance of the <code>octree</code> class that created this
+node. <code>outer</code> will function like <code>self</code> in that it will allow the
+instances of <code>OTNode</code> to access attributes of an instance of
+<code>Octree</code>.</p>
+<p>The other attributes that we want to remember about each node in an
+<code>octree</code> include the reference <code>count</code> and the red, green, and blue
+components of the color represented by this tree. As you will note in
+the <code>insert</code> function, only a leaf node of the tree will have values
+for <code>red</code>, <code>green</code>, <code>blue</code>, and <code>count</code>. Also note that since
+each node can have up to eight children we initialize a list of eight
+references to keep track of them all. Rather than a left and right child
+as in binary trees, an octree has 0–7 children.</p>
+<p>::</p>
+<p>class OTNode:
+       def <strong>init</strong>(self, parent=None, level=0, outer=None):
+           self.red = 0
+           self.green = 0
+           self.blue = 0
+           self.count = 0
+           self.parent = parent
+           self.level = level
+           self.oTree = outer
+           self.children = [None] * 8</p>
+<p>Now we get into the really interesting parts of the octree
+implementation. The Python code for inserting a new node into an
+octree is shown in Listing <code>[lst_otninsert] &lt;#lst_otninsert&gt;</code><strong>.
+The first problem we need to solve is how to figure out where to place a
+new node in the tree. In a binary search tree we used the rule that a
+new node with a key less than its parent went in the left subtree, and a
+new node with a key greater than its parent went in the right subtree.
+But with eight possible children for each node it is not that simple. In
+addition, when indexing colors it is not obvious what the key for each
+node should be. In an <code>octree</code> we will use the information from the
+three color components. Figure <code>4 &lt;#fig_otindex&gt;</code></strong> shows how we can use
+the red, green, and blue color values to compute an index for the
+position of the new node at each level of the tree. The corresponding
+Python code for computing the index is on
+line <code>[lst_otninsert:line_otci] &lt;#lst_otninsert:line_otci&gt;</code><strong> of
+Listing <code>[lst_otninsert] &lt;#lst_otninsert&gt;</code></strong>.</p>
+<p>::</p>
+<p>def insert(self, r, g, b, level, outer):
+       if level &lt; self.oTree.max_level:
+           idx = self.compute_index(
+               r, g, b, level
+           )
+           if self.children[idx] == None:
+               self.children[idx] = outer.OTNode(
+                   parent=self,
+                   level=level + 1,
+                   outer=outer,
+               )
+           self.children[idx].insert(
+               r, g, b, level + 1, outer
+           )
+       else:
+           if self.count == 0:
+               self.oTree.num_leaves = (
+                   self.oTree.num_leaves + 1
+               )
+               self.oTree.all_leaves.append(self)
+           self.red += r
+           self.green += g
+           self.blue += b
+           self.count = self.count + 1</p>
+<p>def compute_index(self, r, g, b, l):  |\label{lst_otninsert:line_otci}|
+       shift = 8 - l
+       rc = r &gt;&gt; shift - 2 &amp; 0x4
+       gc = g &gt;&gt; shift - 1 &amp; 0x2
+       bc = b &gt;&gt; shift &amp; 0x1
+       return rc | gc | bc</p>
+<p>The computation of the index combines bits from each of the red, green,
+and blue color components, starting at the top of the tree with the
+highest order bits. Figure <code>4 &lt;#fig_otindex&gt;</code><strong> shows the binary
+representation of the red, green, and blue components of 163, 98, 231.
+At the root of the tree we start with the most significant bit from each
+of the three color components; in this case the three bits are 1, 0, and
+1. Putting these bits together we get binary 101 or decimal 5. You can
+see the binary manipulation of the red, green, and blue numbers in the
+<code>compute_index</code> method on
+line <code>[lst_otninsert:line_otci] &lt;#lst_otninsert:line_otci&gt;</code></strong> in
+Listing <code>[lst_otninsert] &lt;#lst_otninsert&gt;</code>__.</p>
+<p>The operators used in the <code>compute_index</code> may be unfamiliar to you.
+The <code>&gt;&gt;</code> operator is the right shift operation. The <code>&amp;</code> is bitwise
+<code>and</code>, and <code>|</code> is logical <code>or</code>. The bitwise <code>or</code> and bitwise
+<code>and</code> operations work just like the logical operations used in
+conditionals, except that they work on the individual bits of a number.
+The shift operation simply moves the bits :math:<code>n</code> places to the right,
+filling in with zeros on the left and dropping the bits as they go off
+the right.</p>
+<p>Once we have computed the index appropriate for the current level of the tree,
+we traverse down into the subtree. In the example in
+Figure <code>4 &lt;#fig_otindex&gt;</code>__ we follow the link at position 5 in the
+<code>children</code> array. If there is no node at position 5, we create one. We
+keep traversing down the tree until we get to <code>max_level</code>. At
+<code>max_level</code> we stop searching and store the data. Notice that we do
+not overwrite the data in the leaf node, but rather we add the color
+components to any existing components and increment the reference
+counter. This allows us to compute the average of any color below the
+current node in the color cube. In this way, a leaf node in the
+<code>octree</code> may represent a number of similar colors in the color cube.</p>
+<p>.. figure:: Figures/octreeIndex.png
+   :alt: Computing an Index to Insert a Node in an octree
+   :name: fig_otindex
+   :height: 4.5in</p>
+<p>Computing an Index to Insert a Node in an octree</p>
+<p>The <code>find</code> method, shown in Listing <code>[lst_otnfind] &lt;#lst_otnfind&gt;</code>__,
+uses the same method of index computation as the <code>insert</code> method to
+traverse the tree in search of a node matching the red, green, and blue
+components. </p>
+<p>::</p>
+<p>def find(self, r, g, b, level):
+       if level &lt; self.oTree.max_level:
+           idx = self.compute_index(r, g, b, level)
+           if self.children[idx]:
+               return self.children[idx].find(
+                   r, g, b, level + 1
+               )
+           elif self.count &gt; 0:
+               return (
+                   self.red // self.count,
+                   self.green // self.count,
+                   self.blue // self.count,
+               )
+           else:
+               print("No leaf node to represent this color")
+       else:
+           return (
+               self.red // self.count,
+               self.green // self.count,
+               self.blue // self.count,
+           )</p>
+<p>The <code>find</code> method has three exit conditions:</p>
+<h1 id="-we-have-reached-the-maximum-level-of-the-tree-and-so-we-return-the">. We have reached the maximum level of the tree and so we return the<a class="headerlink" href="#-we-have-reached-the-maximum-level-of-the-tree-and-so-we-return-the" title="Permanent link">&para;</a></h1>
+<p>average of the color information stored in this leaf node (see lines 17--21).</p>
+<h1 id="-we-have-found-a-leaf-node-at-a-height-less-than-max_level-see-lines9--13">. We have found a leaf node at a height less than <code>max_level</code> (see lines 9--13).<a class="headerlink" href="#-we-have-found-a-leaf-node-at-a-height-less-than-max_level-see-lines9--13" title="Permanent link">&para;</a></h1>
+<p>This is possible only after the tree has been reduced. See below.</p>
+<h1 id="-we-try-to-follow-a-path-into-a-nonexistent-subtree-which-is-an">. We try to follow a path into a nonexistent subtree, which is an<a class="headerlink" href="#-we-try-to-follow-a-path-into-a-nonexistent-subtree-which-is-an" title="Permanent link">&para;</a></h1>
+<p>error.</p>
+<p>The final aspect of the <code>OTNode</code> class is the <code>merge</code> method. It
+allows a parent to subsume all of its children and become a leaf node
+itself. If you remember back to the structure of the <code>octree</code> where
+each parent cube fully encloses all the cubes represented by the
+children, you will see why this makes sense. When we merge a group of
+siblings we are effectively taking a weighted average of the colors
+represented by each of those siblings. Since all the siblings are
+relatively close to each other in color space, the average is a good
+representation of all of them. Figure <code>5 &lt;#fig_otmerge&gt;</code>__ illustrates
+the merge process for some sibling nodes.</p>
+<p>.. figure:: Figures/otMerge.png
+   :alt: Merging Four Leaf Nodes of an <code>octree</code>
+   :name: fig_otmerge</p>
+<p>Merging Four Leaf Nodes of an <code>octree</code></p>
+<p>Figure <code>5 &lt;#fig_otmerge&gt;</code><strong> shows the red, green, and blue components
+represented by the four leaf nodes whose identifying color values are
+(101, 122, 167), (100, 122, 183), (123, 108, 163), and (126, 113, 166).
+As you can see in Listing <code>[lst_otnfind] &lt;#lst_otnfind&gt;</code></strong>
+the identifying values are calculated dividing the color values by the count.
+Notice how close they are in the overall color space. The leaf node that gets
+created from all of these has an ID of (112, 115, 168). This is close to
+the average of the four, but weighted more towards the third color tuple
+due to the fact that it had a reference count of 12.</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>def merge(self):
+    for child in [c for c in self.children if c]:
+        if child.count &gt; 0:
+            self.o_tree.all_leaves.remove(child)
+            self.o_tree.num_leaves -= 1
+        else:
+            print(&quot;Recursively merging non-leaf...&quot;)
+            child.merge()
+        self.count += child.count
+        self.red += child.red
+        self.green += child.green
+        self.blue += child.blue
+    for i in range(8):
+        self.children[i] = None
+</code></pre></div>
+<p>Because the <code>octree</code> uses only colors that are really present in the
+image and faithfully preserves colors that are often used, the final
+quantized image from the <code>octree</code> is much higher quality than the
+simple method we used to start this section.
+Figure <code>[fig_otquantcompare] &lt;#fig_otquantcompare&gt;</code>__ shows a comparison
+of the original image with the quantized image.</p>
+<p>There are many additional ways to compress images using techniques such
+as run-length encoding, discrete cosine transform, and Huffman coding.
+Any of these algorithms are within your grasp and we encourage you to
+look them up and read about them. In addition, quantized images can be
+improved by using a technique known as <strong>dithering</strong>. Dithering is a
+process by which different colors are placed near each other so that
+the eye blends the colors together, forming a more realistic image. This
+is an old trick used by newspapers for doing color printing using just
+black plus three different colors of ink. Again you can research
+dithering and try to apply it to some images on your own.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月10日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月10日</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.726fbb30.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

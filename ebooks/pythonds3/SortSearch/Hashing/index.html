@@ -1,0 +1,4886 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac的工作学习生活笔记">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+    
+    
+      
+        <title>Hashing - 我的工作学习生活笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d451bc0e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="default" data-md-color-accent="red">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="我的工作学习生活笔记" class="md-header__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的工作学习生活笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hashing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac的个人博客
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/python/" class="md-tabs__link">
+          
+  
+    
+  
+  技术
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/rfc/oauth2/" class="md-tabs__link">
+          
+  
+    
+  
+  标准
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../technology/python/lxml-objectify/" class="md-tabs__link">
+          
+  
+    
+  
+  汉化
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  开源电子书
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../read/english/bluelevel/" class="md-tabs__link">
+          
+  
+    
+  
+  阅读
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../invest/webs/" class="md-tabs__link">
+          
+  
+    
+  
+  理财
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../tools/repos/" class="md-tabs__link">
+          
+  
+    
+  
+  工具
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../documents/docs/" class="md-tabs__link">
+          
+  
+    
+  
+  文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../e-book/" class="md-tabs__link">
+        
+  
+    
+  
+  电子书
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../other/front_links/" class="md-tabs__link">
+          
+  
+    
+  
+  其他
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="我的工作学习生活笔记" class="md-nav__button md-logo" aria-label="我的工作学习生活笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    我的工作学习生活笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/hellowac.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac的个人博客
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    技术
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            技术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/typehint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类型标注
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pep8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PEP 8 – Python代码样式指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/code_style_guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    编码样式指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/stringio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    stringIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/flask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    flask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/django/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    django
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/importlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    importlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/pycrypto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    crypto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/petl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    python-petl使用简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/psutil/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    psutil文档-中文版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/docx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docx文档
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/excel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/reportlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ReportLab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/alembic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    alembic教程(转)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/sqlalchemy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQLAlchemy简明教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/nemeko_playground/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nameko 的使用及注意事项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/xml-parse-map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XML解析地图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/useful_functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用的函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    lxml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            lxml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/lxml-objectify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/linux/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    端口占用查找
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/disk-mount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux磁盘挂载
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/linux/shell-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    shell脚本实战
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/C/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../technology/front/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    前端知识
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            前端知识
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工程化流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    包版本知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    package.json知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/front/webassembly/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebAssembly
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    服务组件
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            服务组件
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/zookeeper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    zookeeper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/supervisor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    supervisor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/rabbitmq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rabbitmq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/components/kafka/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kafka
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_6" id="__nav_2_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    无头浏览器
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            无头浏览器
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/unheadchrome/openchrome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openchrome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/unheadchrome/build_env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    环境搭建
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据库
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            数据库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/clickhouse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClickHouse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_2" id="__nav_2_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/mysql8_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mysql8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/mysql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用操作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_3" id="__nav_2_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ElasticSearch
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            ElasticSearch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/elasticsearch_py/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/es_dsl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-dsl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/database/es_aggs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    elasticsearch-aggs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全渗透
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            安全渗透
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/security/thc-hydra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    hydra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/security/sqlmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqlmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    知识概念
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            知识概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/project_doc_layout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目文档结构示例
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/pc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    上位机简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/xaas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    xaas概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/xaas2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一文搞懂什么是SaaS、BaaS、PaaS和IaaS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/users/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    统一用户管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/etl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETL数据处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/data_transfer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据传输和对接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/concept/understand_computer_system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深入理解计算机系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    其他
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/other/embedded_industry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    嵌入式行业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/other/apache_license2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apache license2.0开源协议
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RFC标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            RFC标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/oauth2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    oauth2学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/rfc6749/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oauth2-RFC6749翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/rfc/rfc6750/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oauth2-RFC6750翻译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ECMA376标准
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ECMA376标准
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/ecma376/part1-refrence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECMA-376-1:2016 - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    汉化
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            汉化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    lxml
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            lxml
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../technology/python/lxml-objectify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lxml.objectify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    开源电子书
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            开源电子书
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    py3数据结构和算法
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            py3数据结构和算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    阅读
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            阅读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    英语
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            英语
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/english/bluelevel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BlueLevel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/english/redlevel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RedLevel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/howtoreadbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何阅读一本书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/howtoavoid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何避免愚蠢的见识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/placeofsoul/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    灵魂的最高处
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/maliciousmatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    恶意匹配
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    沟通的艺术
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            沟通的艺术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    沟通入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:自我
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:知觉
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看入人里:情绪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:非语言沟通
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看出人外:倾听
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:沟通和关系的演变
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:人际沟通中的亲密关系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:增进沟通气氛
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    看人之间:处理人际冲突
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../read/book/artofcommunication12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    阅读总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    理财
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            理财
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../invest/webs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    理财网站
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    工具
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/repos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    仓库合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git常用操作备忘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 起步
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 分支
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 服务器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 分布式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git hub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 自定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 与其他系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 内部原理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 其他环境中使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 应用中嵌入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/gita3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git 命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../documents/docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文档合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../e-book/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电子书
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    其他
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/front_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前端常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/back_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/other_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    其他常用地址
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/become_leader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    成为高手秘籍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/zym_weibo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    张一鸣微博
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/dynamic_business/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动态商业环境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/honeypot_list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    蜜罐资源列表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../other/bigdata_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大数据资源列表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Hashing</h1>
+
+<p>..  Copyright (C)  Brad Miller, David Ranum
+    This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.</p>
+<p>Hashing
+~~~~~~~</p>
+<p>In previous sections we were able to make improvements in our search
+algorithms by taking advantage of information about where items are
+stored in the collection with respect to one another. For example, by
+knowing that a list was ordered, we could search in logarithmic time
+using a binary search. In this section we will attempt to go one step
+further by building a data structure that can be searched in
+:math:<code>O(1)</code> time. This concept is referred to as <strong>hashing</strong>.</p>
+<p>In order to do this, we will need to know even more about where the
+items might be when we go to look for them in the collection. If every
+item is where it should be, then the search can use a single comparison
+to discover the presence of an item. We will see, however, that this is
+typically not the case.</p>
+<p>A <strong>hash table</strong> is a collection of items which are stored in such a way
+as to make it easy to find them later. Each position of the hash table,
+often called a <strong>slot</strong>, can hold an item and is named by an integer
+value starting at 0. For example, we will have a slot named 0, a slot
+named 1, a slot named 2, and so on. Initially, the hash table contains
+no items so every slot is empty. We can implement a hash table by using
+a list with each element initialized to the special Python value
+<code>None</code>. :ref:<code>Figure 4 &lt;fig_hashtable1&gt;</code> shows a hash table of size :math:<code>m = 11</code>.
+In other words, there are :math:<code>m</code> slots in the table, named 0 through 10.</p>
+<p>.. _fig_hashtable1:</p>
+<p>.. figure:: Figures/hashtable.png
+   :align: center</p>
+<p>Figure 4: Hash Table with 11 Empty Slots</p>
+<p>The mapping between an item and the slot where that item belongs in the
+hash table is called the <strong>hash function</strong>. The hash function will take
+any item in the collection and return an integer in the range of slot
+names between 0 and :math:<code>m - 1</code>. Assume that we have the set of integer items
+54, 26, 93, 17, 77, and 31. Our first hash function, sometimes referred
+to as the <em>remainder method</em>, simply takes an item and divides it by the
+table size, returning the remainder as its hash value
+(:math:<code>h(item)=item \% 11</code>). :ref:<code>Table 4 &lt;tbl_hashvalues1&gt;</code> gives all of the
+hash values for our example items. Note that this remainder method
+(modulo) will typically be present in some form in all hash
+functions since the result must be in the range of slot names.</p>
+<p>.. _tbl_hashvalues1:</p>
+<p>.. table:: <strong>Table 4: Simple Hash Function Using Remainders</strong></p>
+<div class="highlight"><pre><span></span><code>================= ================ 
+         **Item**   **Hash Value** 
+================= ================ 
+               54               10 
+               26                4 
+               93                5 
+               17                6 
+               77                0 
+               31                9 
+================= ================
+</code></pre></div>
+<p>Once the hash values have been computed, we can insert each item into
+the hash table at the designated position as shown in
+:ref:<code>Figure 5 &lt;fig_hashtable2&gt;</code>. Note that 6 of the 11 slots are now occupied. This
+is referred to as the <strong>load factor</strong>, and is commonly denoted by
+:math:<code>\lambda = \frac {number\_of\_items}{table\_size}</code>. For this example,
+:math:<code>\lambda = \frac {6}{11}</code>.</p>
+<p>.. _fig_hashtable2:</p>
+<p>.. figure:: Figures/hashtable2.png
+   :align: center</p>
+<p>Figure 5: Hash Table with Six Items</p>
+<p>Now when we want to search for an item, we simply use the hash function
+to compute the slot name for the item and then check the hash table to
+see if it is present. This searching operation is :math:<code>O(1)</code> since
+a constant amount of time is required to compute the hash value and then
+index the hash table at that location. If everything is where it should
+be, we have found a constant time search algorithm.</p>
+<p>You can probably already see that this technique is going to work only
+if each item maps to a unique location in the hash table. For example,
+if the item 44 had been the next item in our collection, it would have a
+hash value of 0 (:math:<code>44\ \%\ 11 = 0</code>). Since 77 also had a hash
+value of 0, we would have a problem. According to the hash function, two
+or more items would need to be in the same slot. This is referred to as
+a <strong>collision</strong> (it may also be called a <em>clash</em>). Clearly, collisions
+create a problem for the hashing technique. We will discuss them in
+detail later.</p>
+<p>Hash Functions
+<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>^^</p>
+<p>Given a collection of items, a hash function that maps each item into a
+unique slot is referred to as a <strong>perfect hash function</strong>. If we know
+the items and the collection will never change, then it is possible to
+construct a perfect hash function. Unfortunately, given an arbitrary collection of
+items, there is no systematic way to construct a perfect hash function.
+Luckily, we do not need the hash function to be perfect to still gain
+performance efficiency.</p>
+<p>One way to always have a perfect hash function is to increase the size
+of the hash table so that each possible value in the item range can be
+accommodated. This guarantees that each item will have a unique slot.
+Although this is practical for small numbers of items, it is not
+feasible when the number of possible items is large. For example, if the
+items were nine-digit Social Security numbers, this method would require
+almost one billion slots. If we only want to store data for a class of
+25 students, we will be wasting an enormous amount of memory.</p>
+<p>Our goal is to create a hash function that minimizes the number of
+collisions, is easy to compute, and evenly distributes the items in the
+hash table. To that end, there are a number of common ways to extend the simple
+remainder method. We will consider a few of them here.</p>
+<p>The <strong>folding method</strong> for constructing hash functions begins by
+dividing the item into equal-sized pieces (the last piece may not be of
+equal size). These pieces are then added together to give the resulting
+hash value. For example, if our item was the phone number 436-555-4601,
+we would take the digits and divide them into groups of 2
+(43, 65, 55, 46, 01). After the addition, :math:<code>43 + 65 + 55 + 46 + 01</code>, we get
+1.   If we assume our hash table has 11 slots, then we need to perform
+the extra step of dividing by 11 and keeping the remainder. In this case
+:math:<code>210\ \%\ 11</code> is 1, so the phone number 436-555-4601 hashes to
+slot 1. Some folding methods go one step further and reverse every other
+piece before the addition. For the above example, we get
+:math:<code>43 + 56 + 55 + 64 + 01 = 219</code> which gives :math:<code>219\ \%\ 11 = 10</code>.</p>
+<p>Another numerical technique for constructing a hash function is called
+the <strong>mid-square method</strong>. We first square the item, and then extract
+some portion of the resulting digits. For example, if the item were 44,
+we would first compute :math:<code>44 ^{2} = 1936</code>. By extracting the
+middle two digits, 93, and performing the remainder step, we get 5
+(:math:<code>93\ \%\ 11</code>). :ref:<code>Table 5 &lt;tbl_hashvalues2&gt;</code> shows items under both the
+remainder method and the mid-square method. You should verify that you
+understand how these values were computed.</p>
+<p>.. _tbl_hashvalues2:</p>
+<p>.. table:: <strong>Table 5: Comparison of Remainder and Mid-Square Methods</strong></p>
+<div class="highlight"><pre><span></span><code>================= =============== ================ 
+         **Item**   **Remainder**   **Mid-Square** 
+================= =============== ================ 
+               54              10                3 
+               26               4                7 
+               93               5                9 
+               17               6                8 
+               77               0                4 
+               31               9                6 
+================= =============== ================
+</code></pre></div>
+<p>We can also create hash functions for character-based items such as
+strings. For example, the word <em>cat</em> can be thought of as a sequence of ordinal
+values.</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; ord(&quot;c&quot;)
+99
+&gt;&gt;&gt; ord(&quot;a&quot;)
+97
+&gt;&gt;&gt; ord(&quot;t&quot;)
+116
+</code></pre></div>
+<p>We can then take these three ordinal values, add them up, and use the
+remainder method to get a hash value (see :ref:<code>Figure 6 &lt;fig_stringhash&gt;</code>).
+:ref:<code>Listing 1 &lt;lst_hashfunction1&gt;</code> shows a function called <code>hash_str</code> that takes a
+string and a table size and returns the hash value in the range from 0
+to <code>table_size</code>-1.</p>
+<p>.. _fig_stringhash:</p>
+<p>.. figure:: Figures/stringhash.png
+   :align: center</p>
+<p>Figure 6: Hashing a String Using Ordinal Values</p>
+<p>.. _lst_hashfunction1:</p>
+<p><strong>Listing 1</strong></p>
+<p>::</p>
+<p>def hash_str(a_string, table_size):
+      return sum([ord(c) for c in a_string]) % table_size</p>
+<p>It is interesting to note that when using this hash function, anagrams
+will always be given the same hash value. To remedy this, we could use
+the position of the character as a weight. :ref:<code>Figure 7 &lt;fig_stringhash2&gt;</code> shows
+one possible way to use the positional value as a weighting factor. The
+modification to the <code>hash_str</code> function is left as an exercise.</p>
+<p>.. _fig_stringhash2:</p>
+<p>.. figure:: Figures/stringhash2.png
+   :align: center</p>
+<p>Figure 7: Hashing a String Using Ordinal Values with Weighting</p>
+<p>You may be able to think of a number of additional ways to compute hash
+values for items in a collection. The important thing to remember is
+that the hash function has to be efficient so that it does not become
+the dominant part of the storage and search process. If the hash
+function is too complex, then it becomes more work to compute the slot
+name than it would be to simply do a basic sequential or binary search
+as described earlier. This would quickly defeat the purpose of hashing.</p>
+<p>Collision Resolution
+<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>^^</p>
+<p>We now return to the problem of collisions. When two items hash to the
+same slot, we must have a systematic method for placing the second item
+in the hash table. This process is called <strong>collision resolution</strong>. As
+we stated earlier, if the hash function is perfect, collisions will
+never occur. However, since this is often not possible, collision
+resolution becomes a very important part of hashing.</p>
+<p>One method for resolving collisions looks into the hash table and tries
+to find another open slot to hold the item that caused the collision. A
+simple way to do this is to start at the original hash value position
+and then move in a sequential manner through the slots until we
+encounter the first slot that is empty. Note that we may need to go back
+to the first slot (circularly) to cover the entire hash table. This
+collision resolution process is referred to as <strong>open addressing</strong> in
+that it tries to find the next open slot or address in the hash table.
+By systematically visiting each slot one at a time, we are performing an
+open addressing technique called <strong>linear probing</strong>.</p>
+<p>:ref:<code>Figure 8 &lt;fig_linearprobing&gt;</code> shows an extended set of integer items under the
+simple remainder method hash function (54, 26, 93, 17, 77, 31, 44, 55, 20).
+:ref:<code>Table 4 &lt;tbl_hashvalues1&gt;</code> above shows the hash values for the original six items and
+:ref:<code>Figure 5 &lt;fig_hashtable2&gt;</code> shows the contents of a hash table with those six items.
+Let's see what happens when we attempt to place the additional three items into the table.
+When we attempt to
+place 44 into slot 0, a collision occurs. Under linear probing, we look
+sequentially, slot by slot, until we find an open position. In this
+case, we find slot 1.</p>
+<p>Again, 55 should go in slot 0 but must be placed in slot 2 since it is
+the next open position. The final value of 20 hashes to slot 9. Since
+slot 9 is full, we begin to do linear probing. We visit slots 10, 0, 1,
+and 2, and finally find an empty slot at position 3.</p>
+<p>.. _fig_linearprobing:</p>
+<p>.. figure:: Figures/linearprobing1.png
+   :align: center</p>
+<p>Figure 8: Collision Resolution with Linear Probing</p>
+<p>Once we have built a hash table using open addressing and linear
+probing, it is essential that we utilize the same methods to search for
+items. Assume we want to look up the item 93. When we compute the hash
+value, we get 5. Looking in slot 5 reveals 93, and we can return
+<code>True</code>. What if we are looking for 20? Now the hash value is 9, and
+slot 9 is currently holding 31. We cannot simply return <code>False</code> since
+we know that there could have been collisions. We are now forced to do a
+sequential search, starting at position 10, looking until either we find
+the item 20 or we find an empty slot.</p>
+<p>A disadvantage to linear probing is the tendency for <strong>clustering</strong>;
+items become clustered in the table. This means that if many collisions
+occur at the same hash value, a number of surrounding slots will be
+filled by the linear probing resolution. This will have an impact on
+other items that are being inserted, as we saw when we tried to add the
+item 20 above. A cluster of values hashing to 0 had to be skipped to
+finally find an open position. This cluster is shown in
+:ref:<code>Figure 9 &lt;fig_clustering&gt;</code>.</p>
+<p>.. _fig_clustering:</p>
+<p>.. figure:: Figures/clustering.png
+   :align: center</p>
+<p>Figure 9: A Cluster of Items for Slot 0</p>
+<p>One way to deal with clustering is to extend the linear probing
+technique so that instead of looking sequentially for the next open
+slot, we skip slots, thereby more evenly distributing the items that
+have caused collisions. This will potentially reduce the clustering that
+occurs. :ref:<code>Figure 10 &lt;fig_linearprobing2&gt;</code> shows the items when collision
+resolution is done with what we will call a “plus 3” probe. This means that once a
+collision occurs, we will look at every third slot until we find one
+that is empty.</p>
+<p>.. _fig_linearprobing2:</p>
+<p>.. figure:: Figures/linearprobing2.png
+   :align: center</p>
+<p>Figure 10: Collision Resolution Using a Plus 3 Probe</p>
+<p>The general name for this process of looking for another slot after a
+collision is <strong>rehashing</strong>. With simple linear probing, the rehash
+function is :math:<code>new\_hash = rehash(old\_hash)</code> where
+:math:<code>rehash(pos) = (pos + 1) \% size</code>. The plus 3 rehash
+can be defined as :math:<code>rehash(pos) = (pos + 3) \% size</code>. In
+general, :math:<code>rehash(pos) = (pos + skip) \% size</code>. It is
+important to note that the size of the skip must be such that all the
+slots in the table will eventually be visited. Otherwise, part of the
+table will be unused. To ensure this, it is often suggested that the
+table size be a prime number. This is the reason we have been using 11
+in our examples.</p>
+<p>A variation of the linear probing idea is called <strong>quadratic probing</strong>.
+Instead of using a constant skip value, we use a rehash function that
+increments the hash value by 1, 3, 5, 7, 9, and so on. This means that
+if the first hash value is :math:<code>h</code>, the successive values are :math:<code>h + 1</code>,
+:math:<code>h + 4</code>, :math:<code>h + 9</code>, :math:<code>h + 16</code>, and so on. In general, the :math:<code>i</code> will be :math:<code>i ^ {2}</code> and :math:<code>rehash(pos) = (h + i ^ {2}) \% size</code>. In other words,
+quadratic probing uses a skip consisting of successive perfect squares.
+:ref:<code>Figure 11 &lt;fig_quadratic&gt;</code> shows our example values after they are placed using
+this technique.</p>
+<p>.. _fig_quadratic:</p>
+<p>.. figure:: Figures/quadratic.png
+   :align: center</p>
+<p>Figure 11: Collision Resolution with Quadratic Probing</p>
+<p>An alternative method for handling the collision problem is to allow
+each slot to hold a reference to a collection (or chain) of items.
+<strong>Chaining</strong> allows many items to exist at the same location in the hash
+table. When collisions happen, the item is still placed in the proper
+slot of the hash table. As more and more items hash to the same
+location, the difficulty of searching for the item in the collection
+increases. :ref:<code>Figure 12 &lt;fig_chaining&gt;</code> shows the items as they are added to a hash
+table that uses chaining to resolve collisions.</p>
+<p>.. _fig_chaining:</p>
+<p>.. figure:: Figures/chaining.png
+   :align: center</p>
+<p>Figure 12: Collision Resolution with Chaining</p>
+<p>When we want to search for an item, we use the hash function to generate
+the slot where it should reside. Since with chaining each slot holds a collection, we
+use a searching technique to decide whether the item is present. The
+advantage is that on the average there are likely to be many fewer items
+in each slot, so the search is perhaps more efficient. We will look at
+the analysis for hashing at the end of this section.</p>
+<p>.. admonition:: Self Check</p>
+<p>.. mchoice:: HASH_1
+      :correct: c
+      :answer_a: 1, 10
+      :answer_b: 13, 0
+      :answer_c: 1, 0
+      :answer_d: 2, 3
+      :feedback_a:  Be careful to use modulo not integer division
+      :feedback_b:  Don't divide by two, use the modulo operator.
+      :feedback_c: 27 % 13 == 1 and 130 % 13 == 0
+      :feedback_d: Use the modulo operator</p>
+<div class="highlight"><pre><span></span><code>  In a hash table of size 13 which index positions would the following two keys map to?  27,  130
+</code></pre></div>
+<p>.. mchoice:: HASH_2
+      :correct: b
+      :answer_a: 100, <strong>, </strong>, 113, 114, 105, 116, 117, 97, 108, 99
+      :answer_b: 99, 100, <strong>, 113, 114, </strong>, 116, 117, 105, 97, 108
+      :answer_c: 100, 113, 117, 97, 14, 108, 116, 105, 99, <strong>, </strong>
+      :answer_d: 117, 114, 108, 116, 105, 99, <strong>, </strong>, 97, 100, 113
+      :feedback_a:  It looks like you may have been doing modulo 2 arithmentic.  You need to use the hash table size as the modulo value.
+      :feedback_b:  Using modulo 11 arithmetic and linear probing gives these values
+      :feedback_c: It looks like you are using modulo 10 arithmetic, use the table size.
+      :feedback_d: Be careful to use modulo not integer division.</p>
+<div class="highlight"><pre><span></span><code>  Suppose you are given the following set of keys to insert into a hash table that holds exactly 11 values:  113 , 117 , 97 , 100 , 114 , 108 , 116 , 105 , 99 Which of the following best demonstrates the contents of the hash table after all the keys have been inserted using linear probing?
+</code></pre></div>
+<p>Implementing the Map Abstract Data Type
+<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>^</p>
+<p>One of the most useful Python collections is the dictionary. Recall that
+a dictionary is an associative data type where you can store key-data
+pairs. The key is used to look up the associated data value. We often
+refer to this idea as a <strong>map</strong>.</p>
+<p>The map abstract data type is defined as follows. The structure is an
+unordered collection of associations between a key and a data value. The
+keys in a map are all unique so that there is a one-to-one relationship
+between a key and a value. The operations are given below.</p>
+<ul>
+<li>
+<p><code>Map()</code> creates a new empty map.</p>
+</li>
+<li>
+<p><code>put(key, val)</code> adds a new key--value pair to the map. If the key is
+   already in the map, it replaces the old value with the new value.</p>
+</li>
+<li>
+<p><code>get(key)</code> takes a key and returns the matching value stored in the map or
+   <code>None</code> otherwise.</p>
+</li>
+<li>
+<p><code>del</code> deletes the key--value pair from the map using a statement of
+   the form <code>del map[key]</code>.</p>
+</li>
+<li>
+<p><code>size()</code> returns the number of key--value pairs stored in the map.</p>
+</li>
+<li>
+<p><code>in</code> return <code>True</code> for a statement of the form <code>key in map</code> if
+   the given key is in the map, <code>False</code> otherwise.</p>
+</li>
+</ul>
+<p>One of the great benefits of a dictionary is the fact that given a key,
+we can look up the associated data value very quickly. In order to
+provide this fast look-up capability, we need an implementation that
+supports an efficient search. We could use a list with sequential or
+binary search, but it would be even better to use a hash table as
+described above since looking up an item in a hash table can approach
+:math:<code>O(1)</code> performance.</p>
+<p>In :ref:<code>Listing 2 &lt;lst_hashtablecodeconstructor&gt;</code> we use two lists to create a
+<code>HashTable</code> class that implements the map abstract data type. One
+list, called <code>slots</code>, will hold the key items and a parallel list,
+called <code>data</code>, will hold the data values. When we look up a key, the
+corresponding position in the data list will hold the associated data
+value. We will treat the key list as a hash table using the ideas
+presented earlier. Note that the initial size for the hash table has
+been chosen to be 11. Although this is arbitrary, it is important that
+the size be a prime number so that the collision resolution algorithm
+can be as efficient as possible.</p>
+<p>.. _lst_hashtablecodeconstructor:</p>
+<p><strong>Listing 2</strong></p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>class HashTable:
+    def __init__(self):
+        self.size = 11
+        self.slots = [None] * self.size
+        self.data = [None] * self.size
+</code></pre></div>
+<p>As seen in :ref:<code>Listing 3 &lt;lst_hashtablecodestore&gt;</code>, <code>hash_function</code> implements
+the simple remainder method. The collision
+resolution technique is linear probing with a “plus 1” rehash value.
+The <code>put</code> function (see :ref:<code>Listing 3 &lt;lst_hashtablecodestore&gt;</code>) assumes that
+there will eventually be an empty slot unless the key is already present
+in the <code>self.slots</code>. It computes the original hash value and if that
+slot is not empty, iterates the <code>rehash</code> function until an empty slot
+occurs. If a nonempty slot already contains the key, the old data value
+is replaced with the new data value.</p>
+<p>.. _lst_hashtablecodestore:</p>
+<p><strong>Listing 3</strong></p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>def put(self, key, data):
+    hash_value = self.hash_function(key, len(self.slots))
+
+    if self.slots[hash_value] is None:
+        self.slots[hash_value] = key
+        self.data[hash_value] = data
+    else:
+        if self.slots[hash_value] == key:
+            self.data[hash_value] = data  # replace
+        else:
+            next_slot = self.rehash(hash_value, len(self.slots))
+            while (
+                self.slots[next_slot] is not None
+                and self.slots[next_slot] != key
+            ):
+                next_slot = self.rehash(next_slot, len(self.slots))
+
+            if self.slots[next_slot] is None:
+                self.slots[next_slot] = key
+                self.data[next_slot] = data
+            else:
+                self.data[next_slot] = data
+
+def hash_function(self, key, size):
+    return key % size
+
+def rehash(self, old_hash, size):
+    return (old_hash + 1) % size
+</code></pre></div>
+<p>The <code>get</code> function (see :ref:<code>Listing 4 &lt;lst_hashtablecodesearch&gt;</code>)
+begins by computing the initial hash value. If the value is not in the
+initial slot, <code>rehash</code> is used to locate the next possible position.
+Notice that line 14 guarantees that the search will terminate by
+checking to make sure that we have not returned to the initial slot. If
+that happens, we have exhausted all possible slots and the item must not
+be present.</p>
+<p>The final methods of the <code>HashTable</code> class provide additional
+dictionary functionality. We overload the <code>__getitem__</code> and
+<code>__setitem__</code> methods to allow access using <code>[]</code>. This means that
+once a <code>HashTable</code> has been created, the familiar index operator will
+be available. We leave the remaining methods as exercises.</p>
+<p>.. _lst_hashtablecodesearch:</p>
+<p><strong>Listing 4</strong></p>
+<p>.. highlight:: python
+    :linenothreshold: 5</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>def get(self, key):
+    start_slot = self.hash_function(key, len(self.slots))
+
+    position = start_slot
+    while self.slots[position] is not None:
+        if self.slots[position] == key:
+            return self.data[position]
+        else:
+            position = self.rehash(position, len(self.slots))
+            if position == start_slot:
+                return None
+
+def __getitem__(self, key):
+    return self.get(key)
+
+def __setitem__(self, key, data):
+    self.put(key, data)
+</code></pre></div>
+<p>.. highlight:: python
+    :linenothreshold: 500</p>
+<p>The following session shows the <code>HashTable</code> class in action. First we
+will create a hash table and store some items with integer keys and
+string data values.</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; h = HashTable()
+&gt;&gt;&gt; h[54] = &quot;cat&quot;
+&gt;&gt;&gt; h[26] = &quot;dog&quot;
+&gt;&gt;&gt; h[93] = &quot;lion&quot;
+&gt;&gt;&gt; h[17] = &quot;tiger&quot;
+&gt;&gt;&gt; h[77] = &quot;bird&quot;
+&gt;&gt;&gt; h[31] = &quot;cow&quot;
+&gt;&gt;&gt; h[44] = &quot;goat&quot;
+&gt;&gt;&gt; h[55] = &quot;pig&quot;
+&gt;&gt;&gt; h[20] = &quot;chicken&quot;
+&gt;&gt;&gt; h.slots
+[77, 44, 55, 20, 26, 93, 17, None, None, 31, 54]
+&gt;&gt;&gt; h.data
+[&#39;bird&#39;, &#39;goat&#39;, &#39;pig&#39;, &#39;chicken&#39;, &#39;dog&#39;, &#39;lion&#39;,
+       &#39;tiger&#39;, None, None, &#39;cow&#39;, &#39;cat&#39;]
+</code></pre></div>
+<p>Next we will access and modify some items in the hash table. Note that
+the value for the key 20 is being replaced.</p>
+<p>::</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; h[20]
+&#39;chicken&#39;
+&gt;&gt;&gt; h[17]
+&#39;tiger&#39;
+&gt;&gt;&gt; h[20] = &quot;duck&quot;
+&gt;&gt;&gt; h[20]
+&#39;duck&#39;
+&gt;&gt;&gt; h.data
+[&#39;bird&#39;, &#39;goat&#39;, &#39;pig&#39;, &#39;duck&#39;, &#39;dog&#39;, &#39;lion&#39;,
+       &#39;tiger&#39;, None, None, &#39;cow&#39;, &#39;cat&#39;]
+&gt;&gt; print(h[99])
+None
+</code></pre></div>
+<p>The complete hash table example can be found in ActiveCode 1.</p>
+<p>.. activecode:: hashtablecomplete
+    :caption: Complete Hash Table Example
+    :hidecode:</p>
+<div class="highlight"><pre><span></span><code>class HashTable:
+    def __init__(self):
+        self.size = 11
+        self.slots = [None] * self.size
+        self.data = [None] * self.size
+
+    def put(self, key, data):
+        hash_value = self.hash_function(key, len(self.slots))
+
+        if self.slots[hash_value] is None:
+            self.slots[hash_value] = key
+            self.data[hash_value] = data
+        else:
+            if self.slots[hash_value] == key:
+                self.data[hash_value] = data  # replace
+            else:
+                next_slot = self.rehash(hash_value, len(self.slots))
+                while (
+                    self.slots[next_slot] is not None
+                    and self.slots[next_slot] != key
+                ):
+                    next_slot = self.rehash(next_slot, len(self.slots))
+
+                if self.slots[next_slot] is None:
+                    self.slots[next_slot] = key
+                    self.data[next_slot] = data
+                else:
+                    self.data[next_slot] = data
+
+    def hash_function(self, key, size):
+        return key % size
+
+    def rehash(self, old_hash, size):
+        return (old_hash + 1) % size
+
+    def get(self, key):
+        start_slot = self.hash_function(key, len(self.slots))
+
+        position = start_slot
+        while self.slots[position] is not None:
+            if self.slots[position] == key:
+                return self.data[position]
+            else:
+                position = self.rehash(position, len(self.slots))
+                if position == start_slot:
+                    return None
+
+    def __getitem__(self, key):
+        return self.get(key)
+
+    def __setitem__(self, key, data):
+        self.put(key, data)
+
+h = HashTable()
+h[54] = &quot;cat&quot;
+h[26] = &quot;dog&quot;
+h[93] = &quot;lion&quot;
+h[17] = &quot;tiger&quot;
+h[77] = &quot;bird&quot;
+h[31] = &quot;cow&quot;
+h[44] = &quot;goat&quot;
+h[55] = &quot;pig&quot;
+h[20] = &quot;chicken&quot;
+print(h.slots)
+print(h.data)
+print(h[20])
+print(h[17])
+h[20] = &quot;duck&quot;
+print(h[20])
+print(h[99])
+</code></pre></div>
+<p>Analysis of Hashing
+<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>^</p>
+<p>We stated earlier that in the best case hashing would provide an
+:math:<code>O(1)</code>, constant time search technique. However, due to
+collisions, the number of comparisons is typically not so simple. Even
+though a complete analysis of hashing is beyond the scope of this text,
+we can state some well-known results that approximate the number of
+comparisons necessary to search for an item.</p>
+<p>The most important piece of information we need to analyze the use of a
+hash table is the load factor, :math:<code>\lambda</code>. Conceptually, if
+:math:<code>\lambda</code> is small, then there is a lower chance of collisions,
+meaning that items are more likely to be in the slots where they belong.
+If :math:<code>\lambda</code> is large, meaning that the table is filling up,
+then there are more and more collisions. This means that collision
+resolution is more difficult, requiring more comparisons to find an
+empty slot. With chaining, increased collisions means an increased
+number of items on each chain.</p>
+<p>As before, we will have a result for both a successful and an
+unsuccessful search. For a successful search using open addressing with
+linear probing, the average number of comparisons is approximately
+:math:<code>\frac{1}{2}\left(1+\frac{1}{1-\lambda}\right)</code> and an
+unsuccessful search gives
+:math:<code>\frac{1}{2}\left(1+\left(\frac{1}{1-\lambda}\right)^2\right)</code>
+If we are using chaining, the average number of comparisons is
+:math:<code>1 + \frac {\lambda}{2}</code> for the successful case, and simply
+:math:<code>\lambda</code> comparisons if the search is unsuccessful.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月10日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月10日</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.726fbb30.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
