@@ -6,7 +6,7 @@
 
     Gerry Jenkins 录制了精彩的 [YouTube 视频集](https://www.youtube.com/user/gjenkinslbcc)，以支持本文中的所有章节。
 
-    1. [简介](./Introduction/toctree.md)
+    1. 简介
         - 1.1. [目标](./Introduction/Objectives.md)
         - 1.2. [入门](./Introduction/GettingStarted.md)
         - 1.3. [什么是计算机科学?](./Introduction/WhatIsComputerScience.md)
@@ -28,9 +28,9 @@
         - 1.14. [总结](./Introduction/Summary.md)
         - 1.15. [关键术语](./Introduction/KeyTerms.md)
         - 1.16. [练习](./Introduction/Exercises.md)
-    2. [算法分析](./AlgorithmAnalysis/toctree.md)
+    2. 算法分析
         - 2.1. [目标](./AlgorithmAnalysis/Objectives.md)
-        - 2.2. [What Is Algorithm Analysis?](./AlgorithmAnalysis/WhatIsAlgorithmAnalysis.md)
+        - 2.2. [什么是算法分析?](./AlgorithmAnalysis/WhatIsAlgorithmAnalysis.md)
         - 2.3. [大 O 表示法](./AlgorithmAnalysis/BigONotation.md)
         - 2.4. [字谜检测示例](./AlgorithmAnalysis/AnAnagramDetectionExample.md)
             - 2.4.1. [解决方案 1：核对字谜检测](./AlgorithmAnalysis/AnAnagramDetectionExample.md)

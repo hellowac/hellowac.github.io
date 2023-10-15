@@ -1,52 +1,59 @@
-..  Copyright (C)  Brad Miller, David Ranum
-    This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+# 输入和输出
 
+我们经常需要与用户交互，要么获取数据，要么提供某种结果。 如今，大多数程序都使用对话框来要求用户提供某种类型的输入。 虽然 Python 确实有一种创建对话框的方法，但我们可以使用一个更简单的函数。 Python 为我们提供了一个函数，允许我们要求用户输入一些数据并以字符串的形式返回对数据的引用。 该函数称为`input`。
 
-Input and Output
-~~~~~~~~~~~~~~~~
+Python 的函数`input`接受一个字符串参数。 该字符串通常称为 **提示(prompt)**，因为它包含一些有用的文本，提示用户输入某些内容。 例如，您可以按如下方式调用输入：
 
-We often have a need to interact with users,
-either to get data or to provide some sort of result. Most programs
-today use a dialog box as a way of asking the user to provide some type
-of input. While Python does have a way to create dialog boxes, there is
-a much simpler function that we can use. Python provides us with a
-function that allows us to ask a user to enter some data and returns a
-reference to the data in the form of a string. The function is called
-``input``.
+```python
+a_name = input("Please enter your name: ")
+```
 
-Python’s function ``input`` takes a single parameter that is a string. This
-string is often called the **prompt** because it contains some helpful
-text prompting the user to enter something. For example, you might call
-input as follows:
+现在，无论用户在提示后输入什么内容，都将存储在`a_name`变量中。 使用`input`函数，我们可以轻松编写指令，提示用户输入数据，然后将该数据合并到进一步处理中。 例如，在以下两个语句中，第一个语句询问用户的姓名，第二个语句根据提供的字符串打印一些简单处理的结果。
 
-::
+```python title="The input Function Returns a String"
+a_name = input("Please enter your name: ")
+print("Your name in all capitals is", a_name.upper(),
+        "and has length", len(a_name))
+```
 
+值得注意的是，从`input`函数返回的值将是一个字符串，表示在提示后输入的确切字符。 如果您希望将此字符串解释为另一种类型，则必须显式提供类型转换。 在下面的语句中，用户输入的字符串被转换为浮点数，以便可以用于进一步的算术处理。
+
+```pycon
+>>> s_radius = input("Please enter the radius of the circle ")
+Please enter the radius of the circle 10
+>>> s_radius
+'10'
+>>> radius = float(s_radius)
+>>> radius
+10.0
+>>> diameter = 2 * radius
+>>> diameter
+20.0
+```
+
+???- info "原文"
+
+    **Input and Output**
+
+    We often have a need to interact with users, either to get data or to provide some sort of result. Most programs today use a dialog box as a way of asking the user to provide some type of input. While Python does have a way to create dialog boxes, there is a much simpler function that we can use. Python provides us with a function that allows us to ask a user to enter some data and returns a reference to the data in the form of a string. The function is called ``input``.
+
+    Python’s function ``input`` takes a single parameter that is a string. This string is often called the **prompt** because it contains some helpful text prompting the user to enter something. For example, you might call input as follows:
+
+    ```python
     a_name = input("Please enter your name: ")
+    ```
 
-Now whatever the user types after the prompt will be stored in the
-``a_name`` variable. Using the ``input`` function, we can easily write
-instructions that will prompt the user to enter data and then
-incorporate that data into further processing. For example, in the
-following two statements, the first asks the user for their name and the
-second prints the result of some simple processing based on the string
-that is provided.
+    Now whatever the user types after the prompt will be stored in the ``a_name`` variable. Using the ``input`` function, we can easily write instructions that will prompt the user to enter data and then incorporate that data into further processing. For example, in the following two statements, the first asks the user for their name and the second prints the result of some simple processing based on the string that is provided.
 
-.. activecode::  strstuff
-    :caption: The input Function Returns a String
-
+    ```python title="The input Function Returns a String"
     a_name = input("Please enter your name: ")
     print("Your name in all capitals is", a_name.upper(),
-          "and has length", len(a_name))
+            "and has length", len(a_name))
+    ```
 
-It is important to note that the value returned from the ``input``
-function will be a string representing the exact characters that were
-entered after the prompt. If you want this string interpreted as another
-type, you must provide the type conversion explicitly. In the statements
-below, the string that is entered by the user is converted to a float so
-that it can be used in further arithmetic processing.
+    It is important to note that the value returned from the ``input`` function will be a string representing the exact characters that were entered after the prompt. If you want this string interpreted as another type, you must provide the type conversion explicitly. In the statements below, the string that is entered by the user is converted to a float so that it can be used in further arithmetic processing.
 
-::
-
+    ```pycon
     >>> s_radius = input("Please enter the radius of the circle ")
     Please enter the radius of the circle 10
     >>> s_radius
@@ -57,181 +64,4 @@ that it can be used in further arithmetic processing.
     >>> diameter = 2 * radius
     >>> diameter
     20.0
-
-String Formatting
-^^^^^^^^^^^^^^^^^
-
-We have already seen that the ``print``
-function provides a very simple way to output values from a Python
-program. ``print`` takes zero or more parameters and displays them using
-a single blank as the default separator. It is possible to change the
-separator character by setting the ``sep`` argument. In addition, each
-print ends with a newline character by default. This behavior can be
-changed by setting the ``end`` argument. These variations are shown in
-the following session:
-
-::
-
-    >>> print("Hello")
-    Hello
-    >>> print("Hello", "World")
-    Hello World
-    >>> print("Hello", "World", sep="***")
-    Hello***World
-    >>> print("Hello", "World", end="***")
-    Hello World***>>>
-
-It is often useful to have more control over the look of your output.
-Fortunately, Python provides us with an alternative called **formatted
-strings**. A formatted string is a template in which words or spaces
-that will remain constant are combined with placeholders for variables
-that will be inserted into the string. For example, the statement
-
-::
-
-    >>> print(a_name, "is", age, "years old.")
-
-contains the words ``is`` and ``years old``, but the name and the age
-will change depending on the variable values at the time of execution.
-Using a formatted string, we write the previous statement as
-
-::
-
-    >>> print("%s is %d years old." % (a_name, age))
-
-This simple example illustrates a new string expression. The ``%``
-operator is a string operator called the **format operator**. The left
-side of the expression holds the template or format string, and the
-right side holds a collection of values that will be substituted into
-the format string. Note that the number of values in the collection on
-the right side corresponds with the number of ``%`` characters in the
-format string. Values are taken—in order, left to right—from the
-collection and inserted into the format string.
-
-Let’s look at both sides of this formatting expression in more detail.
-The format string may contain one or more conversion specifications. A
-conversion character tells the format operator what type of value is
-going to be inserted into that position in the string. In the example
-above, the ``%s`` specifies a string, while the ``%d`` specifies an
-integer. Other possible type specifications include ``i``, ``u``, ``f``,
-``e``, ``g``, ``c``, or ``%``. :ref:`Table 9 <tab_fmta>` summarizes all of the
-various type specifications.
-
-.. _tab_fmta:
-
-.. table:: **Table 9: String Formatting Conversion Characters**
-
-    ========================== ====================================================================================================
-                 **Character**                                                                                    **Output Format**
-    ========================== ====================================================================================================
-                  ``d``, ``i``                                                                                              Integer
-                         ``u``                                                                                     Unsigned integer
-                         ``f``                                                                            Floating point as m.ddddd
-                         ``e``                                                                      Floating point as m.ddddde+/-xx
-                         ``E``                                                                      Floating point as m.dddddE+/-xx
-                         ``g``       Use ``%e`` for exponents less than :math:`-4` or greater than :math:`+5`, otherwise use ``%f``
-                         ``c``                                                                                     Single character
-                         ``s``    String, or any Python data object that can be converted to a string by using the ``str`` function
-                         ``%``                                                                     Insert a literal ``%`` character
-    ========================== ====================================================================================================
-
-
-In addition to the format character, you can also include a format
-modifier between the ``%`` and the format character. Format modifiers may
-be used to left-justify or right-justify the value with a specified
-field width. Modifiers can also be used to specify the field width along
-with a number of digits after the decimal point. :ref:`Table 10 <tab_fmtaddsa>`
-explains these format modifiers.
-
-.. _tab_fmtaddsa:
-
-.. table:: **Table 10: Additional formatting options**
-
-    ========================= ============= ==================================================================================================
-                 **Modifier**   **Example**                                                                                    **Description**
-    ========================= ============= ==================================================================================================
-                       number      ``%20d``                                                               Put the value in a field width of 20
-                        ``-``     ``%-20d``                                        Put the value in a field 20 characters wide, left-justified
-                        ``+``     ``%+20d``                                       Put the value in a field 20 characters wide, right-justified
-                        ``0``     ``%020d``                            Put the value in a field 20 characters wide, fill in with leading zeros
-                        ``.``    ``%20.2f``    Put the value in a field 20 characters wide with 2 characters to the right of the decimal point
-                   ``(name)``  ``%(name)d``                               Get the value from the supplied dictionary using ``name`` as the key
-    ========================= ============= ==================================================================================================
-
-
-As mentioned, the right side of the format operator is a collection of values that
-will be inserted into the format string. The collection will be either a
-tuple or a dictionary. If the collection is a tuple, the values are
-inserted in order of position. That is, the first element in the tuple
-corresponds to the first format character in the format string. If the
-collection is a dictionary, the values are inserted according to their
-keys. In this case all format characters must use the ``(name)``
-modifier to specify the name of the key.
-
-::
-
-    >>> price = 24
-    >>> item = "banana"
-    >>> print("The %s costs %d cents" % (item, price))
-    The banana costs 24 cents
-    >>> print("The %+10s costs %5.2f cents" % (item, price))
-    The     banana costs 24.00 cents
-    >>> print("The %+10s costs %10.2f cents" % (item, price))
-    The     banana costs      24.00 cents
-    >>> itemdict = {"item": "banana", "cost": 24}
-    >>> print("The %(item)s costs %(cost)7.1f cents" % itemdict)
-    The banana costs    24.0 cents
-
-In addition to format strings that use format characters and format
-modifiers, Python strings also include a ``format`` method that can be
-used in conjunction with a new ``Formatter`` class to implement complex
-string formatting. More about these features can be found in the Python
-library reference manual.
-
-::
-
-    >>> print("The {} costs {} cents".format(item, price))
-    The banana costs 24 cents
-    >>> print("The {:s} costs {:d} cents".format(item, price))
-    The banana costs 24 cents
-
-Python 3.6 introduced **f-strings**, a way to use proper variable names
-instead of placeholders. Formatting conversion symbols can still be used
-inside an f-string, but the alignment symbols are different from those used with placeholders
-(see :ref:`Table 11 <tab_fstraast>`). We are going to use this formatting
-method for the rest of the text.
-
-.. _tab_fstraast:
-
-.. table:: **Table 11: f-string Formatting Options**
-
-    ========================= ============= ==================================================================================================
-                 **Modifier**   **Example**                                                                                    **Description**
-    ========================= ============= ==================================================================================================
-                       number      ``:20d``                                                               Put the value in a field width of 20
-                        ``<``     ``:<20d``                                          Put the value in a field 20 characters wide, left-aligned
-                        ``>``     ``:>20d``                                         Put the value in a field 20 characters wide, right-aligned
-                        ``^``     ``:^20d``                                        Put the value in a field 20 characters wide, center-aligned
-                        ``0``     ``:020d``                           Put the value in a field 20 characters wide, fill in with leading zeros.
-                        ``.``    ``:20.2f``   Put the value in a field 20 characters wide with 2 characters to the right of the decimal point.
-    ========================= ============= ==================================================================================================
-
-::
-
-    >>> print(f"The {item:10} costs {price:10.2f} cents")
-    The banana     costs      24.00 cents
-    >>> print(f"The {item:<10} costs {price:<10.2f} cents")
-    The banana     costs 24.00      cents
-    >>> print(f"The {item:^10} costs {price:^10.2f} cents")
-    The   banana   costs   24.00    cents
-    >>> print(f"The {item:>10} costs {price:>10.2f} cents")
-    The     banana costs      24.00 cents
-    >>> print(f"The {item:>10} costs {price:>010.2f} cents")
-    The     banana costs 0000024.00 cents
-    >>> itemdict = {"item": "banana", "price": 24}
-    >>> print(f"Item:{itemdict['item']:.>10}\n" +
-    ... f"Price:{'$':.>4}{itemdict['price']:5.2f}")
-    Item:....banana
-    Price:...$24.00
-
-More about these features can be found in the Python library reference manual.
+    ```
