@@ -10415,16 +10415,15 @@
 
 
 <h1 id="一个fraction类">一个<code>Fraction</code>类<a class="headerlink" href="#一个fraction类" title="Permanent link">&para;</a></h1>
-<p>A very common example to show the details of implementing a user-defined class is to construct a class to implement the abstract data type <code>Fraction</code>. We have already seen that Python provides a number of numeric classes for our use. There are times, however, that it would be most appropriate to be able to create data objects that look like fractions to the user.</p>
-<p>A fraction such as <span class="arithmatex">\(\frac {3}{5}\)</span> consists of two parts. The top value, known as the numerator, can be any integer. The bottom value, called the denominator, can be any integer greater than 0 (negative fractions have a negative numerator). Although it is possible to create a floating point approximation for any fraction, in this case we would like to represent the fraction as an exact value.</p>
-<p>The operations for the <code>Fraction</code> type will allow a <code>Fraction</code> data object to behave like any other numeric value. We need to be able to add, subtract, multiply, and divide fractions. We also want to be able to show fractions using the standard “slash” form, for example 3/5. In addition, all fraction methods should return results in their lowest terms so that no matter what computation is performed, we always end up with the most common form.</p>
-<p>In Python, we define a new class by providing a name and a set of method definitions that are syntactically similar to function definitions. For this example,</p>
+<p>显示实现用户定义类的细节的一个非常常见的示例是构造一个类来实现抽象数据类型“Fraction”。 我们已经看到Python提供了许多数字类供我们使用。 然而，有时最合适的做法是能够创建对用户来说看起来像分数的数据对象。</p>
+<p>诸如 <span class="arithmatex">\(\frac {3}{5}\)</span> 之类的分数由两部分组成。 最上面的值称为分子，可以是任何整数。 底部的值称为分母，可以是任何大于 0 的整数（负分数的分子为负）。 尽管可以为任何分数创建浮点近似值，但在这种情况下，我们希望将分数表示为精确值。</p>
+<p>“Fraction” 类型的操作将允许“Fraction” 数据对象的行为与任何其他数值相同。 我们需要能够进行分数的加、减、乘、除运算。 我们还希望能够使用标准的“斜杠”形式显示分数，例如 3/5。 此外，所有分数方法都应以最低项返回结果，以便无论执行什么计算，我们总是会得到最常见的形式。</p>
+<p>在Python中，我们通过提供一个名称和一组语法上与函数定义类似的方法定义来定义一个新类。 对于这个例子，</p>
 <div class="highlight"><pre><span></span><code>    <span class="k">class</span> <span class="nc">Fraction</span><span class="p">:</span>
        <span class="c1"># the methods go here</span>
 </code></pre></div>
-<p>provides the framework for us to define the methods. The first method that all classes should provide is the constructor. The constructor defines the way in which data objects are created. To create a <code>Fraction</code> object, we will need to provide two pieces of data, the numerator and the denominator. In Python, the constructor method is always called <strong>init</strong> (two underscores before and after <code>init</code>), as shown in <code>Listing 2</code>.</p>
-<p>.. _lst_pyconstructor:</p>
-<p><strong>Listing 2</strong></p>
+<p>为我们定义方法提供了框架。 所有类都应该提供的第一个方法是构造函数。 构造函数定义了创建数据对象的方式。 要创建“Fraction”对象，我们需要提供两个数据，分子和分母。 在 Python 中，构造函数方法始终称为<code>__init__</code>（“init”前后各有两个下划线），如“清单 2”所示。</p>
+<p><strong>清单 2</strong></p>
 <div class="highlight"><pre><span></span><code>    <span class="k">class</span> <span class="nc">Fraction</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Class Fraction&quot;&quot;&quot;</span>
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">):</span>
@@ -10432,24 +10431,24 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">top</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">bottom</span>
 </code></pre></div>
-<p>Notice that the formal parameter list contains three items (<code>self</code>, <code>top</code>, <code>bottom</code>). <code>self</code> is a special parameter that will always be used as a reference back to the object itself. It must always be the first formal parameter; however, it will never be given an actual parameter value upon invocation. As described earlier, fractions require two pieces of state data, the numerator and the denominator. The notation <code>self.num</code> in the constructor defines the <code>Fraction</code> object to have an internal data object called <code>num</code> as part of its state. Likewise, <code>self.den</code> creates the denominator. The values of the two formal parameters are initially assigned to the state, allowing the new <code>Fraction</code> object to know its starting value.</p>
-<p>To create an instance of the <code>Fraction</code> class, we must invoke the constructor. This happens by using the name of the class and passing actual values for the necessary state (note that we never directly <code>invoke __init__</code>). For example,</p>
+<p>请注意，形式参数列表包含三个项目（“self”、“top”、“bottom”）。 “self” 是一个特殊参数，始终用作对象本身的引用。 它必须始终是第一个形式参数； 然而，在调用时永远不会给它一个实际的参数值。 如前所述，分数需要两个状态数据：分子和分母。 构造函数中的符号“self.num”将“Fraction”对象定义为具有一个名为“num”的内部数据对象作为其状态的一部分。 同样，“self.den”创建分母。 两个形式参数的值最初分配给状态，允许新的“Fraction”对象知道其起始值。</p>
+<p>要创建“Fraction”类的实例，我们必须调用构造函数。 这是通过使用类的名称并传递必要状态的实际值来实现的（请注意，我们从不直接“调用(invoke) <code>__init__</code> ”）。 例如，</p>
 <div class="highlight"><pre><span></span><code>    <span class="n">my_fraction</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<p>creates an object called <code>my_fraction</code> representing the fraction $<code>\frac {3}{5}$ (three-fifths).</code>Figure 5` shows this object as it is now implemented.</p>
+<p>创建一个名为 <code>my_fraction</code> 的对象，表示分数 <span class="arithmatex">\(`\frac {3}{5}\)</span> （五分之三）。 “图 5”显示了该对象现在的实现情况。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/fraction1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/fraction1.png" /></a>
   </p>
-<figcaption>Figure 5: An Instance of the ``Fraction`` Class</figcaption>
+<figcaption>图 5：“Fraction”类的实例</figcaption>
 </figure>
-<p>The next thing we need to do is implement the behavior that the abstract data type requires. To begin, consider what happens when we try to print a <code>Fraction</code> object.</p>
+<p>接下来我们需要做的是实现抽象数据类型所需的行为。 首先，考虑一下当我们尝试打印“Fraction”对象时会发生什么。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">my_fraction</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_fraction</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Fraction</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x103203eb8</span><span class="o">&gt;</span>
 </code></pre></div>
-<p>The <code>Fraction</code> object, <code>my_fraction</code>, does not know how to respond to this request to print. The <code>print</code> function requires that the object convert itself into a string so that the string can be written to the output. The only choice <code>my_fraction</code> has is to show the actual reference that is stored in the variable (the address itself). This is not what we want.</p>
-<p>There are two ways we can solve this problem. One is to define a method called <code>show</code> that will allow the <code>Fraction</code> object to print itself as a string. We can implement this method as shown in <code>Listing 3</code>. If we create a <code>Fraction</code> object as before we can ask it to show itself (in other words, print itself  in the proper format). Unfortunately, this does not work in general. In order to make printing work properly, we need to tell the <code>Fraction</code> class how to convert itself into a string. This is what the <code>print</code> function needs in order to do its job.</p>
-<p><strong>Listing 3</strong></p>
+<p>“Fraction” 对象“my_fraction” 不知道如何响应此打印请求。 “print”函数要求对象将自身转换为字符串，以便可以将该字符串写入输出。 my_fraction 唯一的选择是显示存储在变量中的实际引用（地址本身）。 这不是我们想要的。</p>
+<p>我们有两种方法可以解决这个问题。 一种是定义一个名为“show”的方法，该方法允许“Fraction”对象将其自身打印为字符串。 我们可以实现这个方法，如“清单 3”所示。 如果我们像以前一样创建一个“Fraction”对象，我们可以要求它显示自己（换句话说，以正确的格式打印自己）。 不幸的是，这通常不起作用。 为了使打印正常工作，我们需要告诉“Fraction”类如何将其自身转换为字符串。 这就是“print”函数完成其工作所需要的。</p>
+<p><strong>清单 3</strong></p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -10459,9 +10458,9 @@
 <span class="go">    &gt;&gt;&gt; print(my_fraction)</span>
 <span class="go">    &lt;__main__.Fraction object at 0x40bce9ac&gt;</span>
 </code></pre></div>
-<p>In Python, all classes have a set of standard methods that are provided but may not work properly. One of these, <code>__str__</code>, is the method to convert an object into a string. The default implementation for this method is to return the instance address string as we have already seen. What we need to do is provide a better implementation for this method. We will say that this implementation <strong>overrides</strong> the previous one, or that it redefines the method’s behavior.</p>
-<p>To do this, we simply define a method with the name <code>__str__</code> and give it a new implementation as shown in <code>Listing 4</code>. This definition does not need any other information except the special parameter <code>self</code>. In turn, the method will build a string representation by converting each piece of internal state data to a string and then placing a <code>/</code> character in between the strings using string concatenation. The resulting string will be returned any time a <code>Fraction</code> object is asked to convert itself to a string. Notice the various ways that this function is used.</p>
-<p><strong>Listing 4</strong></p>
+<p>在Python中，所有类都提供了一组标准方法，但这些方法可能无法正常工作。 其中之一<code>__str__</code>是将对象转换为字符串的方法。 正如我们已经看到的，此方法的默认实现是返回实例地址字符串。 我们需要做的是为这个方法提供一个更好的实现。 我们会说这个实现<strong>覆盖(overrides)</strong>前一个实现，或者它重新定义了方法的行为。</p>
+<p>为此，我们只需定义一个名为<code>__str__</code>的方法，并为其提供一个新的实现，如“清单 4”所示。 除了特殊参数“self”之外，这个定义不需要任何其他信息。 反过来，该方法将通过将每段内部状态数据转换为字符串，然后使用字符串连接在字符串之间放置“/”字符来构建字符串表示形式。 每当要求“Fraction”对象将其自身转换为字符串时，都会返回结果字符串。 请注意该函数的各种使用方式。</p>
+<p><strong>清单 4</strong></p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
@@ -10475,7 +10474,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">my_fraction</span><span class="p">)</span>
 <span class="go">&#39;3/5&#39;</span>
 </code></pre></div>
-<p>We can override many other methods for our new <code>Fraction</code> class. Some of the most important of these are the basic arithmetic operations. We would like to be able to create two <code>Fraction</code> objects and then add them together using the standard <code>+</code> notation. At this point, if we try to add two fractions, we get the following:</p>
+<p>我们可以为新的“Fraction”类重写许多其他方法。 其中最重要的一些是基本算术运算。 我们希望能够创建两个“Fraction”对象，然后使用标准“+”符号将它们加在一起。 此时，如果我们尝试将两个分数相加，我们会得到以下结果：</p>
 <div class="highlight"><pre><span></span><code><span class="go">    &gt;&gt;&gt; f1 = Fraction(1, 4)</span>
 <span class="go">    &gt;&gt;&gt; f2 = Fraction(1, 2)</span>
 <span class="go">    &gt;&gt;&gt; f1 + f2</span>
@@ -10483,15 +10482,12 @@
 <span class="go">    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
 <span class="go">    TypeError: unsupported operand type(s) for +: &#39;Fraction&#39; and &#39;Fraction&#39;</span>
 </code></pre></div>
-<p>If you look closely at the error, you see that the problem is that the <code>+</code> operator does not understand the <code>Fraction</code> operands. We can fix this by providing the <code>Fraction</code> class with a method that overrides the addition method. In Python, this method is called <code>__add__</code> and it requires two parameters. The first, <code>self</code>, is always needed, and the second represents the other operand in the expression. For example,</p>
+<p>如果仔细观察该错误，您会发现问题在于“+”运算符不理解“Fraction”操作数。 我们可以通过为“Fraction”类提供一个覆盖加法方法的方法来解决这个问题。 在Python中，这个方法被称为<code>__add__</code>，它需要两个参数。 第一个“self”始终是必需的，第二个表示表达式中的另一个操作数。 例如，</p>
 <div class="highlight"><pre><span></span><code>    <span class="n">f1</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
 </code></pre></div>
-<p>would ask the <code>Fraction</code> object <code>f1</code> to add the <code>Fraction</code> object
-<code>f2</code> to itself. This can be written in the standard notation,
-<code>f1 + f2</code>.</p>
-<p>Two fractions must have the same denominator to be added. The easiest way to make sure they have the same denominator is to simply use the product of the two denominators as a common denominator so that <span class="arithmatex">\(\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}\)</span>. The implementation is shown in <code>Listing 5</code>. The addition function returns a new <code>Fraction</code> object with the numerator and denominator of the sum. We can use this method by writing a standard arithmetic expression involving fractions, assigning the result of the addition, and then printing our result.</p>
-<p>.. _lst_addmethod:</p>
-<p><strong>Listing 5</strong></p>
+<p>会要求 <code>Fraction</code> 对象 <code>f1</code> 将 <code>Fraction</code> 对象 <code>f2</code> 添加到自身。 这可以用标准符号<code>f1 + f2</code>来写。</p>
+<p>两个分数必须具有相同的分母才能相加。 确保它们具有相同分母的最简单方法是简单地使用两个分母的乘积作为公分母，以便 <span class="arithmatex">\(\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}\)</span>。 其实现如“清单 5”所示。 加法函数返回一个新的“Fraction”对象，其中包含总和的分子和分母。 我们可以通过编写包含分数的标准算术表达式，分配加法结果，然后打印结果来使用此方法。</p>
+<p><strong>清单 5</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_fraction</span><span class="p">):</span>
     <span class="n">new_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span><span class="n">other_fraction</span><span class="o">.</span><span class="n">den</span> <span class="o">+</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="o">*</span> <span class="n">other_fraction</span><span class="o">.</span><span class="n">num</span>
@@ -10504,17 +10500,17 @@
 <span class="go">    &gt;&gt;&gt; print(f1 + f2)</span>
 <span class="go">    6/8</span>
 </code></pre></div>
-<p>The addition method works as we desire, but one thing could be better. Note that <span class="arithmatex">\(6/8\)</span> is the correct result (<span class="arithmatex">\(\frac {1}{4} + \frac {1}{2}\)</span>) but that it is not in the “lowest terms” representation. The best representation would be <span class="arithmatex">\(3/4\)</span>. In order to be sure that our results are always in the lowest terms, we need a helper function that knows how to reduce fractions. This function will need to look for the greatest common divisor, or GCD. We can then divide the numerator and the denominator by the GCD and the result will be reduced to lowest terms.</p>
-<p>The best-known algorithm for finding the greatest common divisor is Euclid’s algorithm, which will be discussed in detail in Chapter 8. It states that the greatest common divisor of two integers <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> is <span class="arithmatex">\(n\)</span> if <span class="arithmatex">\(n\)</span> divides <span class="arithmatex">\(m\)</span> evenly. However, if <span class="arithmatex">\(n\)</span> does not divide <span class="arithmatex">\(m\)</span> evenly, then the answer is the greatest common divisor of <span class="arithmatex">\(n\)</span> and the remainder of <span class="arithmatex">\(m\)</span> divided by <span class="arithmatex">\(n\)</span>. We will simply provide an iterative implementation here (see <code>ActiveCode 1</code>). Note that this implementation of the GCD algorithm works only when the denominator is positive. This is acceptable for our fraction class because we have said that a negative fraction will be represented by a negative numerator.</p>
-<div class="highlight"><span class="filename">The Greatest Common Divisor Function</span><pre><span></span><code>    <span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<p>加法方法如我们所愿，但有一点可以做得更好。 请注意，<span class="arithmatex">\(6/8\)</span> 是正确的结果 (<span class="arithmatex">\(\frac {1}{4} + \frac {1}{2}\)</span>)，但它不是“最低项”表示形式。 最好的代表是 <span class="arithmatex">\(3/4\)</span>。 为了确保我们的结果始终是最低的，我们需要一个知道如何减少分数的辅助函数。 该函数需要寻找<strong>最大公约数</strong>（GCD）。 然后我们可以将分子和分母除以 GCD，结果将简化为最低项。</p>
+<p>寻找最大公约数的最著名算法是欧几里得算法，该算法将在第 8 章中详细讨论。它指出两个整数 <span class="arithmatex">\(m\)</span> 和 <span class="arithmatex">\(n\)</span> 的最大公约数是 <span class="arithmatex">\(n\)</span>，如果 <span class="arithmatex">\(n\)</span> 平分<span class="arithmatex">\(m\)</span>。 但是，如果 <span class="arithmatex">\(n\)</span> 不能整除 <span class="arithmatex">\(m\)</span>，则答案是 <span class="arithmatex">\(n\)</span> 的最大公约数和 <span class="arithmatex">\(m\)</span> 除以 <span class="arithmatex">\(n\)</span> 的余数。 我们将在这里简单地提供一个迭代实现（参见“ActiveCode 1”）。 请注意，GCD 算法的这种实现仅在分母为正时才有效。 这对于我们的分数类是可以接受的，因为我们已经说过负分数将由负分子表示。</p>
+<div class="highlight"><span class="filename">最大公约数函数</span><pre><span></span><code>    <span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="k">while</span> <span class="n">m</span> <span class="o">%</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">%</span> <span class="n">n</span>
         <span class="k">return</span> <span class="n">n</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">gcd</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </code></pre></div>
-<p>Now we can use this function to help reduce any fraction. To put a fraction in lowest terms, we will divide the numerator and the denominator by their greatest common divisor. So, for the fraction <span class="arithmatex">\(6/8\)</span>, the greatest common divisor is 2. Dividing the top and the bottom by 2 creates a new fraction, <span class="arithmatex">\(3/4\)</span> (see <code>Listing 6</code>).</p>
-<p><strong>Listing 6</strong></p>
+<p>现在我们可以使用这个函数来帮助减少任何分数。 为了将分数转化为最简形式，我们将分子和分母除以它们的最大公约数。 因此，对于分数 <span class="arithmatex">\(6/8\)</span>，最大公约数是 2。将顶部和底部除以 2 创建一个新分数 <span class="arithmatex">\(3/4\)</span>（参见“清单 6”）。</p>
+<p><strong>清单 6</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_fraction</span><span class="p">):</span>
     <span class="n">new_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="n">other_fraction</span><span class="o">.</span><span class="n">den</span> <span class="o">+</span> \
                     <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">*</span> <span class="n">other_fraction</span><span class="o">.</span><span class="n">num</span>
@@ -10522,34 +10518,34 @@
     <span class="n">common</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">new_num</span><span class="p">,</span> <span class="n">new_den</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">new_num</span> <span class="o">//</span> <span class="n">common</span><span class="p">,</span> <span class="n">new_den</span> <span class="o">//</span> <span class="n">common</span><span class="p">)</span>
 </code></pre></div>
-<p>Our <code>Fraction</code> object now has two very useful methods as depicted in <code>Figure 6</code>.</p>
+<p>我们的“Fraction”对象现在有两个非常有用的方法，如“图 6”所示。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/fraction2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/fraction2.png" /></a>
   </p>
-<figcaption>Figure 6: An Instance of the ``Fraction`` Class with Two Methods</figcaption>
+<figcaption>图 6：具有两个方法的“Fraction”类的实例</figcaption>
 </figure>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">f1</span> <span class="o">+</span> <span class="n">f2</span><span class="p">)</span>
 <span class="go">3/4</span>
 </code></pre></div>
-<p>An additional group of methods that we need to include in our example <code>Fraction</code> class will allow two fractions to compare themselves to one another. Assume we have two <code>Fraction</code> objects, <code>f1</code> and <code>f2</code>. <code>f1==f2</code> will only be <code>True</code> if they are references to the same object. Two different objects with the same numerators and denominators would not be equal under this implementation. This is called <strong>shallow equality</strong> (see <code>Figure 7</code>).</p>
+<p>我们需要在示例“Fraction”类中包含的另一组方法将允许两个分数相互比较。 假设我们有两个“Fraction”对象，“f1”和“f2”。 仅当它们是对同一对象的引用时，“f1==f2”才会为“True”。 在此实现下，具有相同分子和分母的两个不同对象将不相等。 这称为<strong>浅平等</strong>（参见“图 7”）。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/fraction3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/fraction3.png" /></a>
   </p>
-<figcaption>Figure 7: Shallow Equality Versus Deep Equality</figcaption>
+<figcaption>图 7：浅层平等与深度平等</figcaption>
 </figure>
-<p>We can create <strong>deep equality</strong>–equality by the same value, not the same reference–by overriding the <code>__eq__</code> method (see <code>Figure 7</code>). The <code>__eq__</code> method is another standard method available in any class. The <code>__eq__</code> method compares two objects and returns <code>True</code> if their values are the same, <code>False</code> otherwise.</p>
-<p>In the <code>Fraction</code> class, we can implement the <code>__eq__</code> method by again putting the two fractions in common terms and then comparing the numerators (see <code>Listing 7</code>). It is important to note that there are other relational operators that can be overridden. For example, the <code>__le__</code> method provides the less than or equal functionality.</p>
-<p><strong>Listing 7</strong></p>
+<p>我们可以通过重写<code>__eq__</code>方法来创建<strong>深度相等(deep equality)</strong>——通过相同的值而不是相同的引用来相等（参见“图7”）。 <code>__eq__</code> 方法是任何类中可用的另一个标准方法。 <code>__eq__</code> 方法比较两个对象，如果它们的值相同则返回“True”，否则返回“False”。</p>
+<p>在“Fraction”类中，我们可以通过再次将两个分数放入常用项中，然后比较分子来实现<code>__eq__</code>方法（参见“清单 7”）。 值得注意的是，还有其他可以被覆盖的关系运算符。 例如，<code>__le__</code> 方法提供小于或等于功能。</p>
+<p><strong>清单 7</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_fraction</span><span class="p">):</span>
     <span class="n">first_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="n">other_fraction</span><span class="o">.</span><span class="n">den</span>
     <span class="n">second_num</span> <span class="o">=</span> <span class="n">other_fraction</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
 
     <span class="k">return</span> <span class="n">first_num</span> <span class="o">==</span> <span class="n">second_num</span>
 </code></pre></div>
-<p>The complete <code>Fraction</code> class, up to this point, is shown in <code>ActiveCode 2</code>. We leave the remaining arithmetic and relational methods as exercises.</p>
-<div class="highlight"><span class="filename">The Fraction Class</span><pre><span></span><code><span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<p>到目前为止，完整的“Fraction”类显示在“ActiveCode 2”中。 我们将剩下的算术和关系方法留作练习。</p>
+<div class="highlight"><span class="filename">分数类</span><pre><span></span><code><span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="k">while</span> <span class="n">m</span> <span class="o">%</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">%</span> <span class="n">n</span>
     <span class="k">return</span> <span class="n">n</span>
@@ -10588,7 +10584,7 @@
 <div class="admonition info">
 <p class="admonition-title">Self  Check</p>
 </div>
-<p>To make sure you understand how operators are implemented in Python classes, and how to properly write methods, write some methods to implement <code>*, /,</code> and <code>-</code> .  Also implement comparison operators &gt; and &lt;</p>
+<p>为了确保您了解如何在 Python 类中实现运算符以及如何正确编写方法，请编写一些方法来实现 <code>*, /,</code> 和 <code>-</code> 。 还实现比较运算符 <code>&gt;</code> 和 <code>&lt;</code></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gFb9tvJZHXo" title="fraction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <details class="- info">
@@ -10773,7 +10769,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月15日</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月16日</span>
       
         <br>
         创建日期:

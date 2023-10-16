@@ -10415,38 +10415,38 @@
 
 
 <h1 id="继承逻辑门和电路">继承：逻辑门和电路<a class="headerlink" href="#继承逻辑门和电路" title="Permanent link">&para;</a></h1>
-<p>Our final section will introduce another important aspect of object-oriented programming. <strong>Inheritance</strong> is the ability of one class to be related to another class in much the same way that people can be related to one another. Children inherit characteristics from their parents. Similarly, Python child classes can inherit characteristic data and behavior from a parent class. These classes are often referred to as <strong>subclasses</strong> and <strong>superclasses</strong>.</p>
-<p><code>Figure 8</code> shows the built-in Python collections and their relationships to one another. We call a relationship structure such as this an <strong>inheritance hierarchy</strong>. For example, the list is a <em>child</em> of the sequential collection. In this case, we call the list the child and the <em>sequence</em> the parent (or <em>subclass list</em> and <em>superclass sequence</em>). This is often referred to as an <strong>Is-a relationship</strong> (the list Is-a sequential collection). This implies that lists inherit important characteristics from sequences, namely the ordering of the underlying data and operations such as concatenation, repetition, and indexing.</p>
+<p>我们的最后一节将介绍面向对象编程的另一个重要方面。 <strong>继承</strong>是一个类与另一类相关的能力，就像人们彼此之间的关系一样。 孩子继承了父母的特征。 类似地，Python 子类可以从父类继承特征数据和行为。 这些类通常称为<strong>子类</strong>和<strong>超类</strong>。</p>
+<p>“图 8”显示了内置的 Python 集合以及它们之间的关系。 我们将这样的关系结构称为<strong>继承层次结构</strong>。 例如，列表是顺序集合的<em>子</em>。 在这种情况下，我们将列表称为子级，将<em>序列</em>称为父级（或<em>子类列表</em>和<em>超类序列</em>）。 这通常被称为 <strong>Is-a 关系(Is-a realtionship)</strong>（列表 Is-a 顺序集合）。 这意味着列表继承了序列的重要特征，即基础数据的排序和连接、重复和索引等操作。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/inheritance1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/inheritance1.png" /></a>
   </p>
-<figcaption>Figure 8: An Inheritance Hierarchy for Python Collections</figcaption>
+<figcaption>图 8：Python 集合的继承层次结构</figcaption>
 </figure>
-<p>Lists, tuples, and strings are all examples of sequential collections. They all inherit common data organization and operations. However, each of them is distinct based on whether the data is homogeneous and whether the collection is immutable. The children all gain from their parents but distinguish themselves by adding additional characteristics.</p>
-<p>By organizing classes in this hierarchical fashion, object-oriented programming languages allow previously written code to be extended to meet the needs of a new situation. In addition, by organizing data in this hierarchical manner, we can better understand the relationships that exist. We can be more efficient in building our abstract representations.</p>
-<p>To explore this idea further, we will construct a <strong>simulation</strong>, an application to simulate digital circuits. The basic building block for this simulation will be the logic gate. These electronic switches represent Boolean algebra relationships between their input and their output. In general, gates have a single output line. The value of the output is dependent on the values given on the input lines.</p>
-<p>AND gates have two input lines, each of which can be either 0 or 1 (representing <code>False</code> or <code>True</code>, respectively). If both of the input lines have the value 1, the resulting output is 1. However, if either or both of the input lines is 0, the result is 0. OR gates also have two input lines and produce a 1 if one or both of the input values is a 1. In the case where both input lines are 0, the result is 0.</p>
-<p>NOT gates differ from the other two gates in that they have only a single input line. The output value is simply the opposite of the input value. If 0 appears on the input, 1 is produced on the output. Similarly, 1 produces 0. <code>Figure 9</code> shows how each of these gates is typically represented. Each gate also has a <strong>truth table</strong> of values showing the input-to-output mapping that is performed by the gate.</p>
+<p>列表、元组和字符串都是顺序集合的示例。 它们都继承了通用的数据组织和操作。 然而，根据数据是否同质以及集合是否不可变，它们中的每一个都是不同的。 孩子们都从父母那里获益，但通过增加额外的特征来区分自己。</p>
+<p>通过以这种分层方式组织类，面向对象的编程语言允许扩展以前编写的代码以满足新情况的需要。 此外，通过以这种分层方式组织数据，我们可以更好地理解存在的关系。 我们可以更有效地构建抽象表示。</p>
+<p>为了进一步探索这个想法，我们将构建一个<strong>模拟</strong>，一个模拟数字电路的应用程序。 该模拟的基本构建模块是逻辑门。 这些电子开关代表其输入和输出之间的布尔代数关系。 一般来说，门有一条输出线。 输出值取决于输入行上给出的值。</p>
+<p>AND 门有两条输入线，每条输入线可以是 0 或 1（分别代表<code>False</code>或<code>True</code>）。 如果两条输入线的值为 1，则结果输出为 1。但是，如果一条或两条输入线均为 0，则结果为 0。或门也有两条输入线，如果一条或两条输入线都为 1，则结果为 1 输入值的其中之一是 1。如果两条输入线均为 0，则结果为 0。</p>
+<p>NOT 门与其他两个门的不同之处在于它们只有一条输入线。 输出值与输入值正好相反。 如果输入上出现 0，则输出上会产生 1。 类似地，1 产生 0。“图 9”显示了每个门的典型表示方式。 每个门还有一个值的<strong>真值表</strong>，显示门执行的输入到输出映射。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/truthtable.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/truthtable.png" /></a>
   </p>
-<figcaption>Figure 9: Three Types of Logic Gates</figcaption>
+<figcaption>图 9：三种类型的逻辑门</figcaption>
 </figure>
-<p>By combining these gates in various patterns and then applying a set of  input values, we can build circuits that have logical functions. <code>Figure 10</code> shows a circuit consisting of two AND gates, one OR gate, and a single NOT gate. The output lines from the two AND gates feed directly into the OR gate, and the resulting output from the OR gate is given to the NOT gate. If we apply a set of input values to the four input lines (two for each AND gate), the values are processed and a result appears at the output of the NOT gate. <code>Figure 10</code> also shows an example with values.</p>
+<p>通过以各种模式组合这些门，然后应用一组输入值，我们可以构建具有逻辑功能的电路。 “图 10”显示了一个由两个与门、一个或门和一个非门组成的电路。 两个“与”门的输出线直接馈入“或”门，“或”门的输出结果提供给“非”门。 如果我们将一组输入值应用于四个输入线（每个与门两个输入线），这些值将被处理，并且结果将出现在非门的输出处。 “图 10”还显示了一个带有值的示例。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/circuit1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/circuit1.png" /></a>
   </p>
-<figcaption>Figure 10: A Circuit</figcaption>
+<figcaption>图 10：电路</figcaption>
 </figure>
-<p>In order to implement a circuit, we will first build a representation for logic gates. Logic gates are easily organized into a class inheritance hierarchy as shown in <code>Figure 11</code>. At the top of the hierarchy, the <code>LogicGate</code> class represents the most general characteristics of logic gates: namely, a label for the gate and an output line. The next level of subclasses breaks the logic gates into two families, those that have one input line and those that have two. Below that, the specific logic functions of each appear.</p>
+<p>为了实现电路，我们首先构建逻辑门的表示。 逻辑门很容易组织成类继承层次结构，如图 11 所示。 在层次结构的顶部，“LogicGate”类代表逻辑门的最一般特征：即门的标签和输出线。 下一级子类将逻辑门分为两个系列，一组有一条输入线，另一组有两条输入线。 下面，出现了每个的具体逻辑功能。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/gates.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/gates.png" /></a>
   </p>
-<figcaption>Figure 11: An Inheritance Hierarchy for Logic Gates</figcaption>
+<figcaption>图 11：逻辑门的继承层次结构</figcaption>
 </figure>
-<p>We can now start to implement the classes by starting with the most general, <code>LogicGate</code>. As noted earlier, each gate has a label for identification and a single output line. In addition, we need methods to allow a user of a gate to ask the gate for its label.</p>
-<p>The other behavior that every logic gate needs is the ability to know its output value. This will require that the gate perform the appropriate logic based on the current input. In order to produce output, the gate needs to know specifically what that logic is. This means calling a method to perform the logic computation. The complete class is shown in <code>Listing 8</code>.</p>
-<p><strong>Listing 8</strong></p>
+<p>我们现在可以从最通用的“LogicGate”开始开始实现这些类。 如前所述，每个门都有一个用于识别的标签和一条输出线。 此外，我们需要允许门的用户向门询问其标签的方法。</p>
+<p>每个逻辑门需要的另一个行为是了解其输出值的能力。 这将要求门根据当前输入执行适当的逻辑。 为了产生输出，门需要具体知道该逻辑是什么。 这意味着调用一个方法来执行逻辑计算。 完整的类如“清单 8”所示。</p>
+<p><strong>清单 8</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LogicGate</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lbl</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">lbl</span>
@@ -10459,11 +10459,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">perform_gate_logic</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span>
 </code></pre></div>
-<p>At this point, we will not implement the <code>perform_gate_logic</code> function. The reason for this is that we do not know how each gate will perform its own logic operation. Those details will be included by each individual gate that is added to the hierarchy. This is a very powerful idea in object-oriented programming. We are writing a method that will use code that does not exist yet. The parameter <code>self</code> is a reference to the actual gate object invoking the method. Any new logic gate that gets added to the hierarchy will simply need to implement the <code>perform_gate_logic</code> function and it will be used at the appropriate time. Once done, the gate can provide its output value. This ability to extend a hierarchy that currently exists and provide the specific functions that the hierarchy needs to use the new class is extremely important for reusing existing code.</p>
-<p>We categorized the logic gates based on the number of input lines, as shown in <code>Figure 11</code>: the AND gate and OR gate both have two input lines, whereas the NOT gate has only one. <code>LogicGate</code> has two subclasses: <code>BinaryGate</code>, which will add two input lines, and <code>UnaryGate</code>, which will have only a single input line.</p>
-<p>In computer circuit design, these lines are sometimes called <em>pins</em>, so we will use that terminology in our implementation.</p>
-<p><code>Listing 9</code> and <code>Listing 10</code> implement these two classes. The constructors in both of these classes start with an explicit call to the constructor of the parent class using the parent's <code>__init__</code> method. When creating an instance of the <code>BinaryGate</code> class, we first want to initialize any data items that are inherited from <code>LogicGate</code>. In this case, that means the label for the gate. The constructor then goes on to add the two input lines (<code>pin_a</code> and <code>pin_b</code>). This is a very common pattern that you should always use when building class hierarchies. Child class constructors need to call parent class constructors and then move on to their own distinguishing data.</p>
-<p><strong>Listing 9</strong></p>
+<p>此时，我们不会实现“perform_gate_logic”函数。 原因是我们不知道每个门将如何执行自己的逻辑运算。 这些详细信息将包含在添加到层次结构中的每个单独的门中。 这是面向对象编程中一个非常强大的思想。 我们正在编写一个方法，该方法将使用尚不存在的代码。 参数“self”是对调用该方法的实际门对象的引用。 添加到层次结构中的任何新逻辑门只需要实现“perform_gate_logic”函数，并且它将在适当的时间使用。 一旦完成，门就可以提供其输出值。 这种扩展当前存在的层次结构并提供层次结构使用新类所需的特定功能的能力对于重用现有代码极其重要。</p>
+<p>我们根据输入线的数量对逻辑门进行分类，如图11所示：与门和或门都有两条输入线，而非门只有一条输入线。 <code>LogicGate</code> 有两个子类：<code>BinaryGate</code>，它将添加两个输入行，以及<code>UnaryGate</code>，它将只有一个输入行。</p>
+<p>在计算机电路设计中，这些线路有时称为“引脚”，因此我们将在实现中使用该术语。</p>
+<p>“清单 9”和“清单 10”实现了这两个类。 这两个类中的构造函数都以使用父类的 <code>__init__</code> 方法显式调用父类的构造函数开始。 当创建“BinaryGate”类的实例时，我们首先要初始化从“LogicGate”继承的所有数据项。 在本例中，这意味着门的标签。 然后构造函数继续添加两个输入行（“pin_a”和“pin_b”）。 这是一种非常常见的模式，在构建类层次结构时应该始终使用它。 子类构造函数需要调用父类构造函数，然后继续处理它们自己的区别数据。</p>
+<p><strong>清单 9</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">BinaryGate</span><span class="p">(</span><span class="n">LogicGate</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lbl</span><span class="p">):</span>
         <span class="n">LogicGate</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lbl</span><span class="p">)</span>
@@ -10478,7 +10478,7 @@
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enter pin B input for gate </span><span class="se">\</span>
 <span class="s2">            </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">))</span>
 </code></pre></div>
-<p><strong>Listing 10</strong></p>
+<p><strong>清单 10</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UnaryGate</span><span class="p">(</span><span class="n">LogicGate</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lbl</span><span class="p">):</span>
         <span class="n">LogicGate</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lbl</span><span class="p">)</span>
@@ -10488,10 +10488,10 @@
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enter pin input for gate </span><span class="se">\</span>
 <span class="s2">            </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">))</span>
 </code></pre></div>
-<p>Python also has a function called <code>super</code> which can be used in place of explicitly naming the parent class.  This is a more general mechanism and is widely used, especially when a class has more than one parent. In our example above, <code>LogicGate.__init__(self, lbl)</code> could be replaced with <code>super().__init__(lbl)</code>, <code>super(UnaryGate, self).__init__(lbl)</code>, or <code>super().__init__("UnaryGate", lbl)</code>. The specific details are beyond the scope of this text.</p>
-<p>The only behavior that the <code>BinaryGate</code> class adds is the ability to get the values from the two input lines. Since these values come from some external place, we will simply ask the user to provide them via an input statement. The same implementation occurs for the <code>UnaryGate</code> class except that there is only one input line.</p>
-<p>Now that we have a general class for gates depending on the number of input lines, we can build specific gates that have unique behavior. For example, the <code>AndGate</code> class will be a subclass of <code>BinaryGate</code> since AND gates have two input lines. As before, the first line of the constructor calls upon the parent class constructor (<code>BinaryGate</code>), which in turn calls its parent class constructor (<code>LogicGate</code>). Note that the <code>AndGate</code> class does not provide any new data since it inherits two input lines, one output line, and a label.</p>
-<p>The only thing <code>AndGate</code> needs to add is the specific behavior that performs the Boolean operation that was described earlier. This is the place where we can provide the <code>perform_gate_logic</code> method. For an AND gate, this method first must get the two input values and then only return 1 if both input values are 1. The complete class is shown in <code>Listing 11</code>.</p>
+<p>Python 还有一个名为“super”的函数，可以用来代替显式命名父类。 这是一种更通用的机制并且被广泛使用，特别是当一个类有多个父类时。 在上面的例子中，<code>LogicGate.__init__(self, lbl)</code> 可以替换为<code>super().__init__(lbl)</code>,<code>super(UnaryGate, self).__init__(lbl)</code>, 或<code>super().__init__("UnaryGate", lbl)</code>。 具体细节超出了本文的范围。</p>
+<p><code>BinaryGate</code> 类添加的唯一行为是能够从两个输入行获取值。 由于这些值来自某个外部位置，我们将简单地要求用户通过输入语句提供它们。 <code>UnaryGate</code> 类也有相同的实现，只是只有一个输入行。</p>
+<p>现在我们有了根据输入线数量的门的通用类，我们可以构建具有独特行为的特定门。 例如，<code>AndGate</code>类将是<code>BinaryGate</code>的子类，因为“与”门有两个输入线。 和以前一样，构造函数的第一行调用父类构造函数（“BinaryGate”），而父类构造函数又调用其父类构造函数（<code>LogicGate</code>）。 请注意，<code>AndGate</code>类不提供任何新数据，因为它继承了两个输入行、一个输出行和一个标签。</p>
+<p>“AndGate” 唯一需要添加的是执行前面描述的布尔运算的特定行为。 这是我们可以提供“perform_gate_logic”方法的地方。 对于 AND 门，此方法首先必须获取两个输入值，然后仅在两个输入值均为 1 时才返回 1。完整的类如“清单 11”所示。</p>
 <p><strong>Listing 11</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AndGate</span><span class="p">(</span><span class="n">BinaryGate</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lbl</span><span class="p">):</span>
@@ -10505,15 +10505,15 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
 </code></pre></div>
-<p>We can show the <code>AndGate</code> class in action by creating an instance and asking it to compute its output. The following session shows an <code>AndGate</code> object, <code>g1</code>, that has an internal label <code>"G1"</code>. When we invoke the <code>get_output</code> method, the object must first call its <code>perform_gate_logic</code> method which in turn queries the two input lines. Once the values are provided, the correct output is shown.</p>
+<p>我们可以通过创建一个实例并要求它计算其输出来展示正在运行的“AndGate”类。 以下会话显示了一个“AndGate”对象“g1”，它有一个内部标签““G1””。 当我们调用“get_output”方法时，该对象必须首先调用其“perform_gate_logic”方法，该方法依次查询两个输入行。 提供值后，就会显示正确的输出。</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">g1</span> <span class="o">=</span> <span class="n">AndGate</span><span class="p">(</span><span class="s2">&quot;G1&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g1</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span>
 <span class="go">Enter pin A input for gate G1: 1</span>
 <span class="go">Enter pin B input for gate G1: 0</span>
 <span class="go">0</span>
 </code></pre></div>
-<p>The same development can be done for OR gates and NOT gates. The <code>OrGate</code> class will also be a subclass of <code>BinaryGate</code> and the <code>NotGate</code> class will extend the <code>UnaryGate</code> class. Both of these classes will need to provide their own <code>perform_gate_logic</code> functions, as this is their specific behavior.</p>
-<p>We can use a single gate by first constructing an instance of one of the gate classes and then asking the gate for its output (which will in turn need inputs to be provided). For example:</p>
+<p>可以对“或”门和“非”门进行相同的开发。 “OrGate”类也将是“BinaryGate”的子类，“NotGate”类将扩展“UnaryGate”类。 这两个类都需要提供自己的“perform_gate_logic”函数，因为这是它们的特定行为。</p>
+<p>我们可以通过首先构造其中一个门类的实例，然后向门询问其输出（这又需要提供输入）来使用单个门。 例如：</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">g2</span> <span class="o">=</span> <span class="n">OrGate</span><span class="p">(</span><span class="s2">&quot;G2&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g2</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span>
 <span class="go">Enter pin A input for gate G2: 1</span>
@@ -10528,16 +10528,16 @@
 <span class="go">Enter pin input for gate G3: 0</span>
 <span class="go">1</span>
 </code></pre></div>
-<p>Now that we have the basic gates working, we can turn our attention to building circuits. In order to create a circuit, we need to connect gates together, the output of one flowing into the input of another. To do this, we will implement a new class called <code>Connector</code>.</p>
-<p>The <code>Connector</code> class will not reside in the gate hierarchy. It will, however, use the gate hierarchy in that each connector will have two gates, one on either end (see <code>Figure 12</code>). This relationship is very important in object-oriented programming. It is called the <strong>Has-a relationship</strong>. Recall earlier that we used the phrase <em>Is-a relationship</em> to say that a child class is related to a parent class, for example <code>UnaryGate</code> Is-a <code>LogicGate</code>.</p>
+<p>现在我们已经有了基本的门，我们可以将注意力转向构建电路。 为了创建一个电路，我们需要将门连接在一起，一个门的输出流入另一个门的输入。 为此，我们将实现一个名为“Connector”的新类。</p>
+<p>“Connector”类不会驻留在门层次结构中。 然而，它将使用门层次结构，因为每个连接器都有两个门，两端各一个（参见“图 12”）。 这种关系在面向对象编程中非常重要。 它被称为<strong>有关系</strong>。 回想一下之前我们使用短语 <em>Is-a 关系</em> 来表示子类与父类相关，例如 <code>UnaryGate</code> Is-a <code>LogicGate</code>。</p>
 <figure>
 <p><a class="glightbox" href="../Figures/connector.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/connector.png" /></a>
   </p>
-<figcaption>Figure 12: A Connector Connects the Output of One Gate to the Input of Another</figcaption>
+<figcaption>图 12：连接器将一个门的输出连接到另一个门的输入</figcaption>
 </figure>
-<p>Now, with the <code>Connector</code> class, we say that a <code>Connector</code> Has-a <code>LogicGate</code>, meaning that connectors will have instances of the <code>LogicGate</code> class within them but are not part of the hierarchy. When designing classes, it is very important to distinguish between those that have the Is-a relationship (which requires inheritance) and those that have Has-a relationships (with no inheritance).</p>
-<p><code>Listing 12</code> shows the <code>Connector</code> class. The two gate instances within each connector object will be referred to as the <code>from_gate</code> and the <code>to_gate</code>, recognizing that data values will flow from the output of one gate into an input line of the next. The call to <code>set_next_pin</code> is very important for making connections (see <code>Listing 13</code>). We need to add this method to our gate classes so that each <code>to_gate</code> can choose the proper input line for the connection.</p>
-<p><strong>Listing 12</strong></p>
+<p>现在，对于“Connector”类，我们说“Connector”具有“LogicGate”，这意味着连接器将在其中包含“LogicGate”类的实例，但不是 层次结构。 在设计类时，区分具有 Is-a 关系（需要继承）和具有 Has-a 关系（不需要继承）的类非常重要。</p>
+<p>“清单 12”显示了“Connector”类。 每个连接器对象内的两个门实例将被称为“from_gate”和“to_gate”，认识到数据值将从一个门的输出流到下一个门的输入线。 对“set_next_pin”的调用对于建立连接非常重要（参见“清单 13”）。 我们需要将此方法添加到我们的门类中，以便每个“to_gate”可以为连接选择正确的输入线。</p>
+<p><strong>清单 12</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Connector</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fgate</span><span class="p">,</span> <span class="n">tgate</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">from_gate</span> <span class="o">=</span> <span class="n">fgate</span>
@@ -10551,7 +10551,7 @@
     <span class="k">def</span> <span class="nf">get_to</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_gate</span>
 </code></pre></div>
-<p><strong>Listing 13</strong></p>
+<p><strong>清单 13</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">set_next_pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_a</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pin_a</span> <span class="o">=</span> <span class="n">source</span>
@@ -10561,9 +10561,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Error: NO EMPTY PINS&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>In the <code>BinaryGate</code> class, for gates with two possible input lines, the connector must be connected to only one line. If both of them are available, we will choose <code>pin_a</code> by default. If <code>pin_a</code> is already connected, then we will choose <code>pin_b</code>. It is not possible to connect to a gate with no available input lines.</p>
-<p>Now it is possible to get input from two places: externally, as before, and from the output of a gate that is connected to that input line. This requires a change to the <code>get_pin_a</code> and <code>get_pin_b</code> methods (see <code>Listing 14</code>). If the input line is not connected to anything (<code>None</code>), then ask the user externally as before. However, if there is a connection, the connection is accessed and <code>from_gate</code>’s output value is retrieved. This in turn causes that gate to process its logic. This continues until all input is available and the final output value becomes the required input for the gate in question. In a sense, the circuit works backwards to find the input necessary to finally produce output.</p>
-<p><strong>Listing 14</strong></p>
+<p>在“BinaryGate”类中，对于具有两条可能的输入线的门，连接器必须仅连接到一根线。 如果两者都可用，我们将默认选择“pin_a”。 如果“pin_a”已经连接，那么我们将选择“pin_b”。 无法连接到没有可用输入线的门。</p>
+<p>现在可以从两个地方获得输入：像以前一样从外部获得输入，以及从连接到该输入线的门的输出获得输入。 这需要更改“get_pin_a”和“get_pin_b”方法（参见“清单 14”）。 如果输入线没有连接到任何东西（<code>None</code>），则像以前一样从外部询问用户。 但是，如果存在连接，则会访问该连接并检索“from_gate”的输出值。 这反过来又导致该门处理其逻辑。 这将持续下去，直到所有输入都可用并且最终输出值成为相关门所需的输入。 从某种意义上说，电路向后工作以找到最终产生输出所需的输入。</p>
+<p><strong>清单 14</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_pin_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_a</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">input</span><span class="p">(</span>
@@ -10573,7 +10573,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pin_a</span><span class="o">.</span><span class="n">get_from</span><span class="p">()</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span>
 </code></pre></div>
-<p>The following fragment constructs the circuit shown earlier in the section:</p>
+<p>以下片段构建了本节前面所示的电路：</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">g1</span> <span class="o">=</span> <span class="n">AndGate</span><span class="p">(</span><span class="s2">&quot;G1&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g2</span> <span class="o">=</span> <span class="n">AndGate</span><span class="p">(</span><span class="s2">&quot;G2&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g3</span> <span class="o">=</span> <span class="n">OrGate</span><span class="p">(</span><span class="s2">&quot;G3&quot;</span><span class="p">)</span>
@@ -10582,10 +10582,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="n">Connector</span><span class="p">(</span><span class="n">g2</span><span class="p">,</span> <span class="n">g3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c3</span> <span class="o">=</span> <span class="n">Connector</span><span class="p">(</span><span class="n">g3</span><span class="p">,</span> <span class="n">g4</span><span class="p">)</span>
 </code></pre></div>
-<p>The outputs from the two AND gates (<code>g1</code> and <code>g2</code>) are connected to
-the OR gate (<code>g3</code>) and that output is connected to the NOT gate
-(<code>g4</code>). The output from the NOT gate is the output of the entire
-circuit. For example:</p>
+<p>两个与门（“g1”和“g2”）的输出连接到“或”门（“g3”），该输出连接到“非”门（“g4”）。 非门的输出就是整个电路的输出。 例如：</p>
 <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">g4</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span>
 <span class="go">Enter pin A input for gate G1: 0</span>
 <span class="go">Enter pin B input for gate G1: 1</span>
@@ -10593,8 +10590,8 @@ circuit. For example:</p>
 <span class="go">Enter pin B input for gate G2: 1</span>
 <span class="go">0</span>
 </code></pre></div>
-<p>Try it yourself using ActiveCode 4.</p>
-<div class="highlight"><span class="filename">The Complete Circuit Program.</span><pre><span></span><code><span class="k">class</span> <span class="nc">LogicGate</span><span class="p">:</span>
+<p>使用 ActiveCode 4 亲自尝试一下。</p>
+<div class="highlight"><span class="filename">完整的电路程序。</span><pre><span></span><code><span class="k">class</span> <span class="nc">LogicGate</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lbl</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">lbl</span>
@@ -10726,9 +10723,9 @@ circuit. For example:</p>
 <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <div class="admonition info">
-<p class="admonition-title">Self Check</p>
-<p>Create a two new gate classes,  one called NorGate the other called NandGate.  NandGates work like AndGates that have a Not attached to the output.  NorGates work lake OrGates that have a Not attached to the output.</p>
-<p>Create a series of gates that prove the following equality NOT (( A and B) or (C and D)) is that same as NOT( A and B ) and NOT (C and D).  Make sure to use some of your new gates in the simulation.</p>
+<p class="admonition-title">自检</p>
+<p>创建两个新的门类，一个称为 NorGate，另一个称为 NandGate。 NandGates 的工作方式与 AndGates 类似，但输出未附加。 NorGates 工作于 OrGates 湖，其输出未附加。</p>
+<p>创建一系列门来证明以下等式 <code>NOT (( A and B) or (C and D))</code> 与 <code>NOT( A and B )</code> 和 <code>NOT (C and D)</code> 相同。 确保在模拟中使用一些新的门。</p>
 <div class="highlight"><span class="filename">self_check_5</span><pre><span></span><code><span class="k">class</span> <span class="nc">LogicGate</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
@@ -10858,11 +10855,11 @@ circuit. For example:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/brrpvAlzOyM" title="logicgates" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <div class="admonition info">
-<p class="admonition-title">Self  Check Challenge</p>
-<p>One of the fundamental building blocks of a computer is something called a flip flop.  It's not something that computer science professors wear on their feet, but rather a kind of circuit that is stable and stores the last piece of data that was put on it.  A simple flip-flop can be made from two NOR gates that are tied together as in the following diagram.</p>
+<p class="admonition-title">自检挑战</p>
+<p>计算机的基本构建模块之一是触发器。 它不是计算机科学教授穿在脚上的东西，而是一种稳定的电路，可以存储最后的数据。 一个简单的触发器可以由连接在一起的两个或非门组成，如下图所示。</p>
 <p><a class="glightbox" href="../Figures/flipflop.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/flipflop.png" /></a></p>
-<p>This is a challenge problem because the entire
-Note if the initial inputs to Reset and Set are both 0 then the output of the flip-flop is 0.  But if the Set input is toggled to 1 then the output becomes 1.  The great thing is that when the set input goes to 0 the output stays 1, until the reset input is toggled to 1 which resets the output of the circuit back to zero.</p>
+<p>这是一个具有挑战性的问题，因为整体。</p>
+<p>请注意，如果 Reset 和 Set 的初始输入均为 0，则触发器的输出为 0。但是，如果 Set 输入切换为 1，则输出变为 1。最棒的是，当 set 输入变为 0 时 输出保持为 1，直到复位输入切换为 1，从而将电路的输出复位为零。</p>
 </div>
 <details class="- info">
 <summary>原文</summary>
@@ -11319,7 +11316,7 @@ Note if the initial inputs to Reset and Set are both 0 then the output of the fl
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月15日</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月16日</span>
       
         <br>
         创建日期:
