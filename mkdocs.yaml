@@ -263,7 +263,6 @@ nav:
                                       - 1.15. 关键术语: ebooks/pythonds3/Introduction/KeyTerms.md
                                       - 1.16. 练习: ebooks/pythonds3/Introduction/Exercises.md
                             - 2. 算法分析:
-                                      - ebooks/pythonds3/AlgorithmAnalysis/toctree.md
                                       - 2.1. 目标: ebooks/pythonds3/AlgorithmAnalysis/Objectives.md
                                       - 2.2. 什么是算法分析?: ebooks/pythonds3/AlgorithmAnalysis/WhatIsAlgorithmAnalysis.md
                                       - 2.3. 大 O 表示法: ebooks/pythonds3/AlgorithmAnalysis/BigONotation.md
