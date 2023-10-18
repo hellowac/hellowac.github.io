@@ -85,6 +85,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#大o表示法" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -5198,8 +5203,6 @@
       
         
       
-        
-      
     
     
     
@@ -5229,26 +5232,6 @@
             2. 算法分析
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../toctree/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Toctree
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -5301,6 +5284,8 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
+      
+        
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
@@ -10386,6 +10371,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -10403,162 +10390,179 @@
   
 
 
-  <h1>2.3. 大 O 表示法</h1>
-
-<p>..  Copyright (C)  Brad Miller, David Ranum
-    This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.</p>
-<p>Big O Notation
-~~~~~~~~~~~~~~</p>
-<p>When trying to characterize an algorithm’s efficiency in terms of
-execution time, independent of any particular program or computer, it is
-important to quantify the number of operations or steps that the
-algorithm will require. If each of these steps is considered to be a
-basic unit of computation, then the execution time for an algorithm can
-be expressed as the number of steps required to solve the problem.
-Deciding on an appropriate basic unit of computation can be a
-complicated problem and will depend on how the algorithm is implemented.</p>
-<p>A good basic unit of computation for comparing the summation algorithms
-shown earlier might be the number of assignment statements
-performed to compute the sum. In the function <code>sum_of_n</code>, the number of
-assignment statements is 1 (:math:<code>the\_sum = 0</code>)
-plus the value of <em>n</em> (the number of times we perform
-:math:<code>the\_sum = the\_sum + i</code>). We can denote this by a function, call it :math:<code>T</code>,
-where :math:<code>T(n) = 1 + n</code>. The parameter <em>n</em> is often referred to as
-the “size of the problem,” and we can read this as “:math:<code>T(n)</code> is the time
-it takes to solve a problem of size :math:<code>n</code>, namely :math:<code>1 + n</code> steps.”</p>
-<p>In the summation functions given above, it makes sense to use the number
-of terms in the summation to denote the size of the problem. We can then
-say that the sum of the first 100,000 integers is a bigger instance of
-the summation problem than the sum of the first 1,000. Because of this,
-it might seem reasonable that the time required to solve the larger case
-would be greater than for the smaller case. Our goal then is to show how
-the algorithm’s execution time changes with respect to the size of the
-problem.</p>
-<p>Computer scientists prefer to take this analysis technique one step
-further. It turns out that the exact number of operations is not as
-important as determining the most dominant part of the :math:<code>T(n)</code>
-function. In other words, as the problem gets larger, some portion of
-the :math:<code>T(n)</code> function tends to overpower the rest. This dominant
-term is what, in the end, is used for comparison. The <strong>order of
-magnitude</strong> function describes the part of :math:<code>T(n)</code> that increases
-the fastest as the value of <em>n</em> increases. Order of magnitude is often
-called <strong>Big O notation</strong> (for <em>order</em>) and written as
-:math:<code>O(f(n))</code>. It provides a useful approximation of the actual
-number of steps in the computation. The function :math:<code>f(n)</code> provides
-a simple representation of the dominant part of the original
-:math:<code>T(n)</code>.</p>
-<p>In the above example, :math:<code>T(n) = 1 + n</code>. As <em>n</em> gets larger, the
-constant 1 will become less and less significant to the final result. If
-we are looking for an approximation for :math:<code>T(n)</code>, then we can drop
-the 1 and simply say that the running time is :math:<code>O(n)</code>. It is
-important to note that the 1 is certainly significant for
-:math:<code>T(n)</code>. However, as <em>n</em> gets large, our approximation will be
-just as accurate without it.</p>
-<p>As another example, suppose that for some algorithm, the exact number of
-steps is :math:<code>T(n)=5n^{2} + 27n + 1005</code>. When <em>n</em> is small, say 1 or 2,
-the constant 1005 seems to be the dominant part of the function.
-However, as <em>n</em> gets larger, the :math:<code>n^{2}</code> term becomes the most
-important. In fact, when <em>n</em> is really large, the other two terms become
-insignificant in the role that they play in determining the final
-result. Again, to approximate :math:<code>T(n)</code> as <em>n</em> gets large, we can
-ignore the other terms and focus on :math:<code>5n^{2}</code>. In addition, the
-coefficient :math:<code>5</code> becomes insignificant as <em>n</em> gets large. We
-would say then that the function :math:<code>T(n)</code> has an order of
-magnitude :math:<code>f(n) = n^{2}</code>, or simply that it is :math:<code>O(n^{2})</code>.</p>
-<p>Although we do not see this in the summation example, sometimes the
-performance of an algorithm depends on the exact values of the data
-rather than simply the size of the problem. For these kinds of
-algorithms we need to characterize their performance in terms of <strong>best-case</strong>,
-<strong>worst-case</strong>, or <strong>average-case</strong> performance. The worst-case
-performance refers to a particular data set where the algorithm performs
-especially poorly, whereas a different data set for
-the exact same algorithm might have extraordinarily good (best-case) performance.
-However, in most cases the algorithm performs somewhere in between these
-two extremes (average-case performance). It is important for a computer scientist to understand
-these distinctions so they are not misled by one particular case.</p>
-<p>A number of very common order of magnitude functions will come up over
-and over as you study algorithms. These are shown in :ref:<code>Table 1 &lt;tbl_fntable&gt;</code>. In
-order to decide which of these functions is the dominant part of any
-:math:<code>T(n)</code> function, we must see how they compare with one another
-as <em>n</em> gets large.</p>
-<p>.. _tbl_fntable:</p>
-<p>.. table:: <strong>Table 1: Common Functions for Big O</strong></p>
-<div class="highlight"><pre><span></span><code>================= ===============
-         **f(n)**        **Name**
-================= ===============
-      :math:`1`      **Constant**
- :math:`\log n`   **Logarithmic**
-      :math:`n`        **Linear**
-:math:`n\log n`    **Log linear**
-  :math:`n^{2}`     **Quadratic**
-  :math:`n^{3}`         **Cubic**
-  :math:`2^{n}`   **Exponential**
-================= ===============
+<h1 id="大o表示法">大O表示法<a class="headerlink" href="#大o表示法" title="Permanent link">&para;</a></h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">中文</label><label for="__tabbed_1_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>当试图在独立于任何特定程序或计算机的执行时间方面表征算法的效率时，量化算法所需的操作或步骤的数量非常重要。 如果将这些步骤中的每一个都视为计算的基本单元，则算法的执行时间可以表示为解决问题所需的步骤数。 决定适当的基本计算单位可能是一个复杂的问题，并且取决于算法的实现方式。</p>
+<p>用于比较前面所示的求和算法的一个很好的基本计算单位可能是为计算总和而执行的赋值语句的数量。 在函数<code>sum_of_n</code>中，赋值语句的数量为 1 (<span class="arithmatex">\(the\_sum = 0\)</span>) 加上 <em>n</em> 的值（我们执行的次数 <span class="arithmatex">\(the\_sum = the\_sum + i\)</span> ）。 我们可以用一个函数来表示它，称之为<span class="arithmatex">\(T\)</span>，其中<span class="arithmatex">\(T(n) = 1 + n\)</span>。 参数 <em>n</em> 通常被称为 “问题的大小”，我们可以将其理解为“<span class="arithmatex">\(T(n)\)</span> 是解决大小为 <span class="arithmatex">\(n\)</span> 的问题所需的时间，即 <span class="arithmatex">\(1 + n\)</span> 个步骤。”</p>
+<p>在上面给出的求和函数中，使用求和中的项数来表示问题的大小是有意义的。 然后我们可以说前 100,000 个整数的总和是比前 1,000 个整数的总和更大的求和问题实例。 因此，解决较大案件所需的时间比解决较小案件所需的时间更长似乎是合理的。 我们的目标是展示算法的执行时间如何随着问题的大小而变化。</p>
+<p>计算机科学家更愿意将这种分析技术更进一步。 事实证明，确切的操作次数并不像确定 <span class="arithmatex">\(T(n)\)</span> 函数中最主要的部分那么重要。 换句话说，随着问题变得越来越大，<span class="arithmatex">\(T(n)\)</span> 函数的某些部分往往会压倒其余部分。 这个主导术语最终是用来进行比较的。 <strong>数量级</strong> 函数描述了随着 <em>n</em> 值的增加而增加最快的 <span class="arithmatex">\(T(n)\)</span> 部分。 数量级通常称为 <strong>Big O 表示法</strong>（代表 <em>order</em>）并写为 <span class="arithmatex">\(O(f(n))\)</span>。 它提供了计算中实际步骤数的有用近似值。 函数 <span class="arithmatex">\(f(n)\)</span> 提供了原始 <span class="arithmatex">\(T(n)\)</span> 的主要部分的简单表示。</p>
+<p>在上面的例子中，<span class="arithmatex">\(T(n) = 1 + n\)</span>。 随着 <em>n</em> 变大，常数 1 对最终结果的重要性将变得越来越小。 如果我们正在寻找 <span class="arithmatex">\(T(n)\)</span> 的近似值，那么我们可以去掉 1 并简单地说运行时间是 <span class="arithmatex">\(O(n)\)</span>。 值得注意的是，1 对于 <span class="arithmatex">\(T(n)\)</span> 来说肯定很重要。 然而，随着 <em>n</em> 变大，我们的近似值在没有它的情况下也将同样准确。</p>
+<p>再举一个例子，假设对于某些算法，确切的步骤数是 <span class="arithmatex">\(T(n)=5n^{2} + 27n + 1005\)</span>。 当 <em>n</em> 很小时，例如 1 或 2，常数 1005 似乎是函数的主要部分。 然而，随着 <em>n</em> 变大，<span class="arithmatex">\(n^{2}\)</span> 项变得最重要。 事实上，当 <em>n</em> 非常大时，其他两项在确定最终结果中所起的作用就变得微不足道了。 同样，当 <em>n</em> 变大时，为了近似 <span class="arithmatex">\(T(n)\)</span>，我们可以忽略其他项并专注于 <span class="arithmatex">\(5n^{2}\)</span>。 此外，随着 <em>n</em> 变大，系数 <span class="arithmatex">\(5\)</span> 变得微不足道。 那么我们可以说函数 <span class="arithmatex">\(T(n)\)</span> 的数量级为 <span class="arithmatex">\(f(n) = n^{2}\)</span>，或者简单地说它是 <span class="arithmatex">\(O(n^{2})\)</span>。</p>
+<p>尽管我们在求和示例中没有看到这一点，但有时算法的性能取决于数据的精确值，而不仅仅是问题的大小。 对于这些类型的算法，我们需要根据<strong>最佳情况</strong>、<strong>最坏情况</strong>或<strong>平均情况</strong>性能来表征其性能。 最坏情况性能是指算法性能特别差的特定数据集，而完全相同算法的不同数据集可能具有非常好的（最佳情况）性能。 然而，在大多数情况下，算法的性能介于这两个极端之间（平均情况性能）。 对于计算机科学家来说，理解这些区别非常重要，这样他们就不会被某一特定案例误导。</p>
+<p>当您研究算法时，许多非常常见的数量级函数会反复出现。 这些如“表 1”所示。 为了确定这些函数中的哪一个是任何 <span class="arithmatex">\(T(n)\)</span> 函数的主导部分，我们必须了解当 <em>n</em> 变大时它们如何相互比较。</p>
+<p><strong>表 1: 大 O 的常用函数</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>f(n)</strong></th>
+<th><strong>名称</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(1\)</span></td>
+<td><strong>常量(Constant)</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\log n\)</span></td>
+<td><strong>对数(Logarithmic)</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n\)</span></td>
+<td><strong>线性(Linear)</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n\log n\)</span></td>
+<td><strong>对数线性(Log linear)</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n^{2}\)</span></td>
+<td><strong>二次方(Quadratic)</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n^{3}\)</span></td>
+<td><strong>立方(Cubic)</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(2^{n}\)</span></td>
+<td><strong>指数(Exponential)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>“图 1”显示了“表 1”中常见功能的图表。 请注意，当 <em>n</em> 很小时，函数之间的定义不是很好。 很难说哪个占主导地位。 然而，随着 <em>n</em> 的增长，存在着明确的关系，并且很容易看出它们如何相互比较。</p>
+<p><figure markdown>
+<a class="glightbox" href="../Figures/newplot.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/newplot.png" /></a>
+<figcaption>图 1: 常见大 O 函数图</figcaption>
+</figure></p>
+<p>作为最后一个示例，假设我们有“清单 2”中所示的 Python 代码片段。 尽管这个程序实际上并没有做任何事情，但了解我们如何获取实际代码并分析性能还是很有启发性的。</p>
+<p><strong>清单 2</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">j</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">45</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">33</span>
 </code></pre></div>
-<p>:ref:<code>Figure 1 &lt;fig_graphfigure&gt;</code> shows graphs of the common
-functions from :ref:<code>Table 1 &lt;tbl_fntable&gt;</code>. Notice that when <em>n</em> is small, the
-functions are not very well defined with respect to one another. It is
-hard to tell which is dominant. However, as <em>n</em> grows, there is a
-definite relationship and it is easy to see how they compare with one
-another.</p>
-<p>.. _fig_graphfigure:</p>
-<p>.. figure:: Figures/newplot.png</p>
-<p>Figure 1: Plot of Common Big O Functions</p>
-<p>As a final example, suppose that we have the fragment of Python code
-shown in :ref:<code>Listing 2 &lt;lst_dummycode&gt;</code>. Although this program does not really do
-anything, it is instructive to see how we can take actual code and
-analyze performance.</p>
-<p>.. _lst_dummycode:</p>
+<p>赋值运算的次数是四项之和。 第一项是常量 3，代表片段开头的三个赋值语句。 第二项是 <span class="arithmatex">\(3n^{2}\)</span>，因为由于嵌套迭代，语有 3 个句被执行了 <span class="arithmatex">\(n^{2}\)</span> 次。 第三项是 <span class="arithmatex">\(2n\)</span>，两条语句迭代 <em>n</em> 次。 最后，第四项是常数1，代表最终的赋值语句。 这给我们<span class="arithmatex">\(T(n) = 3 + 3n^{2} + 2n + 1 = 3n^{2} + 2n + 4\)</span>。 通过查看指数，我们可以很容易地看出 <span class="arithmatex">\(n^{2}\)</span> 项将占主导地位，因此这段代码是 <span class="arithmatex">\(O(n^{2})\)</span>。 请注意，随着 <em>n</em> 变大，所有其他项以及主项的系数都可以忽略。</p>
+<p><figure markdown>
+<a class="glightbox" href="../Figures/newplot2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/newplot2.png" /></a>
+<figcaption>图 2：<span class="arithmatex">\(T(n)\)</span> 与常见 大 O 函数的比较</figcaption>
+</figure></p>
+<p><code>图 2</code> 显示了一些常见的 大 O 函数与上面讨论的 <span class="arithmatex">\(T(n)\)</span> 函数的比较。 请注意，<span class="arithmatex">\(T(n)\)</span> 最初大于三次函数。 然而，随着 n 的增长，三次函数很快就会超过 <span class="arithmatex">\(T(n)\)</span>。 很容易看出，随着 <span class="arithmatex">\(n\)</span> 继续增长，<span class="arithmatex">\(T(n)\)</span> 遵循二次函数。</p>
+<div class="admonition info">
+<p class="admonition-title">自检</p>
+<p>编写两个 Python 函数来查找列表中的最小数字。 第一个函数应该将每个数字与列表中的每个其他数字进行比较。 <span class="arithmatex">\(O(n^2)\)</span>。 第二个函数应该是线性的<span class="arithmatex">\(O(n)\)</span>。</p>
+</div>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/p0COF_m6H1c" title="findmin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+</div>
+<div class="tabbed-block">
+<p><strong>Big O Notation</strong></p>
+<p>When trying to characterize an algorithm’s efficiency in terms of execution time, independent of any particular program or computer, it is important to quantify the number of operations or steps that the algorithm will require. If each of these steps is considered to be a basic unit of computation, then the execution time for an algorithm can be expressed as the number of steps required to solve the problem. Deciding on an appropriate basic unit of computation can be a complicated problem and will depend on how the algorithm is implemented.</p>
+<p>A good basic unit of computation for comparing the summation algorithms shown earlier might be the number of assignment statements performed to compute the sum. In the function <code>sum_of_n</code>, the number of assignment statements is 1 (<span class="arithmatex">\(the\_sum = 0\)</span>) plus the value of <em>n</em> (the number of times we perform <span class="arithmatex">\(the\_sum = the\_sum + i\)</span>). We can denote this by a function, call it <span class="arithmatex">\(T\)</span>, where <span class="arithmatex">\(T(n) = 1 + n\)</span>. The parameter <em>n</em> is often referred to as the “size of the problem,” and we can read this as “<span class="arithmatex">\(T(n)\)</span> is the time it takes to solve a problem of size <span class="arithmatex">\(n\)</span>, namely <span class="arithmatex">\(1 + n\)</span> steps.”</p>
+<p>In the summation functions given above, it makes sense to use the number of terms in the summation to denote the size of the problem. We can then say that the sum of the first 100,000 integers is a bigger instance of the summation problem than the sum of the first 1,000. Because of this, it might seem reasonable that the time required to solve the larger case would be greater than for the smaller case. Our goal then is to show how the algorithm’s execution time changes with respect to the size of the problem.</p>
+<p>Computer scientists prefer to take this analysis technique one step further. It turns out that the exact number of operations is not as important as determining the most dominant part of the <span class="arithmatex">\(T(n)\)</span> function. In other words, as the problem gets larger, some portion of the <span class="arithmatex">\(T(n)\)</span> function tends to overpower the rest. This dominant term is what, in the end, is used for comparison. The <strong>order of magnitude</strong> function describes the part of <span class="arithmatex">\(T(n)\)</span> that increases the fastest as the value of <em>n</em> increases. Order of magnitude is often called <strong>Big O notation</strong> (for <em>order</em>) and written as <span class="arithmatex">\(O(f(n))\)</span>. It provides a useful approximation of the actual number of steps in the computation. The function <span class="arithmatex">\(f(n)\)</span> provides a simple representation of the dominant part of the original <span class="arithmatex">\(T(n)\)</span>.</p>
+<p>In the above example, <span class="arithmatex">\(T(n) = 1 + n\)</span>. As <em>n</em> gets larger, the constant 1 will become less and less significant to the final result. If we are looking for an approximation for <span class="arithmatex">\(T(n)\)</span>, then we can drop the 1 and simply say that the running time is <span class="arithmatex">\(O(n)\)</span>. It is important to note that the 1 is certainly significant for <span class="arithmatex">\(T(n)\)</span>. However, as <em>n</em> gets large, our approximation will be just as accurate without it.</p>
+<p>As another example, suppose that for some algorithm, the exact number of steps is <span class="arithmatex">\(T(n)=5n^{2} + 27n + 1005\)</span>. When <em>n</em> is small, say 1 or 2, the constant 1005 seems to be the dominant part of the function. However, as <em>n</em> gets larger, the <span class="arithmatex">\(n^{2}\)</span> term becomes the most important. In fact, when <em>n</em> is really large, the other two terms become insignificant in the role that they play in determining the final result. Again, to approximate <span class="arithmatex">\(T(n)\)</span> as <em>n</em> gets large, we can ignore the other terms and focus on <span class="arithmatex">\(5n^{2}\)</span>. In addition, the coefficient <span class="arithmatex">\(5\)</span> becomes insignificant as <em>n</em> gets large. We would say then that the function <span class="arithmatex">\(T(n)\)</span> has an order of magnitude <span class="arithmatex">\(f(n) = n^{2}\)</span>, or simply that it is <span class="arithmatex">\(O(n^{2})\)</span>.</p>
+<p>Although we do not see this in the summation example, sometimes the performance of an algorithm depends on the exact values of the data rather than simply the size of the problem. For these kinds of algorithms we need to characterize their performance in terms of <strong>best-case</strong>, <strong>worst-case</strong>, or <strong>average-case</strong> performance. The worst-case performance refers to a particular data set where the algorithm performs especially poorly, whereas a different data set for the exact same algorithm might have extraordinarily good (best-case) performance. However, in most cases the algorithm performs somewhere in between these two extremes (average-case performance). It is important for a computer scientist to understand these distinctions so they are not misled by one particular case.</p>
+<p>A number of very common order of magnitude functions will come up over and over as you study algorithms. These are shown in <code>Table 1</code>. In order to decide which of these functions is the dominant part of any <span class="arithmatex">\(T(n)\)</span> function, we must see how they compare with one another as <em>n</em> gets large.</p>
+<p><strong>Table 1: Common Functions for Big O</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>f(n)</strong></th>
+<th><strong>Name</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(1\)</span></td>
+<td><strong>Constant</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\log n\)</span></td>
+<td><strong>Logarithmic</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n\)</span></td>
+<td><strong>Linear</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n\log n\)</span></td>
+<td><strong>Log linear</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n^{2}\)</span></td>
+<td><strong>Quadratic</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n^{3}\)</span></td>
+<td><strong>Cubic</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(2^{n}\)</span></td>
+<td><strong>Exponential</strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>Figure 1</code> shows graphs of the common functions from <code>Table 1</code>. Notice that when <em>n</em> is small, the functions are not very well defined with respect to one another. It is hard to tell which is dominant. However, as <em>n</em> grows, there is a definite relationship and it is easy to see how they compare with one another.</p>
+<p><figure markdown>
+<a class="glightbox" href="../Figures/newplot.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/newplot.png" /></a>
+<figcaption>Figure 1: Plot of Common Big O Functions</figcaption>
+</figure></p>
+<p>As a final example, suppose that we have the fragment of Python code shown in <code>Listing 2</code>. Although this program does not really do anything, it is instructive to see how we can take actual code and analyze performance.</p>
 <p><strong>Listing 2</strong></p>
-<p>::</p>
-<div class="highlight"><pre><span></span><code>a = 5
-b = 6
-c = 10
-for i in range(n):
-    for j in range(n):
-        x = i * i
-        y = j * j
-        z = i * j
-for k in range(n):
-    w = a * k + 45
-    v = b * b
-d = 33
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">j</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">45</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">33</span>
 </code></pre></div>
-<p>The number of assignment operations is the sum of four terms. The first
-term is the constant 3, representing the three assignment statements at
-the start of the fragment. The second term is :math:<code>3n^{2}</code>, since
-there are three statements that are performed :math:<code>n^{2}</code> times due
-to the nested iteration. The third term is :math:<code>2n</code>, two statements
-iterated <em>n</em> times. Finally, the fourth term is the constant 1,
-representing the final assignment statement. This gives us
-:math:<code>T(n) = 3 + 3n^{2} + 2n + 1 = 3n^{2} + 2n + 4</code>. By looking at the exponents,
-we can easily see that the :math:<code>n^{2}</code> term will be dominant and
-therefore this fragment of code is :math:<code>O(n^{2})</code>. Note that all of
-the other terms as well as the coefficient on the dominant term can be
-ignored as <em>n</em> grows larger.</p>
-<p>.. _fig_graphfigure2:</p>
-<p>.. figure:: Figures/newplot2.png</p>
-<p>Figure 2: Comparing :math:<code>T(n)</code> with Common Big O Functions</p>
-<p>:ref:<code>Figure 2 &lt;fig_graphfigure2&gt;</code> shows a few of the common Big O functions as they
-compare with the :math:<code>T(n)</code> function discussed above. Note that
-:math:<code>T(n)</code> is initially larger than the cubic function. However, as
-n grows, the cubic function quickly overtakes :math:<code>T(n)</code>. It is easy
-to see that :math:<code>T(n)</code> then follows the quadratic function as
-:math:<code>n</code> continues to grow.</p>
-<p>.. admonition:: Self Check</p>
-<p>Write two Python functions to find the minimum number in a list.  The first function should compare each number to every other number on the list. :math:<code>O(n^2)</code>.  The second function should be linear :math:<code>O(n)</code>.</p>
-<p>.. youtube:: p0COF_m6H1c
-    :divid: findMinVid
-    :height: 315
-    :width: 560
-    :align: left</p>
+<p>The number of assignment operations is the sum of four terms. The first term is the constant 3, representing the three assignment statements at the start of the fragment. The second term is <span class="arithmatex">\(3n^{2}\)</span>, since there are three statements that are performed <span class="arithmatex">\(n^{2}\)</span> times due to the nested iteration. The third term is <span class="arithmatex">\(2n\)</span>, two statements iterated <em>n</em> times. Finally, the fourth term is the constant 1, representing the final assignment statement. This gives us <span class="arithmatex">\(T(n) = 3 + 3n^{2} + 2n + 1 = 3n^{2} + 2n + 4\)</span>. By looking at the exponents, we can easily see that the <span class="arithmatex">\(n^{2}\)</span> term will be dominant and therefore this fragment of code is <span class="arithmatex">\(O(n^{2})\)</span>. Note that all of the other terms as well as the coefficient on the dominant term can be ignored as <em>n</em> grows larger.</p>
+<p><figure markdown>
+<a class="glightbox" href="../Figures/newplot2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="../Figures/newplot2.png" /></a>
+<figcaption>Figure 2: Comparing <span class="arithmatex">\(T(n)\)</span> with Common Big O Functions</figcaption>
+</figure></p>
+<p><code>Figure 2 &lt;fig_graphfigure2&gt;</code> shows a few of the common Big O functions as they compare with the <span class="arithmatex">\(T(n)\)</span> function discussed above. Note that <span class="arithmatex">\(T(n)\)</span> is initially larger than the cubic function. However, as n grows, the cubic function quickly overtakes <span class="arithmatex">\(T(n)\)</span>. It is easy to see that <span class="arithmatex">\(T(n)\)</span> then follows the quadratic function as <span class="arithmatex">\(n\)</span> continues to grow.</p>
+<div class="admonition info">
+<p class="admonition-title">Self Check</p>
+<p>Write two Python functions to find the minimum number in a list.  The first function should compare each number to every other number on the list. <span class="arithmatex">\(O(n^2)\)</span>.  The second function should be linear <span class="arithmatex">\(O(n)\)</span>.</p>
+</div>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/p0COF_m6H1c" title="findmin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+</div>
+</div>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月10日</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年10月18日</span>
       
         <br>
         创建日期:
